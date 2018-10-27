@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-10-24	윤우현 파일 생성
+
+ -->
+  
+<mapper namespace="com.guem.go.mybatis.MemberMapper">
+	<insert id="insert" parameterType="com.guem.go.woohyun.MemberVo">
+		insert into members values(#{email},#{div},#{pwd},#{name},members_seq.nextval,#{mlev},#{mimg},#{point},sysdate)
+	</insert>
+</mapper>
