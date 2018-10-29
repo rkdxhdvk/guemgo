@@ -18,6 +18,7 @@
 	<li><a href="insert">회원가입</a></li>
 	<li><a href="list">회원목록</a></li>
 	<li><a href="login">로그인</a></li>
+	<li><a href="calendar">달력 임시</a></li>
 </ul>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
