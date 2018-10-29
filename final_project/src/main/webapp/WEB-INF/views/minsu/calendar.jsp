@@ -52,10 +52,9 @@
 					end : endDate.format()
 				});
 				$.ajax({
-					url:"<c:url value='/scheinsert?id=" +  +"'/>",
+					url:"<c:url value='/'/>",
 					success:function(data){
-						//alert(data);
-						var using=$(data).find("using").text();
+						
 					}
 				});
 			},
