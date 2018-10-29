@@ -18,6 +18,7 @@
 	아이디(이메일)<input type="text" name="email" required="required"><br>
 	비밀번호<input type="password" name="pwd" required="required"><br>
 	<!-- 비밀번호 확인<input type="password" name="pwdOk" required="required"><br> -->
+	이름<input type="text" name="name" required="required"><br>
 	<input type="submit" value="가입">
 </form>
 

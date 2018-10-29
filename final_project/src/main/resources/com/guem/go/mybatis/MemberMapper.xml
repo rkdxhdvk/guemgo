@@ -6,9 +6,17 @@
 	2018-10-24	윤우현 파일 생성
 
  -->
-  
 <mapper namespace="com.guem.go.mybatis.MemberMapper">
+	
+	<!-- 회원가입 -->
 	<insert id="insert" parameterType="com.guem.go.woohyun.MemberVo">
 		insert into members values(#{email},#{div},#{pwd},#{name},members_seq.nextval,#{mlev},#{mimg},#{point},sysdate)
 	</insert>
+	
+	<!-- 회원정보 -->
+	<select id="list" resultType="com.guem.go.woohyun.MemberVo">
+		select * from members
+	</select>
+	
+	
 </mapper>
