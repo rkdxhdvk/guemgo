@@ -10,5 +10,4 @@ public class SurveyController {
 		public String home() {	
 			return "eunbyul/survey";
 		}
-	
 }
