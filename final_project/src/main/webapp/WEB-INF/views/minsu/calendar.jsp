@@ -51,16 +51,10 @@
 					start : startDate.format(),
 					end : endDate.format()
 				});
-				$.ajax({
-					url:"<c:url value='/'/>",
-					success:function(data){
-						
-					}
-				});
 			},
 			eventClick : function(event, element) {
 				if (confirm("정말 삭제하시겠습니까??") == true) {
-					$('#calendar').fullCalendar('removeEvents', [ event ]);
+					$('#calendar').fullCalendar('removeEvents', event.id);
 				} else {
 					if (confirm("수정하시겠습니까") == true) {
 						var memo = prompt('메모', '일정 입력');

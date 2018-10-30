@@ -19,6 +19,7 @@
 	<li><a href="MemberList">회원목록</a></li>
 	<li><a href="login">로그인</a></li>
 	<li><a href="calendar">달력 임시</a></li>
+	<li><a href="survey">설문조사 임시</a></li>
 </ul>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
