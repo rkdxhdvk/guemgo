@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>회원전체목록</h1>
-<table border="1" width="500">
+<table border="1" width="1000">
 	<tr>
 		<th>회원번호</th>
 		<th>아이디(이메일)</th>
@@ -32,8 +32,8 @@
 			<td>${vo.point }</td>
 			<td>${vo.regdate }</td>
 			<!-- 삭제후 result.jsp에서 결과출력하기 -->
-			<td><a href='<c:url value='/delete?num=${vo.mnum }'/>'>삭제</a></td>
-			<td><a href='<c:url value='/update?num=${vo.mnum }'/>'>수정</a></td>
+			<td><a href='<c:url value='/delete?mnum=${vo.mnum }'/>'>삭제</a></td>
+			<td><a href='<c:url value='/update?mnum=${vo.mnum }'/>'>수정</a></td>
 		</tr>
 	</c:forEach>
 </table><br>

@@ -24,4 +24,9 @@ public class MemberDao {
 	public List<MemberVo> list(){
 		return sqlSession.selectList(NAMESPACE + ".list");
 	}
+	
+	// 회원삭제 DAO
+	public int delete(int mnum) {
+		return sqlSession.delete(NAMESPACE + ".delete",mnum);
+	}
 }

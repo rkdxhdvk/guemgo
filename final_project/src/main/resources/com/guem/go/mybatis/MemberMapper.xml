@@ -13,10 +13,15 @@
 		insert into members values(#{email},#{div},#{pwd},#{name},members_seq.nextval,#{mlev},#{mimg},#{point},sysdate)
 	</insert>
 	
-	<!-- 회원정보 -->
+	<!-- 회원정보조회 -->
 	<select id="list" resultType="com.guem.go.woohyun.MemberVo">
 		select * from members
 	</select>
+	
+	<!-- 회원삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from members where mnum=#{mnum}
+	</delete>	
 	
 	
 </mapper>
