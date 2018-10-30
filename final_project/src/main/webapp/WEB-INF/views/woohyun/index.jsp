@@ -15,8 +15,8 @@
 <body>
 <h1>금고 메인 페이지(임시)</h1>
 <ul>
-	<li><a href="insert">회원가입</a></li>
-	<li><a href="list">회원목록</a></li>
+	<li><a href="MemberInsert">회원가입</a></li>
+	<li><a href="MemberList">회원목록</a></li>
 	<li><a href="login">로그인</a></li>
 	<li><a href="calendar">달력 임시</a></li>
 </ul>

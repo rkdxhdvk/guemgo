@@ -16,7 +16,7 @@ public class DeleteController {
 	public void setService(MemberService service) {
 		this.service = service;
 	}
-	@RequestMapping("/delete")
+	@RequestMapping("/MemberDelete")
 	public ModelAndView delete(int mnum) {
 		int n=service.delete(mnum);
 		ModelAndView mv=new ModelAndView("woohyun/result");

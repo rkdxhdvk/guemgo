@@ -30,10 +30,10 @@
 			<td>${vo.name }</td>
 			<td>${vo.mlev }</td>
 			<td>${vo.point }</td>
-			<td>${vo.regdate }</td>
+			<td>${vo.regdate}</td>
 			<!-- 삭제후 result.jsp에서 결과출력하기 -->
-			<td><a href='<c:url value='/delete?mnum=${vo.mnum }'/>'>삭제</a></td>
-			<td><a href='<c:url value='/update?mnum=${vo.mnum }'/>'>수정</a></td>
+			<td><a href='<c:url value='/MemberDelete?mnum=${vo.mnum }'/>'>삭제</a></td>
+			<td><a href='<c:url value='/MemberUpdate?mnum=${vo.mnum }'/>'>수정</a></td>
 		</tr>
 	</c:forEach>
 </table><br>

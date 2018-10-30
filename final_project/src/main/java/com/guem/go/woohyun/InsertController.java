@@ -13,14 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class InsertController {
 	@Autowired private MemberService service;
 	
-	@RequestMapping(value="/insert",method=RequestMethod.GET)
+	@RequestMapping(value="/MemberInsert",method=RequestMethod.GET)
 	public String insert() {
 		return "woohyun/insert";
 	}
 	
-	@RequestMapping(value="/insert",method=RequestMethod.POST)
+	@RequestMapping(value="/MemberInsert",method=RequestMethod.POST)
 	public ModelAndView insertOk(MemberVo vo) {
-		vo.setDiv(1);	// 회원가입시 사용자 구분:일반(0-관리자,1-일반회원,2-고수)
+		vo.setMdiv(1);	// 회원가입시 사용자 구분:일반(0-관리자,1-일반회원,2-고수)
 		vo.setMlev(0);	// 회원가입시 기본 회원등급
 		vo.setMimg("0");	// 회원가입시 기본 이미지
 		vo.setPoint(50);	// 회원가입시 기본 포인트

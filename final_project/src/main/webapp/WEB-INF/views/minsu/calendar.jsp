@@ -89,7 +89,7 @@ body {
 </style>
 </head>
 <body>
-	<div id='calendar'></div>
+	<mdiv id='calendar'></mdiv>
 
 </body>
 </html>

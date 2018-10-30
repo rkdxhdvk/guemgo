@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>회원가입</h1>
-<form method="post" action="insert">
+<form method="post" action="MemberInsert">
 	아이디(이메일)<input type="text" name="email" required="required"><br>
 	비밀번호<input type="password" name="pwd" required="required"><br>
 	<!-- 비밀번호 확인<input type="password" name="pwdOk" required="required"><br> -->

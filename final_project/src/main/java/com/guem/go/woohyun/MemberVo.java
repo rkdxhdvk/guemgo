@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class MemberVo {
 	private String email;
-	private int div;
+	private int mdiv;
 	private String pwd;
 	private String name;
 	private int mnum;
@@ -15,11 +15,11 @@ public class MemberVo {
 	
 	public MemberVo() {}
 
-	public MemberVo(String email, int div, String pwd, String name, int mnum, int mlev, String mimg, int point,
+	public MemberVo(String email, int mdiv, String pwd, String name, int mnum, int mlev, String mimg, int point,
 			Date regdate) {
 		super();
 		this.email = email;
-		this.div = div;
+		this.mdiv = mdiv;
 		this.pwd = pwd;
 		this.name = name;
 		this.mnum = mnum;
@@ -37,12 +37,12 @@ public class MemberVo {
 		this.email = email;
 	}
 
-	public int getDiv() {
-		return div;
+	public int getMdiv() {
+		return mdiv;
 	}
 
-	public void setDiv(int div) {
-		this.div = div;
+	public void setMdiv(int mdiv) {
+		this.mdiv = mdiv;
 	}
 
 	public String getPwd() {

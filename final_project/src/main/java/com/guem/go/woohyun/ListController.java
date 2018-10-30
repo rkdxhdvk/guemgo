@@ -13,7 +13,7 @@ public class ListController {
 	public void setService(MemberService service) {
 		this.service = service;
 	}
-	@RequestMapping("/list")
+	@RequestMapping("/MemberList")
 	public ModelAndView list() {
 		List<MemberVo> list=service.list();
 		ModelAndView mv=new ModelAndView("woohyun/list");
