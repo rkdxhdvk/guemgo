@@ -21,7 +21,7 @@ public class InsertController {
 	@RequestMapping(value="/MemberInsert",method=RequestMethod.POST)
 	public ModelAndView insertOk(MemberVo vo) {
 		vo.setMdiv(1);	// 회원가입시 사용자 구분:일반(0-관리자,1-일반회원,2-고수)
-		vo.setMlev(0);	// 회원가입시 기본 회원등급
+		vo.setMlev(1);	// 회원가입시 기본 회원등급
 		vo.setMimg("0");	// 회원가입시 기본 이미지
 		vo.setPoint(50);	// 회원가입시 기본 포인트
 		int n=service.insert(vo);

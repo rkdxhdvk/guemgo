@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	2018-10-31	윤우현 파일 생성
+ -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.LoginMapper">
+	<select id="isMember" resultType="com.guem.go.woohyun.MemberVo" parameterType="hashmap">
+		select * from members where email=#{email} and password=#{pwd}
+	</select>
+<!-- 	<select id="getinfo" resultType="com.jhta.spring14.vo.MyUsersVo" parameterType="string">
+		select * from myusers where id=#{id}
+	</select> -->
+</mapper>
+
+
+
+
+
+

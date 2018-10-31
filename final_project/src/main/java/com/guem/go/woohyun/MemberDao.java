@@ -40,13 +40,6 @@ public class MemberDao {
 	// 회원 정보 수정(업데이트) DAO
 	public int update(MemberVo vo) {
 		System.out.println("DAO 업데이트 부분");
-		System.out.println(vo.getMnum());
-		System.out.println(vo.getName());
-		System.out.println(vo.getPwd());
-		System.out.println(vo.getMlev());
-		System.out.println(vo.getMimg());
-		System.out.println(vo.getPoint());
-		System.out.println(NAMESPACE + ".update");
 		return sqlSession.update(NAMESPACE + ".update",vo); 
 	}
 	

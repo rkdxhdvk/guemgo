@@ -41,12 +41,6 @@ public class MemberService {
 	// 회원 정보 수정(업데이트)
 	public int update(MemberVo vo) {
 		System.out.println("서비스 부분");
-		System.out.println(vo.getMnum());
-		System.out.println(vo.getName());
-		System.out.println(vo.getPwd());
-		System.out.println(vo.getMlev());
-		System.out.println(vo.getMimg());
-		System.out.println(vo.getPoint());
 		return dao.update(vo);
 	}
 }
