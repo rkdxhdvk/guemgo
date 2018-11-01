@@ -8,14 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
+<%-- <div>
 <h2>카테고리</h2>
 <ul>
 	<c:forEach var="item" items="${category }">
 		<li>${item }</li>
 	</c:forEach>
 </ul>
-</div>
+</div> --%>
 <h1>관리자페이지</h1>
+<a href="/">홈으로</a>
 </body>
 </html>
