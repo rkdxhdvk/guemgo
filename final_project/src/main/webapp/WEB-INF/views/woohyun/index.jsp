@@ -43,7 +43,7 @@
 					<li><a href="mypage">마이페이지</a></li>
 				</c:when>
 				<c:when test="${sessionScope.mdiv eq '2' }">
-					<li><a href="mypage">고수페이지</a></li>
+					<li><a href="gosupage">고수페이지</a></li>
 				</c:when>
 			</c:choose>
 		</c:otherwise>

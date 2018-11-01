@@ -17,8 +17,8 @@ public class DeleteController {
 		this.service = service;
 	}
 	@RequestMapping("/MemberDelete")
-	public ModelAndView delete(int mnum) {
-		int n=service.delete(mnum);
+	public ModelAndView delete(String email) {
+		int n=service.delete(email);
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
 			mv.addObject("code","success");

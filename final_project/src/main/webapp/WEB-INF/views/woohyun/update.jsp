@@ -10,7 +10,8 @@
 <body>
 <h1>회원 정보 수정</h1>
 <form method="post" action="MemberUpdate">
-	<input type="hidden" value="${vo.mnum }" name="mnum"> <!-- 회원번호를 vo에 넣기 위해 필요 -->
+	<%-- <input type="hidden" value="${vo.mnum }" name="mnum"> --%> <!-- 회원번호를 vo에 넣기 위해 필요 -->
+	<input type="hidden" value="${vo.email }" name="email">
 	회원번호 ${vo.mnum }<br>
 	권한 ${vo.mdiv }<br>
 	아이디(이메일) ${vo.email }<br>

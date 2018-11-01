@@ -28,13 +28,13 @@ public class MemberDao {
 	}
 	
 	// 회원삭제 DAO
-	public int delete(int mnum) {
-		return sqlSession.delete(NAMESPACE + ".delete",mnum);
+	public int delete(String email) {
+		return sqlSession.delete(NAMESPACE + ".delete",email);
 	}
 	
 	// 회원 정보 수정(1명 조회) DAO
-	public MemberVo detail(int mnum) {
-		return sqlSession.selectOne(NAMESPACE +".detail",mnum);
+	public MemberVo detail(String email) {
+		return sqlSession.selectOne(NAMESPACE +".detail",email);
 	}
 	
 	// 회원 정보 수정(업데이트) DAO

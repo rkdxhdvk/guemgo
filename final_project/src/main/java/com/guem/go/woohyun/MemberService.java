@@ -27,20 +27,20 @@ public class MemberService {
 	}
 	
 	// 회원삭제
-	public int delete(int mnum) {
-		return dao.delete(mnum);
+	public int delete(String email) {
+		return dao.delete(email);
 	}
 	
 	// 회원 정보 수정(1명 조회)
-	public MemberVo detail(int mnum) {
-		System.out.println("서비스 조회부분");
-		System.out.println(mnum);
-		return dao.detail(mnum);
+	public MemberVo detail(String email) {
+//		System.out.println("서비스 조회부분");
+//		System.out.println(email);
+		return dao.detail(email);
 	}
 	
 	// 회원 정보 수정(업데이트)
 	public int update(MemberVo vo) {
-		System.out.println("서비스 부분");
+//		System.out.println("서비스 부분");
 		return dao.update(vo);
 	}
 }

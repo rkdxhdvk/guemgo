@@ -19,19 +19,19 @@
 	</select>
 	
 	<!-- 회원삭제 -->
-	<delete id="delete" parameterType="int">
-		delete from members where mnum=#{mnum}
+	<delete id="delete" parameterType="String">
+		delete from members where email=#{email}
 	</delete>	
 	
 	<!-- 회원 정보 수정(1명 조회) -->
-	<select id="detail" resultType="com.guem.go.woohyun.MemberVo" parameterType="int">
-		select * from members where mnum=#{mnum}
+	<select id="detail" resultType="com.guem.go.woohyun.MemberVo" parameterType="String">
+		select * from members where email=#{email}
 	</select>
 	
 	
 	<!-- 회원 정보 수정(업데이트) -->
 	<update id="update" parameterType="com.guem.go.woohyun.MemberVo">
-		update members set name=#{name},password=#{pwd},mlev=#{mlev},mimg=#{mimg},point=#{point} where mnum=#{mnum}
+		update members set name=#{name},password=#{pwd},mlev=#{mlev},mimg=#{mimg},point=#{point} where email=#{email}
 	</update>
 	
 </mapper>

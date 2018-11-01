@@ -31,11 +31,11 @@ public class UpdateController {
 		this.service = service;
 	}
 	@RequestMapping(value="/MemberUpdate",method=RequestMethod.GET)
-	public ModelAndView updateForm(int mnum) {
-		MemberVo vo=service.detail(mnum);
+	public ModelAndView updateForm(String email) {
+		MemberVo vo=service.detail(email);
 		ModelAndView mv=new ModelAndView("woohyun/update");
 		mv.addObject("vo",vo);
-		System.out.println("업데이트콘트롤러GET 완료");
+//		System.out.println("업데이트콘트롤러GET 완료");
 		return mv;
 	}
 	@RequestMapping(value="/MemberUpdate",method=RequestMethod.POST)
@@ -46,12 +46,12 @@ public class UpdateController {
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
 			mv.addObject("code","success");
-			System.out.println("업데이트콘트롤러POST-성공");
+//			System.out.println("업데이트콘트롤러POST-성공");
 		}else {
 			mv.addObject("code","fail");
-			System.out.println("업데이트콘트롤러POST-실패");
+//			System.out.println("업데이트콘트롤러POST-실패");
 		}
-		System.out.println("업데이트콘트롤러POST-완료");
+//		System.out.println("업데이트콘트롤러POST-완료");
 		return mv;
 	}
 }

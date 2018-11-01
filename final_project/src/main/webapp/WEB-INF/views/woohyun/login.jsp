@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 
 	2018-10-31	윤우현 파일 생성
  -->
@@ -17,6 +18,6 @@
 	<div style="color:red;font-size: 12px">${errMsg }</div>
 	<input type="submit" value="로그인">
 </form>
-<a href="/">홈으로</a>
+<a href="<c:url value='/'/>">홈으로</a>
 </body>
 </html>

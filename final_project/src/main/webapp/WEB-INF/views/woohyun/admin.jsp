@@ -17,6 +17,6 @@
 </ul>
 </div> --%>
 <h1>관리자페이지</h1>
-<a href="/">홈으로</a>
+<a href="<c:url value='/'/>">홈으로</a>
 </body>
 </html>
