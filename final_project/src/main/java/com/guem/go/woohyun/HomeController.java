@@ -26,7 +26,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {	
-		return "woohyun/index";
+		return "woohyun/index_new";
 	}
 	
 }
