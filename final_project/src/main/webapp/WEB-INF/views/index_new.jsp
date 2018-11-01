@@ -24,12 +24,12 @@
 	</c:forEach>
 </ul> --%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="views/woohyun/index.jsp">Guemgo</a>
+		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
 		<a class="navbar-brand" href="calendar">달력 임시</a>
-		<a class="navbar-brand" href="survey">설문조사 임시</a>
+		<a class="navbar-brand" href="survey_test">설문조사 임시</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			
 			<form class="form-inline my-2 my-lg-10">
@@ -103,7 +103,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="./survey.jsp" method="post">
+					<form action="survey" method="get">
 						<input type="submit" class="btn btn-primary mx-1 mt-2" value="그래픽">
 						<input type="submit" class="btn btn-primary mx-1 mt-2" value="포토샵">
 						<input type="submit" class="btn btn-primary mx-1 mt-2" value="인디자인">
