@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CalendarController {
 	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
 	public String home() {	
-		return "minsu/calendar";
+		return "minsu/chatcal";
 	}
 	
 }

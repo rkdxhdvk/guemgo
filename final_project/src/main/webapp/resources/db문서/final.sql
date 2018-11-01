@@ -26,7 +26,7 @@ DROP TABLE point CASCADE CONSTRAINTS;
 DROP TABLE qna_board CASCADE CONSTRAINTS;
 DROP TABLE question CASCADE CONSTRAINTS;
 DROP TABLE review_board CASCADE CONSTRAINTS;
-DROP TABLE user CASCADE CONSTRAINTS;
+DROP TABLE users CASCADE CONSTRAINTS;
 
 
 
@@ -48,17 +48,16 @@ CREATE TABLE cate_l
 	l_num number(3,0) NOT NULL,
 	-- 명칭(소)테이블에서 명칭을가져와서 뿌려주고 받는다
 	-- 
-	area varchar2(10),
+	l_name varchar2(10),
 	PRIMARY KEY (l_num)
 );
-
 
 CREATE TABLE cate_m
 (
 	m_num varchar2(10) NOT NULL,
 	-- 명칭(소)테이블에서 명칭을가져와서 뿌려주고 받는다
 	-- 
-	area varchar2(10),
+	m_name varchar2(10),
 	l_num number(3,0) NOT NULL,
 	PRIMARY KEY (m_num)
 );
@@ -67,7 +66,7 @@ CREATE TABLE cate_m
 CREATE TABLE cate_s
 (
 	s_num number(3,0) NOT NULL,
-	name varchar2(10),
+	s_name varchar2(10),
 	m_num varchar2(10) NOT NULL,
 	PRIMARY KEY (s_num)
 );
@@ -96,7 +95,7 @@ CREATE TABLE chatroom
 CREATE TABLE event
 (
 	stamp number(2,0),
-	pointdate date,
+	pointdate varchar2(20),
 	email varchar2(20) NOT NULL
 );
 
@@ -154,7 +153,7 @@ CREATE TABLE gosu_area
 	-- 명칭(소)테이블에서 명칭을가져와서 뿌려주고 받는다
 	-- 
 	area varchar2(10),
-	num number(7,0) NOT NULL
+	lectureNum number(7,0) NOT NULL
 );
 
 
@@ -177,12 +176,12 @@ CREATE TABLE gosu_image
 CREATE TABLE lecture
 (
 	gender varchar2(5),
-	num number(7,0) NOT NULL,
+	lectureNum number(7,0) NOT NULL,
 	region varchar2(20),
 	day varchar2(10),
 	time varchar2(10),
 	go_num number(5,0) NOT NULL,
-	PRIMARY KEY (num)
+	PRIMARY KEY (lectureNum)
 );
 
 
@@ -243,11 +242,11 @@ CREATE TABLE question
 
 CREATE TABLE requestlist
 (
-	num number(5,0) NOT NULL,
+	requestlistNum number(5,0) NOT NULL,
 	matchNum number(7,0) NOT NULL,
 	email varchar2(20) NOT NULL,
 	pointdate date,
-	PRIMARY KEY (num)
+	PRIMARY KEY (requestlistNum)
 );
 
 
@@ -283,7 +282,7 @@ CREATE TABLE schedule
 	scheduleNum number(5,0) NOT NULL,
 	email varchar2(20) NOT NULL,
 	other varchar2(20),
-	num number(7,0) NOT NULL,
+	lectureNum number(7,0) NOT NULL,
 	matchNum number(7,0) NOT NULL,
 	PRIMARY KEY (scheduleNum)
 );
@@ -291,17 +290,17 @@ CREATE TABLE schedule
 
 CREATE TABLE sche_detail
 (
-	Num number(7,0) NOT NULL,
+	schedetailNum number(7,0) NOT NULL,
 	scheduleNum number(5,0) NOT NULL,
 	memo varchar2(20),
-	time varchar2(10),
-	pointdate date,
-	appear number(2,0),
-	PRIMARY KEY (Num)
+	sdate varchar2(20),
+	edate varchar2(20),
+	attendance number(2,0),
+	PRIMARY KEY (schedetailNum)
 );
 
 
-CREATE TABLE user
+CREATE TABLE users
 (
 	email varchar2(20) NOT NULL,
 	flag number(2,0) NOT NULL,
@@ -362,14 +361,14 @@ ALTER TABLE lecture
 
 
 ALTER TABLE gosu_area
-	ADD FOREIGN KEY (num)
-	REFERENCES lecture (num)
+	ADD FOREIGN KEY (lectureNum)
+	REFERENCES lecture (lectureNum)
 ;
 
 
 ALTER TABLE schedule
-	ADD FOREIGN KEY (num)
-	REFERENCES lecture (num)
+	ADD FOREIGN KEY (lectureNum)
+	REFERENCES lecture (lectureNum)
 ;
 
 
@@ -411,67 +410,67 @@ ALTER TABLE sche_detail
 
 ALTER TABLE chat
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE event
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE favorate
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE free_board
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE gosu
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE notice_board
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE pay
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE point
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE qna_board
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE require
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 
 ALTER TABLE review_board
 	ADD FOREIGN KEY (email)
-	REFERENCES user (email)
+	REFERENCES users (email)
 ;
 
 

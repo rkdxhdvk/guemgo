@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.Sche_detailMapper">
+	<select id="sche_detailinsert" parameterType="com.guem.go.minsu.Sche_detailVo">
+		insert into sche_detail values(schedetail_seq.nextval, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0)
+	</select>
+	<select id="detailNum" resultType="int">
+		select max(num) from sche_detail
+	</select>
+</mapper>
+
+
+
+
+
+
