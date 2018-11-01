@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 	2018-10-24	윤우현 파일생성-홈디렉토리 변경
  */
 @Controller
+
 public class HomeController {
 /*	@ModelAttribute("header")
 	public List<String> header(){
@@ -30,3 +31,4 @@ public class HomeController {
 	}
 	
 }
+

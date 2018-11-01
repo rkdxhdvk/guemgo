@@ -103,12 +103,12 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="./matching.jsp" method="post">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="그래픽">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="포토샵">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="인디자인">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="패션디자인">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="한식">
+					<form action="./survey.jsp" method="post">
+						<input type="submit" class="btn btn-primary mx-1 mt-2" value="그래픽">
+						<input type="submit" class="btn btn-primary mx-1 mt-2" value="포토샵">
+						<input type="submit" class="btn btn-primary mx-1 mt-2" value="인디자인">
+						<input type="submit" class="btn btn-primary mx-1 mt-2" value="패션디자인">
+						<input type="submit" class="btn btn-primary mx-1 mt-2" value="한식">
 						<input type="button" class="btn btn-primary mx-1 mt-2" value="중식">
 						<input type="button" class="btn btn-primary mx-1 mt-2" value="양식">
 						<input type="button" class="btn btn-primary mx-1 mt-2" value="회화">
