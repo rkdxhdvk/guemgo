@@ -23,6 +23,7 @@
 		<li>${header }</li>
 	</c:forEach>
 </ul> --%>
+<!-- //////////////////////////Header////////////////////////// -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -76,7 +77,8 @@
 		</div>
 	</nav>
 	
-	
+<!-- /////////////////////////////////////////////////////////// -->
+
 	<section class="container"><!-- 본문같은 내용을 담을때 사용 -->
 		<form method="get" action="./index.jsp" class="form-inline mt-3"><!-- 위쪽으로3만큼 -->
 			<select name="lectureDivide" class="form-control mx-1 mt-2">
@@ -104,22 +106,34 @@
 				</div>
 				<div class="modal-body">
 					<form action="survey" method="get">
-						<input type="submit" class="btn btn-primary mx-1 mt-2" value="그래픽">
-						<input type="submit" class="btn btn-primary mx-1 mt-2" value="포토샵">
-						<input type="submit" class="btn btn-primary mx-1 mt-2" value="인디자인">
-						<input type="submit" class="btn btn-primary mx-1 mt-2" value="패션디자인">
-						<input type="submit" class="btn btn-primary mx-1 mt-2" value="한식">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="중식">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="양식">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="회화">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="동양화">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="서양화">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="유화">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="랩">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="재즈">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="발라드">
-						<input type="button" class="btn btn-primary mx-1 mt-2" value="힙합">
-					
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="그래픽디자인">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="제품디자인">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="패션디자인">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="보컬">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="작곡">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="악기">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="회화">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="동양화">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="애니메이션">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="요리">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="디저트">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="음료">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="포토샵">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="일러스트">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="재봉">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="힙합">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="디제잉">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="피아노">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="기타">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="수채화">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="유화">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="웹툰">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="한식">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="일식">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="양식">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="커피">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="제빵">
+
 					</form>
 				
 				</div>

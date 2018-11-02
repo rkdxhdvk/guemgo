@@ -62,6 +62,13 @@ CREATE TABLE cate_m
 	PRIMARY KEY (m_num)
 );
 
+CREATE TABLE example1
+(
+	m_num varchar2(10) NOT NULL,
+	example varchar2(50),
+	ex_num number(5,0) NOT NULL,
+	PRIMARY KEY (ex_num)
+);
 
 CREATE TABLE cate_s
 (
@@ -381,6 +388,11 @@ ALTER TABLE answer
 ALTER TABLE example
 	ADD FOREIGN KEY (ques_num)
 	REFERENCES question (ques_num)
+;
+
+ALTER TABLE example1
+	ADD FOREIGN KEY (m_num)
+	REFERENCES cate_m (m_num)
 ;
 
 
