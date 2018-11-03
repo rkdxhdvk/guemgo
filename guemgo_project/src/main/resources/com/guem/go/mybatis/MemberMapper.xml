@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-10-24	윤우현 파일 생성
+
+ -->
+<mapper namespace="com.guem.go.mybatis.MemberMapper">
+	
+	<!-- 회원가입 -->
+	<insert id="insert" parameterType="com.guem.go.woohyun.MemberVo">
+		insert into members values(#{email},#{mdiv},#{pwd},#{name},members_seq.nextval,#{mlev},#{mimg},#{point},to_date(sysdate,'yyyy-mm-dd hh24:mi:ss'))
+	</insert>
+	
+	<!-- 회원전체 리스트 -->
+	<select id="list" resultType="com.guem.go.woohyun.MemberVo">
+		select * from members
+	</select>
+	
+	<!-- 회원삭제 -->
+	<delete id="delete" parameterType="String">
+		delete from members where email=#{email}
+	</delete>	
+	
+	<!-- 회원 정보 수정(1명 조회) -->
+	<select id="detail" resultType="com.guem.go.woohyun.MemberVo" parameterType="String">
+		select * from members where email=#{email}
+	</select>
+	
+	
+	<!-- 회원 정보 수정(업데이트) -->
+	<update id="update" parameterType="com.guem.go.woohyun.MemberVo">
+		update members set name=#{name},password=#{pwd},mlev=#{mlev},mimg=#{mimg},point=#{point} where email=#{email}
+	</update>
+	
+</mapper>

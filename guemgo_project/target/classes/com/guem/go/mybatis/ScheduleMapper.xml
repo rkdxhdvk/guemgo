@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.ScheduleMapper">
+	<select id="scheinsert" parameterType="com.guem.go.minsu.ScheduleVo">
+		insert into schedule values(sche_seq.nextval, #{email}, #{other}, #{num}, #{matchNum})
+	</select>
+	<select id="scheduleNum" resultType="int">
+		select max(scheduleNum) from schedule
+	</select>
+</mapper>
+
+
+
+
+
+
