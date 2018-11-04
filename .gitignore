@@ -10,7 +10,9 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*.properties
 local.properties
+database.properties
 .settings/
 .loadpath
 .recommenders
@@ -98,7 +100,7 @@ hs_err_pid*
 
 ### Java-Web ###
 ## ignoring target file
-target/
+**/target/
 
 ### Windows ###
 # Windows thumbnail cache files
