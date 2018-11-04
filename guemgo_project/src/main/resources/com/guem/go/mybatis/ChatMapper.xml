@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhta.mybatis.ChatMapper">
+	<insert id="insert" parameterType="com.guem.go.kidong.ChatVo">
+		insert into gchat values(chat_seq.nextval,#{room},#{msg},sysdate,#{sender},0)
+	</insert>
+	<select id="list" parameterType="int" resultType="com.guem.go.kidong.ChatVo">
+		select * from gchat where room = #{room} and read = 0
+	</select>
+	<select id="getRoom" parameterType="string" resultType="com.guem.go.kidong.RoomVo">
+		select * from room where email = #{email}
+	</select>
+	<update id="read" parameterType="int">
+		update gchat set read = 1 where room = #{room}
+	</update>
+</mapper>  
