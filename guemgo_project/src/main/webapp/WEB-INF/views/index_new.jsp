@@ -31,7 +31,6 @@
 		</button>	
 		<a class="navbar-brand" href="calendar">달력 임시</a>
 		<a class="navbar-brand" href="survey_test">설문조사 임시</a>
-		<a class="navbar-brand" href="<c:url value='/room?email=1'/>">채팅방</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			
 			<form class="form-inline my-2 my-lg-10">
@@ -48,6 +47,8 @@
 				 		회원님${ sessionScope.email }
 				 	</a>
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
+				 	<a class="dropdown-item" href="classinsert?gonum=4">강의등록</a>
+				 	<a class="dropdown-item" href="classlist?gonum=4">강의목록</a>
 				 		<!-- 회원에 따라 다른 페이지 보여주기 -->
 						<c:choose>
 							<c:when test="${empty sessionScope.email }">
@@ -66,6 +67,7 @@
 									</c:when>
 									<c:when test="${sessionScope.mdiv eq '2' }">
 										<a class="dropdown-item" href="gosupage">고수페이지</a>
+										
 									</c:when>
 								</c:choose>
 							</c:otherwise>
