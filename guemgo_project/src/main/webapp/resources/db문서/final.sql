@@ -54,7 +54,7 @@ CREATE TABLE cate_l
 
 CREATE TABLE cate_m
 (
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	-- 명칭(소)테이블에서 명칭을가져와서 뿌려주고 받는다
 	-- 
 	m_name varchar2(10),
@@ -64,7 +64,7 @@ CREATE TABLE cate_m
 
 CREATE TABLE example1
 (
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	example varchar2(50),
 	ex_num number(5,0) NOT NULL,
 	PRIMARY KEY (ex_num)
@@ -74,7 +74,7 @@ CREATE TABLE cate_s
 (
 	s_num number(3,0) NOT NULL,
 	s_name varchar2(10),
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	PRIMARY KEY (s_num)
 );
 
@@ -182,11 +182,13 @@ CREATE TABLE gosu_image
 -- 이용자의 요청서와 매칭할 때 사용
 CREATE TABLE lecture
 (
-	gender varchar2(5),
 	lectureNum number(7,0) NOT NULL,
-	region varchar2(20),
-	day varchar2(10),
-	time varchar2(10),
+	lectureName varchar2(100), -- 강의명
+	region1 varchar2(100), -- 비교할 지역
+	region2 varchar2(100),	-- 정보로 남길 상세지역
+	gender varchar2(10),
+	day varchar2(50),
+	time varchar2(50),
 	go_num number(5,0) NOT NULL,
 	PRIMARY KEY (lectureNum)
 );
@@ -261,7 +263,7 @@ CREATE TABLE require
 (
 	matchNum number(7,0) NOT NULL,
 	email varchar2(20) NOT NULL,
-	m_num varchar2(10) NOT NULL,
+	m_num number(7,0) NOT NULL,
 	begin number(2,0),
 	PRIMARY KEY (matchNum)
 );
