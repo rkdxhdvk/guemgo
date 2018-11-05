@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 */
 
 @Controller
-public class InsertController {
+public class MemberInsertController {
 	@Autowired private MemberService service;
 	
 	@RequestMapping(value="/MemberInsert",method=RequestMethod.GET)

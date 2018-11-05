@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-11-04	윤우현 파일 생성
+
+ -->
+<mapper namespace="com.guem.go.mybatis.CateMapper">
+	
+	<!-- cate_l 리스트 -->
+	<select id="cate_l_list" resultType="com.guem.go.woohyun.CateVo">
+		select * from cate_l
+	</select>
+	
+	<!-- cate_ㅡ 리스트 -->
+	<select id="cate_m_list" parameterType="com.guem.go.woohyun.CateVo" resultType="com.guem.go.woohyun.CateVo">
+		select * from cate_m where l_num=#{l_num }
+	</select>
+	
+</mapper>

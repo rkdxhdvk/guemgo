@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class DeleteController {
+public class MemberDeleteController {
 	@Autowired private MemberService service;
 	public void setService(MemberService service) {
 		this.service = service;

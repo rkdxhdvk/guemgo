@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 	2018-10-29	윤우현 파일 생성
 */
 @Controller
-public class UpdateController {
+public class MemberUpdateController {
 	@Autowired private MemberService service;
 	
 	//request로 전달된 데이터를 파라미터 변수에 담기전에 수행됨

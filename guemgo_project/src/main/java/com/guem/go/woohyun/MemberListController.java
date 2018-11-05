@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ListController {
+public class MemberListController {
 	@Autowired private MemberService service;
 	public void setService(MemberService service) {
 		this.service = service;

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/*
+	2018-01-01	윤우현 파일 생성
+*/
 @Controller
 @SessionAttributes("vo") //ModelAttribute에 담긴 vo를 SessionAttributes에 담기
 public class AdminPageController {

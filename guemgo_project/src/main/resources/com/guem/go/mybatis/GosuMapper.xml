@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-11-04	윤우현 파일 생성
+
+ -->
+<mapper namespace="com.guem.go.mybatis.GosuMapper">
+	
+	<!-- 고수가입 -->
+	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
+		insert into gosu(go_num, email, intro, grade, employ) 
+			values(gonum_seq.nextval,#{email}, )
+	</insert>
+	
+</mapper>
