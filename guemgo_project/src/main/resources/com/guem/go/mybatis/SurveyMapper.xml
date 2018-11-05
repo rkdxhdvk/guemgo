@@ -4,9 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.SurveyMapper">
 	<select id="requireInsert" parameterType="com.guem.go.eunbyul.RequireVo">
-		insert into require values(matchnum_seq.nextval, #{email}, #{m_num},0)
+		insert into require values(matchnum_seq.nextval, #{email}, #{m_num}, 0, sysdate)
 	</select>
 	<select id="selectcatem" resultType="com.guem.go.eunbyul.CatemVo" parameterType="String">
 		select * from cate_m where m_num=(select m_num from cate_s where s_name=#{name})
 	</select>
+	<select id="selectcates" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
+		select * from cate_s where m_num=(select m_num from cate_m where m_name=#{name})
+	</select>
+	
 </mapper>

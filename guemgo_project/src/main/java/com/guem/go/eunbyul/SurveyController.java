@@ -41,7 +41,7 @@ public class SurveyController {
 		SurveyDao dao= new SurveyDao();*/
 		CatemVo mvo=dao.selectcatem(s_name);
 		System.out.println("카테고리번호:"+mvo.m_num);
-		RequireVo vo=new RequireVo(0, "test@test", mvo.m_num, 0);
+		RequireVo vo=new RequireVo(0, "test@test", mvo.m_num, 0 , null);
 		int n=dao.insert(vo);
 		ModelAndView mv = new ModelAndView();
 		 mv.addObject("n", n);

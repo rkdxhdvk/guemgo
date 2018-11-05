@@ -5,10 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.guem.go.eunbyul.CatesVo;
+import com.guem.go.eunbyul.ClassService;
 
 /*
 	2018-10-24	윤우현 파일생성-홈디렉토리 변경
@@ -24,10 +28,15 @@ public class HomeController {
 		list.add("화장품");
 		return list;
 	}*/
-	
+	@Autowired
+	private ClassService classservice;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {	
-		return "index_new";
+	public ModelAndView home() {	
+		
+		List<CatesVo> list=classservice.cateslist();
+		ModelAndView mv=new ModelAndView("index_new");
+		mv.addObject("list", list);
+		return mv;
 	}
 	
 }

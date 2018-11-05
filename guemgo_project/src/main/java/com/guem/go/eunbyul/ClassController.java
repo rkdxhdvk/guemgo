@@ -1,6 +1,9 @@
+
 package com.guem.go.eunbyul;
 
 
+
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,12 +12,15 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 public class ClassController {
 	@Autowired
 	private ClassService classService;
+
 	
 	@RequestMapping(value = "/classinsert", method = RequestMethod.GET)
 	public ModelAndView classinsert(String gonum){
@@ -22,8 +28,14 @@ public class ClassController {
 		System.out.println(gonum);
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
+		List<CatemVo> list=classService.catemlist();
 		ModelAndView mv= new ModelAndView("eunbyul/classinsert");
+/*		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i).m_name);
+		}*/
+
 		mv.addObject("gonum", gonum);
+		mv.addObject("list", list);
 		
         return mv;
 	}
@@ -37,7 +49,7 @@ public class ClassController {
 		String gender=request.getParameter("sex"); //고수성별
 		String gonum=request.getParameter("gonum"); //고수번호
 		int num=Integer.parseInt(gonum); //int로변환
-		String[] area=request.getParameterValues("area"); //레슨할 분야
+		String area=request.getParameter("area2"); //레슨할 분야
 		String[] days=request.getParameterValues("days"); //가능한 요일
 		String time=request.getParameter("time"); //가능한 시간대
 		String addr1=request.getParameter("addr1"); 
@@ -62,10 +74,12 @@ public class ClassController {
 		classService.classinsert(vo);
 		
 		//4.gosu_area테이블에 insert
-		for(int i=0; i<area.length; i++	) { /*고수가 선택한 수업과목들이 gosu_area테이블에 추가된다.*/
+		/*for(int i=0; i<area.length; i++	) { 고수가 선택한 수업과목들이 gosu_area테이블에 추가된다.
 			GosuareaVo vo2=new GosuareaVo(area[i], 0);
 			classService.areainsert(vo2);
-		}
+		}*/
+		GosuareaVo vo2=new GosuareaVo(area, 0);
+		classService.areainsert(vo2);
 		
 		
 		/////////////////////강의테이블과 비교해서 매칭하기///////////////////////
@@ -87,6 +101,28 @@ public class ClassController {
 		return "eunbyul/classinsertOk";
 		
 	}
+	@RequestMapping(value="/select/xml",produces="application/xml;charset=utf-8")
+	@ResponseBody
+	public String getArea2(String val) {
+		System.out.println("val:"+val);
+		
+		List<CatesVo> list = classService.selectcates(val);
+
+		StringBuffer sb=new StringBuffer();
+		sb.append("<?xml version='1.0' encoding='utf-8'?>");
+		sb.append("<myarea>");
+		for(CatesVo vo:list) {
+			System.out.println(vo.getS_name());
+			sb.append("<area>");
+			sb.append("<snum>"+ vo.getS_num() +"</snum>");
+			sb.append("<sname>"+ vo.getS_name()+"</sname>");
+			sb.append("<mnum>"+ vo.getM_num() +"</mnum>");
+			sb.append("</area>");
+		}
+		sb.append("</myarea>");
+		return sb.toString();
+	}
+	
 	
 	@RequestMapping(value="/classlistOk",method=RequestMethod.GET)
 	public void  classlist() {

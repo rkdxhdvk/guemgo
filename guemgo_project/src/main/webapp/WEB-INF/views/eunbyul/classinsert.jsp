@@ -90,14 +90,36 @@
 				<div class="modal-body">
 					<form action="classinsertOk" method="post">
 					<input type="hidden" name="gonum" value=${gonum }>
-					console.log(${gonum });
+					<%-- console.log(${gonum }); --%>
+						<div class="form-row">
+						
+							<div class="form-group col-sm-6">
+								<label>대분류</label> 
+								
+								<select name="area1" class="form-control" onchange="selectArea1(this.value,'area2')">
+									<c:forEach var="vo" items="${list }">
+									<option value="${vo.m_name }">${vo.m_name }</option>
+									</c:forEach>
+								</select>
+								
+							</div>
+						
+							<div class="form-group col-sm-6">
+							<label>소분류</label> 
+								<select name="area2" class="form-control" id="area2">
+									<option value="default">- 선택하세요 -</option>
+								</select>
+							</div>
+						</div>
+					
+						
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>강의명은 무엇인가요?</label><br> <input type="text"
 									name="classname" class="navbar-brand" size="40">
 							</div>
 						</div>
-						<div class="form-row">
+						<%-- <div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>레슨을 진행할 과목은 무엇인가요?</label><br>
 								<c:set var="area" value="${area}" />
@@ -110,7 +132,7 @@
 									type="checkbox" name="area" value="드로잉"
 									${area == "드로잉" ? "CHECKED" : true}>드로잉
 							</div>
-						</div>
+						</div> --%>
 
 						<div class="form-row">
 							<div class="form-group col-sm-12">
@@ -205,6 +227,51 @@
 			
 			}).open();
 		}
+		
+/* 		function selectedArea1(val, area2){
+			var area2=document.getElementById(area2);
+			removeAll(area2);
+			
+			if(val == '패션디자인'){
+				addOption('드로잉', area2);
+				addOption('재봉', area2);
+				addOption('도식화', area2);
+			}
+		} */
+		
+
+/* 		$(document).ready(function(){ */
+				function selectArea1(val,area2){
+					//alert(val);
+					var area2=document.getElementById(area2);
+					removeAll(area2);
+					$.ajax({
+						url:"<c:url value='/select/xml?val="+val+"'/>",
+						dataType:"xml",
+						success:function(result){
+							$(result).find("area").each(function(){
+								var area=$(this).find("sname").text();
+								addOption(area, area2);
+							});
+						}
+							
+					});
+				}
+				
+				function addOption(value, e){
+					var o = new Option(value);
+					try{
+						e.add(o);
+					}catch(ee){
+						e.add(o,null);
+					}
+					}
+				function removeAll(e){
+				    for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
+				        e.remove(1);
+				    }
+				}
+/* 		}); */
 	</script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

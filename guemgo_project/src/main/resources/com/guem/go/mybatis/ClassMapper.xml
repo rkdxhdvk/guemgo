@@ -13,5 +13,14 @@
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where go_num= #{gonum}
 	</select>
+	<select id="catemlist" resultType="com.guem.go.eunbyul.CatemVo">
+		select * from cate_m
+	</select>
+	<select id="selectcates" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
+		select * from cate_s where m_num=(select m_num from cate_m where m_name=#{name})
+	</select>
+	<select id="cateslist" resultType="com.guem.go.eunbyul.CatesVo" >
+		select * from cate_s
+	</select>
 </mapper>
 
