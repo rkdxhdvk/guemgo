@@ -20,4 +20,14 @@ public class ClassService {
 		return dao.classlist(gonum);
 	}
 	
+	public List<CatemVo> catemlist(){
+		return dao.catemlist();
+	}
+	public List<CatesVo> selectcates(String mname){
+		return dao.selectcates(mname);
+	}
+	public List<CatesVo> cateslist(){
+		return dao.cateslist();
+	}
+	
 }

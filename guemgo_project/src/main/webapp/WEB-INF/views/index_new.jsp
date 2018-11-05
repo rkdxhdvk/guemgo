@@ -108,34 +108,9 @@
 				</div>
 				<div class="modal-body">
 					<form action="survey" method="get">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="그래픽디자인">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="제품디자인">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="패션디자인">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="보컬">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="작곡">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="악기">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="회화">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="동양화">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="애니메이션">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="요리">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="디저트">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="음료">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="포토샵">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="일러스트">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="재봉">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="힙합">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="디제잉">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="피아노">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="기타">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="수채화">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="유화">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="웹툰">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="한식">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="일식">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="양식">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="커피">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="제빵">
-
+					<c:forEach var="vo" items="${list }">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.s_name }">
+					</c:forEach>
 					</form>
 				
 				</div>

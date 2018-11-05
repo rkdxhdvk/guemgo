@@ -28,4 +28,13 @@ public class ClassDao {
 	public List<LectureVo> classlist(int gonum) {
 		return sqlSession.selectList(NAMESPACE + ".classlist" , gonum);
 	}
+	public List<CatemVo> catemlist() {
+		return sqlSession.selectList(NAMESPACE + ".catemlist");
+	}
+	public List<CatesVo> selectcates(String mname) {
+		return sqlSession.selectList(NAMESPACE+".selectcates",mname);
+	}
+	public List<CatesVo> cateslist() {
+		return sqlSession.selectList(NAMESPACE+".cateslist");
+	}
 }

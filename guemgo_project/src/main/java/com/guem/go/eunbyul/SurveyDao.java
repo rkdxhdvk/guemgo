@@ -1,5 +1,7 @@
 package com.guem.go.eunbyul;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,5 +18,9 @@ public class SurveyDao {
 	
 	public CatemVo selectcatem(String name) {
 		return sqlSession.selectOne(NAMESPACE+".selectcatem",name);
+	}
+	
+	public List<CatesVo> selectcates(String mname) {
+		return sqlSession.selectList(NAMESPACE+".selectcates",mname);
 	}
 }
