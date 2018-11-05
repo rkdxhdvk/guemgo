@@ -13,6 +13,7 @@ DROP TABLE chatroom CASCADE CONSTRAINTS;
 DROP TABLE chat CASCADE CONSTRAINTS;
 DROP TABLE event CASCADE CONSTRAINTS;
 DROP TABLE example CASCADE CONSTRAINTS;
+DROP TABLE example1 CASCADE CONSTRAINTS;
 DROP TABLE favorate CASCADE CONSTRAINTS;
 DROP TABLE free_board CASCADE CONSTRAINTS;
 DROP TABLE gosu_career CASCADE CONSTRAINTS;
@@ -54,7 +55,7 @@ CREATE TABLE cate_l
 
 CREATE TABLE cate_m
 (
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	-- 명칭(소)테이블에서 명칭을가져와서 뿌려주고 받는다
 	-- 
 	m_name varchar2(10),
@@ -64,7 +65,7 @@ CREATE TABLE cate_m
 
 CREATE TABLE example1
 (
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	example varchar2(50),
 	ex_num number(5,0) NOT NULL,
 	PRIMARY KEY (ex_num)
@@ -74,7 +75,7 @@ CREATE TABLE cate_s
 (
 	s_num number(3,0) NOT NULL,
 	s_name varchar2(10),
-	m_num varchar2(10) NOT NULL,
+	m_num number(3,0) NOT NULL,
 	PRIMARY KEY (s_num)
 );
 

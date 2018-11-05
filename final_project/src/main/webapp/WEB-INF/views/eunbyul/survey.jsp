@@ -88,7 +88,8 @@
 					<h5 class="modal-title" id="modal">어떤 서비스를 찾고 있나요?</h5>
 				</div>
 				<div class="modal-body">
-					<form action="surveyOk" method="post">
+					<form action="<c:url value='/survey'/>" method="post">
+					<input type="hidden" name="s_name" value="${area}">
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 							<label>레슨을 받고 싶은 과목은?</label><br> 		
@@ -151,10 +152,10 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>레슨을 시작하고 싶은 날이 있나요?</label><br> 
-								<input type="radio" name="start" value="1시간" class="navbar-brand">1시간
-								<input type="radio" name="start" value="1시간 30분" class="navbar-brand">1시간 30분 
-								<input type="radio" name="start" value="2시간" class="navbar-brand">2시간 
-								<input type="radio" name="start" value="직접입력" class="navbar-brand">직접입력
+								<input type="radio" name="start" value="일주일이내" class="navbar-brand">일주일이내
+								<input type="radio" name="start" value="한달이내" class="navbar-brand">한달이내
+								<input type="radio" name="start" value="상관없음" class="navbar-brand">상관없음
+
 							</div>
 						</div>
 						<div class="form-row">
@@ -181,7 +182,7 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>고수가 알아야 할 다른 사항이 있나요?</label><br> <input type="text"
-									name="textfield" class="navbar-brand" size="45">
+									name="anything" class="navbar-brand" size="45">
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">신청하기</button>
