@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.ClassMapper">
+	<select id="classinsert" parameterType="com.guem.go.eunbyul.LectureVo">
+		insert into lecture values(#{gender}, lec_seq.nextval, #{region}, #{day}, #{time}, #{gonum})
+	</select>
+	
+	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
+		select * from lecture where go_num= #{gonum}
+	</select>
+</mapper>
+

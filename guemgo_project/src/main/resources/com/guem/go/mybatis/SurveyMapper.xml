@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.SurveyMapper">
+	<select id="requireInsert" parameterType="com.guem.go.eunbyul.RequireVo">
+		insert into require values(matchnum_seq.nextval, #{email}, #{m_num},0)
+	</select>
+	<select id="selectcatem" resultType="com.guem.go.eunbyul.CatemVo" parameterType="String">
+		select * from cate_m where m_num=(select m_num from cate_s where s_name=#{name})
+	</select>
+</mapper>

@@ -84,100 +84,64 @@
 	<section class="container">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modal">어떤 서비스를 찾고 있나요?</h5>
-				</div>
+			<div class="modal-header">
+						<h5 class="modal-title" id="modal">어떤 레슨을 진행하시나요?</h5>
+					</div>
 				<div class="modal-body">
-					<form action="<c:url value='/survey'/>" method="post">
-					<input type="hidden" name="s_name" value="${area}">
+					<form action="classinsertOk" method="post">
+					<input type="hidden" name="gonum" value=${gonum }>
+					console.log(${gonum });
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>레슨을 받고 싶은 과목은?</label><br> 		
+								<label>강의명은 무엇인가요?</label><br> <input type="text"
+									name="classname" class="navbar-brand" size="40">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-sm-12">
+								<label>레슨을 진행할 과목은 무엇인가요?</label><br>
 								<c:set var="area" value="${area}" />
-								<input type="checkbox" name="area" value="포토샵" ${area == "포토샵" ? "CHECKED" : true}>포토샵
-								<input type="checkbox" name="area" value="일러스트" ${area == "일러스트" ? "CHECKED" : true}>일러스트 
-								<input type="checkbox" name="area" value="인디자인" ${area == "인디자인" ? "CHECKED" : true}>인디자인 
-								<input type="checkbox" name="area" value="드로잉" ${area == "드로잉" ? "CHECKED" : true}>드로잉
+								<input type="checkbox" name="area" value="포토샵"
+									${area == "포토샵" ? "CHECKED" : true}>포토샵 <input
+									type="checkbox" name="area" value="일러스트"
+									${area == "일러스트" ? "CHECKED" : true}>일러스트 <input
+									type="checkbox" name="area" value="인디자인"
+									${area == "인디자인" ? "CHECKED" : true}>인디자인 <input
+									type="checkbox" name="area" value="드로잉"
+									${area == "드로잉" ? "CHECKED" : true}>드로잉
 							</div>
 						</div>
+
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>레슨을 받는 목적이 무엇인가요?</label><br>
-								<input type="radio" name="purpose" value="취미" class="navbar-brand">취미
-								<input type="radio" name="purpose" value="입시" class="navbar-brand">입시
-								<input type="radio" name="purpose" value="선물" class="navbar-brand">선물
-								<input type="radio" name="purpose" value="기타" class="navbar-brand">기타
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>경력이 있나요?</label> <select name="experience"
-									class="form-control">
-									<option value="입문" selected>입문</option>
-									<option value="1년이하">1년이하</option>
-									<option value="3년이하">3년이하</option>
-									<option value="직접입력">직접입력</option>
+								<label>성별을 알려주세요</label> <select name="sex" class="form-control">
+									<option value="여자" selected>여자</option>
+									<option value="남자">남자</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>학생은 몇 살 입니까?</label> <select name="age"
-									class="form-control">
-									<option value="9" selected>1-9</option>
-									<option value="19">10-19</option>
-									<option value="39">20-39</option>
-									<option value="40">40+</option>
-								</select>
+								<label>가능한 요일은 언제인가요?</label><br> <input type="checkbox"
+									name="days" value="월" class="navbar-brand">월 <input
+									type="checkbox" name="days" value="화" class="navbar-brand">화
+								<input type="checkbox" name="days" value="수"
+									class="navbar-brand">수 <input type="checkbox"
+									name="days" value="목" class="navbar-brand">목 <input
+									type="checkbox" name="days" value="금" class="navbar-brand">금
+								<input type="checkbox" name="days" value="토"
+									class="navbar-brand">토 <input type="checkbox"
+									name="days" value="일" class="navbar-brand">일 <input
+									type="checkbox" name="days" value="매일" class="navbar-brand">상관없음
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>가능한 요일은 언제인가요?</label><br> 
-								<input type="checkbox" name="times" value="월" class="navbar-brand">월
-								<input type="checkbox" name="times" value="화" class="navbar-brand">화
-								<input type="checkbox" name="times" value="수" class="navbar-brand">수
-								<input type="checkbox" name="times" value="목" class="navbar-brand">목
-								<input type="checkbox" name="times" value="금" class="navbar-brand">금
-								<input type="checkbox" name="times" value="토" class="navbar-brand">토
-								<input type="checkbox" name="times" value="일" class="navbar-brand">일
-								<input type="checkbox" name="times" value="매일" class="navbar-brand">상관없음
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>언제 레슨을 받기를 원하시나요</label><br> 
-								<input type="radio" name="time" value="오전" class="navbar-brand">오전(8시~12시)
+								<label>언제 레슨을 하기를 원하시나요</label><br> <input type="radio"
+									name="time" value="오전" class="navbar-brand">오전(8시~12시)
 								<input type="radio" name="time" value="점심" class="navbar-brand">점심(12시~3시)
-								<input type="radio" name="time" value="오후" class="navbar-brand">오후(3시~6시) 
+								<input type="radio" name="time" value="오후" class="navbar-brand">오후(3시~6시)
 								<input type="radio" name="time" value="저녁" class="navbar-brand">저녁(6시~11시)
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>희망 레슨 횟수는 어떻게 되시나요?</label><br> 
-								<input type="radio" name="times" value="1회/1주" class="navbar-brand">1회/1주 
-								<input type="radio" name="times" value="2회/1주" class="navbar-brand">2회/1주
-								<input type="radio" name="times" value="1회/한달" class="navbar-brand">1회/한달 
-								<input type="radio" name="times" value="직접입력" class="navbar-brand">직접입력
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>몇 시간 동안 레슨을 받기 원하시나요</label><br> 
-								<input type="radio" name="time" value="1시간" class="navbar-brand">1시간
-								<input type="radio" name="time" value="1시간 30분" class="navbar-brand">1시간 30분 
-								<input type="radio" name="time" value="2시간" class="navbar-brand">2시간 
-								<input type="radio" name="time" value="직접입력" class="navbar-brand">직접입력
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>레슨을 시작하고 싶은 날이 있나요?</label><br> 
-								<input type="radio" name="start" value="1시간" class="navbar-brand">일주일이내
-								<input type="radio" name="start" value="1시간 30분" class="navbar-brand">이주일이내
-								<input type="radio" name="start" value="2시간" class="navbar-brand">한달이내
-								<input type="radio" name="start" value="직접입력" class="navbar-brand">상관없음
 							</div>
 						</div>
 						<div class="form-row">
@@ -197,18 +161,13 @@
 										onclick="addrSearch();">
 										<i class="fa fa-search"></i> 주소검색
 									</button>
-								
+
 								</div>
 							</div>
 						</div>
-						<div class="form-row">
-							<div class="form-group col-sm-12">
-								<label>고수가 알아야 할 다른 사항이 있나요?</label><br> <input type="text"
-									name="textfield" class="navbar-brand" size="40">
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">신청하기</button>
-					</form>
+						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">강의
+							개설하기</button>
+				</form>
 				</div>
 			</div>
 		</div>
@@ -243,6 +202,7 @@
 					$('[name=addr1]').val(data.address);
 					$('[name=addr2]').val(data.buildingName);
 				}
+			
 			}).open();
 		}
 	</script>
