@@ -28,31 +28,67 @@ public class ClassController {
         return mv;
 	}
 	@RequestMapping(value="/classinsertOk", method=RequestMethod.POST)
-	public void insertOk(HttpServletRequest request) {
-		String classname=request.getParameter("classname");
-		String gender=request.getParameter("sex");
-		String gonum=request.getParameter("gonum");
-		int num=Integer.parseInt(gonum);
-		String[] area=request.getParameterValues("area");
-		String[] days=request.getParameterValues("days");
-		String time=request.getParameter("time");
-		String addr1=request.getParameter("addr1");
-		String addr2=request.getParameter("addr2");
-		String day=null;
-		for(int i=0; i<area.length; i++	) {
-			System.out.println(area[i]);
-		}
-		for(int i=0; i<days.length; i++	) {
-			day+=days[i];
-		}
-		System.out.println(classname + gender + "고수넘버:"+num+time+addr1+addr2+day);
-		//LectureVo vo=new LectureVo(gender, 0, addr1, day, time, num);
-		//classService.classinsert(vo);
+	public String insertOk(HttpServletRequest request) {
 		
-	
+		////////////////////매칭 신청 설문조사 insert/////////////////
+		
+		//1.파라미터로 작성한 값 받아오기
+		String classname=request.getParameter("classname"); //강의명
+		String gender=request.getParameter("sex"); //고수성별
+		String gonum=request.getParameter("gonum"); //고수번호
+		int num=Integer.parseInt(gonum); //int로변환
+		String[] area=request.getParameterValues("area"); //레슨할 분야
+		String[] days=request.getParameterValues("days"); //가능한 요일
+		String time=request.getParameter("time"); //가능한 시간대
+		String addr1=request.getParameter("addr1"); 
+		String region[] = addr1.split(" ");
+		String region1=region[0]+region[1]; //ex)제주도 서귀포시
+		String addr2=request.getParameter("addr2"); 
+		String region2=""; //나머지주소
+		String day=""; //요일 '/'로 담음
+		
+		//2.배열로 된 값들 정리하기
+		for(int i=0; i<days.length; i++	) {
+			day+=("/"+days[i]);
+		}
+		day.substring(2,day.length());
+		for(int i=2; i<region.length; i++){ 
+			region2+=(region[i]+" ");
+		}
+		region2+=addr2;
+		
+		//3.lecture 테이블에 insert하기
+		LectureVo vo=new LectureVo(0,classname,region1,region2,gender,day,time,num);
+		classService.classinsert(vo);
+		
+		//4.gosu_area테이블에 insert
+		for(int i=0; i<area.length; i++	) { /*고수가 선택한 수업과목들이 gosu_area테이블에 추가된다.*/
+			GosuareaVo vo2=new GosuareaVo(area[i], 0);
+			classService.areainsert(vo2);
+		}
+		
+		
+		/////////////////////강의테이블과 비교해서 매칭하기///////////////////////
+		
+		
+		//1.area(과목)을 비교한다
+		
+		//2.region1(지역)을 비교한다 (region1의 시작이 '서울'이면 서울까지만 비교하고 뿌려주고 그게 아니면 다비교해준다.)
+		
+		//3.day 요일을 비교한다
+		
+		//4.time 시간대를 비교한다
+		
+		//5.gender 성별을 비교한다
+
+
+		
+		
+		return "eunbyul/classinsertOk";
+		
 	}
 	
-	@RequestMapping(value="/classlist",method=RequestMethod.GET)
+	@RequestMapping(value="/classlistOk",method=RequestMethod.GET)
 	public void  classlist() {
 		
 	}

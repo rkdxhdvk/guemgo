@@ -1,31 +1,28 @@
 package com.guem.go.eunbyul;
 
 public class LectureVo {
-	public String gender;
 	public int lectureNum;
-	public String region;
+	public String lectureName;
+	public String region1;
+	public String region2;
+	public String gender;
 	public String day;
 	public String time;
 	public int gonum;
 	
 	public LectureVo() {}
 
-	public LectureVo(String gender, int lectureNum, String region, String day, String time, int gonum) {
+	public LectureVo(int lectureNum, String lectureName, String region1, String region2, String gender, String day,
+			String time, int gonum) {
 		super();
-		this.gender = gender;
 		this.lectureNum = lectureNum;
-		this.region = region;
+		this.lectureName = lectureName;
+		this.region1 = region1;
+		this.region2 = region2;
+		this.gender = gender;
 		this.day = day;
 		this.time = time;
 		this.gonum = gonum;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public int getLectureNum() {
@@ -36,12 +33,36 @@ public class LectureVo {
 		this.lectureNum = lectureNum;
 	}
 
-	public String getRegion() {
-		return region;
+	public String getLectureName() {
+		return lectureName;
 	}
 
-	public void setRegion(String region) {
-		this.region = region;
+	public void setLectureName(String lectureName) {
+		this.lectureName = lectureName;
+	}
+
+	public String getRegion1() {
+		return region1;
+	}
+
+	public void setRegion1(String region1) {
+		this.region1 = region1;
+	}
+
+	public String getRegion2() {
+		return region2;
+	}
+
+	public void setRegion2(String region2) {
+		this.region2 = region2;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getDay() {

@@ -12,8 +12,12 @@ public class ClassService {
 	public int classinsert(LectureVo vo) {
 		return dao.classinsert(vo);
 	}
+	public int areainsert(GosuareaVo vo) {
+		return dao.areainsert(vo);
+	}
 	
 	public List<LectureVo> classlist(int gonum) {
 		return dao.classlist(gonum);
 	}
+	
 }

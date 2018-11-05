@@ -18,11 +18,14 @@ public class ClassDao {
 
 	//강의 테이블에 insert
 	public int classinsert(LectureVo vo) {
-		return sqlSession.insert(NAMESPACE + ".insert",vo);
+		return sqlSession.insert(NAMESPACE + ".classinsert",vo);
+	}
+	public int areainsert(GosuareaVo vo) {
+		return sqlSession.insert(NAMESPACE + ".areainsert",vo);
 	}
 	
 	//강의목록 list
 	public List<LectureVo> classlist(int gonum) {
-		return sqlSession.selectList(NAMESPACE + ".list" , gonum);
+		return sqlSession.selectList(NAMESPACE + ".classlist" , gonum);
 	}
 }

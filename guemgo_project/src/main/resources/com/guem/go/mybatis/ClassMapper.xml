@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.ClassMapper">
 	<select id="classinsert" parameterType="com.guem.go.eunbyul.LectureVo">
-		insert into lecture values(#{gender}, lec_seq.nextval, #{region}, #{day}, #{time}, #{gonum})
+		insert into lecture values(lec_seq.nextval, #{lectureName}, #{region1}, #{region2}, #{gender},  #{day}, #{time}, #{gonum})
+	</select>
+	<select id="areainsert" parameterType="com.guem.go.eunbyul.GosuareaVo">
+		insert into gosu_area values(#{area}, lec_seq.currval)
 	</select>
 	
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
