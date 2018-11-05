@@ -44,7 +44,7 @@
 				</li>
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
-				 		회원님${ sessionScope.email }
+				 		${ sessionScope.email } 회원님
 				 	</a>
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<a class="dropdown-item" href="classinsert?gonum=4">강의등록</a>
