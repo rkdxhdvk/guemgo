@@ -22,13 +22,14 @@
 	$(document).ready(
 			function() {
 				//
-				var email = "seo";
-				var other = "kim";
-				var lectureNum = 1;
-				var matchNum = 1;
+				var email = "eun";
+				var other = "min";
+				var lecturename = "drawing";
+				var lectureNum = 100;
+				var matchNum = 100;
 				var scheduleNum;
 				$("#btn").click(function() {
-					$.getJSON("<c:url value='/calInsert'/>",{email:email, other:other, lectureNum:lectureNum, matchNum:matchNum}, 
+					$.getJSON("<c:url value='/calInsert'/>",{email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename}, 
 							function(data) {
 									scheduleNum = data.scheduleNum;
 									console.log(scheduleNum);
@@ -36,6 +37,7 @@
 				$('#calendar').fullCalendar(
 						{
 							selectable : true,
+							droppable: true,
 							header : {
 								left : 'prev,next today',
 								center : 'title',
@@ -61,7 +63,6 @@
 									}
 							}, */
 							select : function(startDate, endDate) {
-									var title = prompt('일정', '일정 입력');
 									var memo = prompt('메모', '메모 입력');
 									//var sTime = prompt('시작시간');
 									//var eTime = prompt('끝시간');
@@ -69,14 +70,14 @@
 									var end = endDate.format();
 									console.log(start + " " + end + " " + scheduleNum);
 									
-									$.getJSON("<c:url value='/cal'/>",{scheduleNum:scheduleNum, memo:memo, title:title, start:start, end:end}, 
+									$.getJSON("<c:url value='/cal'/>",{scheduleNum:scheduleNum, memo:memo, lecturename:lecturename, start:start, end:end}, 
 											function(data) {
 													console.log(data.sche_detailNum);
 													$('#calendar').fullCalendar('renderEvent',
 															{
 																id : data.sche_detailNum,
 																description : memo,
-																title : title,
+																title : lecturename,
 																start : start,
 																end : end,
 																overlap : false,
@@ -85,21 +86,58 @@
 									});
 								
 							},
+							eventRender: function(eventObj, $el) {
+						        $el.popover({
+						          title: eventObj.title,
+						          content: eventObj.description,
+						          trigger: 'hover',
+						          placement: 'top',
+						          container: 'body'
+						        });
+							},
+							eventDrop: function(event, delta, revertFunc) {
+							    if (!confirm("Are you sure about this change?")) {
+							      revertFunc();
+							    }else{
+							    	console.log(event.start + " " + event.end + " " + event.id);
+									$.ajax({
+										url:"<c:url value='/calupdate'/>",
+										dataType:"json",
+										data : {id:event.id, start:event.start.format(), end:event.end.format()}
+									});	
+							    }
+							  },
 							eventClick : function(event, element) {
-								alert(event.id + " " + event.description + " " + event.title + " "
-										+ event.start + " "
-										+ event.end.format());
+								 /* Ext.onReady(function() {
+									Ext.MessagBox.show({
+										title : '알림',
+										msg : '이벤트를 변경하시겠습니까?',
+										buttonText : {
+									           ok : '삭제',
+									           no : '수정'
+										}
+									})
+								}); */
+								
 								if (confirm("정말 삭제하시겠습니까??") == true) {
 									$('#calendar').fullCalendar('removeEvents',
 											event.id);
 								} else {
 									if (confirm("수정하시겠습니까") == true) {
-										var title = prompt('일정', event.title);
+										//var title = prompt('일정', event.title);
 										var description = prompt('메모', event.description);
 										event.description = description;
-										event.title = title;
-										$('#calendar').fullCalendar(
-												'updateEvent', event)
+										$.getJSON("<c:url value='/calupdate'/>",{schedetailNum:event.id, start:event.start, end:event.end}, 
+												function(data) {
+												$('#calendar').fullCalendar(
+													'updateEvent', event);
+												$.ajax({
+													url:"<c:url value='/calupdate'/>",
+													dataType:"json",
+													data : {id:event.id, start:event.start.format(), end:event.end.format()}
+												});	
+									    			alert("수정 완료");
+										});
 									} else {
 										return;
 									}
