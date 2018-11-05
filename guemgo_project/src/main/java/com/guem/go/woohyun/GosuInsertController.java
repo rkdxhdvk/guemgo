@@ -33,6 +33,8 @@ public class GosuInsertController {
 	public ModelAndView insert(GosuVo vo, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		vo.setEmail((String)session.getAttribute("email"));
+		vo.setGrade("0");
+		vo.setEmploy(0);
 		int n=gosuService.insert(vo);
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
@@ -43,8 +45,4 @@ public class GosuInsertController {
 		return mv;
 	}
 	
-	/*@RequestMapping(value="/GosuInsert",method=RequestMethod.POST)
-	public ModelAndView insertOk(GosuVo vo) {
-		
-	}*/
 }

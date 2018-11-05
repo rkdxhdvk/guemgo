@@ -10,8 +10,9 @@
 	
 	<!-- 고수가입 -->
 	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
-		insert into gosu(go_num, email, intro, grade, employ) 
-			values(gonum_seq.nextval,#{email}, )
+	insert all 
+		into gosu(go_num, email, intro, grade, employ) values(gonum_seq.nextval, #{email}, #{intro},#{grade},#{employ} )
+		into gosu_career(go_num, license, career) values(gonum_seq.nextval, #{license}, #{career})	<!-- gonum을 위에 gonum_seq와 동일하게 해야함 -->
 	</insert>
 	
 </mapper>

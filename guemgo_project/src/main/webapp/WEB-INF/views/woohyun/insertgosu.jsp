@@ -13,6 +13,7 @@
 	<h2>본인인증(미구현)</h2>
 		<input type="submit" value="본인인증하기">
 	<br>
+<%-- 불필요기능으로 확인되어 미사용	
 	<h2>전문가로 활동하시는 분야를 선택해 주세요</h2>
 	<br>
 		<p>대분야 : 
@@ -31,25 +32,17 @@
 			</c:forEach>
 			</select>
 		</p>
-		
-		
+ --%>		
 	<br>
 	<h2>고수소개</h2>
-	<br>
-		<input type="text" name="profile" style="width:500px">
-	<br>
-	<h2>관련자격증</h2>
-	<br>
-		<input type="text" name="certificate" style="width:500px">
-	<br>
+		<textarea rows="10" cols="50" name="intro" style="width:500px"></textarea><br>
+	<h2>관련자격증</h2>	
+		<input type="text" name="license" style="width:500px"><br>
 	<h2>경력</h2>
-		<input type="text" name="career" style="width:500px">
-	<br>
+		<textarea rows="10" cols="50" name="career" style="width:500px"></textarea><br>
 	
 	<input type="submit" value="고수 가입하기">
-	<input type="reset" value="취소">
-	<br>
-	<br>
+	<input type="reset" value="취소">	<br><br>
 </form>
 
 <a href="<c:url value='/' />">홈으로</a>
