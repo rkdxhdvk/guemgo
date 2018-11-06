@@ -1,5 +1,7 @@
 package com.guem.go.eunbyul;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +19,21 @@ public class SurveyController {
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
 	public String survey(HttpServletRequest request, Model model){
 		String area=request.getParameter("area");
-		System.out.println(area);
+		CatemVo vo=dao.selectcatem(area);
+		String mname=vo.getM_name();
+		List<CatesVo> list=dao.selectcates(mname);
+		System.out.println(area+mname);
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
 		
+		model.addAttribute("list", list);
 		model.addAttribute("area", area);
         return "eunbyul/survey";
 	}
 
 	@RequestMapping(value = "/survey", method = RequestMethod.POST)
-	public ModelAndView surveyOk(String s_name, String area,String purpose, String experience, int age, String times, String time, String start, String addr1,String addr2, String anything) {
-		System.out.println(s_name);
+	public ModelAndView surveyOk(String area,String purpose, String experience, int age, String times, String time, String start, String addr1,String addr2, String anything) {
+		System.out.println(area);
 		System.out.println(purpose);
 		System.out.println(experience);
 		System.out.println(age);
@@ -39,7 +45,7 @@ public class SurveyController {
 		
 		/*
 		SurveyDao dao= new SurveyDao();*/
-		CatemVo mvo=dao.selectcatem(s_name);
+		CatemVo mvo=dao.selectcatem(area);
 		System.out.println("카테고리번호:"+mvo.m_num);
 		RequireVo vo=new RequireVo(0, "test@test", mvo.m_num, 0 , null);
 		int n=dao.insert(vo);

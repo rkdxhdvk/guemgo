@@ -89,15 +89,24 @@
 				</div>
 				<div class="modal-body">
 					<form action="<c:url value='/survey'/>" method="post">
-					<input type="hidden" name="s_name" value="${area}">
+					<%-- <input type="hidden" name="s_name" value="${area}"> --%>
 						<div class="form-row">
+						console.log(${area });
 							<div class="form-group col-sm-12">
-							<label>레슨을 받고 싶은 과목은?</label><br> 		
-								<c:set var="area" value="${area}" />
-								<input type="checkbox" name="area" value="포토샵" ${area == "포토샵" ? "CHECKED" : true}>포토샵
-								<input type="checkbox" name="area" value="일러스트" ${area == "일러스트" ? "CHECKED" : true}>일러스트 
-								<input type="checkbox" name="area" value="인디자인" ${area == "인디자인" ? "CHECKED" : true}>인디자인 
-								<input type="checkbox" name="area" value="드로잉" ${area == "드로잉" ? "CHECKED" : true}>드로잉
+							<label>레슨을 받고 싶은 과목은?	</label><br> 		
+							<select name="area" class="form-control">
+								<c:forEach var="vo" items="${list }">	
+								
+									<c:set var="area">${area }</c:set>	
+												
+									<option value="${vo.s_name }" <c:choose> <c:when test="${area eq vo.s_name }"> selected </c:when> </c:choose> >${vo.s_name }</option> 
+									<%-- <option value="${vo.s_name }" <c:if test="${area.equals('${vo.s_name }')}">  selected</c:if> >${vo.s_name }</option> --%>
+								</c:forEach>
+								<%-- ${area }
+								<c:if(${vo.s_name } == ${area })  { out.println("SELECTED") }%> >
+								${area }
+								</c:if> --%>
+							</select>
 							</div>
 						</div>
 						<div class="form-row">
