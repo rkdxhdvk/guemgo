@@ -12,11 +12,12 @@ public class UsersVo {
 	private String image;
 	private int point;
 	private Date regdate;
+	private String gosuyn;
 	
 	public UsersVo() {}
 
 	public UsersVo(String email, int flag, String pwd, String name, int m_num, String grade, String image, int point,
-			Date regdate) {
+			Date regdate, String gosuyn) {
 		super();
 		this.email = email;
 		this.flag = flag;
@@ -27,6 +28,7 @@ public class UsersVo {
 		this.image = image;
 		this.point = point;
 		this.regdate = regdate;
+		this.gosuyn = gosuyn;
 	}
 
 	public String getEmail() {
@@ -101,5 +103,14 @@ public class UsersVo {
 		this.regdate = regdate;
 	}
 
+	public String getGosuyn() {
+		return gosuyn;
+	}
+
+	public void setGosuyn(String gosuyn) {
+		this.gosuyn = gosuyn;
+	}
+
+	
 	
 }
