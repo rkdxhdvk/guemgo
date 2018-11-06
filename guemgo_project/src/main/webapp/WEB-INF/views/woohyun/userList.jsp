@@ -25,15 +25,15 @@
 	</tr>
 	<c:forEach var="vo" items="${list }">
 		<tr>
-			<td>${vo.mnum }</td>
+			<td>${vo.m_num }</td>
 			<td>${vo.email }</td>
 			<td>${vo.name }</td>
-			<td>${vo.mlev }</td>
+			<td>${vo.grade }</td>
 			<td>${vo.point }</td>
 			<td>${vo.regdate}</td>
 			<!-- 삭제후 result.jsp에서 결과출력하기 -->
-			<td><a href='<c:url value='/MemberDelete?email=${vo.email }'/>'>삭제</a></td>
-			<td><a href='<c:url value='/MemberUpdate?email=${vo.email }'/>'>수정</a></td>
+			<td><a href='<c:url value='/UserDelete?email=${vo.email }'/>'>삭제</a></td>
+			<td><a href='<c:url value='/UserUpdate?email=${vo.email }'/>'>수정</a></td>
 		</tr>
 	</c:forEach>
 </table><br>

@@ -29,12 +29,12 @@ public class LoginController {
 		HashMap<String,String> map=new HashMap<String, String>();
 		map.put("email",email);
 		map.put("pwd",pwd);
-		MemberVo vo=service.isMember(map);
+		UsersVo vo=service.isMember(map);
 		if(vo!=null) {
 			HttpSession session=request.getSession();
-			System.out.println("email이 " + vo.getEmail() + "의 div는" + vo.getMdiv());
+			System.out.println("email이 " + vo.getEmail() + "의 flag는" + vo.getFlag());
 			session.setAttribute("email",email);
-			session.setAttribute("mdiv",vo.getMdiv());	// mdiv를 어떻게 얻어올것인가???
+			session.setAttribute("flag",vo.getFlag());	
 			return "redirect:/"; //리다이렉트 방식으로 이동하기
 		}else {
 			request.setAttribute("errMsg","아이디 또는 비밀번호가 맞지 않아요.");

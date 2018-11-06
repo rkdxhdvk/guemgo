@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 
 	2018-01-01	윤우현 파일 생성
--->
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,17 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <div>
-<h2>카테고리</h2>
+<h1>마이페이지</h1>
 <ul>
-	<c:forEach var="item" items="${category }">
-		<li>${item }</li>
-	</c:forEach>
+	<li><a href="<c:url value='/UserUpdate?email=${sessionScope.email }'/>">개인정보 수정</a></li>
+
 </ul>
-</div> --%>
-<h1>관리자페이지</h1>
-<a href="MemberList">회원목록</a><br>
-<a href="GosuList">고수관리</a><br>
 <a href="<c:url value='/'/>">홈으로</a>
+
 </body>
 </html>

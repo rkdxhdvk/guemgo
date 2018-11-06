@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("vo") //ModelAttribute에 담긴 vo를 SessionAttributes에 담기
 public class AdminPageController {
-	@Autowired private MemberService service;
+	@Autowired private UsersService service;
 	
 /*	@ModelAttribute("vo")
 	public MemberVo email(String email) {
@@ -24,7 +24,7 @@ public class AdminPageController {
 	}*/
 	@RequestMapping("/admin")
 	public String mypage() {
-		return "woohyun/admin";
+		return "woohyun/adminPage";
 	}	
 /*	
 	@RequestMapping(value="/update",method=RequestMethod.GET)

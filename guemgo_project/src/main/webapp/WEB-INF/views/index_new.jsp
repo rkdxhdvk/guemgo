@@ -53,21 +53,21 @@
 						<c:choose>
 							<c:when test="${empty sessionScope.email }">
 								<a class="dropdown-item" href="login">로그인</a>
-						 		<a class="dropdown-item" href="MemberInsert">회원가입</a>
+						 		<a class="dropdown-item" href="UserInsert">회원가입</a>
 							</c:when>
 							<c:otherwise>
 								아이디(이메일) : ${ sessionScope.email }<br>
 								권한세션 : ${ sessionScope.mdiv }  
 								<a class="dropdown-item" href="logout">로그아웃</a>
 					 			<c:choose>
-									<c:when test="${sessionScope.mdiv eq '0' }">
+									<c:when test="${sessionScope.flag eq '0' }">
 										<a class="dropdown-item" href="admin">관리자페이지</a>
 									</c:when>
-									<c:when test="${sessionScope.mdiv eq '1' }">
+									<c:when test="${sessionScope.flag eq '1' }">
 										<a class="dropdown-item" href="mypage">마이페이지</a>
 										<a class="dropdown-item" href="GosuInsertForm">고수로 가입하기</a>
 									</c:when>
-									<c:when test="${sessionScope.mdiv eq '2' }">
+									<c:when test="${sessionScope.flag eq '2' }">
 										<a class="dropdown-item" href="gosupage">고수페이지</a>
 									</c:when>
 								</c:choose>

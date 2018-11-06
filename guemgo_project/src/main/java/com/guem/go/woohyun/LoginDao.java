@@ -13,7 +13,7 @@ public class LoginDao {
 	@Autowired
 	private SqlSession sqlSession;
 	private static final String NAMESPACE="com.guem.go.mybatis.LoginMapper";
-	public MemberVo isMember(HashMap<String,String> map) {
+	public UsersVo isMember(HashMap<String,String> map) {
 		return sqlSession.selectOne(NAMESPACE+".isMember",map);
 	}
 }

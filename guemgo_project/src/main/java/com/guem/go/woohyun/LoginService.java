@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 	@Autowired private LoginDao dao;
-	public MemberVo isMember(HashMap<String,String> map) {
+	public UsersVo isMember(HashMap<String,String> map) {
 		return dao.isMember(map);
 	}
 }

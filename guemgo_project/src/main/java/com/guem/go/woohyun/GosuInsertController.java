@@ -23,7 +23,7 @@ public class GosuInsertController {
 	
 	@RequestMapping(value="/GosuInsertForm",method=RequestMethod.GET)
 	public ModelAndView insertForm() {
-		ModelAndView mv=new ModelAndView("woohyun/insertgosu");
+		ModelAndView mv=new ModelAndView("woohyun/gosuInsert");
 		List<CateVo> list=cateService.cate_l_list();
 		mv.addObject("cate_l",list);
 		return mv;

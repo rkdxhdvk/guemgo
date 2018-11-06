@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("vo") //ModelAttribute에 담긴 vo를 SessionAttributes에 담기
 public class MypageController {
-	@Autowired private MemberService service;
+	@Autowired private UsersService service;
 /*	
 	@ModelAttribute("vo")
 	public MemberVo email(String email) {
@@ -23,7 +23,7 @@ public class MypageController {
 */	
 	@RequestMapping("/mypage")
 	public String mypage() {
-		return "woohyun/mypage";
+		return "woohyun/myPage";
 	}	
 /*
 	@RequestMapping(value="/update",method=RequestMethod.GET)
