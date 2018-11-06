@@ -33,8 +33,9 @@ public class GosuInsertController {
 	public ModelAndView insert(GosuVo vo, HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		vo.setEmail((String)session.getAttribute("email"));
-		vo.setGrade("0");
+		vo.setGrade("ÃÊ¼ö");
 		vo.setEmploy(0);
+		vo.setImage("0");
 		int n=gosuService.insert(vo);
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {

@@ -8,10 +8,12 @@ public class GosuVo {
 	private String email; 
 	private String grade;
 	private int employ;
+	private String image;
 	
 	public GosuVo() {}
 
-	public GosuVo(int go_num, String intro, String license, String career, String email, String grade, int employ) {
+	public GosuVo(int go_num, String intro, String license, String career, String email, String grade, int employ,
+			String image) {
 		super();
 		this.go_num = go_num;
 		this.intro = intro;
@@ -20,6 +22,7 @@ public class GosuVo {
 		this.email = email;
 		this.grade = grade;
 		this.employ = employ;
+		this.image = image;
 	}
 
 	public int getGo_num() {
@@ -77,6 +80,16 @@ public class GosuVo {
 	public void setEmploy(int employ) {
 		this.employ = employ;
 	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	
 	
 	
 }
