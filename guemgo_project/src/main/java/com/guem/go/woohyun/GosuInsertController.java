@@ -35,7 +35,7 @@ public class GosuInsertController {
 		vo.setEmail((String)session.getAttribute("email"));
 		vo.setGrade("ÃÊ¼ö");
 		vo.setEmploy(0);
-		vo.setImage("0");
+		//vo.setImage("0");
 		int n=gosuService.insert(vo);
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {

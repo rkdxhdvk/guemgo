@@ -12,8 +12,12 @@
 	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
 	insert all 
 		into gosu(go_num, email, intro, grade, employ) values(gonum_seq.nextval, #{email}, #{intro},#{grade},#{employ} )
-		into gosu_career(go_num, license, career) values(gonum_seq.currval, #{license}, #{career})	<!-- gonum을 위에 gonum_seq와 동일하게 해야함 -->
+		<if test=" (license!=null and license!='') or (career!=null and career!='')">	<!-- license 또는 career가 없으면 DB에 넣지 않음 -->
+			into gosu_career(go_num, license, career) values(gonum_seq.currval, #{license}, #{career})	<!-- gonum을 위에 gonum_seq와 동일하게 해야함 -->
+		</if>
+		<if test="image !=null and image !='' ">	<!-- image가 없으면 DB에 넣지 않음 -->
 		into gosu_image(go_num, image) values(gonum_seq.currval, #{image})
+		</if>
 		select * from dual
 	</insert>
 	
