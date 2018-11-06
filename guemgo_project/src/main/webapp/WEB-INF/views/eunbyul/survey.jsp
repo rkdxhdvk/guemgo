@@ -89,18 +89,18 @@
 				</div>
 				<div class="modal-body">
 					<form action="<c:url value='/survey'/>" method="post">
+					<input type="hidden" name="email" value="${sessionScope.email }">
 					<%-- <input type="hidden" name="s_name" value="${area}"> --%>
 						<div class="form-row">
-						console.log(${area });
 							<div class="form-group col-sm-12">
 							<label>레슨을 받고 싶은 과목은?	</label><br> 		
-							<select name="area" class="form-control">
+							<select name="selectarea" class="form-control">
 								<c:forEach var="vo" items="${list }">	
 								
 									<c:set var="area">${area }</c:set>	
 												
-									<option value="${vo.s_name }" <c:choose> <c:when test="${area eq vo.s_name }"> selected </c:when> </c:choose> >${vo.s_name }</option> 
-									<%-- <option value="${vo.s_name }" <c:if test="${area.equals('${vo.s_name }')}">  selected</c:if> >${vo.s_name }</option> --%>
+									<%-- <option value="${vo.s_name }" <c:choose> <c:when test="${area eq vo.s_name }"> selected </c:when> </c:choose> >${vo.s_name }</option>  --%>
+									<option value="${vo.s_name }" <c:if test="${area == vo.s_name}">  selected</c:if> >${vo.s_name }</option> 
 								</c:forEach>
 								<%-- ${area }
 								<c:if(${vo.s_name } == ${area })  { out.println("SELECTED") }%> >
@@ -174,10 +174,10 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>몇 시간 동안 레슨을 받기 원하시나요</label><br> 
-								<input type="radio" name="time" value="1시간" class="navbar-brand">1시간
-								<input type="radio" name="time" value="1시간 30분" class="navbar-brand">1시간 30분 
-								<input type="radio" name="time" value="2시간" class="navbar-brand">2시간 
-								<input type="radio" name="time" value="직접입력" class="navbar-brand">직접입력
+								<input type="radio" name="hour" value="1시간" class="navbar-brand">1시간
+								<input type="radio" name="hour" value="1시간 30분" class="navbar-brand">1시간 30분 
+								<input type="radio" name="hour" value="2시간" class="navbar-brand">2시간 
+								<input type="radio" name="hour" value="직접입력" class="navbar-brand">직접입력
 							</div>
 						</div>
 						<div class="form-row">

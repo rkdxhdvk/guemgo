@@ -13,7 +13,9 @@ public class SurveyDao {
 	private final static String NAMESPACE="com.guem.go.mybatis.SurveyMapper";
 	
 	public int insert(RequireVo vo) {
+		
 		return sqlSession.insert(NAMESPACE+".requireInsert",vo);
+		
 	}
 	
 	public CatemVo selectcatem(String name) {

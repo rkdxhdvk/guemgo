@@ -15,13 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SurveyController {
 	@Autowired
-	private SurveyDao dao;
+	private SurveyService surveyservice;
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
 	public String survey(HttpServletRequest request, Model model){
 		String area=request.getParameter("area");
-		CatemVo vo=dao.selectcatem(area);
+		CatemVo vo=surveyservice.selectcatem(area);
 		String mname=vo.getM_name();
-		List<CatesVo> list=dao.selectcates(mname);
+		List<CatesVo> list=surveyservice.selectcates(mname);
 		System.out.println(area+mname);
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
@@ -32,23 +32,44 @@ public class SurveyController {
 	}
 
 	@RequestMapping(value = "/survey", method = RequestMethod.POST)
-	public ModelAndView surveyOk(String area,String purpose, String experience, int age, String times, String time, String start, String addr1,String addr2, String anything) {
-		System.out.println(area);
+	public ModelAndView surveyOk(HttpServletRequest request) {
+		String purpose=request.getParameter("purpose"); //목적(취미,입시...)
+		String experience=request.getParameter("experience"); //경력(입문,1년..)
+		String age1=request.getParameter("int"); 
+		//int age=Integer.parseInt(age1); //학생나이
+		String times=request.getParameter("times"); //주몇번?
+		String time=request.getParameter("time"); //몇시대?
+		String start=request.getParameter("start"); //시작일?
+		String anything=request.getParameter("anything"); //하고싶은말
+		String area=request.getParameter("selectarea");
+		String addr1=request.getParameter("addr1"); 
+		String region[] = addr1.split(" ");
+		String region1=region[0]+region[1]; //ex)제주도 서귀포시
+		String addr2=request.getParameter("addr2"); 
+		String region2=""; //나머지주소 
+		for(int i=2; i<region.length; i++){ 
+			region2+=(region[i]+" ");
+		}
+		region2+=addr2;	
+		String email=request.getParameter("email");
+		System.out.println(email);
+/*		System.out.println(area);
 		System.out.println(purpose);
 		System.out.println(experience);
 		System.out.println(age);
 		System.out.println(times);
-		System.out.println(addr1);
-		System.out.println(addr2);
-		System.out.println(anything);
-		System.out.println("11111111111111111111111111");
+		System.out.println(region1);
+		System.out.println(region2);
+		System.out.println(anything);*/
+
 		
-		/*
-		SurveyDao dao= new SurveyDao();*/
-		CatemVo mvo=dao.selectcatem(area);
+		
+		
+		
+		CatemVo mvo=surveyservice.selectcatem(area);
 		System.out.println("카테고리번호:"+mvo.m_num);
-		RequireVo vo=new RequireVo(0, "test@test", mvo.m_num, 0 , null);
-		int n=dao.insert(vo);
+		RequireVo vo=new RequireVo(0, email , mvo.m_num, 0 , null);
+		int n=surveyservice.insert(vo);//require테이블에 insert
 		ModelAndView mv = new ModelAndView();
 		 mv.addObject("n", n);
 		 mv.setViewName("eunbyul/surveyOk");
