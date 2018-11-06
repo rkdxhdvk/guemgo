@@ -44,7 +44,21 @@
 				</li>
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
-				 		${ sessionScope.email } 회원님
+				 		<!-- 로그인 구분에 따라 나오는 문구 변경 -->
+				 		<c:choose>
+				 			<c:when test="${empty sessionScope.flag }">
+				 				로그인을 해주세요
+				 			</c:when>
+				 			<c:when test="${sessionScope.flag eq '0'}">
+				 				관리자 ${ sessionScope.email } 님
+				 			</c:when>
+				 			<c:when test="${sessionScope.flag eq '1'}">
+				 				${ sessionScope.email } 회원님
+				 			</c:when>
+				 			<c:when test="${sessionScope.flag eq '2'}">
+				 				${ sessionScope.email } 고수님
+				 			</c:when>
+				 		</c:choose>
 				 	</a>
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<a class="dropdown-item" href="classinsert?gonum=4">강의등록</a>
@@ -61,7 +75,7 @@
 								고수등록여부: ${ sessionScope.gosuYN }
 								<a class="dropdown-item" href="logout">로그아웃</a>
 					 			<c:choose>
-									<c:when test="${sessionScope.flag eq '0' }">
+					 				<c:when test="${sessionScope.flag eq '0' }">
 										<a class="dropdown-item" href="admin">관리자페이지</a>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
@@ -71,10 +85,14 @@
 												<a class="dropdown-item" href="GosuInsertForm">고수로 가입하기</a>
 											</c:when>
 											<c:otherwise>
-												<a class="dropdown-item" href="gosupage">고수페이지</a>
-												<a class="dropdown-item" href="">요청자로 전환하기</a>
+													<a class="dropdown-item" href="mypage">마이페이지</a>
+													<a class="dropdown-item" href="changeGosu">고수로 전환하기</a>
 											</c:otherwise>
-										</c:choose>	
+										</c:choose>
+									</c:when>
+									<c:when test="${sessionScope.flag eq '2' }">	
+										<a class="dropdown-item" href="gosupage">고수페이지</a>
+										<a class="dropdown-item" href="changeUser">요청자로 전환하기</a>
 									</c:when>
 								</c:choose>
 							</c:otherwise>

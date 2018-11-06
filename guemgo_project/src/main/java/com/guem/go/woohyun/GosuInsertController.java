@@ -41,6 +41,7 @@ public class GosuInsertController {
 		if(n>0) {
 			mv.addObject("code","success");
 			session.setAttribute("gosuYN", vo.getEmail());	// 고수 등록하면서 바로 세션에 고수로 등록 함
+			session.setAttribute("flag", 2);	// 고수 등록하면서 바로 세션에 flag 2:고수 등록 함
 		}else {
 			mv.addObject("code","fail");
 		}
