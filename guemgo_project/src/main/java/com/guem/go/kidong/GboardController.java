@@ -88,6 +88,18 @@ public class GboardController {
 		return "redirect:/gboard/list";
 	}
 
+	@RequestMapping(value="/gboard/update", method=RequestMethod.POST)
+	public String update(GboardVo vo,Model model) {
+		model.addAttribute("vo", vo);
+		return "kidong/gboard_update";
+	}
+	
+	@RequestMapping(value="/gboard/updateOk", method=RequestMethod.POST)
+	public String updateOk(GboardVo vo,Model model) {
+		service.update(vo);
+		return "redirect:/gboard/list";
+	}
+		
 	@RequestMapping(value = "/commentInsert", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String insert(int num, String comment) {

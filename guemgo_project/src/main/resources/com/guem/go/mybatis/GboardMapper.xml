@@ -51,7 +51,7 @@
 		update gboard set comments = #{comments} where num = #{num}
 	</update>
 	<update id="update" parameterType="com.guem.go.kidong.GboardVo">
-		update gboard set title = #{title}, content = #{content} where num = #{num}
+		update gboard set title = #{title},content = #{content} where num = #{num}
 	</update>
 	<delete id="delete" parameterType="int">
 		delete from gboard where num = #{num}
