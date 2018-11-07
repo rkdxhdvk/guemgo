@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.guem.go.mybatis.GrecommMapper">
+	<insert id="insert" parameterType="com.guem.go.kidong.GrecommVo">
+		insert into grecomm values(grecomm_seq.nextval,#{email},#{bnum})
+	</insert>
+	<select id="isRecomm" parameterType="com.guem.go.kidong.GrecommVo" resultType="com.guem.go.kidong.GrecommVo">
+		select * from grecomm where email = #{email} and bnum = #{bnum}
+	</select>
+	<select id="getRecommCount" parameterType="int" resultType="int">
+		select NVL(count(num), 0) cnt from grecomm where bnum = #{bnum}
+	</select>
+	<delete id="delete" parameterType="com.guem.go.kidong.GrecommVo">
+		delete from grecomm where email = #{email} and bnum = #{bnum}
+	</delete>
+	<select id="list" resultType="com.guem.go.kidong.GrecommVo">
+		select * from grecomm
+	</select>
+</mapper> 

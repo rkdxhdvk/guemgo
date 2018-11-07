@@ -31,6 +31,7 @@
 		</button>	
 		<a class="navbar-brand" href="calendar">달력 임시</a>
 		<a class="navbar-brand" href="survey_test">설문조사 임시</a>
+		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			
 			<form class="form-inline my-2 my-lg-10">
