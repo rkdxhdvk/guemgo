@@ -65,6 +65,7 @@
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<a class="dropdown-item" href="classinsert?gonum=4">강의등록</a>
 				 	<a class="dropdown-item" href="classlist?gonum=4">강의목록</a>
+				 	<input type="hidden" id="email" value="${sessionScope.email }">
 				 		<!-- 회원에 따라 다른 페이지 보여주기 -->
 						<c:choose>
 							<c:when test="${empty sessionScope.email }">
@@ -138,7 +139,7 @@
 				<div class="modal-body">
 					<form action="survey" method="get">
 					<c:forEach var="vo" items="${list }">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.s_name }">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.s_name }" onclick="logincheck()">
 					</c:forEach>
 					</form>
 				
@@ -163,6 +164,17 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
+
+
+	function logincheck(){
+		var email=$('#email').val ();
+		 if (email == '' || null || undefined || 0) {
+		      alert("로그인하세요.");
+		      document.location.href="<c:url value='/'/>";
+		  }
+	}
+
+
 </script>
 <!--End of Tawk.to Script-->
 </body>

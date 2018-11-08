@@ -32,4 +32,8 @@ public class SurveyDao {
 	public List<ExampleVo> exlist() {
 		return sqlSession.selectList(NAMESPACE + ".exlist");
 	}
+
+	public int ansinsert(AnswerVo vo) {
+		return sqlSession.insert(NAMESPACE + ".ansinsert", vo);
+	}
 }

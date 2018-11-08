@@ -6,6 +6,9 @@
 	<select id="requireInsert" parameterType="com.guem.go.eunbyul.RequireVo">
 		insert into require values(matchnum_seq.nextval, #{email}, #{m_num}, 0, sysdate)
 	</select>
+	<select id="ansinsert" parameterType="com.guem.go.eunbyul.RequireVo">
+		insert into answer values(ansnum_seq.nextval,matchnum_seq.currval, #{ques_num}, #{answer})
+	</select>
 	<select id="selectcatem" resultType="com.guem.go.eunbyul.CatemVo" parameterType="String">
 		select * from cate_m where m_num=(select m_num from cate_s where s_name=#{name})
 	</select>

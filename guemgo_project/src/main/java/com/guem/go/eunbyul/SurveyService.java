@@ -27,4 +27,7 @@ public class SurveyService {
 	public List<ExampleVo> exlist(){
 		return dao.exlist();
 	}
+	public int ansinsert(AnswerVo vo) {
+		return dao.ansinsert(vo);
+	}
 }

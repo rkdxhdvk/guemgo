@@ -110,8 +110,7 @@
 						<div class="form-row">
 						<div class="form-group col-sm-12">
 							<label>${qq.ques }</label> <br>
-							
-						
+
 						<c:if test="${ss.index==1}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 									<c:if test="${vo1.ques_num == 2 }">
@@ -147,7 +146,7 @@
 						<c:if test="${ss.index==4}">
 							<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 5}">
-								<input type="checkbox" name="times" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="checkbox" name="day" value="${vo1.example }" class="navbar-brand">${vo1.example }
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -207,7 +206,7 @@
 						
 						
 						<c:if test="${ss.index==10}">
-						<input type="text" name="textfield" class="navbar-brand" size="40">
+						<input type="text" class="navbar-brand" size="40" name="anything">
 						
 						</c:if>
 							</div>
