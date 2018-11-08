@@ -25,4 +25,11 @@ public class SurveyDao {
 	public List<CatesVo> selectcates(String mname) {
 		return sqlSession.selectList(NAMESPACE+".selectcates",mname);
 	}
+
+	public List<QuestionVo> quelist() {
+		return sqlSession.selectList(NAMESPACE + ".quelist");
+	}
+	public List<ExampleVo> exlist() {
+		return sqlSession.selectList(NAMESPACE + ".exlist");
+	}
 }

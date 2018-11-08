@@ -23,10 +23,14 @@ public class SurveyController {
 		String mname=vo.getM_name();
 		List<CatesVo> list=surveyservice.selectcates(mname);
 		System.out.println(area+mname);
-		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
-		//중넘버를 찾아서 카테고리 중으로 가고
-		
+		//질문 찾아서 담기
+		List<QuestionVo> quelist=surveyservice.quelist();
+		//보기 찾아서 담기
+		List<ExampleVo> exlist=surveyservice.exlist();
+
 		model.addAttribute("list", list);
+		model.addAttribute("quelist", quelist);
+		model.addAttribute("exlist", exlist);
 		model.addAttribute("area", area);
         return "eunbyul/survey";
 	}

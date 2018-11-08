@@ -12,5 +12,11 @@
 	<select id="selectcates" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
 		select * from cate_s where m_num=(select m_num from cate_m where m_name=#{name})
 	</select>
+	<select id="quelist" resultType="com.guem.go.eunbyul.QuestionVo">
+		select * from question
+	</select>
+	<select id="exlist" resultType="com.guem.go.eunbyul.ExampleVo">
+		select * from example
+	</select>
 	
 </mapper>

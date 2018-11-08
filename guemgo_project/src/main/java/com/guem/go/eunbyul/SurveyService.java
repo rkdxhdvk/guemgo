@@ -20,4 +20,11 @@ public class SurveyService {
 	public List<CatesVo> selectcates(String mname){
 		return dao.selectcates(mname);
 	}
+	
+	public List<QuestionVo> quelist(){
+		return dao.quelist();
+	}
+	public List<ExampleVo> exlist(){
+		return dao.exlist();
+	}
 }
