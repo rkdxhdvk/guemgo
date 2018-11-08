@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +33,7 @@ public class HomeController {
 	public ModelAndView home() {	
 		
 		List<CatesVo> list=classservice.cateslist();
-		ModelAndView mv=new ModelAndView("index_new");
+		ModelAndView mv=new ModelAndView(".main");
 		mv.addObject("list", list);
 		return mv;
 	}

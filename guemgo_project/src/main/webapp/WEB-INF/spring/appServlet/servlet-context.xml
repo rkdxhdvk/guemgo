@@ -31,5 +31,25 @@
 		<websocket:sockjs/>
 	</websocket:handlers>
 	
+	<!-- tiles설정 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<!-- tiles설정파일 -->
+				<beans:value>/WEB-INF/tiles-def.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<!-- 타일즈로 이동하는 뷰리절버 설정 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<!-- 뷰이름이 .으로 시작하면 타일즈뷰로 이동하기 -->
+		<beans:property name="viewNames" value=".*" />
+		<beans:property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
 	
 </beans:beans>
