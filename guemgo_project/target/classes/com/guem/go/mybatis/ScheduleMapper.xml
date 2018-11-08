@@ -7,7 +7,8 @@
 		insert into schedule values(sche_seq.nextval, #{email}, #{other}, #{num}, #{matchNum}, #{lecturename})
 	</select>
 	<select id="scheduleNum" resultType="int">
-		select max(scheduleNum) from schedule
+		select sche_seq.nextval from dual
+		<!-- select max(scheduleNum) from schedule -->
 	</select>
 	<select id="schelist" parameterType="String" resultType="com.guem.go.minsu.ScheduleVo">
 		select * from schedule where email=#{email} 

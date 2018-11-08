@@ -36,19 +36,19 @@ html, body {
 
 
 <script>
-	$(function() {
+$(document).ready(function() {
 		var events = [];
 		var sche_detailNum = ${sche_detailNum};
 		var scheduleNum = ${scheduleNum};
 		<c:forEach items="${start}" var="vo" varStatus="status">
-		sche_detailNum = sche_detailNum + 1;
-		events.push({
-			id : sche_detailNum,
-			title : '${lecturename}',
-			start : '${vo }',
-			end : '${end[status.index]}',
-			description : ' '
-		})
+			sche_detailNum = sche_detailNum + 1;
+			events.push({
+				id : sche_detailNum,
+				title : '${lecturename}',
+				start : '${vo }',
+				end : '${end[status.index]}',
+				description : ' '
+			})
 		</c:forEach>
 		$("#sche_confirm").click(function() {
 			$('#calendar').fullCalendar('clientEvents', function(event) {
@@ -65,7 +65,7 @@ html, body {
 						function(data) {
 								alert("스케줄 취소");
 				});
-				location.href="/go/minsu/select";
+				location.href="/test/select";
 		});
 		$('#calendar').fullCalendar(
 				{
@@ -99,11 +99,6 @@ html, body {
 				                	  }
 				                  });
 					},
-					/* select : function(startDate, endDate) {
-						alert('selected ' + startDate.format() + ' to '
-								+ endDate.format());
-					}, */
-					////
 					eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						

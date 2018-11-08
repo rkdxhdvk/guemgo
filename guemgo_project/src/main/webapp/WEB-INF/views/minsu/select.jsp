@@ -30,12 +30,6 @@
 		<select name="lecturename">
 			
 		</select> -->
-		<!-- <select name="require">
-			<option value=>12:00</option>
-			<option value=>14:00</option>
-			<option value=>16:00</option>
-			<option value=>18:00</option>
-		</select> -->
 		<label>강의횟수</label>
 		<br> 
 		<input type="text" name="count" style="width:20px;"> <!-- 바꾸기 -->
@@ -58,6 +52,7 @@
 		<input type="checkbox" name="day" value="7">토
 		<br>
 		<p>시작날짜: <input type="text" id="datepicker" name="startDate" size="30"></p>
+		<input type="hidden" value=1 name="room">
 		<input type="submit" value="스케줄" id="btn">
 	</form>
 	<a href="<c:url value='/'/>">홈으로</a>

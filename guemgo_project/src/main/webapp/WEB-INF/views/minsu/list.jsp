@@ -185,7 +185,6 @@ body {
 <body>
 	<div id='calendar'></div>
 	<input type="button" id="btn1" value="확인">
-	<input type="button" id="btn2" value="이벤트 한번에 보내기"> ${email }
-	${scheduleNum }
+	<input type="button" id="btn2" value="이벤트 한번에 보내기">
 </body>
 </html>

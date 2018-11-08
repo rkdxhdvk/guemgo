@@ -21,7 +21,38 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <link href='resources/fullcalender/demo-topbar.css' rel='stylesheet' />
+<link href='resources/fullcalender/fullcalendar.min.css'
+	rel='stylesheet' />
+<link href='resources/fullcalender/fullcalendar.print.css'
+	rel='stylesheet' media='print' />
+
+<script src='resources/fullcalender/lib/moment.min.js'></script>
+<script src='resources/fullcalender/lib/jquery.min.js'></script>
+<script src='resources/fullcalender/fullcalendar.min.js'></script>
+<script src='resources/fullcalender/demo-to-codepen.js'></script>
 <style>
+
+html, body {
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 14px;
+}
+/* 
+#calendar {
+	max-width: 900px;
+	margin: 40px auto;
+} */
+
+
+
+
+
 body {
 	margin: 0 auto;
 	padding: 0 20px;
@@ -83,8 +114,8 @@ body {
 	margin-top: 10px;
 }
 </style>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+<%-- <script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script> --%>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/sockjs-0.3.4.js"/>"></script>
 <script type="text/javascript">
@@ -100,6 +131,89 @@ body {
 		});
 
 		$('#data').scrollTop($('#data')[0].scrollHeight);
+			
+		var events = [];
+		var sche_detailNum = ${sche_detailNum};
+		var scheduleNum = ${scheduleNum};
+		<c:forEach items="${start}" var="vo" varStatus="status">
+			sche_detailNum = sche_detailNum + 1;
+			events.push({
+				id : sche_detailNum,
+				title : '${lecturename}',
+				start : '${vo }',
+				end : '${end[status.index]}',
+				description : ' '
+			})
+		</c:forEach>
+		$("#sche_confirm").click(function() {
+			$('#calendar').fullCalendar('clientEvents', function(event) {
+				console.log(event.id);
+				$.getJSON("<c:url value='/cal'/>",
+						{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
+						function(data) {
+								alert("스케줄 확정");
+				});
+			})
+		});
+		$("#sche_cancel").click(function() {
+				$.getJSON("<c:url value='/caldelete'/>", {scheduleNum:scheduleNum}, 
+						function(data) {
+								alert("스케줄 취소");
+				});
+				location.href="/test/select";
+		});
+		$('#calendar').fullCalendar(
+				{
+					droppable: true,
+					selectable : true,
+					navLinks : true,
+					header : {
+						left : 'prev,next today',
+						center : 'title',
+						right : 'month,agendaDay'
+					},
+					editable : true,
+					///
+					dayClick : function(date, calEvent) {
+								var date = date.format('YYYY-MM-DD');
+				                  $('#calendar').fullCalendar('clientEvents', function(event) {
+				                	  var start = moment(event.start).format("YYYY-MM-DD");
+				                	  if(date==start){
+				                		  if (confirm("정말 삭제하시겠습니까??") == true) {
+												$('#calendar').fullCalendar('removeEvents',
+														event.id);
+											} else {
+												if (confirm("메모 등록?") == true) {
+													//var title = prompt('일정', event.title);
+													var description = prompt('메모', event.description);
+													event.description = description;
+													$('#calendar').fullCalendar(
+															'updateEvent', event);
+												}
+				                	  }
+				                	  }
+				                  });
+					},
+					eventClick : function(event, element) {
+						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
+						
+					},
+					eventDrop: function(event, delta, revertFunc) {
+					    if (!confirm("Are you sure about this change?")) {
+					      revertFunc();
+					    }else{
+					    	console.log(event.start.format() + " " + event.end.format() + " " + event.id);
+					    }
+					  },
+					  eventResize: function(event, delta, revertFunc) {
+						    if (!confirm("is this okay?")) {
+						      revertFunc();
+						    }
+
+						  },
+					events : events
+					
+				});
 	});
 	var sock;
 	sock = new SockJS("<c:url value="/echo"/>");
@@ -164,6 +278,7 @@ body {
 	function onClose(evt) {
 		$("#data").append("연결끊김");
 	}
+	////////// 스케줄 //////////////
 </script>
 </head>
 <body>
@@ -206,11 +321,16 @@ body {
 			<textarea class="form-control" rows="5" id="message"></textarea>
 			<input type="button" id="sendBtn" value="전송" />
 		</div>
+	<!-- //////////////////////////////////추가 //////////////////////////////////// -->	
 		<div class="col-sm-8">
 			<div style="border: solid 2px black; height: 900px; padding: 10px;">
 				<div class="container-fluid"
-					style="border: solid 2px black; height: 600px;"></div>
-
+					style="border: solid 2px black; height: 600px;">
+						<input type="button" id="schemk" value="스케줄생성" >
+						<div id='calendar'></div>
+						
+		</div>
+		
 				<div class="panel panel-primary" style="margin-top: 10px;">
 					<div class="panel-heading">강좌명</div>
 					<div class="panel-body" style="height: 160px;">내용</div>
@@ -224,6 +344,7 @@ body {
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </div>
 </body>

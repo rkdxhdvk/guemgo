@@ -19,14 +19,18 @@ public class CalController {
 	@Autowired
 	private Sche_detailService sche_detailService;
 	
+	@RequestMapping(value="/select", method=RequestMethod.GET)
+	public String select() {
+		return "minsu/select";
+	}
 	@RequestMapping(value="/calaaa", method=RequestMethod.GET)
 	public String sche(HttpServletRequest request, Model model) {
 		/*String email = (String)request.getSession().getAttribute("email");*/
 		String email = "dd"; // 로그인 세션
 		String other = "min"; // 채팅방
 		String lecturename = "drawing"; // db
-		int lectureNum = 100; // db
-		int matchNum = 100; // db
+		int lectureNum = 1; // db
+		int matchNum = 1; // db
 		ScheduleVo vo = new ScheduleVo(0, email, other, lectureNum, matchNum, lecturename);
 		scheService.insert(vo);
 		int scheduleNum = scheService.scheduleNum();
@@ -41,6 +45,7 @@ public class CalController {
 		String startDate = request.getParameter("startDate");
 		String[] ss = startDate.split("-");
 		cal.set(Integer.parseInt(ss[0]), Integer.parseInt(ss[1])-1, Integer.parseInt(ss[2]));
+		int room = Integer.parseInt(request.getParameter("room"));
 		
 		System.out.println("startDate" + startDate);
 		System.out.println("count" + count);
@@ -74,9 +79,12 @@ public class CalController {
 			}
 		}else {
 			model.addAttribute("msg", "선택한 요일 중 시작날짜를 골라주세여");
-			return "minsu/select";
+			model.addAttribute("room", room);
+			return "minsu/click";
+			//return "kidong/chat";
 		}
-		
+
+		model.addAttribute("room", room);
 		model.addAttribute("ar_sche_detailNum", array_schedetailNum);
 		model.addAttribute("sche_detailNum", sche_detailNum);
 		//model.addAttribute("email", email);
@@ -85,5 +93,6 @@ public class CalController {
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
 		return "minsu/click";
+		//return "kidong/chat";
 	}
 }
