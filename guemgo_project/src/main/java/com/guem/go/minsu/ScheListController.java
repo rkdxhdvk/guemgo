@@ -45,7 +45,6 @@ public class ScheListController {
 	public String schelist(String email, Model model) {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
 		list = sService.schelist(email);
-		System.out.println(list.get(1).getLecturename());
 		/*JSONArray arr=new JSONArray();
 		for(Sche_detailVo vo:list) {
 			JSONObject json=new JSONObject();

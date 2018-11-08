@@ -29,7 +29,7 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
-		<a class="navbar-brand" href="select">달력추가 임시</a>
+		<a class="navbar-brand" href="<c:url value='select'/>">스케줄추가 임시</a>
 		<a class="navbar-brand" href="survey_test">설문조사 임시</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
 		<div id="navbar" class="collapse navbar-collapse">
