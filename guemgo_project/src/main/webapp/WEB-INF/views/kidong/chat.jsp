@@ -326,8 +326,46 @@ body {
 			<div style="border: solid 2px black; height: 900px; padding: 10px;">
 				<div class="container-fluid"
 					style="border: solid 2px black; height: 600px;">
-						<input type="button" id="schemk" value="스케줄생성" >
-						<div id='calendar'></div>
+					<c:choose>
+					<c:when test="${scheselect=='ok' }">
+							<div id='calendar'></div>
+							<input type="button" id="sche_confirm" value="스케줄 확정">
+							<input type="button" id="sche_cancel" value="취소">
+					</c:when>
+					<c:otherwise>
+							<form action="<c:url value='/calaaa'/>" method="get">
+							<!-- <label>강의명</label>
+							<select name="lecturename">
+								
+							</select> -->
+							<label>강의횟수</label>
+							<br> 
+							<input type="text" name="count" style="width:20px;"> <!-- 바꾸기 -->
+							<br>
+							<label>강의시간</label> <br>
+							<select name="time">
+								<option value=12>12:00</option>
+								<option value=14>14:00</option>
+								<option value=16>16:00</option>
+								<option value=18>18:00</option>
+							</select>
+							<br>
+							<label>요일</label><br> 
+							<input type="checkbox" name="day" value="1">일
+							<input type="checkbox" name="day" value="2">월
+							<input type="checkbox" name="day" value="3">화
+							<input type="checkbox" name="day" value="4">수
+							<input type="checkbox" name="day" value="5">목
+							<input type="checkbox" name="day" value="6">금
+							<input type="checkbox" name="day" value="7">토
+							<br>
+							<p>시작날짜: <input type="text" id="datepicker" name="startDate" size="30"></p>
+							<input type="hidden" value=1 name="room">
+							<input type="submit" value="스케줄" id="btn">
+						</form>
+					</c:otherwise>
+					</c:choose>
+						
 						
 		</div>
 		

@@ -28,9 +28,9 @@ public class CalController {
 		/*String email = (String)request.getSession().getAttribute("email");*/
 		String email = "dd"; // 로그인 세션
 		String other = "min"; // 채팅방
-		String lecturename = "drawing"; // db
-		int lectureNum = 1; // db
-		int matchNum = 1; // db
+		String lecturename = "drawing"; // select에서
+		int lectureNum = 1; // select에서
+		int matchNum = 1; // 요청서에서 시작
 		ScheduleVo vo = new ScheduleVo(0, email, other, lectureNum, matchNum, lecturename);
 		scheService.insert(vo);
 		int scheduleNum = scheService.scheduleNum();
@@ -70,7 +70,7 @@ public class CalController {
 		int[] array_schedetailNum = new int[count];
 		if(index>=0) {
 			for(int i=0,j=index;i<count;i++,j++) {
-				array_schedetailNum[i] = sche_detailNum + (i+1); 
+				array_schedetailNum[i] = sche_detailNum + i; 
 				if(j>=day.length) j =0;
 				start[i] = sdf.format(cal.getTime()) + "T" + time + ":00:00";
 				end[i] = sdf.format(cal.getTime()) + "T" + (time+2) + ":00:00";
@@ -80,8 +80,8 @@ public class CalController {
 		}else {
 			model.addAttribute("msg", "선택한 요일 중 시작날짜를 골라주세여");
 			model.addAttribute("room", room);
-			return "minsu/click";
-			//return "kidong/chat";
+			//return "minsu/click";
+			return "kidong/chat";
 		}
 
 		model.addAttribute("room", room);
@@ -92,7 +92,8 @@ public class CalController {
 		model.addAttribute("scheduleNum", scheduleNum);
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
-		return "minsu/click";
-		//return "kidong/chat";
+		model.addAttribute("scheselect", "ok");
+		//return "minsu/click";
+		return "kidong/chat";
 	}
 }

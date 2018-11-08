@@ -7,8 +7,8 @@
 		insert into sche_detail values(schedetail_seq.nextval, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0, #{lecturename})
 	</select>
 	<select id="detailNum" resultType="int">
-		select schedetail_seq.nextval from dual
-		<!-- select max(schedetailnum) from sche_detail -->
+		<!-- select schedetail_seq.nextval from dual -->
+		select max(schedetailnum) from sche_detail
 	</select>
 	<select id="sche_detail" parameterType="int" resultType="com.guem.go.minsu.ScheduleVo">
 		select * from sche_detail where schedetailNum=#{schedetailNum}
