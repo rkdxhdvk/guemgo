@@ -63,8 +63,12 @@
 				 		</c:choose>
 				 	</a>
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
-				 	<a class="dropdown-item" href="classinsert?gonum=4">강의등록</a>
+				 	<c:choose>
+				 	<c:when test="${sessionScope.flag eq '2'}">
+				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }">강의등록</a>
 				 	<a class="dropdown-item" href="classlist?gonum=4">강의목록</a>
+				 	</c:when>
+				 	</c:choose>
 				 	<input type="hidden" id="email" value="${sessionScope.email }">
 				 		<!-- 회원에 따라 다른 페이지 보여주기 -->
 						<c:choose>

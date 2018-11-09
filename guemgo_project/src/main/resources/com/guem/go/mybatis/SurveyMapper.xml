@@ -21,5 +21,13 @@
 	<select id="exlist" resultType="com.guem.go.eunbyul.ExampleVo">
 		select * from example
 	</select>
+	<select id="gosuarealist" resultType="com.guem.go.eunbyul.GosuareaVo" >
+		select * from gosu_area
+	</select>
+	<select id="selectlec" resultType="com.guem.go.eunbyul.LectureVo" parameterType="int" >
+		select * from lecture where lectureNum = #{lectureNum}
+	</select>
+	
 	
 </mapper>
+

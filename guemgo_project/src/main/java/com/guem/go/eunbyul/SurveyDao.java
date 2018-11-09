@@ -36,4 +36,13 @@ public class SurveyDao {
 	public int ansinsert(AnswerVo vo) {
 		return sqlSession.insert(NAMESPACE + ".ansinsert", vo);
 	}
+
+
+	public List<GosuareaVo> gosuarealist() {
+		return sqlSession.selectList(NAMESPACE + ".gosuarealist");
+	}
+
+	public LectureVo selectlec(int lectureNum) {
+		return sqlSession.selectOne(NAMESPACE + ".selectlec" ,lectureNum);
+	}
 }

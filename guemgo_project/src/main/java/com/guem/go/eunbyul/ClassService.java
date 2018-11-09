@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guem.go.woohyun.GosuVo;
+
 @Service
 public class ClassService {
 	@Autowired private ClassDao dao;
@@ -29,5 +31,7 @@ public class ClassService {
 	public List<CatesVo> cateslist(){
 		return dao.cateslist();
 	}
-	
+	public GosuVo gosuselect(String email) {
+		return dao.gosuselect(email);
+	}
 }

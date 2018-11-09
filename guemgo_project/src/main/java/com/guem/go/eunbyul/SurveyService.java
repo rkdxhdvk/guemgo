@@ -21,13 +21,19 @@ public class SurveyService {
 		return dao.selectcates(mname);
 	}
 	
-	public List<QuestionVo> quelist(){
+	public List<QuestionVo> quelist(){ //질문list
 		return dao.quelist();
 	}
-	public List<ExampleVo> exlist(){
+	public List<ExampleVo> exlist(){ //보기list
 		return dao.exlist();
 	}
-	public int ansinsert(AnswerVo vo) {
+	public int ansinsert(AnswerVo vo) { //답변insert
 		return dao.ansinsert(vo);
+	}
+	public List<GosuareaVo> gosuarealist(){
+		return dao.gosuarealist();
+	}
+	public LectureVo selectlec(int num){
+		return dao.selectlec(num);
 	}
 }

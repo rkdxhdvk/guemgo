@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.guem.go.woohyun.GosuVo;
+
 @Repository
 public class ClassDao {
 	@Autowired
@@ -37,4 +39,8 @@ public class ClassDao {
 	public List<CatesVo> cateslist() {
 		return sqlSession.selectList(NAMESPACE+".cateslist");
 	}
+	public GosuVo gosuselect(String email) {
+		return sqlSession.selectOne(NAMESPACE+".gosuselect", email);
+	}
+	
 }
