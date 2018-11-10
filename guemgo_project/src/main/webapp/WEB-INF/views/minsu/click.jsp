@@ -65,7 +65,7 @@ $(document).ready(function() {
 						function(data) {
 								alert("스케줄 취소");
 				});
-				location.href="/test/select";
+				location.href="/go";
 		});
 		$('#calendar').fullCalendar(
 				{

@@ -20,5 +20,7 @@
 		</if>
 		select * from dual
 	</insert>
-	
+	<select id="gosuNum" parameterType="String" resultType="int">
+		select go_num from gosu where email=#{email}
+	</select>
 </mapper>

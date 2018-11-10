@@ -131,10 +131,12 @@ body {
 		});
 
 		$('#data').scrollTop($('#data')[0].scrollHeight);
-			
+		
+		
+		
 		var events = [];
-		var sche_detailNum = ${sche_detailNum};
-		var scheduleNum = ${scheduleNum};
+		var sche_detailNum = parseInt(document.getElementById("sche_detailNum").value);
+		var scheduleNum = parseInt(document.getElementById("scheduleNum").value);
 		<c:forEach items="${start}" var="vo" varStatus="status">
 			sche_detailNum = sche_detailNum + 1;
 			events.push({
@@ -160,7 +162,7 @@ body {
 						function(data) {
 								alert("스케줄 취소");
 				});
-				location.href="/test/select";
+				location.href="/go/index_new";
 		});
 		$('#calendar').fullCalendar(
 				{
@@ -175,24 +177,64 @@ body {
 					editable : true,
 					///
 					dayClick : function(date, calEvent) {
-								var date = date.format('YYYY-MM-DD');
-				                  $('#calendar').fullCalendar('clientEvents', function(event) {
-				                	  var start = moment(event.start).format("YYYY-MM-DD");
-				                	  if(date==start){
-				                		  if (confirm("정말 삭제하시겠습니까??") == true) {
-												$('#calendar').fullCalendar('removeEvents',
-														event.id);
-											} else {
-												if (confirm("메모 등록?") == true) {
-													//var title = prompt('일정', event.title);
-													var description = prompt('메모', event.description);
-													event.description = description;
-													$('#calendar').fullCalendar(
-															'updateEvent', event);
-												}
-				                	  }
-				                	  }
-				                  });
+						var date = date.format('YYYY-MM-DD');
+		                  $('#calendar').fullCalendar('clientEvents', function(event) {
+		                	  var start = moment(event.start).format("YYYY-MM-DD");
+		                	  if(date==start){
+		                		  $( "<div title='편집'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;'></span>ㅇㅇㅇ</p> <input type='text' id='memo'></div>" ).dialog({
+		                		      resizable: false,
+		                		      height: "auto",
+		                		      width: 400,
+		                		      modal: true,
+		                		      buttons: {
+		                		        "삭제": function() {
+		                		        	$('#calendar').fullCalendar('removeEvents', event.id);
+		                		        	 $( this ).dialog( "close" );
+		                		        },
+		                		        "수정": function() {
+		                		        	 $( this ).dialog( "close" );
+		                		        	  $( "<div id='dialog-update' title='메모'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;''></span>메모?</p> <input type='text' id='memo'> </div>" )
+		                		        	  .dialog({
+		   		                		      resizable: false,
+		   		                		      height: "auto",
+		   		                		      width: 400,
+		   		                		      modal: true,
+		   		                		      buttons: {
+		   		                		    	"수정": function() {
+				  		                		 $( this ).dialog( "close" );
+		   		                		    	 $( "#dialog-update" ).dialog({
+		   		                		    		resizable: false,
+				   		                		      height: "auto",
+				   		                		      width: 400,
+				   		                		      modal: true,
+				   		                		      buttons: {
+				   		                		    	  "수정" : function() {
+				   		                		    		var memo = document.getElementById("memo").value;
+				   		                		    		event.description = memo;
+															$('#calendar').fullCalendar(
+																	'updateEvent', event);
+															 $( this ).dialog( "close" );
+														},
+														Cancel: function() {
+					  		                		          $( this ).dialog( "close" );
+					  		                		     }
+				   		                		      }
+		   		                		    	 })
+		   		                		      },
+		   		                		    	Cancel: function() {
+		  		                		          $( this ).dialog( "close" );
+		  		                		        }
+		   		                		      }
+		                		        	  })
+		                		        },
+
+		                		        Cancel: function() {
+		                		          $( this ).dialog( "close" );
+		                		        }
+		                		      }
+		                		  })
+		                	  }
+		                  });
 					},
 					eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
@@ -326,18 +368,24 @@ body {
 			<div style="border: solid 2px black; height: 900px; padding: 10px;">
 				<div class="container-fluid"
 					style="border: solid 2px black; height: 600px;">
+					<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
+					<input type="hidden" value="${scheduleNum}" id="scheduleNum">
+					
+					  
 					<c:choose>
 					<c:when test="${scheselect=='ok' }">
 							<div id='calendar'></div>
 							<input type="button" id="sche_confirm" value="스케줄 확정">
-							<input type="button" id="sche_cancel" value="취소">
 					</c:when>
 					<c:otherwise>
 							<form action="<c:url value='/calaaa'/>" method="get">
-							<!-- <label>강의명</label>
-							<select name="lecturename">
+							<label>강의명</label>
+							<select name="lecture">
+								<c:forEach items="${lecList }" var="vo">
+									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
+								</c:forEach>
 								
-							</select> -->
+							</select>
 							<label>강의횟수</label>
 							<br> 
 							<input type="text" name="count" style="width:20px;"> <!-- 바꾸기 -->
@@ -375,10 +423,9 @@ body {
 				</div>
 
 				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-primary">Apple</a> <a href="#"
-						class="btn btn-primary">Samsung</a> <a
-						href='<c:url value="/"/>'
-						class="btn btn-primary">나가기</a>
+					<a href="#" class="btn btn-primary">Apple</a> 
+					<a href="#" class="btn btn-primary">Samsung</a>
+					<a href='<c:url value="/"/>' class="btn btn-primary">나가기</a>
 				</div>
 			</div>
 		</div>

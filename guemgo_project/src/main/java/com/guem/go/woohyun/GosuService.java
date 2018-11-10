@@ -22,4 +22,9 @@ public class GosuService {
 		return dao.insert(vo);
 	}
 	
+	//고수넘버  
+	public int gosuNum(String email) {
+		return dao.gosuNum(email);
+	}
+	
 }

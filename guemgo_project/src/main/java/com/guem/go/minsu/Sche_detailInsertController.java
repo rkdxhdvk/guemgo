@@ -15,10 +15,10 @@ public class Sche_detailInsertController {
 	
 	@RequestMapping(value="/cal",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public String sche(int scheduleNum, String lecturename, String memo, String start, String end) {
+	public String sche(int scheduleNum,int id, String lecturename, String memo, String start, String end) {
 		System.out.println("insertController" + lecturename + memo + start + end);
-		Sche_detailVo vo = new Sche_detailVo(0, scheduleNum, memo, start, end, 0, lecturename);
+		Sche_detailVo vo = new Sche_detailVo(id, scheduleNum, memo, start, end, 0, lecturename);
 		int n = sche_detailServie.insert(vo);
-		return "";
+		return "index_new";
 	}
 }

@@ -13,7 +13,8 @@
 	<ul>
 		<c:forEach items="${list }" var="vo">
 			<li>
-				<a href="<c:url value='/sche_detailList?scheduleNum=${vo.scheduleNum }'/>">${vo.lecturename }</a>
+				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
+				${vo.lecturename }</a>
 			</li>
 		</c:forEach>
 	</ul>

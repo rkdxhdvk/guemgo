@@ -26,10 +26,14 @@
 <body>
 		<!-- 선택 안 했을 때 제약 -->
 		<form action="<c:url value='/calaaa'/>" method="get">
-		<!-- <label>강의명</label>
-		<select name="lecturename">
+		<label>강의명</label>
+		<select name="lecture">
+			<c:forEach items="${list }" var="vo">
+				<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
+			</c:forEach>
 			
-		</select> -->
+		</select>
+		<br>
 		<label>강의횟수</label>
 		<br> 
 		<input type="text" name="count" style="width:20px;"> <!-- 바꾸기 -->
@@ -51,7 +55,7 @@
 		<input type="checkbox" name="day" value="6">금
 		<input type="checkbox" name="day" value="7">토
 		<br>
-		<p>시작날짜: <input type="text" id="datepicker" name="startDate" size="30"></p>
+		<p>시작날짜: <input autocomplete="off" type="text" id="datepicker" name="startDate" size="30"></p>
 		<input type="hidden" value=1 name="room">
 		<input type="submit" value="스케줄" id="btn">
 	</form>

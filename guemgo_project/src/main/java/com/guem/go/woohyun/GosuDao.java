@@ -19,4 +19,7 @@ public class GosuDao {
 		return sqlSession.insert(NAMESPACE + ".insert",vo);
 	}
 	
+	public int gosuNum(String email) {
+		return sqlSession.selectOne(NAMESPACE + ".gosuNum", email);
+	}
 }
