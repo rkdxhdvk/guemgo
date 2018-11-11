@@ -78,9 +78,9 @@
 						 		<a class="dropdown-item" href="UserInsert">회원가입</a>
 							</c:when>
 							<c:otherwise>
-								<%-- 아이디(이메일) : ${ sessionScope.email }<br>
+								아이디(이메일) : ${ sessionScope.email }<br>
 								권한세션 : ${ sessionScope.flag }<br>
-								고수등록여부: ${ sessionScope.gosuYN } --%>
+								고수등록여부: ${ sessionScope.gosuYN }
 								<a class="dropdown-item" href="logout">로그아웃</a>
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
@@ -113,7 +113,6 @@
 			</ul>
 		</div>
 	</nav>
-	
 <!-- /////////////////////////////////////////////////////////// -->
 
 	<section class="container"><!-- 본문같은 내용을 담을때 사용 -->
