@@ -115,6 +115,8 @@ public class SurveyController {
 			boolean d=false;
 			for (int i = 0; i < leclist.size(); i++) {
 				System.out.println(leclist.get(i).getLectureName());
+				System.out.println(leclist.get(i).getLectureNum());
+				System.out.println(leclist.get(i).getGo_num());
 				System.out.println("for문시작");
 				String lecday = leclist.get(i).getDay();
 				for (int j = 0; j < day.length; j++) {
@@ -135,8 +137,11 @@ public class SurveyController {
 							System.out.println("시간대비교");
 			////////////3. region1 지역비교
 							if(ans[8].equals(leclist.get(i).getRegion1())) {
-								matching.add(leclist.get(i));
-								System.out.println("12345"+leclist.get(i).getLectureName()+leclist.get(i).getGonum()+leclist.get(i).getRegion1());
+								LectureVo lvo2=leclist.get(i);
+								matching.add(lvo2);
+								System.out.println("머가나오니?"+leclist.get(i));
+								System.out.println("12345"+leclist.get(i).getLectureName()+leclist.get(i).getGo_num()+leclist.get(i).getRegion1());
+								break;
 							}
 							
 						}
@@ -144,6 +149,9 @@ public class SurveyController {
 					}
 				}
 				
+			}
+			for(int i=0; i<matching.size(); i++) {
+				System.out.println(matching.get(i).getLectureName()+matching.get(i).getGo_num());
 			}
 			
 			 
