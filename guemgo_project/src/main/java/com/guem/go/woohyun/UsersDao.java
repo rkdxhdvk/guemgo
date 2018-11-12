@@ -39,7 +39,7 @@ public class UsersDao {
 	
 	// 회원 정보 수정(업데이트) DAO
 	public int update(UsersVo vo) {
-		System.out.println("DAO 업데이트 부분");
+		//System.out.println("DAO 업데이트 부분");
 		return sqlSession.update(NAMESPACE + ".update",vo); 
 	}
 	

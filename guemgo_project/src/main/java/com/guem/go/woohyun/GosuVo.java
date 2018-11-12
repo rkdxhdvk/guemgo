@@ -9,11 +9,15 @@ public class GosuVo {
 	private String grade;
 	private int employ;
 	private String image;
+	// user 테이블 정보 추가
+	private int m_num;
+	private String name;
+	private int point;
 	
 	public GosuVo() {}
 
 	public GosuVo(int go_num, String intro, String license, String career, String email, String grade, int employ,
-			String image) {
+			String image, int m_num, String name, int point) {
 		super();
 		this.go_num = go_num;
 		this.intro = intro;
@@ -23,6 +27,9 @@ public class GosuVo {
 		this.grade = grade;
 		this.employ = employ;
 		this.image = image;
+		this.m_num = m_num;
+		this.name = name;
+		this.point = point;
 	}
 
 	public int getGo_num() {
@@ -87,6 +94,30 @@ public class GosuVo {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public int getM_num() {
+		return m_num;
+	}
+
+	public void setM_num(int m_num) {
+		this.m_num = m_num;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
 	}
 
 	
