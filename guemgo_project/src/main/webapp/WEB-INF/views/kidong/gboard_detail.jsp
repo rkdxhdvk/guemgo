@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,12 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>상세보기</title>
+<style type="text/css">
+.time-right {
+	float: right;
+	color: #999;
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
@@ -26,25 +33,63 @@
 
 		<button type="submit" class="btn btn-primary" style="float: right;"
 			onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">삭제</button>
-		<form action="<c:url value='/gboard/update'/>" method="post">
-			<input type="hidden" name="num" value="${vo.num }"> <input
-				type="hidden" name="title" value="${vo.title }"> <input
-				type="hidden" name="email" value="${vo.email }"> <input
-				type="hidden" name="content" value="${vo.content }">
-			<button type="submit" class="btn btn-primary"
-				style="float: right; margin-right: 10px;"
-				onclick="location='<c:url value='/gboard/update'/>'">수정</button>
-		</form>
+		<button style="float: right; margin-right: 10px;" type="button"
+			class="btn btn-primary" data-toggle="modal" data-target="#myModal">수정</button>
+
 	</div>
 
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+
+				<div class="modal-body">
+					<form id="articleForm" action="<c:url value='/gboard/update'/>"
+						method="post" enctype="multipart/form-data"
+						onsubmit="return submitAction()">
+						<input type="hidden" name="num" value="${vo.num }"> <input
+							type="hidden" name="email" value="${sessionScope.email }">
+						<h3 style="margin-bottom: 25px;">Article Form</h3>
+						<div class="form-group">
+							<input type="text" class="form-control" name="title"
+								placeholder="title" value="${vo.title }" required>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" name="content"
+								placeholder="content" maxlength="140" rows="7">${vo.content }</textarea>
+						</div>
+						<div class="form-group">
+							<input type="text" name="orgfilename" class="form-control"
+								value="${vo.orgfilename }">
+						</div>
+						<div class="form-group">
+							<input type="file" name="file1" class="form-control">
+						</div>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="submit" id="submit" name="submit"
+							class="btn btn-primary pull-right">Submit Form</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"
+		var="time" />
 	<div class="container-fluid"
 		style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
 		<div class="panel-heading">${vo.email }
 			<div class="pull-right">
-				<span id="recomm">${vo.recomm }</span> <i class='fas fa-eye'></i>
-				${vo.hit } ${vo.regdate }
-
+				<span id="recomm">&ensp;${vo.recomm }</span> &ensp;<i
+					class='fas fa-eye'></i> ${vo.hit }
 			</div>
+
 			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
 			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 			<c:choose>
@@ -65,12 +110,24 @@
 
 
 			<div>
-				<strong>${vo.title }</strong>
+				<strong>${vo.title }</strong> <span class="time-right">${time }</span>
 				<hr style="border: solid 1px #337ab7;">
 
 			</div>
 		</div>
-		<div class="panel-body">${vo.content }</div>
+
+		<div class="panel-body">
+			<a
+				href="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+				target="_blank"> <img class="img-thumbnail" alt=""
+				src="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+				width="304" height="236">
+			</a> ${vo.content }
+		</div>
+		<div class="form-control" style="margin-bottom: 15px;">
+			<a href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
+			<span class="pull-right">${vo.filesize }</span>
+		</div>
 	</div>
 
 	<div class="container-fluid" id="comments"
@@ -82,9 +139,13 @@
 
 		<div class="panel-body" id="commentList">
 			<c:forEach var="vo" items="${list }">
+				<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"
+					var="time" />
 				<div class="panel panel-primary">
 					<div class="panel-heading">${vo.cnum }</div>
 					<div class="panel-body">${vo.content }
+						<span class="time-right">${time }</span>
+						<hr>
 						<button type="button" class="btn btn-primary pull-right"
 							onclick="deleteComment(${vo.cnum})">삭제</button>
 					</div>
@@ -103,6 +164,8 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading">{cnum}</div>
 		<div class="panel-body">{content}
+		<span class="time-right">{regdate}</span>
+	<hr>
 		<button type="button" class="btn btn-primary pull-right"
 						onclick="deleteComment({cnum1})">삭제</button>
 	</div>
@@ -182,6 +245,7 @@
 				$(data).each(function(i, json){
 					resultHTML += html.replace("{cnum}", json.cnum)
 										.replace("{content}", json.content)
+										.replace("{regdate}", json.regdate)
 										.replace("{cnum1}", json.cnum);
 					
 // 					var div = document.createElement("div");
@@ -257,6 +321,24 @@
 			countSpan.innerText = count(message).toString();
 			event.target.value = message;
 		}
+	}
+	
+	function submitAction() {
+
+		var ext = $('#file').val().split('.').pop().toLowerCase();
+
+		if ($("#file").val() != "") {
+
+			var ext = $('#file').val().split('.').pop().toLowerCase();
+
+			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
+
+				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+
+				return false;
+			}
+		}
+		return true;
 	}
 </script>
 

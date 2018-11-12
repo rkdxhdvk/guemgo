@@ -1,16 +1,25 @@
 package com.guem.go.kidong;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -54,9 +63,27 @@ public class GboardController {
 	}
 
 	@RequestMapping(value = "/gboard/insert", method = RequestMethod.POST)
-	public String insert(GboardVo vo) {
-		service.insert(vo);
-		return "redirect:/gboard/list";
+	public String insert(GboardVo vo, MultipartFile file1, HttpSession session) {
+		String uploadpath = session.getServletContext().getRealPath("/resources/upload");
+		String orgfilename = file1.getOriginalFilename();
+		String savefilename = UUID.randomUUID() + "_" + orgfilename;
+
+		try {
+			InputStream is = file1.getInputStream();
+			FileOutputStream fos = new FileOutputStream(uploadpath + "\\" + savefilename);
+			FileCopyUtils.copy(is, fos);
+			is.close();
+			fos.close();
+			System.out.println(uploadpath + "경로에 파일업로드 성공!");
+			long filesize = file1.getSize();
+			GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null,
+					orgfilename, savefilename, filesize);
+			service.insert(gboardVo);
+			return "redirect:/gboard/list";
+		} catch (Exception ie) {
+			System.out.println(ie.getMessage());
+			return "error";
+		}
 	}
 
 	@RequestMapping(value = "/gboard/detail", method = RequestMethod.GET)
@@ -88,18 +115,46 @@ public class GboardController {
 		return "redirect:/gboard/list";
 	}
 
-	@RequestMapping(value="/gboard/update", method=RequestMethod.POST)
-	public String update(GboardVo vo,Model model) {
-		model.addAttribute("vo", vo);
-		return "kidong/gboard_update";
+//	@RequestMapping(value = "/gboard/update", method = RequestMethod.POST)
+//	public String update(GboardVo vo, Model model) {
+//		model.addAttribute("vo", vo);
+//		return "kidong/gboard_update";
+//	}
+
+	@RequestMapping(value = "/gboard/update", method = RequestMethod.POST)
+	public String update(GboardVo vo, HttpSession session, MultipartFile file1) {
+		try {
+			if (!file1.isEmpty()) {
+				String path = session.getServletContext().getRealPath("/resources/upload");
+				String fname = service.detail(vo.getNum()).getSavefilename();
+				File f = new File(path + "/" + fname);
+				f.delete();
+				String orgfilename = file1.getOriginalFilename();
+				String savefilename = UUID.randomUUID() + "_" + orgfilename;
+				InputStream is = file1.getInputStream();
+				FileOutputStream fos = new FileOutputStream(path + "/" + savefilename);
+				FileCopyUtils.copy(is, fos);
+				is.close();
+				fos.close();
+				long filesize = file1.getSize();
+				vo.setOrgfilename(orgfilename);
+				vo.setSavefilename(savefilename);
+				vo.setFilesize(filesize);
+			} else {
+				vo.setOrgfilename(service.detail(vo.getNum()).getOrgfilename());
+				vo.setSavefilename(service.detail(vo.getNum()).getSavefilename());
+				vo.setFilesize(service.detail(vo.getNum()).getFilesize());
+			}
+			service.update(vo);
+
+			return "redirect:/gboard/list";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 	}
-	
-	@RequestMapping(value="/gboard/updateOk", method=RequestMethod.POST)
-	public String updateOk(GboardVo vo,Model model) {
-		service.update(vo);
-		return "redirect:/gboard/list";
-	}
-		
+
 	@RequestMapping(value = "/commentInsert", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String insert(int num, String comment) {
@@ -125,12 +180,15 @@ public class GboardController {
 	public String list(int num) {
 		List<GcommentVo> list = service3.list(num);
 		JsonArray arr = new JsonArray();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (GcommentVo vo : list) {
 			vo.setContent(vo.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
 					.replaceAll("\n", "<br>"));
 			JsonObject json = new JsonObject();
 			json.addProperty("cnum", vo.getCnum());
 			json.addProperty("content", vo.getContent());
+			String regdate = transFormat.format(vo.getRegdate());
+			json.addProperty("regdate", regdate);
 			arr.add(json);
 		}
 		return arr.toString();

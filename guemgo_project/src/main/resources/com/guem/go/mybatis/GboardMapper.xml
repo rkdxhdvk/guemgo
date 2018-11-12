@@ -10,7 +10,7 @@
 	</sql>
 	
 	<insert id="insert" parameterType="com.guem.go.kidong.GboardVo">
-		insert into gboard values(gboard_seq.nextval,#{email},#{title},#{content},0,0,0,sysdate)
+		insert into gboard values(gboard_seq.nextval,#{email},#{title},#{content},0,0,0,sysdate,#{orgfilename},#{savefilename},#{filesize})
 	</insert>
 	<select id="list" parameterType="map" resultType="com.guem.go.kidong.GboardVo">
 		select * from
@@ -51,7 +51,7 @@
 		update gboard set comments = #{comments} where num = #{num}
 	</update>
 	<update id="update" parameterType="com.guem.go.kidong.GboardVo">
-		update gboard set title = #{title},content = #{content} where num = #{num}
+		update gboard set title = #{title},content = #{content},orgfilename = #{orgfilename},savefilename = #{savefilename}, filesize = #{filesize} where num = #{num}
 	</update>
 	<delete id="delete" parameterType="int">
 		delete from gboard where num = #{num}

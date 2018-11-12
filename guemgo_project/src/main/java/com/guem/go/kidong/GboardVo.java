@@ -11,11 +11,15 @@ public class GboardVo {
 	private int recomm;
 	private int comments;
 	private Date regdate;
-	
-	public GboardVo() {}
+	private String orgfilename;
+	private String savefilename;
+	private long filesize;
+
+	public GboardVo() {
+	}
 
 	public GboardVo(int num, String email, String title, String content, int hit, int recomm, int comments,
-			Date regdate) {
+			Date regdate, String orgfilename, String savefilename, long filesize) {
 		super();
 		this.num = num;
 		this.email = email;
@@ -25,6 +29,33 @@ public class GboardVo {
 		this.recomm = recomm;
 		this.comments = comments;
 		this.regdate = regdate;
+		this.orgfilename = orgfilename;
+		this.savefilename = savefilename;
+		this.filesize = filesize;
+	}
+
+	public String getOrgfilename() {
+		return orgfilename;
+	}
+
+	public void setOrgfilename(String orgfilename) {
+		this.orgfilename = orgfilename;
+	}
+
+	public String getSavefilename() {
+		return savefilename;
+	}
+
+	public void setSavefilename(String savefilename) {
+		this.savefilename = savefilename;
+	}
+
+	public long getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(long filesize) {
+		this.filesize = filesize;
 	}
 
 	public int getNum() {
@@ -90,6 +121,5 @@ public class GboardVo {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
-	
+
 }

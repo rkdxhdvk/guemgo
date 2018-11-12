@@ -21,6 +21,7 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="3" />
 	</beans:bean>
 	
 	<context:component-scan base-package="com.guem.go" />
@@ -30,6 +31,27 @@
 		<websocket:mapping handler="echoHandler" path="/echo"/>
 		<websocket:sockjs/>
 	</websocket:handlers>
+	
+	<!-- 파일업로드 (주의 : id속성이 반드시 multipartResolver이어야 한다.) -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 최대업로드 크기 설정(byte단위) -->
+		<beans:property name="maxUploadSize" value="5242880" />
+	</beans:bean>
+
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\uploadImg" />
+	</beans:bean>
+
+	<!-- 파일다운로드 뷰 -->
+	<beans:bean id="filedownloadView"
+		class="com.guem.go.kidong.FiledownloadView" />
+
+	<!-- 파일다운로드뷰로 이동하기위한 뷰리절버 등록 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1" />
+	</beans:bean>
 	
 	<!-- tiles설정 -->
 	<beans:bean
@@ -48,7 +70,7 @@
 		<beans:property name="viewNames" value=".*" />
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles3.TilesView" />
-		<beans:property name="order" value="1" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	
 	
