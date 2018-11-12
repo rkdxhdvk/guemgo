@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 @Controller
 public class Sche_detailInsertController {
 	@Autowired
@@ -14,15 +15,10 @@ public class Sche_detailInsertController {
 	
 	@RequestMapping(value="/cal",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public String sche(int scheduleNum, String title, String memo, String start, String end) {
-		JSONObject obj=new JSONObject();
-		System.out.println(title + memo + start + end);
-		Sche_detailVo vo = new Sche_detailVo(0, scheduleNum, memo, start, end, 0);
-		sche_detailServie.insert(vo);
-		int sche_detailNum = sche_detailServie.sche_detailNum();
-		
-		obj.put("sche_detailNum", sche_detailNum);
-		System.out.println(obj.toString());
-		return obj.toString();
+	public String sche(int scheduleNum,int id, String lecturename, String memo, String start, String end) {
+		System.out.println("insertController" + lecturename + memo + start + end);
+		Sche_detailVo vo = new Sche_detailVo(id, scheduleNum, memo, start, end, 0, lecturename);
+		int n = sche_detailServie.insert(vo);
+		return "index_new";
 	}
 }

@@ -7,7 +7,7 @@
 		insert into gchat values(chat_seq.nextval,#{room},#{msg},sysdate,#{sender},0)
 	</insert>
 	<select id="list" parameterType="int" resultType="com.guem.go.kidong.ChatVo">
-		select * from gchat where room = #{room} and read = 0
+		<![CDATA[ SELECT * FROM gchat WHERE room = #{room} and time >= TO_CHAR(SYSDATE-7,'YYYYMMDD') order by msg_num]]>
 	</select>
 	<select id="getRoom" parameterType="string" resultType="com.guem.go.kidong.RoomVo">
 		select * from room where email = #{email}

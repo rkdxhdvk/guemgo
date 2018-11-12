@@ -1,33 +1,35 @@
 package com.guem.go.minsu;
 
 public class Sche_detailVo {
-	private int num;
+	private int schedetailNum;
 	private int scheduleNum;
 	private String memo;
 	private String sDate;
 	private String eDate;
 	private int attendance;
+	private String leturename;
 	
 	public Sche_detailVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sche_detailVo(int num, int scheduleNum, String memo, String sDate, String eDate, int attendance) {
+	public Sche_detailVo(int schedetailNum, int scheduleNum, String memo, String sDate, String eDate, int attendance, String leturename) {
 		super();
-		this.num = num;
+		this.schedetailNum = schedetailNum;
 		this.scheduleNum = scheduleNum;
 		this.memo = memo;
 		this.sDate = sDate;
 		this.eDate = eDate;
 		this.attendance = attendance;
+		this.leturename = leturename;
 	}
 
-	public int getNum() {
-		return num;
+	public int getSchedetailNum() {
+		return schedetailNum;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setSchedetailNum(int schedetailNum) {
+		this.schedetailNum = schedetailNum;
 	}
 
 	public int getScheduleNum() {
@@ -68,6 +70,14 @@ public class Sche_detailVo {
 
 	public void setAttendance(int attendance) {
 		this.attendance = attendance;
+	}
+
+	public String getLecturename() {
+		return leturename;
+	}
+
+	public void setLecturename(String leturename) {
+		this.leturename = leturename;
 	}
 	
 }

@@ -25,4 +25,24 @@ public class SurveyDao {
 	public List<CatesVo> selectcates(String mname) {
 		return sqlSession.selectList(NAMESPACE+".selectcates",mname);
 	}
+
+	public List<QuestionVo> quelist() {
+		return sqlSession.selectList(NAMESPACE + ".quelist");
+	}
+	public List<ExampleVo> exlist() {
+		return sqlSession.selectList(NAMESPACE + ".exlist");
+	}
+
+	public int ansinsert(AnswerVo vo) {
+		return sqlSession.insert(NAMESPACE + ".ansinsert", vo);
+	}
+
+
+	public List<GosuareaVo> gosuarealist() {
+		return sqlSession.selectList(NAMESPACE + ".gosuarealist");
+	}
+
+	public LectureVo selectlec(int lectureNum) {
+		return sqlSession.selectOne(NAMESPACE + ".selectlec" ,lectureNum);
+	}
 }

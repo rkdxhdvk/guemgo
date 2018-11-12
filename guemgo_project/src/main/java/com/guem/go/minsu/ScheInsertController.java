@@ -15,9 +15,9 @@ public class ScheInsertController {
 	
 	@RequestMapping(value="/calInsert",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public String insert(String email, String other, int lectureNum, int matchNum) {
+	public String insert(String email, String other, int lectureNum, int matchNum, String lecturename) {
 		System.out.println(email + " " + other + " " + lectureNum);
-		ScheduleVo vo = new ScheduleVo(0, email, other, lectureNum, matchNum);
+		ScheduleVo vo = new ScheduleVo(0, email, other, lectureNum, matchNum, lecturename);
 		scheService.insert(vo);
 		int scheduleNum = scheService.scheduleNum();
 		JSONObject obj = new JSONObject();

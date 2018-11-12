@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     },
     filterHtml: function(html) {
       return html
-        .replace(/<mdiv[^>]+class\s*=\s*['"]demo-topbar['"][\s\S]*?<\/\s*mdiv\s*>/ig, '')
+        .replace(/<div[^>]+class\s*=\s*['"]demo-topbar['"][\s\S]*?<\/\s*div\s*>/ig, '')
         .replace(/<(a|button)[^>]+data-codepen[^>]*>[\s\S]*?<\/\s*\1\s*>/ig, '');
     }
   };

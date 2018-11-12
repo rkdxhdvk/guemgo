@@ -3,12 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.Sche_detailMapper">
-	<select id="sche_detailinsert" parameterType="com.guem.go.minsu.Sche_detailVo">
-		insert into sche_detail values(schedetail_seq.nextval, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0)
-	</select>
+	<insert id="insert" parameterType="com.guem.go.minsu.Sche_detailVo">
+		insert into sche_detail values(#{schedetailNum}, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0, #{lecturename})
+	</insert>
 	<select id="detailNum" resultType="int">
-		select max(num) from sche_detail
+		<!-- select schedetail_seq.nextval from dual -->
+		select max(schedetailnum) from sche_detail
 	</select>
+	<select id="sche_detail" parameterType="int" resultType="com.guem.go.minsu.Sche_detailVo">
+		select * from sche_detail where schedetailNum=#{schedetailNum}
+	</select>
+	<update id="detailUpdate" parameterType="com.guem.go.minsu.Sche_detailVo">
+		update sche_detail set memo=#{memo}, sDate=#{sDate}, eDate=#{eDate}, attendance=#{attendance} 
+		where schedetailNum=#{schedetailNum}
+	</update>
+	<select id="sche_detailList" parameterType="int" resultType="com.guem.go.minsu.Sche_detailVo">
+		select * from sche_detail where scheduleNum=#{scheduleNum}
+	</select>
+	<delete id="all_detailDelete" parameterType="int">
+		delete from sche_detail where scheduleNum=#{scheduleNum}
+	</delete>
+	<delete id="sche_detailDelete" parameterType="int">
+		delete from sche_detail where schedetailNum=#{schedetailNum}
+	</delete>
 </mapper>
 
 

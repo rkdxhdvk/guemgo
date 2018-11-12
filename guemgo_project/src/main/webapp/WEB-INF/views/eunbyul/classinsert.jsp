@@ -89,7 +89,7 @@
 					</div>
 				<div class="modal-body">
 					<form action="classinsertOk" method="post">
-					<input type="hidden" name="gonum" value=${gonum }>
+					<input type="hidden" name="gonum" value=${vo.go_num }>
 					<%-- console.log(${gonum }); --%>
 						<div class="form-row">
 						
@@ -97,8 +97,8 @@
 								<label>대분류</label> 
 								
 								<select name="area1" class="form-control" onchange="selectArea1(this.value,'area2')">
-									<c:forEach var="vo" items="${list }">
-									<option value="${vo.m_name }">${vo.m_name }</option>
+									<c:forEach var="vo1" items="${list }">
+									<option value="${vo1.m_name }">${vo1.m_name }</option>
 									</c:forEach>
 								</select>
 								
@@ -160,10 +160,10 @@
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>언제 레슨을 하기를 원하시나요</label><br> <input type="radio"
-									name="time" value="오전" class="navbar-brand">오전(8시~12시)
-								<input type="radio" name="time" value="점심" class="navbar-brand">점심(12시~3시)
-								<input type="radio" name="time" value="오후" class="navbar-brand">오후(3시~6시)
-								<input type="radio" name="time" value="저녁" class="navbar-brand">저녁(6시~11시)
+									name="time" value="오전(8시~12시)" class="navbar-brand">오전(8시~12시)
+								<input type="radio" name="time" value="점심(12시~3시)" class="navbar-brand">점심(12시~3시)
+								<input type="radio" name="time" value="오후(3시~6시)" class="navbar-brand">오후(3시~6시)
+								<input type="radio" name="time" value="저녁(6시~11시)" class="navbar-brand">저녁(6시~11시)
 							</div>
 						</div>
 						<div class="form-row">

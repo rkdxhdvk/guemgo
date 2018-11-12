@@ -6,18 +6,19 @@ public class ScheduleVo {
 	private String other;
 	private int num;
 	private int matchNum;
-	
+	private String lecturename;
 	public ScheduleVo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ScheduleVo(int scheduleNum, String email, String other, int num, int matchNum) {
+	public ScheduleVo(int scheduleNum, String email, String other, int num, int matchNum, String lecturename) {
 		super();
 		this.scheduleNum = scheduleNum;
 		this.email = email;
 		this.other = other;
 		this.num = num;
 		this.matchNum = matchNum;
+		this.lecturename = lecturename;
 	}
 
 	public int getScheduleNum() {
@@ -58,6 +59,14 @@ public class ScheduleVo {
 
 	public void setMatchNum(int matchNum) {
 		this.matchNum = matchNum;
+	}
+
+	public String getLecturename() {
+		return lecturename;
+	}
+
+	public void setLecturename(String lecturename) {
+		this.lecturename = lecturename;
 	}
 	
 	

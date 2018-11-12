@@ -14,6 +14,7 @@
 <h1>마이페이지</h1>
 <ul>
 	<li><a href="<c:url value='/UserUpdate?email=${sessionScope.email }'/>">개인정보 수정</a></li>
+	<li><a href="<c:url value='/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
 
 </ul>
 <a href="<c:url value='/'/>">홈으로</a>

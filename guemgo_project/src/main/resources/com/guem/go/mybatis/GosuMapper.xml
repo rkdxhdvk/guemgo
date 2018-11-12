@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-11-04	윤우현 파일 생성
+
+ -->
+<mapper namespace="com.guem.go.mybatis.GosuMapper">
+	
+<!-- 고수가입 -->
+	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
+	insert all 
+		into gosu(go_num, email, intro, grade, employ) values(gonum_seq.nextval, #{email}, #{intro},#{grade},#{employ} )
+		<if test=" (license!=null and license!='') or (career!=null and career!='')">	<!-- license 또는 career가 없으면 DB에 넣지 않음 -->
+			into gosu_career(go_num, license, career) values(gonum_seq.currval, #{license}, #{career})	<!-- gonum을 위에 gonum_seq와 동일하게 해야함 -->
+		</if>
+		<if test="image !=null and image !='' ">	<!-- image가 없으면 DB에 넣지 않음 -->
+		into gosu_image(go_num, image) values(gonum_seq.currval, #{image})
+		</if>
+		select * from dual
+	</insert>
+	
+	<!-- 고수리스트 조회 -->
+	<select id="list" resultType="com.guem.go.woohyun.GosuVo">
+		select a.go_num, b.m_num, a.email, b.name, a.grade, a.employ, b.point 
+		from gosu a, users b
+		where a.email=b.email
+	</select>
+	
+	<!-- 고수 삭제 -->
+	<delete id="delete" parameterType="String">
+		delete from gosu where email=#{email}
+	</delete>
+	
+	<!-- 고수 정보 수정(1명 조회) -->
+	<select id="detail" resultType="com.guem.go.woohyun.GosuVo" parameterType="String">
+		select a.go_num, b.m_num, a.email, b.name, a.grade, a.employ, b.point 
+		from gosu a, users b
+		where a.email=b.email
+		and a.email=#{email}
+	</select>
+	
+	<!-- 고수 정보 수정(업데이트) 트랜잭션 처리 해야함 -->
+	<update id="update" parameterType="com.guem.go.woohyun.GosuVo">
+		update gosu set grade=#{grade}, employ=#{employ} where email=#{email}
+	</update>
+	
+	<!-- 고수 정보 수정(업데이트) 트랜잭션 처리 해야함-->
+	<update id="update_user" parameterType="com.guem.go.woohyun.GosuVo">
+		update users set point=#{point} where email=#{email}
+	</update>
+	
+	<!-- ?? -->
+	<select id="gosuNum" parameterType="String" resultType="int">
+		select go_num from gosu where email=#{email}
+	</select>
+	
+</mapper>

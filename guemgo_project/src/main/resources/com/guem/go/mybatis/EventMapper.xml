@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.EventMapper">
+	<select id="eventinsert" parameterType="com.guem.go.minsu.EventVo">
+		insert into event values(sysdate, #{email})
+	</select>
+	<select id="eventlist" parameterType="String" resultType="com.guem.go.minsu.EventVo">
+		select * from event where email=#{email} 
+	</select>
+</mapper>
+
+
+
+
+
+

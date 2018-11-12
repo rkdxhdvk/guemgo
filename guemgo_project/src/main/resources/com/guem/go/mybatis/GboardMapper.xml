@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.GboardMapper">
+	<sql id="search">
+		<if test="field!=null and field!=''">
+			where ${field} like '%'|| #{keyword} ||'%'
+		</if>
+	</sql>
+	
+	<insert id="insert" parameterType="com.guem.go.kidong.GboardVo">
+		insert into gboard values(gboard_seq.nextval,#{email},#{title},#{content},0,0,0,sysdate,#{orgfilename},#{savefilename},#{filesize})
+	</insert>
+	<select id="list" parameterType="map" resultType="com.guem.go.kidong.GboardVo">
+		select * from
+		(
+			select aa.*,rownum rnum from
+			(
+				select * from gboard
+				<include refid="search"/>
+				<choose>
+					<when test="sort!=null and sort!=''">
+						order by ${sort} desc
+					</when>
+					<otherwise>
+						order by num desc
+					</otherwise>
+				</choose>
+			)aa
+		)
+		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	<select id="getCount" parameterType="map" resultType="int">
+		select NVL(count(*),0) cnt from gboard
+		<include refid="search"/>
+	</select>
+	<select id="detail" parameterType="int" resultType="com.guem.go.kidong.GboardVo">
+		select * from gboard where num = #{num}
+	</select>
+	<select id="commentList" parameterType="int" resultType="com.guem.go.kidong.GcommentVo">
+		select * from gcomment where bnum = #{num} order by cnum
+	</select>
+	<update id="hitUp" parameterType="int">
+		update gboard set hit = hit + 1 where num = #{num}
+	</update>
+	<update id="recommUp" parameterType="map">
+		update gboard set recomm = #{recomm} where num = #{num}
+	</update>
+	<update id="commentUp" parameterType="map">
+		update gboard set comments = #{comments} where num = #{num}
+	</update>
+	<update id="update" parameterType="com.guem.go.kidong.GboardVo">
+		update gboard set title = #{title},content = #{content},orgfilename = #{orgfilename},savefilename = #{savefilename}, filesize = #{filesize} where num = #{num}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from gboard where num = #{num}
+	</delete>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.MatchingMapper">
+	<insert id="matchingInsert" parameterType="com.guem.go.minsu.MatchingVo">
+		insert into matching values(matching_seq.nextval, #{matchNum}, #{lectureNum}, #{gosu}, #{student}, sysdate)
+	</insert>
+</mapper>
+
+
+
+
+
+
