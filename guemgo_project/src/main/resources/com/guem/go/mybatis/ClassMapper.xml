@@ -25,5 +25,9 @@
 	<select id="gosuselect" resultType="com.guem.go.woohyun.GosuVo"  parameterType="String">
 		select * from gosu where email=#{email}
 	</select>
+	<delete id="classdelete" parameterType="int" >
+		delete from lecture where lecturenum=#{lecNum}
+		
+	</delete>
 </mapper>
 

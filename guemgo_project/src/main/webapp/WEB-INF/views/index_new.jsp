@@ -67,8 +67,9 @@
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<c:choose>
 				 	<c:when test="${sessionScope.flag eq '2'}">
-				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }">강의등록</a>
-				 	<a class="dropdown-item" href="classlist?gonum=4">강의목록</a>
+				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }">강의 등록</a>
+				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }">내 강의 목록</a>
+				 	<a class="dropdown-item" href="classlist?email=${sessionScope.email }">받은 요청서</a>
 				 	</c:when>
 				 	</c:choose>
 				 	<input type="hidden" id="email" value="${sessionScope.email }">
@@ -88,6 +89,7 @@
 										<a class="dropdown-item" href="admin">관리자페이지</a>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
+									<a class="dropdown-item" href="classlist?gonum=4">보낸 요청서</a>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
 												<a class="dropdown-item" href="mypage">마이페이지</a>
@@ -184,3 +186,23 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

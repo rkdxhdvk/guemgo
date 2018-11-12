@@ -1,11 +1,16 @@
 package com.guem.go.eunbyul;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.guem.go.woohyun.GosuVo;
+import com.sun.mail.util.logging.MailHandler;
 
 
 
 @Controller
 public class SurveyController {
-	@Autowired private SimpleMailSender sender;
+	@Inject private JavaMailSender mailSender;
 	@Autowired
 	private SurveyService surveyservice;
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
@@ -45,7 +51,7 @@ public class SurveyController {
 	}
 
 	@RequestMapping(value = "/survey", method = RequestMethod.POST)
-	public ModelAndView surveyOk(HttpServletRequest request) {
+	public ModelAndView surveyOk(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
 		
 		
 		String area=request.getParameter("selectarea");//하고싶은 과목
@@ -151,33 +157,81 @@ public class SurveyController {
 				}
 			}
 		}
-		
+		System.out.println(ans[1]+ans[2]+ans[3]+ans[4]+ans[5]);
 		for (int i = 0; i < matching.size(); i++) {
 			 //누가누가 담겨있나 확인하기
 			System.out.println(matching.get(i).getLectureName() + matching.get(i).getGo_num());
 			//matching에 있는 gosunum을 가져와서 email을 뽑아내기
 			int gosunum=matching.get(i).getGo_num();
 			GosuVo gosu=surveyservice.selectgosu(gosunum);
-			String title=area +" 레슨 요청서가 도착했습니다.";
+			/*String title=area +" 레슨 요청서가 도착했습니다.";
+			String content="서은별님이 있는 곳 주변에서 새로운 요청이 들어왔어요.\n\n"+"\n무엇을 배우고 싶으신가요?\n"+area+"\n레슨을 받는 목적이 무엇인가요?\n"+
+			ans[0]+"\n경력이 있나요?\n"+ans[1]+"\n학생은 몇 살 입니까?\n"+ans[2]+"\n가능한 요일은 언제인가요?\n"+ans[3]+"\n언제 레슨을 받기를 원하시나요?\n"+ans[4]+"\n희망 레슨 횟수는 어떻게 되시나요?\n"+ans[5]+
+			"\n몇 시간 동안 레슨을 받기 원하시나요?\n"+ans[6]+"\n레슨을 시작하고 싶은 날이 있나요?\n"+ans[7]+"\n레슨을 원하는 지역을 선택해주세요.\n"+ans[8]+region2+"\n고수가 알아야 할 다른 사항이 있나요?\n"+ans[9]+
+			"\n\n요청서 자세히보기\n"+"http://localhost:9090/go/";
 			System.out.println(gosu.getEmail());
 			try {
-				sender.sendMail(title, "안\n녕2", "92eunbyul@naver.com", "92eunbyul@naver.com");
+				sender.sendMail(title, content, "92eunbyul@naver.com", "92eunbyul@naver.com");
 	
 			}catch(Exception e) {
 			System.out.println(e.getMessage());
-			}
+			}*/
+			
+			SimpleMailSender sendMail = new SimpleMailSender(mailSender);
+			sendMail.setSubject(area +" 레슨 요청서가 도착했습니다.");
+			sendMail.setText(new StringBuffer().append("<link rel=\"stylesheet\" href=\"/go/resources/css/custom.css\">")
+					.append("<section class='container'>")
+					.append("<div class=\"modal-dialog\">")
+					.append("<div class=\"modal-content\">")
+					.append("<div class=\"modal-header\">")
+					.append("<h5 class=\"modal-title\" id=\"modal\">서은별님이 있는 곳 주변에서 새로운 요청이 들어왔어요.</h5>")
+					.append("</div>")
+					.append("<div class=\"modal-body\">")
+					.append("<h2>요청서 내역</h2>")
+					.append("<form>")
+					.append("<div class=\"form-row\">")
+					.append("<div class=\"form-group col-sm-12\">")
+					.append("<h3>무엇을 배우고 싶으신가요?</h3>")
+					.append(area)
+					.append("</div>")
+					.append("</div>")
+					.append("<h3>레슨을 받는 목적이 무엇인가요?</h3>")
+					.append(ans[0])
+					.append("<h3>경력이 있나요?</h3>")
+					.append(ans[1])
+					.append("<h3>학생은 몇 살 입니까?</h3>")
+					.append(ans[2])
+					.append("<h3>가능한 요일은 언제인가요?</h3>")
+					.append(ans[3])
+					.append("<h3>언제 레슨을 받기를 원하시나요?</h3>")
+					.append(ans[4])
+					.append("<h3>희망 레슨 횟수는 어떻게 되시나요?</h3>")
+					.append(ans[5])
+					.append("<h3>몇 시간 동안 레슨을 받기 원하시나요?</h3>")
+					.append(ans[6])
+					.append("<h3>레슨을 시작하고 싶은 날이 있나요?</h3>")
+					.append(ans[7])
+					.append("<h3>레슨을 원하는 지역을 선택해주세요.</h3>")
+					.append(ans[8])
+					.append("<h3>고수가 알아야 할 다른 사항이 있나요?</h3>")
+					.append(ans[9]+"<br><br>")
+					.append("</form>")
+					.append("</div>")
+					.append("<a href='http://localhost:9090/go'>요청서 자세히 보기</a>")
+				.append("</div>")
+				.append("</div>")
+				
+				.append("</section>").toString());
+			
+			sendMail.setFrom("92eunbyul@naver.com", "금고");
+			sendMail.setTo(gosu.getEmail()+"naver.com");
+			sendMail.send();
+			
 		}
-			
-			
-		
-		
-		
-		
-		
-		//email을 찾아와서 요청서 정보들을 해당 아이디에게 email보내기
-			
 
 		
+		//email을 찾아와서 요청서 정보들을 해당 아이디에게 email보내기
+
 		ModelAndView mv = new ModelAndView(); 
 		mv.addObject("n", n);
 		mv.addObject("n1", n1);
