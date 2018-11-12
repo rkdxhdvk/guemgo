@@ -18,17 +18,14 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<title>자유게시판</title>
+<title>qna게시판</title>
 </head>
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
-		<p class="text-left" style="font-size: x-large;">게시판</p>
-		<!-- 		<button type="button" class="btn btn-primary" style="float: right;" -->
-		<%-- 			onclick="location='<c:url value='/gboard/insert'/>'">글쓰기</button> --%>
+		<p class="text-left" style="font-size: x-large;">계층형 게시판</p>
 		<button style="float: right;" type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#myModal">글쓰기</button>
 	</div>
-
 
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
@@ -41,9 +38,8 @@
 				</div>
 
 				<div class="modal-body">
-					<form id="articleForm" action="<c:url value='/gboard/insert'/>"
-						method="post" enctype="multipart/form-data"
-						onsubmit="return submitAction()">
+					<form id="articleForm" action="<c:url value='/qboard/insert'/>"
+						method="post">
 						<input type="hidden" name="email" value="${sessionScope.email }">
 						<h3 style="margin-bottom: 25px;">Article Form</h3>
 						<div class="form-group">
@@ -54,9 +50,7 @@
 							<textarea class="form-control" name="content"
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
-						<div class="form-group">
-							<input type="file" name="file1" id="file" class="form-control">
-						</div>
+
 						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 						<button type="submit" id="submit" name="submit"
 							class="btn btn-primary pull-right">Submit Form</button>
@@ -101,54 +95,45 @@
 	</div>
 
 	<div class="container-fluid">
-
 		<div class="table-responsive">
 			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>title</th>
+						<th>email</th>
+						<th>hit</th>
+						<th>regdate</th>
+					</tr>
+				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${list }">
-						<c:choose>
-							<c:when test="${vo.comments != 0 }">
-								<tr style="border-left: 5px solid #337ab7">
-							</c:when>
-							<c:otherwise>
-								<tr style="border-left: 5px solid #D3D3D3">
-							</c:otherwise>
-						</c:choose>
-						<td style="width: 5%">${vo.num }</td>
-						<c:choose>
-							<c:when test="${vo.orgfilename != null }">
-								<td style="width: 4%"><i class='fas fa-image'></i></td>
-							</c:when>
-							<c:otherwise>
-								<td style="width: 4%"><i class='fas fa-file-alt'></i></td>
-							</c:otherwise>
-						</c:choose>
-						<td style="width: 40%"><a
-							href="<c:url value='/gboard/detail?num=${vo.num }'/>">${vo.title }</a></td>
-						<td style="width: 7%"><i class='fas fa-comment'></i>
-							${vo.comments }</td>
-						<td style="width: 7%"><i class='fas fa-thumbs-up'></i>
-							${vo.recomm }</td>
-						<td style="width: 7%"><i class='fas fa-eye'></i> ${vo.hit }</td>
-						<td style="width: 15%">${vo.email }</td>
-						<td style="width: 15%">${vo.regdate }</td>
+						<tr>
+							<td>${vo.num }</td>
+							<td><c:if test="${vo.lev>0 }">
+									<c:forEach var="i" begin="1" end="${vo.lev }">
+								&nbsp;&nbsp;
+							</c:forEach>
+							[re]
+						</c:if> <a href="<c:url value='/qboard/detail?num=${vo.num }'/>">${vo.title }</a></td>
+							<td>${vo.email }</td>
+							<td>${vo.hit }</td>
+							<td>${vo.regdate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 
+
 		<div class="text-center">
 			<ul class="pagination">
 				<c:choose>
 					<c:when test="${pu.startPageNum > 5 }">
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+							href="<c:url value='/qboard/list?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 								<i class="fa fa-chevron-left"></i>
 						</a></li>
-						<li><a
-							href="<c:url value='/gboard/list?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
-						<li class="disabled"><a href="">...</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="disabled"><a href=""> <i
@@ -161,22 +146,19 @@
 					<c:choose>
 						<c:when test="${pu.pageNum == i }">
 							<li class="active"><a
-								href="<c:url value='/gboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+								href="<c:url value='/qboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a
-								href="<c:url value='/gboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+								href="<c:url value='/qboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:choose>
 					<c:when test="${pu.endPageNum < pu.totalPageCount }">
-						<li class="disabled"><a href="">...</a></li>
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
-						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+							href="<c:url value='/qboard/list?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 								<i class="fa fa-chevron-right"></i>
 						</a></li>
 					</c:when>
@@ -185,29 +167,9 @@
 								class="fa fa-chevron-right"></i></a></li>
 					</c:otherwise>
 				</c:choose>
-
 			</ul>
 		</div>
 	</div>
 
 </body>
-<script>
-	function submitAction() {
-
-		var ext = $('#file').val().split('.').pop().toLowerCase();
-
-		if ($("#file").val() != "") {
-
-			var ext = $('#file').val().split('.').pop().toLowerCase();
-
-			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-
-				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
-
-				return false;
-			}
-		}
-		return true;
-	}
-</script>
 </html>

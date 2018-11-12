@@ -115,19 +115,28 @@
 
 			</div>
 		</div>
-
 		<div class="panel-body">
-			<a
-				href="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
-				target="_blank"> <img class="img-thumbnail" alt=""
-				src="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
-				width="304" height="236">
-			</a> ${vo.content }
+			<c:if test="${vo.orgfilename != null }">
+				<a
+					href="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+					target="_blank"> <img class="img-thumbnail" alt=""
+					src="${pageContext.request.contextPath}/resources/upload/${vo.savefilename}"
+					width="304" height="236">
+				</a>
+				<br>
+				<br>
+			</c:if>
+			<div class="form-group">
+				<textarea class="form-control" name="content" placeholder="content"
+					maxlength="140" rows="7" readonly="readonly">${vo.content }</textarea>
+			</div>
 		</div>
-		<div class="form-control" style="margin-bottom: 15px;">
-			<a href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
-			<span class="pull-right">${vo.filesize }</span>
-		</div>
+		<c:if test="${vo.orgfilename != null }">
+			<div class="form-control" style="margin-bottom: 15px;">
+				<a href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
+				<span class="pull-right">${vo.filesize }</span>
+			</div>
+		</c:if>
 	</div>
 
 	<div class="container-fluid" id="comments"
