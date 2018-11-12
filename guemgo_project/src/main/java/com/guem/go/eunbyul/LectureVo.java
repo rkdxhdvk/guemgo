@@ -8,12 +8,12 @@ public class LectureVo {
 	public String gender;
 	public String day;
 	public String time;
-	public int gonum;
+	public int go_num;
 	
 	public LectureVo() {}
 
 	public LectureVo(int lectureNum, String lectureName, String region1, String region2, String gender, String day,
-			String time, int gonum) {
+			String time, int go_num) {
 		super();
 		this.lectureNum = lectureNum;
 		this.lectureName = lectureName;
@@ -22,7 +22,7 @@ public class LectureVo {
 		this.gender = gender;
 		this.day = day;
 		this.time = time;
-		this.gonum = gonum;
+		this.go_num = go_num;
 	}
 
 	public int getLectureNum() {
@@ -81,12 +81,12 @@ public class LectureVo {
 		this.time = time;
 	}
 
-	public int getGonum() {
-		return gonum;
+	public int getGo_num() {
+		return go_num;
 	}
 
-	public void setGonum(int gonum) {
-		this.gonum = gonum;
+	public void setGo_num(int go_num) {
+		this.go_num = go_num;
 	}
 	
 	
