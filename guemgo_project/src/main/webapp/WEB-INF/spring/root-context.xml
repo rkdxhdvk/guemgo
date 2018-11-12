@@ -19,7 +19,26 @@
    		<property name="username" value="final"/>
    		<property name="password" value="qwer1234"/>
    </bean>
- 
+  <!-- email -->
+    <bean id="mailsender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.naver.com"/>
+		<property name="port" value="587"/>
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="username" value="92eunbyul"/>
+		<property name="password" value="tjdmsquf2"/>
+		<property name="javaMailProperties">
+			<props>
+			<!-- 인증바다서 이메일보내기 -->
+			<prop key="mail.smtp.auth">true</prop>
+			<!-- smtp통신을 ssl암호화해서 보내기 -->
+			<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean class="com.guem.go.eunbyul.SimpleMailSender">
+		<property name="mailSender" ref="mailsender"/>
+	</bean>
 	<!-- 내부망에서 DB 사용 -->
 	<!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

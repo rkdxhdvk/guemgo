@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guem.go.woohyun.GosuVo;
+
 @Service
 public class SurveyService {
 	@Autowired private SurveyDao dao;
@@ -35,5 +37,8 @@ public class SurveyService {
 	}
 	public LectureVo selectlec(int num){
 		return dao.selectlec(num);
+	}
+	public GosuVo selectgosu(int go_num) {
+		return dao.selectgosu(go_num);
 	}
 }

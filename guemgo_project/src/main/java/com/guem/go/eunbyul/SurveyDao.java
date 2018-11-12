@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.guem.go.woohyun.GosuVo;
+
 @Repository
 public class SurveyDao {
 	@Autowired
@@ -44,5 +46,9 @@ public class SurveyDao {
 
 	public LectureVo selectlec(int lectureNum) {
 		return sqlSession.selectOne(NAMESPACE + ".selectlec" ,lectureNum);
+	}
+	
+	public GosuVo selectgosu(int go_num) {
+		return sqlSession.selectOne(NAMESPACE + ".selectgosu", go_num);
 	}
 }

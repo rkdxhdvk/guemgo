@@ -10,12 +10,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.guem.go.woohyun.GosuVo;
+
 
 
 @Controller
 public class SurveyController {
+	@Autowired private SimpleMailSender sender;
 	@Autowired
 	private SurveyService surveyservice;
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
@@ -113,51 +116,65 @@ public class SurveyController {
 			int a=0;
 			int b=0;
 			boolean d=false;
-			for (int i = 0; i < leclist.size(); i++) {
-				System.out.println(leclist.get(i).getLectureName());
-				System.out.println(leclist.get(i).getLectureNum());
-				System.out.println(leclist.get(i).getGo_num());
-				System.out.println("for문시작");
-				String lecday = leclist.get(i).getDay();
-				for (int j = 0; j < day.length; j++) {
-					System.out.println("for문시작2");
-					if (lecday.contains(day[j])) {//강의의 요일에 요청한 요일이 있는지 체크하기
-						System.out.println("a");
-						a++;
-					} else {
-						b++;
-						System.out.println("b");
-					}
-					if(a>=b) {//맞는 요일이 반이상이면 다음 조건 검사
-						System.out.println("a>b");
-			////////////2. time 시간대 비교
-						System.out.println(ans[4]);
-						System.out.println(leclist.get(i).getTime());
-						if(ans[4].equals(leclist.get(i).getTime())){//시간대 검사 맞으면 다음조건실행
-							System.out.println("시간대비교");
-			////////////3. region1 지역비교
-							if(ans[8].equals(leclist.get(i).getRegion1())) {
-								LectureVo lvo2=leclist.get(i);
-								matching.add(lvo2);
-								System.out.println("머가나오니?"+leclist.get(i));
-								System.out.println("12345"+leclist.get(i).getLectureName()+leclist.get(i).getGo_num()+leclist.get(i).getRegion1());
-								break;
-							}
-							
-						}
-						
+		for (int i = 0; i < leclist.size(); i++) {
+			System.out.println(leclist.get(i).getLectureName());
+			System.out.println(leclist.get(i).getLectureNum());
+			System.out.println(leclist.get(i).getGo_num());
+			System.out.println("for문시작");
+			String lecday = leclist.get(i).getDay();
+			System.out.println("강의요일" + lecday);
+			
+			for (int j = 1; j < day.length; j++) {
+				System.out.println("학생이 가능한 요일:" + day[j]);
+				if (lecday.contains(day[j])) {// 강의의 요일에 요청한 요일이 있는지 체크하기
+					System.out.println("a" + day[j] + "가들었음");
+					a++;
+				} else if (!lecday.contains(day[j])) {
+					b++;
+					System.out.println("b");
+				}
+			}
+			
+			if (a >= b) {// 맞는 요일이 반이상이면 다음 조건 검사
+				System.out.println("a>b");
+				//////////// 2. time 시간대 비교
+				System.out.println(ans[4]);
+				System.out.println(leclist.get(i).getTime());
+				if (ans[4].equals(leclist.get(i).getTime())) {// 시간대 검사 맞으면 다음조건실행
+					System.out.println("시간대매칭성공");
+					//////////// 3. region1 지역비교
+					if (ans[8].equals(leclist.get(i).getRegion1())) {
+						LectureVo lvo2 = leclist.get(i);
+						matching.add(lvo2); // 맞는 사람들 matching에 임시로 저장해두기
+						break;
 					}
 				}
-				
 			}
-			for(int i=0; i<matching.size(); i++) {
-				System.out.println(matching.get(i).getLectureName()+matching.get(i).getGo_num());
+		}
+		
+		for (int i = 0; i < matching.size(); i++) {
+			 //누가누가 담겨있나 확인하기
+			System.out.println(matching.get(i).getLectureName() + matching.get(i).getGo_num());
+			//matching에 있는 gosunum을 가져와서 email을 뽑아내기
+			int gosunum=matching.get(i).getGo_num();
+			GosuVo gosu=surveyservice.selectgosu(gosunum);
+			String title=area +" 레슨 요청서가 도착했습니다.";
+			System.out.println(gosu.getEmail());
+			try {
+				sender.sendMail(title, "안\n녕2", "92eunbyul@naver.com", "92eunbyul@naver.com");
+	
+			}catch(Exception e) {
+			System.out.println(e.getMessage());
 			}
-			
-			 
-			
+		}
 			
 			
+		
+		
+		
+		
+		
+		//email을 찾아와서 요청서 정보들을 해당 아이디에게 email보내기
 			
 
 		
