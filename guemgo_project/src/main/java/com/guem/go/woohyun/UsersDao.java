@@ -1,5 +1,6 @@
 package com.guem.go.woohyun;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -43,4 +44,8 @@ public class UsersDao {
 		return sqlSession.update(NAMESPACE + ".update",vo); 
 	}
 	
+	//회원 포인트 수정
+	public int pointUpdate(HashMap<String, Object> map) {
+		return sqlSession.update(NAMESPACE + ".pointUpdate", map);
+	}
 }

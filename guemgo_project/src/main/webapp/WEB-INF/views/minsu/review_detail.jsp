@@ -23,8 +23,10 @@
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
+		<button type="submit" class="btn btn-primary" style="float: right;  margin-right: 10px;"
+				onclick="location='<c:url value='/reList'/>'">목록</button>
 		<c:if test="${sessionScope.email==vo.email }">
-			<button type="submit" class="btn btn-primary" style="float: right;"
+			<button type="submit" class="btn btn-primary" style="float: right; margin-right: 10px;"
 				onclick="location='<c:url value='/reDelete?reviewNum=${vo.reviewNum }'/>'">삭제</button>
 			<form action="<c:url value='/reUpdate'/>" method="post">
 				<input type="hidden" name="reviewNum" value="${vo.reviewNum }"> <input
@@ -40,9 +42,27 @@
 
 	<div class="container-fluid"
 		style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
-		<div class="panel-heading">${vo.email }
+		<div class="panel-heading">
+			<c:choose>
+				<c:when test="${vo.star==5 }">
+					평점: ★★★★★
+				</c:when>
+				<c:when test="${vo.star==4 }">
+					평점: ★★★★
+				</c:when>
+				<c:when test="${vo.star==3 }">
+					평점: ★★★
+				</c:when>
+				<c:when test="${vo.star==2 }">
+					평점: ★★
+				</c:when>
+				<c:when test="${vo.star==1 }">
+					평점: ★
+				</c:when>
+				
+			</c:choose>
 			<div class="pull-right">
-				조회수:${vo.hit } 작성일:${vo.regdate }
+				작성자:${vo.email } 조회수:${vo.hit } 작성일:${vo.regdate }
 
 			</div>
 		<hr style="border: solid 1px #337ab7;">
@@ -85,18 +105,16 @@
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
-		<div class="panel-heading">글쓴이    {writer}</div>
+		<div class="panel-heading">글쓴이${sessionScope.email}    {writer}</div>
 		<div class="panel-body">{content}
+		{if sessionScope.email== {writer} }
 		<button type="button" class="btn btn-primary pull-right"
 						onclick="deleteComment({commentNum})">삭제</button>
 	</div>
 	</div>
-</script>
+	</script>
 
-	<script type="text/javascript">
-
-	$(document).ready(function(){
-	});
+<script type="text/javascript">
 
 	function getList() {
 		$.ajax({
@@ -104,10 +122,12 @@
 			dataType:'json',
 			success:function(data){
 				$("#commentList").empty();
+				///ajax????????????????????????????//////////
 				var html = document.querySelector("#template-list-item").innerHTML;
 				var resultHTML = "";
 				$(data).each(function(i, json){
-					resultHTML += html.replace("{writer}", json.writer)
+					resultHTML += html
+										.replace("{writer}", json.writer)
 										.replace("{content}", json.content)
 										.replace("{commentNum}", json.commentNum);
 				});
@@ -119,7 +139,7 @@
 	
 	function addComment(){
 		if($("#comment").val() == ""){
-			alert('공백');
+			alert('댓글 입력');
 			return;
 		}
 		var reviewNum = ${vo.reviewNum };
@@ -135,6 +155,7 @@
 		$('#comment').focus();
 	}
 	
+	//갑자기 ajax로 안됨
 	function deleteComment(commentNum){
 		var reviewNum = ${vo.reviewNum};
 		$.getJSON("<c:url value='/commDelete'/>",{
@@ -142,10 +163,8 @@
 			"commentNum" : commentNum
 		}, function(data){
 			getList();
-		}
-		)
+		});
 	}
-	
 	
 </script>
 
