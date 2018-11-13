@@ -32,6 +32,8 @@
 			<prop key="mail.smtp.auth">true</prop>
 			<!-- smtp통신을 ssl암호화해서 보내기 -->
 			<prop key="mail.smtp.starttls.enable">true</prop>
+			<prop key="mail.transport.protocol">smtp</prop>
+			<prop key="mail.debug">true</prop>
 			</props>
 		</property>
 	</bean>
