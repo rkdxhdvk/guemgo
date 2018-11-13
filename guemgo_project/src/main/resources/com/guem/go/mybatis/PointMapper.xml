@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	2018-11-13	윤우현 파일 생성
+ -->
+ 
+<mapper namespace="com.guem.go.mybatis.PointMapper">
+
+	<!-- 포인트 이력 조회 -->
+	<select id="list" resultType="com.guem.go.woohyun.PointVo" parameterType="String">
+		select num
+		     , email
+		     , to_char(pointdate,'yyyy-MM-dd hh24:mi:ss') as pointdate 
+		     , decode(division, '1', '충전', '0', '사용') as division_name
+		     , dpoint
+		     , lpoint
+		     , detail
+		  from point
+		 where email=#{email} 
+		 order by num desc
+	</select>
+
+</mapper>

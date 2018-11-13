@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 
 	2018-11-12	윤우현 파일 생성
  -->
@@ -35,7 +36,7 @@
 카드비밀번호 앞 2자리<input type="text"><br>
 <input type="submit" name="payment" value="결제">
 
-<a href="<c:url value='/'/>">홈으로
+<p><a href="<c:url value='/'/>">홈으로
 </table>
 </body>
 </html>
