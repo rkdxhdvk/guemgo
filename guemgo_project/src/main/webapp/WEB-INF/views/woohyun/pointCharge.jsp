@@ -13,7 +13,7 @@
 <body>
 <h1>포인트 충전</h1>
 <table border=3 align="center">
-	xxx님의 포인트 : ??? 
+	${vo.email } 님의 포인트 : ${vo.point } 점
 </table>
 <table border=3 align="center">
 	<tr>
