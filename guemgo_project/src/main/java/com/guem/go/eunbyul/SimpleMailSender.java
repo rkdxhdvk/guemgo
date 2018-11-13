@@ -10,12 +10,27 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+
 public class SimpleMailSender {
 	private JavaMailSender mailSender;//메일전송기능의 객체
 	private MimeMessage message;
 	private MimeMessageHelper messageHelper;
 	
 	
+	
+
+	public void setMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+
+	public void setMessage(MimeMessage message) {
+		this.message = message;
+	}
+
+	public void setMessageHelper(MimeMessageHelper messageHelper) {
+		this.messageHelper = messageHelper;
+	}
+
 	public SimpleMailSender(JavaMailSender mailSender) throws MessagingException {
 		this.mailSender = mailSender;
 		message=this.mailSender.createMimeMessage();

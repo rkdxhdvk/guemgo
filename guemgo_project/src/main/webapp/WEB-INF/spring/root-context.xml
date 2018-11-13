@@ -35,7 +35,7 @@
 			</props>
 		</property>
 	</bean>
-
+	
 	<!-- 내부망에서 DB 사용 -->
 	<!-- 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
