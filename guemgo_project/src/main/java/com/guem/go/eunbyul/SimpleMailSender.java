@@ -17,7 +17,6 @@ public class SimpleMailSender {
 	private MimeMessageHelper messageHelper;
 	
 	
-	
 
 	public void setMailSender(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
