@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.guem.go.woohyun.UsersService;
 
 @Controller
 public class ReviewController {
@@ -21,6 +22,8 @@ public class ReviewController {
 	private ReviewService reService;
 	@Autowired
 	private Re_commentService coService;
+	@Autowired
+	private UsersService uService;
 	
 	@RequestMapping(value="/reInsert", method=RequestMethod.GET)
 	public String insert() {
@@ -30,6 +33,10 @@ public class ReviewController {
 	@RequestMapping(value = "/reInsert", method = RequestMethod.POST)
 	public String insert(ReviewVo vo) {
 		reService.insert(vo);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("email", vo.getOther());
+		map.put("point", vo.getStar()*10);
+		uService.poitnUpdate(map);
 		return "redirect:/reList";
 	}
 	
