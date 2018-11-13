@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
-		<p class="text-left" style="font-size: x-large;">계층형 게시판</p>
+		<p class="text-left" style="font-size: x-large;">QnA 게시판</p>
 		<button style="float: right;" type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#myModal">글쓰기</button>
 	</div>
@@ -47,6 +47,14 @@
 								placeholder="title" required>
 						</div>
 						<div class="form-group">
+							<select class="form-control" name="sort">
+								<option value="music">음악</option>
+								<option value="art">미술</option>
+								<option value="cook">요리</option>
+								<option value="design">디자인</option>
+							</select>
+						</div>
+						<div class="form-group">
 							<textarea class="form-control" name="content"
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
@@ -63,14 +71,16 @@
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<div class="btn-group btn-group">
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/gboard/list?sort=hit'/>"'>조회수</button>
+				onclick='location.href="<c:url value='/qboard/list?sort=music'/>"'>음악</button>
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/gboard/list?sort=recomm'/>"'>추천수</button>
+				onclick='location.href="<c:url value='/qboard/list?sort=art'/>"'>미술</button>
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/gboard/list?sort=comments'/>"'>코멘트수</button>
+				onclick='location.href="<c:url value='/qboard/list?sort=cook'/>"'>요리</button>
+			<button type="button" class="btn btn-primary"
+				onclick='location.href="<c:url value='/qboard/list?sort=design'/>"'>디자인</button>
 		</div>
 
-		<form method="post" action="<c:url value='/gboard/list'/>"
+		<form method="post" action="<c:url value='/qboard/list'/>"
 			style="display: inline-flex; float: right;">
 			<div class="input-group">
 				<select class="form-control" name="field">
@@ -96,35 +106,76 @@
 
 	<div class="container-fluid">
 		<div class="table-responsive">
-			<table class="table table-bordered table-striped table-hover">
+			<table class="table table-bordered table-striped table-hover"
+				id="tableList">
 				<thead>
 					<tr>
 						<th>#</th>
+						<th>sort</th>
 						<th>title</th>
-						<th>email</th>
 						<th>hit</th>
+						<th>email</th>
 						<th>regdate</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="vo" items="${list }">
+					<c:forEach var="vo" items="${list }" varStatus="status">
 						<tr>
-							<td>${vo.num }</td>
-							<td><c:if test="${vo.lev>0 }">
-									<c:forEach var="i" begin="1" end="${vo.lev }">
-								&nbsp;&nbsp;
-							</c:forEach>
-							[re]
-						</c:if> <a href="<c:url value='/qboard/detail?num=${vo.num }'/>">${vo.title }</a></td>
-							<td>${vo.email }</td>
+							<td>${vo.qna_num }</td>
+							<td><c:choose>
+									<c:when test="${vo.sort == 'music' }">
+										<i class="fas fa-music"></i>
+									</c:when>
+									<c:when test="${vo.sort == 'art' }">
+										<i class="fas fa-palette"></i>
+									</c:when>
+									<c:when test="${vo.sort == 'cook' }">
+										<i class="fas fa-concierge-bell"></i>
+									</c:when>
+									<c:otherwise>
+										<i class="fab fa-apple"></i>
+									</c:otherwise>
+								</c:choose></td>
+							<td><c:choose>
+									<c:when test="${vo.flag != 0 }">
+											<div class="dropdown">
+										<a href="<c:url value='/qboard/detail?qna_num=${vo.qna_num }'/>">${vo.title }</a>
+									<span class="dropdown-toggle" data-toggle="dropdown"
+										style="cursor: pointer;" onclick="select(${status.count},${vo.grp })"> 답변 </span>
+									<ul class="dropdown-menu reply">
+										<li><a href="#">HTML</a></li>
+										<li><a href="#">CSS</a></li>
+										<li><a href="#">JavaScript</a></li>
+									</ul>
+								</div>
+									</c:when>
+									<c:otherwise>
+										<a href="<c:url value='/qboard/detail?qna_num=${vo.qna_num }'/>">${vo.title }</a>
+									</c:otherwise>
+								</c:choose></td>
 							<td>${vo.hit }</td>
+							<td><div class="dropdown">
+									<span class="dropdown-toggle" data-toggle="dropdown"
+										style="cursor: pointer;"> ${vo.email } </span>
+									<ul class="dropdown-menu">
+										<li><a href="#">HTML</a></li>
+										<li><a href="#">CSS</a></li>
+										<li><a href="#">JavaScript</a></li>
+									</ul>
+								</div></td>
 							<td>${vo.regdate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
+		
+		<c:if test="${vo.lev>0 }">
+			<c:forEach var="i" begin="1" end="${vo.lev }">
+										&nbsp;&nbsp;
+									</c:forEach>
+									[re]
+								</c:if>
 
 		<div class="text-center">
 			<ul class="pagination">
@@ -159,7 +210,6 @@
 					<c:when test="${pu.endPageNum < pu.totalPageCount }">
 						<li><a
 							href="<c:url value='/qboard/list?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
-								<i class="fa fa-chevron-right"></i>
 						</a></li>
 					</c:when>
 					<c:otherwise>
@@ -171,5 +221,75 @@
 		</div>
 	</div>
 
+	<script id="template-list-item" type="text/template">
+	<li><a href="<c:url value='/qboard/detail?qna_num={qna_num}'/>">
+		<c:if test="{lev > 1}">
+			&ensp;&ensp;
+		</c:if>
+		{title}&ensp;&ensp;{email}&ensp;&ensp;{regdate}</a>
+	</li>
+</script>
 </body>
+<script type="text/javascript">
+	function select(index,grp) {
+		console.log(index);
+			$.ajax({
+				url:"<c:url value='/qboard/select?grp="+grp+"'/>",
+				dataType:'json',
+				success:function(data){
+					$(".reply").empty();
+					var html = document.querySelector("#template-list-item").innerHTML;
+					var resultHTML = "";
+					$(data).each(function(i, json){
+						resultHTML += html.replace("{title}", json.title)
+										  .replace("{qna_num}", json.qna_num)
+										  .replace("{email}", json.email)
+										  .replace("{regdate}", json.regdate)
+										  .replace("{lev}", json.lev);
+					});
+					$(".reply").append(resultHTML);
+				}
+			});
+		}
+
+	// function remove(){
+	// 	window.location.href = '/go/qboard/list';
+	// }
+
+	function moreList() {
+		$
+				.ajax({
+					url : "<c:url value='/qboard/moreList'/>",
+					dataType : 'json',
+					success : function(data) {
+						var html = document
+								.querySelector("#template-list-item").innerHTML;
+						var resultHTML = "";
+						$(data).each(
+								function(i, json) {
+									resultHTML += html.replace("{qna_num}",
+											json.qna_num).replace("{title}",
+											json.title).replace("{email}",
+											json.email).replace("{hit}",
+											json.hit).replace("{regdate}",
+											json.regdate);
+								});
+						resultHTML += "<tr id='addbtn'><td colspan='5'><div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>  </td></tr>";
+						$('#addbtn').remove();
+						$(resultHTML).appendTo("#tableList");
+					}
+				});
+	}
+</script>
+
 </html>
+
+
+
+
+
+
+
+
+
+

@@ -15,8 +15,8 @@ public class QboardService {
 		return qboardDao.getMaxNum();
 	}
 	
-	public int getCount() {
-		return qboardDao.getCount();
+	public int getCount(Map<String, Object> map) {
+		return qboardDao.getCount(map);
 	}
 	
 	public int insert(QboardVo qboardVo) {
@@ -31,24 +31,32 @@ public class QboardService {
 		return qboardDao.list(map);
 	}
 	
-	public QboardVo detail(int num) {
-		return qboardDao.detail(num);
+	public QboardVo detail(int qna_num) {
+		return qboardDao.detail(qna_num);
 	}
 	
 	public int update(QboardVo qboardVo) {
 		return qboardDao.update(qboardVo);
 	}
 	
-	public int addHit(int num) {
-		return qboardDao.addHit(num);
+	public int addHit(int qna_num) {
+		return qboardDao.addHit(qna_num);
 	}
 	
-	public int delete(int num) {
-		return qboardDao.delete(num);
+	public int delete(int qna_num) {
+		return qboardDao.delete(qna_num);
 	}
 	
 	public int deleteGrp(int grp) {
 		return qboardDao.deleteGrp(grp);
+	}
+	
+	public int addFlag(int grp) {
+		return qboardDao.addFlag(grp);
+	}
+	
+	public List<QboardVo> select(int grp){
+		return qboardDao.select(grp);
 	}
 }
 

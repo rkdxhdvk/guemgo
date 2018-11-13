@@ -3,43 +3,76 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.QnaMapper">
-	<select id="getMaxNum" resultType="int">
-		select NVL(max(num),0) maxnum from qna_BOARD
+	<sql id="search">
+		<if test="field!=null and field!=''">
+			and ${field} like '%'|| #{keyword} ||'%'
+		</if>
+	</sql>
+	<select id="getMaxNum" resultType="int" parameterType="map">
+		select NVL(max(qna_num),0) maxnum
+		from qna_BOARD
+		<include refid="search"/>
 	</select>
-	<select id="getCount" resultType="int">
-		select NVL(count(num),0) cnt from qna_BOARD
+	<select id="getCount" resultType="int" parameterType="map">
+		select NVL(count(qna_num),0) cnt
+		from qna_BOARD
+		<include refid="search"/>
 	</select>
 	<insert id="insert" parameterType="com.guem.go.kidong.QboardVo">
-		insert into qna_BOARD values(#{num},#{title},#{content},sysdate,#{email},#{grp},#{lev},#{step},0)
+		insert into qna_BOARD
+		values(#{qna_num},#{title},#{content},sysdate,#{email},#{grp},#{lev},#{step},0,#{sort},0)
 	</insert>
 	<update id="insertReply" parameterType="map">
 		<![CDATA[update qna_BOARD set step=step+1 where grp=#{grp} and step>#{step}]]>
 	</update>
-	<select id="list" parameterType="map" resultType="com.guem.go.kidong.QboardVo">
+	<select id="list" parameterType="map"
+		resultType="com.guem.go.kidong.QboardVo">
 		select * from
 		(
-			select aa.*,rownum rnum from
-			(
-				select * from qna_BOARD
-				ORDER BY grp DESC,STEP ASC
-			)aa
+		select aa.*,rownum rnum from
+		(
+		select * from qna_BOARD
+		where lev = 0
+		<include refid="search" />
+		<if test="sort!=null and sort!=''">
+			and sort = #{sort}
+		</if>
+		ORDER BY grp DESC,STEP ASC
+		)aa
 		)
 		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
 	</select>
-	<select id="detail" parameterType="int" resultType="com.guem.go.kidong.QboardVo">
-		select * from qna_BOARD where num=#{num}
+
+	<select id="select" resultType="com.guem.go.kidong.QboardVo" parameterType="int">
+		select * from qna_BOARD where grp = #{grp} and lev > 0
+		ORDER BY grp DESC,STEP ASC
+	</select>
+
+	<select id="detail" parameterType="int"
+		resultType="com.guem.go.kidong.QboardVo">
+		select * from qna_BOARD where qna_num=#{qna_num}
 	</select>
 	<update id="update" parameterType="com.guem.go.kidong.QboardVo">
-		update qna_BOARD set title=#{title}, content=#{content}
-		where num=#{num}
+		update qna_BOARD set
+		title=#{title}, content=#{content}
+		where qna_num=#{qna_num}
 	</update>
 	<update id="addHit" parameterType="int">
-		update qna_board set hit = hit + 1 where num = #{num}
+		update qna_board set hit = hit
+		+ 1 where qna_num = #{qna_num}
 	</update>
 	<delete id="delete" parameterType="int">
-		delete from qna_board where num = #{num}
+		delete from qna_board where
+		qna_num = #{qna_num}
 	</delete>
+	
 	<delete id="deleteGrp" parameterType="int">
-		delete from qna_board where grp = #{grp}
+		delete from qna_board where
+		grp = #{grp}
 	</delete>
+	
+	<update id="addFlag" parameterType="int">
+		update qna_board set flag = 1 where grp=#{grp}
+	</update>
+	
 </mapper>

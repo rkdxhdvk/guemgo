@@ -78,17 +78,28 @@
 		var="time" />
 	<div class="container-fluid"
 		style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
-		<div class="panel-heading">${vo.email }
-			<div class="pull-right">
-				&ensp;<i class='fas fa-eye'></i> ${vo.hit }
+		<div class="panel-heading">
+			<div class="dropdown">
+				<span class="dropdown-toggle" data-toggle="dropdown"
+					style="cursor: pointer;"> ${vo.email } </span>
+
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+				<span class="time-right">${time }</span>
 			</div>
 
 			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
 			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 
 			<hr style="border: solid 1px #337ab7;">
+			<div class="pull-right">
+				&ensp;<i class='fas fa-eye'></i> ${vo.hit }
+			</div>
 			<div>
-				<strong>${vo.title }</strong> <span class="time-right">${time }</span>
+				<strong>${vo.title }</strong>
 				<hr style="border: solid 1px #337ab7;">
 
 			</div>
@@ -123,6 +134,7 @@
 							type="hidden" name="lev" value="${vo.lev }"> <input
 							type="hidden" name="step" value="${vo.step }"> <input
 							type="hidden" name="email" value="${sessionScope.email }">
+						<input type="hidden" name="sort" value="${vo.sort }">
 						<h3 style="margin-bottom: 25px;">Article Form</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="title"

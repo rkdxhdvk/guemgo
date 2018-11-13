@@ -56,4 +56,19 @@
 	<delete id="delete" parameterType="int">
 		delete from gboard where num = #{num}
 	</delete>
+	<select id="prev" parameterType="int" resultType="com.guem.go.kidong.GboardVo">
+		select * from
+		(
+		    select * from gboard 
+		    <![CDATA[ where num<#{num} order by num desc ]]>
+		)where rownum=1
+	</select>
+	
+	<select id="next" parameterType="int" resultType="com.guem.go.kidong.GboardVo">
+		select * from
+		(
+		    select * from gboard 
+		    <![CDATA[ where num>#{num} order by num asc ]]>
+		)where rownum=1
+	</select>
 </mapper>

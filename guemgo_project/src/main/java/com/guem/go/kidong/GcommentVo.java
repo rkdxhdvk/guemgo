@@ -7,15 +7,26 @@ public class GcommentVo {
 	private String content;
 	private int bnum;
 	private Date regdate;
-	
-	public GcommentVo() {}
+	private String email;
 
-	public GcommentVo(int cnum, String content, int bnum, Date regdate) {
+	public GcommentVo() {
+	}
+
+	public GcommentVo(int cnum, String content, int bnum, Date regdate, String email) {
 		super();
 		this.cnum = cnum;
 		this.content = content;
 		this.bnum = bnum;
 		this.regdate = regdate;
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getCnum() {
@@ -49,7 +60,5 @@ public class GcommentVo {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
-	
-	
+
 }

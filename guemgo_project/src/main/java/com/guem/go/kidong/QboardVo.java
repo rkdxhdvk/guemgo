@@ -3,7 +3,7 @@ package com.guem.go.kidong;
 import java.sql.Date;
 
 public class QboardVo {
-	private int num;
+	private int qna_num;
 	private String title;
 	private String content;
 	private Date regdate;
@@ -12,14 +12,16 @@ public class QboardVo {
 	private int lev;
 	private int step;
 	private int hit;
+	private String sort;
+	private int flag;
 
 	public QboardVo() {
 	}
 
-	public QboardVo(int num, String title, String content, Date regdate, String email, int grp, int lev, int step,
-			int hit) {
+	public QboardVo(int qna_num, String title, String content, Date regdate, String email, int grp, int lev, int step,
+			int hit, String sort, int flag) {
 		super();
-		this.num = num;
+		this.qna_num = qna_num;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
@@ -28,6 +30,24 @@ public class QboardVo {
 		this.lev = lev;
 		this.step = step;
 		this.hit = hit;
+		this.sort = sort;
+		this.flag = flag;
+	}
+
+	public int getFlag() {
+		return flag;
+	}
+
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	public int getHit() {
@@ -38,12 +58,12 @@ public class QboardVo {
 		this.hit = hit;
 	}
 
-	public int getNum() {
-		return num;
+	public int getQna_num() {
+		return qna_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setQna_num(int qna_num) {
+		this.qna_num = qna_num;
 	}
 
 	public String getTitle() {

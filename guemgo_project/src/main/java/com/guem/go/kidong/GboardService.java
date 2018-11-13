@@ -49,6 +49,14 @@ public class GboardService {
 	public int delete(int num) {
 		return dao.delete(num);
 	}
+	
+	public GboardVo next(int num) {
+		return dao.next(num);
+	}
+	
+	public GboardVo prev(int num) {
+		return dao.prev(num);
+	}
 }
 
 

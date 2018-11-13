@@ -31,11 +31,12 @@
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
-		<button type="submit" class="btn btn-primary" style="float: right;"
-			onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">삭제</button>
-		<button style="float: right; margin-right: 10px;" type="button"
-			class="btn btn-primary" data-toggle="modal" data-target="#myModal">수정</button>
-
+		<c:if test="${sessionScope.email == vo.email }">
+			<button type="submit" class="btn btn-primary" style="float: right;"
+				onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">삭제</button>
+			<button style="float: right; margin-right: 10px;" type="button"
+				class="btn btn-primary" data-toggle="modal" data-target="#myModal">수정</button>
+		</c:if>
 	</div>
 
 	<div class="modal fade" id="myModal" role="dialog">
@@ -53,7 +54,7 @@
 						method="post" enctype="multipart/form-data"
 						onsubmit="return submitAction()">
 						<input type="hidden" name="num" value="${vo.num }"> <input
-							type="hidden" name="email" value="${sessionScope.email }">
+							type="hidden" name="email" value="${vo.email }">
 						<h3 style="margin-bottom: 25px;">Article Form</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="title"
@@ -79,38 +80,56 @@
 		</div>
 	</div>
 
-
 	<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"
 		var="time" />
 	<div class="container-fluid"
 		style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
-		<div class="panel-heading">${vo.email }
+		<div class="panel-heading">
+			<div class="dropdown">
+				<span class="dropdown-toggle" data-toggle="dropdown"
+					style="cursor: pointer;"> ${vo.email } </span>
+
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+				<span class="time-right">${time }</span>
+			</div>
+			<hr style="border: solid 1px #337ab7;">
 			<div class="pull-right">
-				<span id="recomm">&ensp;${vo.recomm }</span> &ensp;<i
+				&ensp;<span id="recomm">${vo.recomm }</span> &ensp;<i
 					class='fas fa-eye'></i> ${vo.hit }
 			</div>
-
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 			<c:choose>
-				<c:when test="${isRecomm == 'true' }">
-					<button type="button" class="btn-xs btn-primary pull-right"
-						id="btn3">
-						<i class='fas fa-thumbs-down'></i>
-					</button>
+				<c:when test="${sessionScope.email != null }">
+					<c:choose>
+						<c:when test="${isRecomm == 'true' }">
+							<button type="button" class="btn-xs btn-primary pull-right"
+								id="btn3">
+								<i class='fas fa-thumbs-down'></i>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="btn-xs btn-primary pull-right"
+								id="btn4">
+								<i class='fas fa-thumbs-up'></i>
+							</button>
+						</c:otherwise>
+					</c:choose>
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn-xs btn-primary pull-right"
-						id="btn4">
+						disabled="disabled">
 						<i class='fas fa-thumbs-up'></i>
 					</button>
 				</c:otherwise>
 			</c:choose>
-			<hr style="border: solid 1px #337ab7;">
-
+			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
+			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
 
 			<div>
-				<strong>${vo.title }</strong> <span class="time-right">${time }</span>
+				<strong>${vo.title }</strong>
 				<hr style="border: solid 1px #337ab7;">
 
 			</div>
@@ -126,19 +145,56 @@
 				<br>
 				<br>
 			</c:if>
+
 			<div class="form-group">
 				<textarea class="form-control" name="content" placeholder="content"
 					maxlength="140" rows="7" readonly="readonly">${vo.content }</textarea>
 			</div>
 		</div>
 		<c:if test="${vo.orgfilename != null }">
+
 			<div class="form-control" style="margin-bottom: 15px;">
 				<a href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
-				<span class="pull-right">${vo.filesize }</span>
+				<span class="pull-right">${retFormat }</span>
 			</div>
 		</c:if>
 	</div>
 
+	<c:choose>
+		<c:when test="${prev.num != null }">
+			<div style="float: left;">
+				<button type="submit" class="btn btn-primary"
+					onclick="location='<c:url value='/gboard/detail?num=${prev.num }'/>'">이전글</button>
+				${prev.title }
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div style="float: right;">
+				없음
+				<button type="submit" class="btn btn-primary" disabled="disabled">이전글</button>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
+	<c:choose>
+		<c:when test="${next.num != null }">
+			<div style="float: right;">
+				${next.title }
+				<button type="submit" class="btn btn-primary"
+					onclick="location='<c:url value='/gboard/detail?num=${next.num }'/>'">다음글</button>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div style="float: right;">
+				없음
+				<button type="submit" class="btn btn-primary" disabled="disabled">다음글</button>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
+	<br>
+	<br>
+	<br>
 	<div class="container-fluid" id="comments"
 		style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
 		<div class="panel-heading">
@@ -147,16 +203,28 @@
 		</div>
 
 		<div class="panel-body" id="commentList">
-			<c:forEach var="vo" items="${list }">
-				<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd HH:mm:ss"
-					var="time" />
+			<c:forEach var="comm" items="${list }">
+				<fmt:formatDate value="${comm.regdate }"
+					pattern="yyyy-MM-dd HH:mm:ss" var="time" />
 				<div class="panel panel-primary">
-					<div class="panel-heading">${vo.cnum }</div>
-					<div class="panel-body">${vo.content }
+					<div class="panel-heading">
+						<div class="dropdown">
+							<span class="dropdown-toggle" data-toggle="dropdown"
+								style="cursor: pointer;"> ${comm.email } </span>
+							<ul class="dropdown-menu">
+								<li><a href="#">HTML</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><a href="#">JavaScript</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel-body">${comm.content }
 						<span class="time-right">${time }</span>
 						<hr>
-						<button type="button" class="btn btn-primary pull-right"
-							onclick="deleteComment(${vo.cnum})">삭제</button>
+						<c:if test="${sessionScope.email == comm.email }">
+							<button type="button" class="btn btn-primary pull-right"
+								onclick="deleteComment(${comm.cnum})">삭제</button>
+						</c:if>
 					</div>
 				</div>
 			</c:forEach>
@@ -165,18 +233,36 @@
 		<div>
 			<span id="count">0</span>/<span id="max-count">0</span>
 		</div>
-		<button type="button" class="btn btn-primary pull-right"
-			onclick="addComment()">Send</button>
+		<input type="hidden" value="${sessionScope.email }" id="email">
+		<c:choose>
+			<c:when test="${sessionScope.email != null }">
+				<button type="button" class="btn btn-primary pull-right"
+					onclick="addComment()">Send</button>
+			</c:when>
+			<c:otherwise>
+				<button type="button" class="btn btn-primary pull-right"
+					onclick="needLogin()">Send</button>
+			</c:otherwise>
+		</c:choose>
+
 	</div>
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
-		<div class="panel-heading">{cnum}</div>
+		<div class="panel-heading"><div class="dropdown">
+				<span class="dropdown-toggle" data-toggle="dropdown"
+					style="cursor: pointer;"> {email} </span>
+				<ul class="dropdown-menu">
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JavaScript</a></li>
+				</ul>
+			</div></div>
 		<div class="panel-body">{content}
 		<span class="time-right">{regdate}</span>
 	<hr>
 		<button type="button" class="btn btn-primary pull-right"
-						onclick="deleteComment({cnum1})">삭제</button>
+						onclick="deleteComment({cnum})">삭제</button>
 	</div>
 	</div>
 </script>
@@ -240,8 +326,7 @@
 // 			}
 // 		});
 // 	}
-	$(document).ready(function(){
-	});
+	
 
 	function getList() {
 		$.ajax({
@@ -252,10 +337,10 @@
 				var html = document.querySelector("#template-list-item").innerHTML;
 				var resultHTML = "";
 				$(data).each(function(i, json){
-					resultHTML += html.replace("{cnum}", json.cnum)
+					resultHTML += html.replace("{email}", json.email)
 										.replace("{content}", json.content)
 										.replace("{regdate}", json.regdate)
-										.replace("{cnum1}", json.cnum);
+										.replace("{cnum}", json.cnum);
 					
 // 					var div = document.createElement("div");
 // 					var str = json.cnum + " " + json.content + "<br>";
@@ -275,9 +360,11 @@
 		}
 		var num = ${vo.num };
 		var comment = $("#comment").val();
+		var email = $("#email").val();
 		$.getJSON("<c:url value='/commentInsert'/>", {
 			"num" : num,
-			"comment" : comment
+			"comment" : comment,
+			"email" : email
 		}, function(data){
 			if(data.code){
 				$("#comment").val("");
@@ -348,6 +435,11 @@
 			}
 		}
 		return true;
+	}
+	
+	function needLogin(){
+		alert('로그인');
+		window.location.href = '/go';
 	}
 </script>
 

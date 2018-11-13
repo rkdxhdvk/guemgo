@@ -53,5 +53,21 @@ public class GboardDao {
 	public int delete(int num) {
 		return session.delete(NAMESPACE +"delete", num);
 	}
-
+	
+	public GboardVo next(int num) {
+		return session.selectOne(NAMESPACE + "next", num);
+	}
+	
+	public GboardVo prev(int num) {
+		return session.selectOne(NAMESPACE + "prev", num);
+	}
 }
+
+
+
+
+
+
+
+
+

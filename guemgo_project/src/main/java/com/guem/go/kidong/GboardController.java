@@ -3,6 +3,7 @@ package com.guem.go.kidong;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -69,16 +70,23 @@ public class GboardController {
 		String savefilename = UUID.randomUUID() + "_" + orgfilename;
 
 		try {
-			InputStream is = file1.getInputStream();
-			FileOutputStream fos = new FileOutputStream(uploadpath + "\\" + savefilename);
-			FileCopyUtils.copy(is, fos);
-			is.close();
-			fos.close();
-			System.out.println(uploadpath + "경로에 파일업로드 성공!");
-			long filesize = file1.getSize();
-			GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null,
-					orgfilename, savefilename, filesize);
-			service.insert(gboardVo);
+			if (orgfilename != null && orgfilename != "") {
+				InputStream is = file1.getInputStream();
+				FileOutputStream fos = new FileOutputStream(uploadpath + "\\" + savefilename);
+				FileCopyUtils.copy(is, fos);
+				is.close();
+				fos.close();
+				System.out.println(uploadpath + "경로에 파일업로드 성공!");
+				long filesize = file1.getSize();
+				GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null,
+						orgfilename, savefilename, filesize);
+				service.insert(gboardVo);
+			} else {
+				orgfilename = "";
+				savefilename = "";
+				GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null, orgfilename, savefilename, 0);
+				service.insert(gboardVo);
+			}
 			return "redirect:/gboard/list";
 		} catch (Exception ie) {
 			System.out.println(ie.getMessage());
@@ -91,6 +99,23 @@ public class GboardController {
 		int bnum = num;
 		service.hitUp(num);
 		GboardVo vo = service.detail(num);
+		GboardVo prev = service.prev(num);
+		GboardVo next = service.next(num);
+		
+		String retFormat = "0";
+		long filesize = vo.getFilesize();
+		
+		String[] s = {"bytes", "KB", "MB", "GB", "TB", "PB" };
+		
+		if(filesize != 0 ) {
+			int idx = (int) Math.floor(Math.log(filesize) / Math.log(1024));
+			DecimalFormat df = new DecimalFormat("#,###.##");
+			double ret = ((filesize / Math.pow(1024, Math.floor(idx))));
+			retFormat = df.format(ret) + " " + s[idx];
+		}else {
+			retFormat += " " + s[0];
+		}
+		
 		List<GcommentVo> list = service.commentList(num);
 		for (GcommentVo vo2 : list) {
 			vo2.setContent(vo2.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
@@ -106,6 +131,9 @@ public class GboardController {
 
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
+		model.addAttribute("retFormat", retFormat);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
 		return "kidong/gboard_detail";
 	}
 
@@ -141,8 +169,13 @@ public class GboardController {
 				vo.setSavefilename(savefilename);
 				vo.setFilesize(filesize);
 			} else {
-				vo.setOrgfilename(service.detail(vo.getNum()).getOrgfilename());
-				vo.setSavefilename(service.detail(vo.getNum()).getSavefilename());
+				if (service.detail(vo.getNum()).getOrgfilename() == null) {
+					vo.setOrgfilename("");
+					vo.setSavefilename("");
+				} else {
+					vo.setOrgfilename(service.detail(vo.getNum()).getOrgfilename());
+					vo.setSavefilename(service.detail(vo.getNum()).getSavefilename());
+				}
 				vo.setFilesize(service.detail(vo.getNum()).getFilesize());
 			}
 			service.update(vo);
@@ -157,8 +190,8 @@ public class GboardController {
 
 	@RequestMapping(value = "/commentInsert", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String insert(int num, String comment) {
-		GcommentVo vo = new GcommentVo(0, comment, num, null);
+	public String insert(int num, String comment, String email) {
+		GcommentVo vo = new GcommentVo(0, comment, num, null, email);
 		int n = service3.insert(vo);
 		int comments = service3.getCount(num);
 		Map<String, Object> map = new HashMap<>();
@@ -189,6 +222,7 @@ public class GboardController {
 			json.addProperty("content", vo.getContent());
 			String regdate = transFormat.format(vo.getRegdate());
 			json.addProperty("regdate", regdate);
+			json.addProperty("email", vo.getEmail());
 			arr.add(json);
 		}
 		return arr.toString();
