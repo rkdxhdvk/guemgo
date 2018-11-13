@@ -30,7 +30,7 @@ public class ChangeUserController {
 	public String mypage(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		session.setAttribute("flag", 1);
-		return "index_new";
+		return ".main";
 	}	
 	
 }

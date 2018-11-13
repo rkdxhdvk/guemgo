@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/go/resources/css/custom.css">
 <body>
 <div id="wrap">
 	<div id="header">
@@ -21,5 +23,9 @@
 		<tiles:insertAttribute name="footer"/>
 	</div>
 </div>
+
+<script src="/go/resources/js/jquery.min.js"></script>
+	<script src="/go/resources/js/pooper.js"></script>
+	<script src="/go/resources/js/bootstrap.js"></script>
 </body>
 </html>

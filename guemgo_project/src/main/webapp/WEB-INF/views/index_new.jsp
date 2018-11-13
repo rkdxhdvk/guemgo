@@ -13,10 +13,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>index.jsp</title>
-	<link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/go/resources/css/custom.css">
+	<!-- <link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/go/resources/css/custom.css"> -->
 </head>
 <body>
+
 <%-- <h2>카테고리</h2>
 <ul>
 	<c:forEach var="header" items="${header }">
@@ -24,17 +25,16 @@
 	</c:forEach>
 </ul> --%>
 <!-- //////////////////////////Header////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<%-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
-		<a class="navbar-brand" href="<c:url value='select'/>">스케쥬우울</a>
+		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
 		<a class="navbar-brand" href="<c:url value='/qboard/list'/>">qna게시판</a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>">후기게시판</a>
-		<a class="navbar-brand" href="<c:url value='/event'/>">출석이벤트</a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>">채팅</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			
@@ -116,7 +116,7 @@
 				</li>
 			</ul>
 		</div>
-	</nav>
+	</nav> --%>
 <!-- /////////////////////////////////////////////////////////// -->
 
 	<section class="container"><!-- 본문같은 내용을 담을때 사용 -->
@@ -157,9 +157,9 @@
 	
 	</div>
 	
-	<script src="/go/resources/js/jquery.min.js"></script>
+	<!-- <script src="/go/resources/js/jquery.min.js"></script>
 	<script src="/go/resources/js/pooper.js"></script>
-	<script src="/go/resources/js/bootstrap.js"></script>
+	<script src="/go/resources/js/bootstrap.js"></script> -->
 
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">

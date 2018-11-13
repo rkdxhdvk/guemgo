@@ -30,7 +30,7 @@ public class ChangeGosuController {
 	public String mypage(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		session.setAttribute("flag", 2);
-		return "index_new";
+		return ".main";
 	}	
 	
 }
