@@ -28,18 +28,36 @@
 	$(document).ready(
 			function() {
 				var events = [];
-				$.getJSON("<c:url value='/eventlist'/>",{email:'${sessionScope.email}'}, 
-						function(data) {
-						console.log(data[0].pointdate);
-						if(data != null){
-						$(data).each(function(i,json){
-							events.push({
-	                            start: json.att,
-	                            backgroundColor : 'orange'
-	                        })
+				var flag;
+			 	//var currDate = ${date};
+				<c:forEach items="${list}" var="vo">
+					events.push({
+						title : '출석',
+						start : '${vo.pointdate }',
+						overlap : false
+					})
+					<c:if test="${date == vo.pointdate}">
+						<c:set var="flag" value="1"/>
+					</c:if>
+				</c:forEach>
+				$("#btn").click(function() {
+					<c:if test="${flag != 1}">
+						$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', pointdate:'${date}'}, 
+								function(data) {
+							$('#calendar').fullCalendar('renderEvent',
+									{	
+										title : '출석',
+										start : '${date }',
+										overlap : false
+									});
 						})
-						}
-				
+						alert("출석체크!!!!!!!");
+						location.href="eventlist?email=${sessionScope.email}";
+					</c:if>
+					<c:if test="${flag == 1}">
+						alert("이미 출석햇는");
+					</c:if>
+				});
 				$('#calendar').fullCalendar(
 						{
 							//selectable : true,
@@ -47,13 +65,32 @@
 							header : {
 								left : 'prev,next today',
 								center : 'title',
-								right : 'month,agendaWeek,agendaDay,listMonth'
+								right : 'month'
 							},
-							navLinks : true,
-							businessHours : true,
-							//editable : true,
 							events: events,
-							
+							/* dayClick : function(date, calEvent) {
+								var start = date.format();
+								console.log(start);
+								if(currDate==start){
+								$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', pointdate:start}, 
+										function(data) {
+									$('#calendar').fullCalendar('renderEvent',
+											{	
+												title : '출석',
+												start : start,
+												overlap : false,
+												color : '#ff9f89'
+											}); 
+										});
+								}else{
+									alert("오늘 날짜");
+								}
+								
+							}, */
+							eventClick : function(event, element) {
+								alert(event.id + event.start + " " + event.title);
+								
+							}/* ,
 							eventRender: function(eventObj, $el) {
 						        $el.popover({
 						          title: eventObj.title,
@@ -61,10 +98,10 @@
 						          trigger: 'hover',
 						          placement: 'top',
 						          container: 'body'
-						        });
-							}
+						        }); 
+							} */
 						});
-				});
+				
 				});
 </script>
 <style>
@@ -86,6 +123,7 @@ body {
 </style>
 </head>
 <body>
+	<input type="button" id="btn" value="출석체크">
 	<div id='calendar'></div>
 </body>
 </html>

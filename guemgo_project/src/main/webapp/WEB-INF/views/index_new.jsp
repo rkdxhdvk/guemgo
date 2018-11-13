@@ -34,6 +34,7 @@
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
 		<a class="navbar-brand" href="<c:url value='/qboard/list'/>">qna게시판</a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>">후기게시판</a>
+		<a class="navbar-brand" href="<c:url value='/event'/>">출석이벤트</a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>">채팅</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			

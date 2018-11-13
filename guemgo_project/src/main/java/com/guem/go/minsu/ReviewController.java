@@ -1,16 +1,25 @@
 package com.guem.go.minsu;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -31,13 +40,36 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "/reInsert", method = RequestMethod.POST)
-	public String insert(ReviewVo vo) {
+	public String insert(HttpServletRequest req, MultipartFile img, HttpSession session) {
+		String uploadPath=session.getServletContext().getRealPath("/resources/upload");
+		String orgfilename = img.getOriginalFilename();
+		String savefilename=UUID.randomUUID() + "_" + orgfilename;	
+		System.out.println("ddd");
+		try {
+			InputStream is=img.getInputStream();
+			FileOutputStream fos=new FileOutputStream(uploadPath +"\\" + savefilename);
+			FileCopyUtils.copy(is,fos);
+			is.close();
+			fos.close();
+			System.out.println(uploadPath +"경로에 파일업로드 성공!");
+		String email = req.getParameter("email");
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		int flag = Integer.parseInt(req.getParameter("flag"));
+		int star = Integer.parseInt(req.getParameter("star"));
+		String other = req.getParameter("email");
+		ReviewVo vo = new ReviewVo(0, email, title, content, 0, flag, star, other, null, 0, savefilename);
 		reService.insert(vo);
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("email", vo.getOther());
 		map.put("point", vo.getStar()*10);
 		uService.poitnUpdate(map);
+		System.out.println("ddd");
 		return "redirect:/reList";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "redirect:/reInsert";
+		}
 	}
 	
 	@RequestMapping("/reList")

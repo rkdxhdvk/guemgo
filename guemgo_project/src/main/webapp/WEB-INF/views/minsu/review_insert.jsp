@@ -42,7 +42,7 @@ star>.input.focus{outline:1px dotted #ddd;}
 </style>
 </head>
 <body>
-	<form id="articleForm" action="<c:url value='/reInsert'/>"
+	<form id="articleForm" action="<c:url value='/reInsert'/>" enctype="multipart/form-data"
 		method="post">
 		<input type="hidden" name="email" value="${sessionScope.email }">
 		<input type="hidden" name="flag" value="${sessionScope.flag }">
@@ -67,9 +67,11 @@ star>.input.focus{outline:1px dotted #ddd;}
 	</div>
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/star.js"></script>
+	
 		<!-- 누구에 대해 쓸거니? 어디서 가져올까-->
 		<input type="hidden" name="other" value="min">
 		<!-- ////////////////////////////// -->
+		
 		<div class="form-group">
 			<input type="text" class="form-control" name="title"
 				placeholder="title" required>
@@ -78,7 +80,9 @@ star>.input.focus{outline:1px dotted #ddd;}
 			<textarea class="form-control" name="content" placeholder="content"
 				maxlength="140" rows="7"></textarea>
 		</div>
-		<!-- 누구에 대해 쓸거니? -->
+		<div class="form-group">
+			 <input type="file" name="img">
+		</div>
 		<button type="submit" id="submit" name="submit"
 			class="btn btn-primary pull-right">글등록</button>
 	</form>

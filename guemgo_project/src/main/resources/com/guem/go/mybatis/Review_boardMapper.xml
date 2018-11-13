@@ -10,7 +10,7 @@
 	</sql>
 	
 	<insert id="insert" parameterType="com.guem.go.minsu.ReviewVo">
-		insert into review_board values(review_seq.nextval, #{email}, #{title}, #{content}, 0, #{flag}, #{star}, #{other}, sysdate, 0)
+		insert into review_board values(review_seq.nextval, #{email}, #{title}, #{content}, 0, #{flag}, #{star}, #{other}, sysdate, 0, #{img})
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="com.guem.go.minsu.ReviewVo">

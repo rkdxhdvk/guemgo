@@ -13,11 +13,12 @@ public class ReviewVo {
 	private String other;
 	private Date regdate;
 	private int comments;
+	private String img;
 	
 	public ReviewVo() {}
 
 	public ReviewVo(int reviewNum, String email, String title, String content, int hit, int flag, int star,
-			String other, Date regdate, int comments) {
+			String other, Date regdate, int comments, String img) {
 		super();
 		this.reviewNum = reviewNum;
 		this.email = email;
@@ -29,6 +30,7 @@ public class ReviewVo {
 		this.other = other;
 		this.regdate = regdate;
 		this.comments = comments;
+		this.img = img;
 	}
 
 	public int getReviewNum() {
@@ -109,6 +111,14 @@ public class ReviewVo {
 
 	public void setComments(int comments) {
 		this.comments = comments;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 }

@@ -73,6 +73,7 @@
 			</div>
 		</div>
 		<div class="panel-body">${vo.content }</div>
+		<div class="panel-body"><img src="resources/upload/${vo.img}"></div>
 	</div>
 
 	<div class="container-fluid" id="comments"
