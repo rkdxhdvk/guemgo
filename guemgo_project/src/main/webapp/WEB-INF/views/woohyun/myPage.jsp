@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 
-	2018-01-01	윤우현 파일 생성
+	2018-11-12	윤우현 파일 생성
  -->
 <!DOCTYPE html>
 <html>

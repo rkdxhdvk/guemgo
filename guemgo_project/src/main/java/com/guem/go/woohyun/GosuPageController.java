@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("vo") //ModelAttribute에 담긴 vo를 SessionAttributes에 담기
 public class GosuPageController {
-	@Autowired private UsersService service;
+	@Autowired private GosuService service;
 /*	
 	@ModelAttribute("vo")
 	public MemberVo email(String email) {
