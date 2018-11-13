@@ -27,8 +27,8 @@ public class ClassDao {
 	}
 	
 	//강의목록 list
-	public List<LectureVo> classlist(int gonum) {
-		return sqlSession.selectList(NAMESPACE + ".classlist" , gonum);
+	public List<LectureVo> classlist(int go_num) {
+		return sqlSession.selectList(NAMESPACE + ".classlist" , go_num);
 	}
 	public List<CatemVo> catemlist() {
 		return sqlSession.selectList(NAMESPACE + ".catemlist");

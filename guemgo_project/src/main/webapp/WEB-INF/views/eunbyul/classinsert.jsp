@@ -98,7 +98,7 @@
 								
 								<select name="area1" class="form-control" onchange="selectArea1(this.value,'area2')">
 									<c:forEach var="vo1" items="${list }">
-									<option value="${vo1.m_name }">${vo1.m_name }</option>
+									<option value="${vo1.mname }">${vo1.mname }</option>
 									</c:forEach>
 								</select>
 								

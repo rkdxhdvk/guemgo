@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.ClassMapper">
 	<select id="classinsert" parameterType="com.guem.go.eunbyul.LectureVo">
-		insert into lecture values(lec_seq.nextval, #{lectureName}, #{region1}, #{region2}, #{gender},  #{day}, #{time}, #{gonum})
+		insert into lecture values(lec_seq.nextval, #{lectureName}, #{region1}, #{region2}, #{gender},  #{day}, #{time}, #{go_num})
 	</select>
 	<select id="areainsert" parameterType="com.guem.go.eunbyul.GosuareaVo">
 		insert into gosu_area values(#{area}, lec_seq.currval)
 	</select>
 	
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
-		select * from lecture where go_num= #{gonum}
+		select * from lecture where go_num= #{go_num}
 	</select>
 	<select id="catemlist" resultType="com.guem.go.eunbyul.CatemVo">
 		select * from cate_m
 	</select>
 	<select id="selectcates" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
-		select * from cate_s where m_num=(select m_num from cate_m where m_name=#{name})
+		select * from cate_s where mnum=(select mnum from cate_m where mname=#{name})
 	</select>
 	<select id="cateslist" resultType="com.guem.go.eunbyul.CatesVo" >
 		select * from cate_s

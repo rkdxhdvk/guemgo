@@ -90,14 +90,14 @@
 				<div class="modal-body">
 					<form action="<c:url value='/survey'/>" method="post">
 					<input type="hidden" name="email" value="${sessionScope.email }">
-					<%-- <input type="hidden" name="s_name" value="${area}"> --%>
+					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>${quelist[0].ques }</label><br> 		
+							<label>${quelist[0].question }</label><br> 		
 							<select name="selectarea" class="form-control">
 								<c:forEach var="vo" items="${list }">									
 									<c:set var="area">${area }</c:set>	
-									<option value="${vo.s_name }" <c:if test="${area == vo.s_name}">  selected</c:if> >${vo.s_name }</option> 
+									<option value="${vo.sname }" <c:if test="${area == vo.sname}">  selected</c:if> >${vo.sname }</option> 
 								</c:forEach>
 							</select>
 							</div>
@@ -109,7 +109,7 @@
 						<c:if test="${qq.ques_num != 1 }">
 						<div class="form-row">
 						<div class="form-group col-sm-12">
-							<label>${qq.ques }</label> <br>
+							<label>${qq.question }</label> <br>
 
 						<c:if test="${ss.index==1}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">

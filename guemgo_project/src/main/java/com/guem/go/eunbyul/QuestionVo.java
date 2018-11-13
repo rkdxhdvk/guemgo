@@ -2,14 +2,14 @@ package com.guem.go.eunbyul;
 
 public class QuestionVo {
 	private int ques_num;
-	private String ques;
+	private String question;
 	
 	public QuestionVo() {}
 	
-	public QuestionVo(int ques_num, String ques) {
+	public QuestionVo(int ques_num, String question) {
 		super();
 		this.ques_num = ques_num;
-		this.ques = ques;
+		this.question = question;
 	}
 	public int getQues_num() {
 		return ques_num;
@@ -17,11 +17,11 @@ public class QuestionVo {
 	public void setQues_num(int ques_num) {
 		this.ques_num = ques_num;
 	}
-	public String getQues() {
-		return ques;
+	public String getQuestion() {
+		return question;
 	}
-	public void setQues(String ques) {
-		this.ques = ques;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 	
 

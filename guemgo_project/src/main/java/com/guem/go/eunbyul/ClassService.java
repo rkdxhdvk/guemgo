@@ -18,8 +18,8 @@ public class ClassService {
 		return dao.areainsert(vo);
 	}
 	
-	public List<LectureVo> classlist(int gonum) {
-		return dao.classlist(gonum);
+	public List<LectureVo> classlist(int go_num) {
+		return dao.classlist(go_num);
 	}
 	
 	public List<CatemVo> catemlist(){

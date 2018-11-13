@@ -146,7 +146,7 @@
 				<div class="modal-body">
 					<form action="survey" method="get">
 					<c:forEach var="vo" items="${list }">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.s_name }" onclick="logincheck()">
+						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.sname }" onclick="logincheck()">
 					</c:forEach>
 					</form>
 				

@@ -113,11 +113,11 @@ public class ClassController {
 		sb.append("<?xml version='1.0' encoding='utf-8'?>");
 		sb.append("<myarea>");
 		for(CatesVo vo:list) {
-			System.out.println(vo.getS_name());
+			System.out.println(vo.getSname());
 			sb.append("<area>");
-			sb.append("<snum>"+ vo.getS_num() +"</snum>");
-			sb.append("<sname>"+ vo.getS_name()+"</sname>");
-			sb.append("<mnum>"+ vo.getM_num() +"</mnum>");
+			sb.append("<snum>"+ vo.getSnum() +"</snum>");
+			sb.append("<sname>"+ vo.getSname()+"</sname>");
+			sb.append("<mnum>"+ vo.getMnum() +"</mnum>");
 			sb.append("</area>");
 		}
 		sb.append("</myarea>");

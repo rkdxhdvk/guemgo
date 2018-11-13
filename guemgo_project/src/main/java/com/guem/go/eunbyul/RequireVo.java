@@ -5,17 +5,17 @@ import java.sql.Date;
 public class RequireVo {
 	private int matchnum;
 	private String email;
-	private int m_num;
+	private int mnum;
 	private int begin;
 	private Date matchdate;
 	
 	public RequireVo() {	}	
 
-	public RequireVo(int matchnum, String email, int m_num, int begin, Date matchdate) {
+	public RequireVo(int matchnum, String email, int mnum, int begin, Date matchdate) {
 		super();
 		this.matchnum = matchnum;
 		this.email = email;
-		this.m_num = m_num;
+		this.mnum = mnum;
 		this.begin = begin;
 		this.matchdate=matchdate;
 	}
@@ -37,12 +37,12 @@ public class RequireVo {
 		this.email = email;
 	}
 
-	public int getM_num() {
-		return m_num;
+	public int getMnum() {
+		return mnum;
 	}
 
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
+	public void setMnum(int mnum) {
+		this.mnum = mnum;
 	}
 
 	public int getBegin() {

@@ -25,7 +25,7 @@
 		<property name="port" value="587"/>
 		<property name="defaultEncoding" value="utf-8"/>
 		<property name="username" value="92eunbyul"/>
-		<property name="password" value="tjdmsquf2"/>
+		<property name="password" value="vkdlsjf2"/>
 		<property name="javaMailProperties">
 			<props>
 			<!-- 인증바다서 이메일보내기 -->

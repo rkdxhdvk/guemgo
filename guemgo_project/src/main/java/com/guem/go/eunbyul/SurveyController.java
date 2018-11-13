@@ -31,7 +31,7 @@ public class SurveyController {
 	public String survey(HttpServletRequest request, Model model){
 		String area=request.getParameter("area");
 		CatemVo vo=surveyservice.selectcatem(area);
-		String mname=vo.getM_name();
+		String mname=vo.getMname();
 		List<CatesVo> list=surveyservice.selectcates(mname);
 		System.out.println(area+mname);
 		//질문 찾아서 담기
@@ -84,7 +84,7 @@ public class SurveyController {
 		String email=request.getParameter("email");//로그인 사용자 email
 		//요청서 만들기
 				CatemVo mvo=surveyservice.selectcatem(area);
-				RequireVo vo=new RequireVo(0, email , mvo.m_num, 0 , null);
+				RequireVo vo=new RequireVo(0, email , mvo.mnum, 0 , null);
 				int n=surveyservice.insert(vo);//require테이블에 insert
 
 		//답변 테이블에 값 넣기
@@ -100,16 +100,20 @@ public class SurveyController {
 			List<GosuareaVo> arealist =surveyservice.gosuarealist();//arealist를 받아옴
 			ArrayList<Integer> matchlec= new ArrayList<>();
 			for(int i=0; i<arealist.size(); i++) {//들어온 요청서와 같은 area의 강의 넘버를 받아옴.
+				System.out.println("바교"+arealist.get(i).getLectureNum());
 				if(area.equals(arealist.get(i).getArea())) {
 					matchlec.add(arealist.get(i).getLectureNum());
 				}
+				
 			}
 			
 		//area가 같은 강의넘버를 찾았으니 강의테이블에가서 해당 강의 넘버들의 다른 정보들을 가져오자
 			
 			ArrayList<LectureVo> leclist= new ArrayList<>();
 			for(int i=0; i<matchlec.size(); i++) {
+				System.out.println("이거나오나???"+matchlec.get(i));
 				LectureVo lvo = surveyservice.selectlec(matchlec.get(i));
+				System.out.println("이거나오나"+lvo.getLectureName());
 				leclist.add(lvo);
 			}
 			
@@ -123,7 +127,7 @@ public class SurveyController {
 			int b=0;
 			boolean d=false;
 		for (int i = 0; i < leclist.size(); i++) {
-			System.out.println(leclist.get(i).getLectureName());
+			System.out.println(leclist.get(i).getLectureName()); 
 			System.out.println(leclist.get(i).getLectureNum());
 			System.out.println(leclist.get(i).getGo_num());
 			System.out.println("for문시작");
@@ -157,22 +161,17 @@ public class SurveyController {
 				}
 			}
 		}
-		System.out.println(ans[1]+ans[2]+ans[3]+ans[4]+ans[5]);
+		//System.out.println(ans[1]+ans[2]+ans[3]+ans[4]+ans[5]);
 		for (int i = 0; i < matching.size(); i++) {
 			 //누가누가 담겨있나 확인하기
 			System.out.println(matching.get(i).getLectureName() + matching.get(i).getGo_num());
 			//matching에 있는 gosunum을 가져와서 email을 뽑아내기
 			int gosunum=matching.get(i).getGo_num();
 			GosuVo gosu=surveyservice.selectgosu(gosunum);
-			/*String title=area +" 레슨 요청서가 도착했습니다.";
-			String content="서은별님이 있는 곳 주변에서 새로운 요청이 들어왔어요.\n\n"+"\n무엇을 배우고 싶으신가요?\n"+area+"\n레슨을 받는 목적이 무엇인가요?\n"+
-			ans[0]+"\n경력이 있나요?\n"+ans[1]+"\n학생은 몇 살 입니까?\n"+ans[2]+"\n가능한 요일은 언제인가요?\n"+ans[3]+"\n언제 레슨을 받기를 원하시나요?\n"+ans[4]+"\n희망 레슨 횟수는 어떻게 되시나요?\n"+ans[5]+
-			"\n몇 시간 동안 레슨을 받기 원하시나요?\n"+ans[6]+"\n레슨을 시작하고 싶은 날이 있나요?\n"+ans[7]+"\n레슨을 원하는 지역을 선택해주세요.\n"+ans[8]+region2+"\n고수가 알아야 할 다른 사항이 있나요?\n"+ans[9]+
-			"\n\n요청서 자세히보기\n"+"http://localhost:9090/go/";
-			System.out.println(gosu.getEmail());
+			System.out.println("보낼고수"+gosu.getEmail());
+			/*
 			try {
 				sender.sendMail(title, content, "92eunbyul@naver.com", "92eunbyul@naver.com");
-	
 			}catch(Exception e) {
 			System.out.println(e.getMessage());
 			}*/
@@ -224,7 +223,7 @@ public class SurveyController {
 				.append("</section>").toString());
 			
 			sendMail.setFrom("92eunbyul@naver.com", "금고");
-			sendMail.setTo(gosu.getEmail()+"naver.com");
+			sendMail.setTo("92eunbyul@naver.com");
 			sendMail.send();
 			
 		}
