@@ -58,7 +58,9 @@
 		<div class="table-responsive">
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
+					
 					<th>글번호</th>
+					<th>평점</th>
 					<th>글제목</th>
 					<th>댓글</th>
 					<th>조회수</th>
@@ -68,6 +70,23 @@
 				<tbody>
 					<c:forEach var="vo" items="${list }">
 						<td style="width: 5%">${vo.reviewNum }</td>
+						<c:choose>
+							<c:when test="${vo.star==5 }">
+								<td style="width:5%">★★★★★</td>
+							</c:when>
+							<c:when test="${vo.star==4 }">
+								<td style="width:5%">★★★★</td>
+							</c:when>
+							<c:when test="${vo.star==3 }">
+								<td style="width:5%">★★</td>
+							</c:when>
+							<c:when test="${vo.star==2 }">
+								<td style="width:5%">★</td>
+							</c:when>
+							<c:when test="${vo.star==1 }">
+								<td style="width:5%">☆</td>
+							</c:when>
+						</c:choose>
 						<td style="width: 44%"><a
 							href="<c:url value='/reDetail?reviewNum=${vo.reviewNum }'/>">${vo.title }</a></td>
 						<td style="width: 7%"><i class='fas fa-comment'></i>
@@ -86,11 +105,11 @@
 				<c:choose>
 					<c:when test="${pu.startPageNum > 5 }">
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+							href="<c:url value='/reList?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 								<i class="fa fa-chevron-left"></i>
 						</a></li>
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
+							href="<c:url value='/reList?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
 						<li class="disabled"><a href="">...</a></li>
 					</c:when>
 					<c:otherwise>
@@ -104,11 +123,11 @@
 					<c:choose>
 						<c:when test="${pu.pageNum == i }">
 							<li class="active"><a
-								href="<c:url value='/gboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a
-								href="<c:url value='/gboard/list?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -117,9 +136,9 @@
 					<c:when test="${pu.endPageNum < pu.totalPageCount }">
 						<li class="disabled"><a href="">...</a></li>
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
+							href="<c:url value='/reList?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
 						<li><a
-							href="<c:url value='/gboard/list?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+							href="<c:url value='/reList?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
 								<i class="fa fa-chevron-right"></i>
 						</a></li>
 					</c:when>

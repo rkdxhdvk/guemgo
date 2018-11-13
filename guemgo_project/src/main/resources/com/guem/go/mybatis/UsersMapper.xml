@@ -34,4 +34,8 @@
 		update users set name=#{name},pwd=#{pwd},grade=#{grade},image=#{image},point=#{point} where email=#{email}
 	</update>
 	
+	<!-- 후기게시판에 따라 포인트 업데이트 -->
+	<update id="pointUpdate" parameterType="hashmap">
+		update users set point=point+#{point} where email=#{email}
+	</update>
 </mapper>

@@ -28,6 +28,7 @@ public class GosuPageController {
 	public String mypage() {
 		return "woohyun/gosuPage";
 	}	
+	
 /*
 	@RequestMapping(value="/update",method=RequestMethod.GET)
 	public String update() {

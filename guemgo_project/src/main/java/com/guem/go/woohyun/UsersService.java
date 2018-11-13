@@ -1,5 +1,6 @@
 package com.guem.go.woohyun;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -42,5 +43,10 @@ public class UsersService {
 	public int update(UsersVo vo) {
 //		System.out.println("서비스 부분");
 		return dao.update(vo);
+	}
+	
+	//회원 포인트 수정
+	public int poitnUpdate(HashMap<String, Object> map) {
+		return dao.pointUpdate(map);
 	}
 }

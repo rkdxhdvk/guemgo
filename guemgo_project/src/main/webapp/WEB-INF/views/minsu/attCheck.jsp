@@ -27,26 +27,19 @@
 <script>
 	$(document).ready(
 			function() {
-				var email = "byul";
-				$.getJSON("<c:url value='/eventlist'/>",{email:email}, 
+				var events = [];
+				$.getJSON("<c:url value='/eventlist'/>",{email:'${sessionScope.email}'}, 
 						function(data) {
 						console.log(data[0].pointdate);
-						var events = [];
+						if(data != null){
 						$(data).each(function(i,json){
-							var color = '';
-							alert(json.attendance);
-							if(json.attendance==1){
-								color = 'orange';
-							}
 							events.push({
-								id : json.schedetailNum,
-	                            title: json.lecturename,
-	                            start: json.sDate,
-	                            end: json.eDate,
-	                            description : json.memo,
-	                            backgroundColor : color
+	                            start: json.att,
+	                            backgroundColor : 'orange'
 	                        })
 						})
+						}
+				
 				$('#calendar').fullCalendar(
 						{
 							//selectable : true,
@@ -72,8 +65,7 @@
 							}
 						});
 				});
-				 });
-			});
+				});
 </script>
 <style>
 body {
@@ -95,6 +87,5 @@ body {
 </head>
 <body>
 	<div id='calendar'></div>
-	<input type="button" id="btn1" value="확인">
 </body>
 </html>
