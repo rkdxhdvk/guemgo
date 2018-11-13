@@ -34,20 +34,20 @@ public class QboardDao {
 		return session.selectList(NAMESPACE + "list", map);
 	}
 	
-	public QboardVo detail(int qna_num) {
-		return session.selectOne(NAMESPACE + "detail", qna_num);
+	public QboardVo detail(int num) {
+		return session.selectOne(NAMESPACE + "detail", num);
 	}
 	
 	public int update(QboardVo qboardVo) {
 		return session.update(NAMESPACE + "update", qboardVo);
 	}
 	
-	public int addHit(int qna_num) {
-		return session.update(NAMESPACE + "addHit", qna_num);
+	public int addHit(int num) {
+		return session.update(NAMESPACE + "addHit", num);
 	}
 	
-	public int delete(int qna_num) {
-		return session.delete(NAMESPACE + "delete", qna_num);
+	public int delete(int num) {
+		return session.delete(NAMESPACE + "delete", num);
 	}
 	
 	public int deleteGrp(int grp) {

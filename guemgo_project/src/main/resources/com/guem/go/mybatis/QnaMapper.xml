@@ -5,22 +5,21 @@
 <mapper namespace="com.guem.go.mybatis.QnaMapper">
 	<sql id="search">
 		<if test="field!=null and field!=''">
-			and ${field} like '%'|| #{keyword} ||'%'
+			where ${field} like '%'|| #{keyword} ||'%'
 		</if>
 	</sql>
-	<select id="getMaxNum" resultType="int" parameterType="map">
-		select NVL(max(qna_num),0) maxnum
+	<select id="getMaxNum" resultType="int">
+		select NVL(max(num),0) maxnum
 		from qna_BOARD
-		<include refid="search"/>
 	</select>
 	<select id="getCount" resultType="int" parameterType="map">
-		select NVL(count(qna_num),0) cnt
+		select NVL(count(num),0) cnt
 		from qna_BOARD
 		<include refid="search"/>
 	</select>
 	<insert id="insert" parameterType="com.guem.go.kidong.QboardVo">
 		insert into qna_BOARD
-		values(#{qna_num},#{title},#{content},sysdate,#{email},#{grp},#{lev},#{step},0,#{sort},0)
+		values(#{num},#{title},#{content},sysdate,#{email},#{grp},#{lev},#{step},0,#{sort},0)
 	</insert>
 	<update id="insertReply" parameterType="map">
 		<![CDATA[update qna_BOARD set step=step+1 where grp=#{grp} and step>#{step}]]>
@@ -32,10 +31,9 @@
 		select aa.*,rownum rnum from
 		(
 		select * from qna_BOARD
-		where lev = 0
 		<include refid="search" />
 		<if test="sort!=null and sort!=''">
-			and sort = #{sort}
+		where sort = #{sort}
 		</if>
 		ORDER BY grp DESC,STEP ASC
 		)aa
@@ -50,20 +48,20 @@
 
 	<select id="detail" parameterType="int"
 		resultType="com.guem.go.kidong.QboardVo">
-		select * from qna_BOARD where qna_num=#{qna_num}
+		select * from qna_BOARD where num=#{num}
 	</select>
 	<update id="update" parameterType="com.guem.go.kidong.QboardVo">
 		update qna_BOARD set
 		title=#{title}, content=#{content}
-		where qna_num=#{qna_num}
+		where num=#{num}
 	</update>
 	<update id="addHit" parameterType="int">
 		update qna_board set hit = hit
-		+ 1 where qna_num = #{qna_num}
+		+ 1 where num = #{num}
 	</update>
 	<delete id="delete" parameterType="int">
 		delete from qna_board where
-		qna_num = #{qna_num}
+		num = #{num}
 	</delete>
 	
 	<delete id="deleteGrp" parameterType="int">

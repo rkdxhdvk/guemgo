@@ -116,7 +116,7 @@ public class GboardController {
 			retFormat += " " + s[0];
 		}
 		
-		List<GcommentVo> list = service.commentList(num);
+		List<GcommentVo> list = service3.list(num);
 		for (GcommentVo vo2 : list) {
 			vo2.setContent(vo2.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
 					.replaceAll("\n", "<br>"));

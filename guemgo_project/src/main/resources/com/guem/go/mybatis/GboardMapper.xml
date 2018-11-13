@@ -39,7 +39,7 @@
 		select * from gboard where num = #{num}
 	</select>
 	<select id="commentList" parameterType="int" resultType="com.guem.go.kidong.GcommentVo">
-		select * from gcomment where bnum = #{num} order by cnum
+		select * from gcomment where num = #{num} order by cnum
 	</select>
 	<update id="hitUp" parameterType="int">
 		update gboard set hit = hit + 1 where num = #{num}

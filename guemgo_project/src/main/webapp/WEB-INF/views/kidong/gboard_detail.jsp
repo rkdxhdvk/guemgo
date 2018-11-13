@@ -33,9 +33,15 @@
 
 		<c:if test="${sessionScope.email == vo.email }">
 			<button type="submit" class="btn btn-primary" style="float: right;"
-				onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">삭제</button>
+				title="삭제"
+				onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">
+				<i class="fas fa-trash-alt"></i>
+			</button>
 			<button style="float: right; margin-right: 10px;" type="button"
-				class="btn btn-primary" data-toggle="modal" data-target="#myModal">수정</button>
+				title="수정" class="btn btn-primary" data-toggle="modal"
+				data-target="#myModal">
+				<i class="fas fa-wrench"></i>
+			</button>
 		</c:if>
 	</div>
 
@@ -152,9 +158,9 @@
 			</div>
 		</div>
 		<c:if test="${vo.orgfilename != null }">
-
 			<div class="form-control" style="margin-bottom: 15px;">
-				<a href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
+				<i class='fas fa-download' title="다운로드"></i> <a
+					href="<c:url value='/fileDownload?num=${vo.num }'/>">${vo.orgfilename }</a>
 				<span class="pull-right">${retFormat }</span>
 			</div>
 		</c:if>
@@ -163,15 +169,20 @@
 	<c:choose>
 		<c:when test="${prev.num != null }">
 			<div style="float: left;">
-				<button type="submit" class="btn btn-primary"
-					onclick="location='<c:url value='/gboard/detail?num=${prev.num }'/>'">이전글</button>
+				<button type="submit" class="btn btn-primary" title="이전글"
+					onclick="location='<c:url value='/gboard/detail?num=${prev.num }'/>'">
+					<i class='fas fa-angle-double-left'></i>
+				</button>
 				${prev.title }
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div style="float: right;">
 				없음
-				<button type="submit" class="btn btn-primary" disabled="disabled">이전글</button>
+				<button type="submit" class="btn btn-primary" disabled="disabled"
+					title="이전글">
+					<i class='fas fa-angle-double-left'></i>
+				</button>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -180,14 +191,19 @@
 		<c:when test="${next.num != null }">
 			<div style="float: right;">
 				${next.title }
-				<button type="submit" class="btn btn-primary"
-					onclick="location='<c:url value='/gboard/detail?num=${next.num }'/>'">다음글</button>
+				<button type="submit" class="btn btn-primary" title="다음글"
+					onclick="location='<c:url value='/gboard/detail?num=${next.num }'/>'">
+					<i class='fas fa-angle-double-right'></i>
+				</button>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div style="float: right;">
 				없음
-				<button type="submit" class="btn btn-primary" disabled="disabled">다음글</button>
+				<button type="submit" class="btn btn-primary" disabled="disabled"
+					title="다음글">
+					<i class='fas fa-angle-double-right'></i>
+				</button>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -223,7 +239,9 @@
 						<hr>
 						<c:if test="${sessionScope.email == comm.email }">
 							<button type="button" class="btn btn-primary pull-right"
-								onclick="deleteComment(${comm.cnum})">삭제</button>
+								onclick="deleteComment(${comm.cnum})" title="삭제">
+								<i class='fas fa-trash-alt'></i>
+							</button>
 						</c:if>
 					</div>
 				</div>
@@ -234,14 +252,23 @@
 			<span id="count">0</span>/<span id="max-count">0</span>
 		</div>
 		<input type="hidden" value="${sessionScope.email }" id="email">
+		<button type="button" class="btn btn-primary"
+			onclick="location.href ='<c:url value='/gboard/list'/>'" title="취소">
+			<i class='fas fa-reply'></i>
+		</button>
+
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
 				<button type="button" class="btn btn-primary pull-right"
-					onclick="addComment()">Send</button>
+					onclick="addComment()" title="입력">
+					<i class='fas fa-edit'></i>
+				</button>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary pull-right"
-					onclick="needLogin()">Send</button>
+					onclick="needLogin()" title="입력">
+					<i class='fas fa-edit'></i>
+				</button>
 			</c:otherwise>
 		</c:choose>
 
@@ -262,7 +289,7 @@
 		<span class="time-right">{regdate}</span>
 	<hr>
 		<button type="button" class="btn btn-primary pull-right"
-						onclick="deleteComment({cnum})">삭제</button>
+						onclick="deleteComment({cnum})" title="삭제"><i class='fas fa-trash-alt'></i></button>
 	</div>
 	</div>
 </script>

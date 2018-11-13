@@ -39,10 +39,6 @@
 		<beans:property name="maxUploadSize" value="5242880" />
 	</beans:bean>
 
-	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\uploadImg" />
-	</beans:bean>
-
 	<!-- 파일다운로드 뷰 -->
 	<beans:bean id="filedownloadView"
 		class="com.guem.go.kidong.FiledownloadView" />

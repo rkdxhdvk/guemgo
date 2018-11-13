@@ -31,20 +31,20 @@ public class QboardService {
 		return qboardDao.list(map);
 	}
 	
-	public QboardVo detail(int qna_num) {
-		return qboardDao.detail(qna_num);
+	public QboardVo detail(int num) {
+		return qboardDao.detail(num);
 	}
 	
 	public int update(QboardVo qboardVo) {
 		return qboardDao.update(qboardVo);
 	}
 	
-	public int addHit(int qna_num) {
-		return qboardDao.addHit(qna_num);
+	public int addHit(int num) {
+		return qboardDao.addHit(num);
 	}
 	
-	public int delete(int qna_num) {
-		return qboardDao.delete(qna_num);
+	public int delete(int num) {
+		return qboardDao.delete(num);
 	}
 	
 	public int deleteGrp(int grp) {

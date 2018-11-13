@@ -50,19 +50,19 @@ public class QboardController {
 	public String insert(QboardVo qboardVo) {
 		try {
 			int boardNum = qboardService.getMaxNum() + 1;
-			int qna_num = 0;
+			int num = 0;
 			int grp = 0;
 			int lev = 0;
 			int step = 0;
 
-			if (qboardVo.getQna_num() != 0) {
-				qna_num = qboardVo.getQna_num();
+			if (qboardVo.getNum() != 0) {
+				num = qboardVo.getNum();
 				grp = qboardVo.getGrp();
 				lev = qboardVo.getLev();
 				step = qboardVo.getStep();
 			}
 
-			if (qna_num == 0) {
+			if (num == 0) {
 				grp = boardNum;
 			} else {
 				Map<String, Object> map = new HashMap<>();
@@ -73,6 +73,7 @@ public class QboardController {
 				lev += 1;
 				step += 1;
 			}
+			
 			QboardVo vo = new QboardVo(boardNum, qboardVo.getTitle(), qboardVo.getContent(), null, qboardVo.getEmail(),
 					grp, lev, step,0 , qboardVo.getSort(),0);
 			qboardService.insert(vo);
@@ -84,9 +85,9 @@ public class QboardController {
 	}
 	
 	@RequestMapping(value="/qboard/detail",method=RequestMethod.GET)
-	public String detail(int qna_num,Model model) {
-		qboardService.addHit(qna_num);
-		QboardVo vo = qboardService.detail(qna_num);
+	public String detail(int num,Model model) {
+		qboardService.addHit(num);
+		QboardVo vo = qboardService.detail(num);
 		model.addAttribute("vo", vo);
 		return "kidong/qboard_detail";
 	}
@@ -103,10 +104,10 @@ public class QboardController {
 	}
 	
 	@RequestMapping(value="/qboard/delete",method=RequestMethod.GET)
-	public String delete(int qna_num,int grp,int lev) {
+	public String delete(int num,int grp,int lev) {
 		try {
 			if(lev != 0) {
-				qboardService.delete(qna_num);
+				qboardService.delete(num);
 			}else {
 				qboardService.deleteGrp(grp);
 			}
@@ -127,7 +128,7 @@ public class QboardController {
 			vo.setContent(vo.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
 					.replaceAll("\n", "<br>"));
 			JsonObject json = new JsonObject();
-			json.addProperty("qna_num", vo.getQna_num());
+			json.addProperty("num", vo.getNum());
 			json.addProperty("title", vo.getTitle());
 			json.addProperty("content", vo.getContent());
 			String regdate = transFormat.format(vo.getRegdate());
@@ -159,7 +160,7 @@ public class QboardController {
 //			vo.setContent(vo.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
 //					.replaceAll("\n", "<br>"));
 //			JsonObject json = new JsonObject();
-//			json.addProperty("qna_num", vo.getQna_num());
+//			json.addProperty("num", vo.getNum());
 //			json.addProperty("title", vo.getTitle());
 //			json.addProperty("content", vo.getContent());
 //			String regdate = transFormat.format(vo.getRegdate());

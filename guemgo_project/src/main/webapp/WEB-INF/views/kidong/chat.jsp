@@ -21,11 +21,12 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  <link href='resources/fullcalender/demo-topbar.css' rel='stylesheet' />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link href='resources/fullcalender/demo-topbar.css' rel='stylesheet' />
 <link href='resources/fullcalender/fullcalendar.min.css'
 	rel='stylesheet' />
 <link href='resources/fullcalender/fullcalendar.print.css'
@@ -36,7 +37,6 @@
 <script src='resources/fullcalender/fullcalendar.min.js'></script>
 <script src='resources/fullcalender/demo-to-codepen.js'></script>
 <style>
-
 html, body {
 	margin: 0;
 	padding: 0;
@@ -48,57 +48,53 @@ html, body {
 	max-width: 900px;
 	margin: 40px auto;
 } */
-
-
-
-
-
 body {
 	margin: 0 auto;
 	padding: 0 20px;
 }
+
 .container1 {
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
+	border: 2px solid #dedede;
+	background-color: #f1f1f1;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 0;
 }
 
 .darker {
-    border-color: #ccc;
-    background-color: #ddd;
-    text-align: right;
+	border-color: #ccc;
+	background-color: #ddd;
+	text-align: right;
 }
 
 .container1::after {
-    content: "";
-    clear: both;
-    display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 
 .container1 img {
-    float: left;
-    max-width: 60px;
-    width: 100%;
-    margin-right: 20px;
-    border-radius: 50%;
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
 }
 
 .container1 img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right:0;
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
 }
 
 .time-right {
-    float: right;
-    color: #aaa;
+	float: right;
+	color: #aaa;
 }
 
 .time-left {
-    float: left;
-    color: #999;
+	float: left;
+	color: #999;
 }
 
 #data {
@@ -264,8 +260,7 @@ body {
 	function sendMessage() {
 		message = {};
 		message.msg = $("#message").val();
-		message.sender = $("#name").val();
-		message.receiver = 'bbb';
+		message.sender = ${sessionScope.email };
 		message.room = ${room };
 		sock.send(JSON.stringify(message));
 	}
@@ -298,7 +293,7 @@ body {
 		var data = evt.data;
 		var obj = JSON.parse(data);
 		var t = getTimeStamp();
-		var user = '${user }';
+		var user = $("#email").val();
 		if (obj.sender === user) {
 			var str = "<div class='container1 darker'><p>" + obj.msg
 					+ "</p><span class=time-left>" + t + "</span>";
@@ -324,113 +319,119 @@ body {
 </script>
 </head>
 <body>
-<div class="container-fluid" style="margin-bottom: 15px;">
-	<p class="text-left" style="font-size: x-large;">채팅</p>
-</div>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-4">
-			<div id="data">
-				<c:forEach var="vo" items="${list }">
-					<fmt:formatDate value="${vo.time }"
-						pattern="yyyy-MM-dd HH:mm:ss" var="time" />
-					<c:choose>
-						<c:when test="${vo.sender == user }">
-							<div class='container1 darker'>
-								<p>${vo.msg }</p>
-								<span class='time-left'>${time }</span>
-								<c:choose>
-									<c:when test="${vo.read == 1 }">
-										<span>읽음</span>
-									</c:when>
-									<c:otherwise>
-										<span>읽지않음</span>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class='container1'>
-								<p>${vo.msg }</p>
-								<span class='time-right'>${time }</span>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</div>
-			<input type="text" id="name" />
-			<textarea class="form-control" rows="5" id="message"></textarea>
-			<input type="button" id="sendBtn" value="전송" />
-		</div>
-	<!-- //////////////////////////////////추가 //////////////////////////////////// -->	
-		<div class="col-sm-8">
-			<div style="border: solid 2px black; height: 900px; padding: 10px;">
-				<div class="container-fluid"
-					style="border: solid 2px black; height: 600px;">
-					<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
-					<input type="hidden" value="${scheduleNum}" id="scheduleNum">
-					
-					  
-					<c:choose>
-					<c:when test="${scheselect=='ok' }">
-							<div id='calendar'></div>
-							<input type="button" id="sche_confirm" value="스케줄 확정">
-					</c:when>
-					<c:otherwise>
-							<form action="<c:url value='/calaaa'/>" method="get">
-							<label>강의명</label>
-							<select name="lecture">
-								<c:forEach items="${lecList }" var="vo">
-									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
-								</c:forEach>
-								
-							</select>
-							<label>강의횟수</label>
-							<br> 
-							<input type="text" name="count" style="width:20px;"> <!-- 바꾸기 -->
-							<br>
-							<label>강의시간</label> <br>
-							<select name="time">
-								<option value=12>12:00</option>
-								<option value=14>14:00</option>
-								<option value=16>16:00</option>
-								<option value=18>18:00</option>
-							</select>
-							<br>
-							<label>요일</label><br> 
-							<input type="checkbox" name="day" value="1">일
-							<input type="checkbox" name="day" value="2">월
-							<input type="checkbox" name="day" value="3">화
-							<input type="checkbox" name="day" value="4">수
-							<input type="checkbox" name="day" value="5">목
-							<input type="checkbox" name="day" value="6">금
-							<input type="checkbox" name="day" value="7">토
-							<br>
-							<p>시작날짜: <input type="text" id="datepicker" name="startDate" size="30"></p>
-							<input type="hidden" value=1 name="room">
-							<input type="submit" value="스케줄" id="btn">
-						</form>
-					</c:otherwise>
-					</c:choose>
-						
-						
-		</div>
-		
-				<div class="panel panel-primary" style="margin-top: 10px;">
-					<div class="panel-heading">강좌명</div>
-					<div class="panel-body" style="height: 160px;">내용</div>
-				</div>
-
-				<div class="btn-group btn-group-justified">
-					<a href="#" class="btn btn-primary">Apple</a> 
-					<a href="#" class="btn btn-primary">Samsung</a>
-					<a href='<c:url value="/"/>' class="btn btn-primary">나가기</a>
-				</div>
-			</div>
-		</div>
-		
+	<input type="hidden" value="${sessionScope.email }" id="email">
+	<div class="container-fluid" style="margin-bottom: 15px;">
+		<p class="text-left" style="font-size: x-large;">채팅</p>
 	</div>
-</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+				<div id="data">
+					<c:forEach var="vo" items="${list }">
+						<fmt:formatDate value="${vo.time }" pattern="yyyy-MM-dd HH:mm:ss"
+							var="time" />
+						<c:choose>
+							<c:when test="${vo.sender == sessionScope.email}">
+								<div class='container1 darker'>
+									<p>${vo.msg }</p>
+									<span class='time-left'>${time }</span>
+									<c:choose>
+										<c:when test="${vo.read == 1 }">
+											<span>읽음</span>
+										</c:when>
+										<c:otherwise>
+											<span>읽지않음</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class='container1'>
+									<p>${vo.msg }</p>
+									<span class='time-right'>${time }</span>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+				<br>
+				<textarea class="form-control" rows="5" id="message"></textarea>
+				<br>
+				<button type="button" class="btn btn-primary"
+					onclick="location.href ='<c:url value='/room?email=${sessionScope.email }'/>'" title="취소">
+					<i class='fas fa-reply'></i>
+				</button>
+
+				<button type="button" id="sendBtn"
+					class="btn btn-primary pull-right" title="입력">
+					<i class='fas fa-edit'></i>
+				</button>
+
+			</div>
+			<!-- //////////////////////////////////추가 //////////////////////////////////// -->
+			<div class="col-sm-8">
+				<div style="border: solid 2px black; height: 900px; padding: 10px;">
+					<div class="container-fluid"
+						style="border: solid 2px black; height: 600px;">
+						<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
+						<input type="hidden" value="${scheduleNum}" id="scheduleNum">
+
+						<c:choose>
+							<c:when test="${scheselect=='ok' }">
+								<div id='calendar'></div>
+								<input type="button" id="sche_confirm" value="스케줄 확정">
+							</c:when>
+							<c:otherwise>
+								<form action="<c:url value='/calaaa'/>" method="get">
+									<label>강의명</label> <select name="lecture">
+										<c:forEach items="${lecList }" var="vo">
+											<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
+										</c:forEach>
+
+									</select> <label>강의횟수</label> <br> <input type="text" name="count"
+										style="width: 20px;">
+									<!-- 바꾸기 -->
+									<br> <label>강의시간</label> <br> <select name="time">
+										<option value=12>12:00</option>
+										<option value=14>14:00</option>
+										<option value=16>16:00</option>
+										<option value=18>18:00</option>
+									</select> <br> <label>요일</label><br> <input type="checkbox"
+										name="day" value="1">일 <input type="checkbox"
+										name="day" value="2">월 <input type="checkbox"
+										name="day" value="3">화 <input type="checkbox"
+										name="day" value="4">수 <input type="checkbox"
+										name="day" value="5">목 <input type="checkbox"
+										name="day" value="6">금 <input type="checkbox"
+										name="day" value="7">토 <br>
+									<p>
+										시작날짜: <input type="text" id="datepicker" name="startDate"
+											size="30">
+									</p>
+									<input type="hidden" value=1 name="room"> <input
+										type="submit" value="스케줄" id="btn">
+								</form>
+							</c:otherwise>
+						</c:choose>
+
+
+					</div>
+
+					<div class="panel panel-primary" style="margin-top: 10px;">
+						<div class="panel-heading">강좌명</div>
+						<div class="panel-body" style="height: 160px;">내용</div>
+					</div>
+
+					<div class="btn-group btn-group-justified">
+						<a href="#" class="btn btn-primary">Apple</a> <a href="#"
+							class="btn btn-primary">Samsung</a> <a href='<c:url value="/"/>'
+							class="btn btn-primary">나가기</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>

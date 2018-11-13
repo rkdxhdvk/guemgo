@@ -23,8 +23,16 @@
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">QnA 게시판</p>
-		<button style="float: right;" type="button" class="btn btn-primary"
-			data-toggle="modal" data-target="#myModal">글쓰기</button>
+		<c:choose>
+			<c:when test="${sessionScope.email != null }">
+				<button style="float: right;" type="button" class="btn btn-primary"
+					data-toggle="modal" data-target="#myModal">글쓰기</button>
+			</c:when>
+			<c:otherwise>
+				<button style="float: right;" type="button" class="btn btn-primary"
+					onclick="needLogin()">글쓰기</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 	<div class="modal fade" id="myModal" role="dialog">
@@ -110,19 +118,17 @@
 				id="tableList">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>sort</th>
-						<th>title</th>
-						<th>hit</th>
-						<th>email</th>
-						<th>regdate</th>
+						<th style="width: 5%;text-align: center;">sort</th>
+						<th style="width: 50%;text-align: center;">title</th>
+						<th style="width: 15%;text-align: center;">email</th>
+						<th style="width: 5%;text-align: center;">hit</th>
+						<th style="width: 15%;text-align: center;">regdate</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${list }" varStatus="status">
 						<tr>
-							<td>${vo.qna_num }</td>
-							<td><c:choose>
+							<td style="text-align: center;"><c:choose>
 									<c:when test="${vo.sort == 'music' }">
 										<i class="fas fa-music"></i>
 									</c:when>
@@ -130,30 +136,20 @@
 										<i class="fas fa-palette"></i>
 									</c:when>
 									<c:when test="${vo.sort == 'cook' }">
-										<i class="fas fa-concierge-bell"></i>
+										<i class="fas fa-drumstick-bite"></i>
 									</c:when>
 									<c:otherwise>
 										<i class="fab fa-apple"></i>
 									</c:otherwise>
 								</c:choose></td>
-							<td><c:choose>
-									<c:when test="${vo.flag != 0 }">
-											<div class="dropdown">
-										<a href="<c:url value='/qboard/detail?qna_num=${vo.qna_num }'/>">${vo.title }</a>
-									<span class="dropdown-toggle" data-toggle="dropdown"
-										style="cursor: pointer;" onclick="select(${status.count},${vo.grp })"> 답변 </span>
-									<ul class="dropdown-menu reply">
-										<li><a href="#">HTML</a></li>
-										<li><a href="#">CSS</a></li>
-										<li><a href="#">JavaScript</a></li>
-									</ul>
-								</div>
-									</c:when>
-									<c:otherwise>
-										<a href="<c:url value='/qboard/detail?qna_num=${vo.qna_num }'/>">${vo.title }</a>
-									</c:otherwise>
-								</c:choose></td>
-							<td>${vo.hit }</td>
+							<td><c:if test="${vo.lev>0 }">
+									<c:forEach var="i" begin="1" end="${vo.lev }">
+										&nbsp;&nbsp;
+									</c:forEach>
+									<i class="	far fa-hand-point-right"></i>
+								</c:if> <a href="<c:url value='/qboard/detail?num=${vo.num }'/>">${vo.title }</a>
+
+							</td>
 							<td><div class="dropdown">
 									<span class="dropdown-toggle" data-toggle="dropdown"
 										style="cursor: pointer;"> ${vo.email } </span>
@@ -163,19 +159,15 @@
 										<li><a href="#">JavaScript</a></li>
 									</ul>
 								</div></td>
-							<td>${vo.regdate }</td>
+							<td style="text-align: center;">${vo.hit }</td>
+							<td style="text-align: right;">${vo.regdate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		
-		<c:if test="${vo.lev>0 }">
-			<c:forEach var="i" begin="1" end="${vo.lev }">
-										&nbsp;&nbsp;
-									</c:forEach>
-									[re]
-								</c:if>
+
+
 
 		<div class="text-center">
 			<ul class="pagination">
@@ -220,65 +212,11 @@
 			</ul>
 		</div>
 	</div>
-
-	<script id="template-list-item" type="text/template">
-	<li><a href="<c:url value='/qboard/detail?qna_num={qna_num}'/>">
-		<c:if test="{lev > 1}">
-			&ensp;&ensp;
-		</c:if>
-		{title}&ensp;&ensp;{email}&ensp;&ensp;{regdate}</a>
-	</li>
-</script>
 </body>
 <script type="text/javascript">
-	function select(index,grp) {
-		console.log(index);
-			$.ajax({
-				url:"<c:url value='/qboard/select?grp="+grp+"'/>",
-				dataType:'json',
-				success:function(data){
-					$(".reply").empty();
-					var html = document.querySelector("#template-list-item").innerHTML;
-					var resultHTML = "";
-					$(data).each(function(i, json){
-						resultHTML += html.replace("{title}", json.title)
-										  .replace("{qna_num}", json.qna_num)
-										  .replace("{email}", json.email)
-										  .replace("{regdate}", json.regdate)
-										  .replace("{lev}", json.lev);
-					});
-					$(".reply").append(resultHTML);
-				}
-			});
-		}
-
-	// function remove(){
-	// 	window.location.href = '/go/qboard/list';
-	// }
-
-	function moreList() {
-		$
-				.ajax({
-					url : "<c:url value='/qboard/moreList'/>",
-					dataType : 'json',
-					success : function(data) {
-						var html = document
-								.querySelector("#template-list-item").innerHTML;
-						var resultHTML = "";
-						$(data).each(
-								function(i, json) {
-									resultHTML += html.replace("{qna_num}",
-											json.qna_num).replace("{title}",
-											json.title).replace("{email}",
-											json.email).replace("{hit}",
-											json.hit).replace("{regdate}",
-											json.regdate);
-								});
-						resultHTML += "<tr id='addbtn'><td colspan='5'><div class='btns'><a href='javascript:moreList();' class='btn'>더보기</a></div>  </td></tr>";
-						$('#addbtn').remove();
-						$(resultHTML).appendTo("#tableList");
-					}
-				});
+	function needLogin() {
+		alert('로그인');
+		window.location.href = '/go';
 	}
 </script>
 

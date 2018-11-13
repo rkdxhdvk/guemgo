@@ -32,11 +32,10 @@
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
 		<c:if test="${sessionScope.email == vo.email }">
-			<button type="submit" class="btn btn-primary" style="float: right;"
-				data-toggle="modal" data-target="#myModal">수정</button>
-			<button type="submit" class="btn btn-primary"
-				style="float: right; margin-right: 10px;"
-				onclick="location='<c:url value='/qboard/delete?num=${vo.num }&grp=${vo.grp }&lev=${vo.lev }'/>'">삭제</button>
+			<button type="submit" class="btn btn-primary" style="float: right;" title="삭제"
+				onclick="location='<c:url value='/qboard/delete?num=${vo.num }'/>'"><i class="fas fa-trash-alt"></i></button>
+			<button style="float: right; margin-right: 10px;" type="button" title="수정"
+				class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-wrench"></i></button>
 		</c:if>
 
 		<div class="modal fade" id="myModal" role="dialog">
@@ -64,9 +63,9 @@
 									placeholder="content" maxlength="140" rows="7">${vo.content }</textarea>
 							</div>
 							<button type="button" class="btn btn-primary"
-								data-dismiss="modal">Close</button>
+								data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
 							<button type="submit" id="submit" name="submit"
-								class="btn btn-primary pull-right">Submit Form</button>
+								class="btn btn-primary pull-right" title="입력"><i class='fas fa-edit'></i></button>
 						</form>
 					</div>
 				</div>
@@ -111,10 +110,21 @@
 			</div>
 		</div>
 	</div>
+	
+	<button type="button" class="btn btn-primary"
+				onclick = "location.href ='<c:url value='/qboard/list'/>'" title="취소"><i class='fas fa-reply'></i></button>
+	<c:choose>
+			<c:when test="${sessionScope.email != null }">
+				<button style="float: right;" type="button" class="btn btn-primary"
+					data-toggle="modal" data-target="#reply" title="답글"><i class='fas fa-comment-dots'></i></button>
+			</c:when>
+			<c:otherwise>
+				<button style="float: right;" type="button" class="btn btn-primary"
+					onclick="needLogin()" title="답글"><i class='fas fa-comment-dots'></i></button>
+			</c:otherwise>
+		</c:choose>
+		
 
-
-	<button type="button" class="btn btn-primary" style="float: right;"
-		data-toggle="modal" data-target="#reply">답글</button>
 
 	<div class="modal fade" id="reply" role="dialog">
 		<div class="modal-dialog">
@@ -145,13 +155,20 @@
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
 
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
 						<button type="submit" id="submit" name="submit"
-							class="btn btn-primary pull-right">Submit Form</button>
+							class="btn btn-primary pull-right" title="입력"><i class='fas fa-edit'></i></button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+function needLogin(){
+	alert('로그인');
+	window.location.href = '/go';
+}
+
+</script>
 </html>

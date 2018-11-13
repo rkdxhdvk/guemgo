@@ -10,7 +10,7 @@
 		<![CDATA[ SELECT * FROM gchat WHERE room = #{room} and time >= TO_CHAR(SYSDATE-7,'YYYYMMDD') order by msg_num]]>
 	</select>
 	<select id="getRoom" parameterType="string" resultType="com.guem.go.kidong.RoomVo">
-		select * from room where email = #{email}
+		select * from room where email = #{email} or other = #{email}
 	</select>
 	<update id="read" parameterType="int">
 		update gchat set read = 1 where room = #{room}
