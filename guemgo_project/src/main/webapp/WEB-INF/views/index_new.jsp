@@ -131,7 +131,7 @@
       	<!-- <div class="container"> -->
          <div class="row">
           <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+            <h1 class="mb-5">고수를 찾으세여</h1>
           </div>
           <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
             <section class="container"><!-- 본문같은 내용을 담을때 사용 -->
