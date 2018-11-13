@@ -15,6 +15,7 @@ public class SimpleMailSender {
 	private MimeMessage message;
 	private MimeMessageHelper messageHelper;
 	
+	
 	public SimpleMailSender(JavaMailSender mailSender) throws MessagingException {
 		this.mailSender = mailSender;
 		message=this.mailSender.createMimeMessage();
