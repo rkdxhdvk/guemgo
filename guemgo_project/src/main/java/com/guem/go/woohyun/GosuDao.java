@@ -43,9 +43,19 @@ public class GosuDao {
 	public int update(GosuVo vo) {
 		return sqlSession.update(NAMESPACE + ".update", vo);
 	}
+	
 	// 고수 정보 수정(업데이트) DAO
 	public int update_user(GosuVo vo) {
 		return sqlSession.update(NAMESPACE + ".update_user", vo);
 	}
 		
+	// 고수 프로필 업데이트1 DAO
+	public int update_profile1(GosuVo vo) {
+		return sqlSession.update(NAMESPACE + ".update_profile1", vo);
+	}
+	
+	// 고수 프로필 업데이트2 DAO
+	public int update_profile2(GosuVo vo) {
+		return sqlSession.update(NAMESPACE + ".update_profile2", vo);
+	}
 }

@@ -14,7 +14,7 @@
 <h1>고수페이지</h1>
 <ul>
 	<li><a href="<c:url value='/UserUpdate?email=${sessionScope.email }'/>">개인정보 수정</a></li>
-	<li><a href="<c:url value='/gosuProfile?email=${sessionScope.email }'/>">고수프로필 수정</a></li>
+	<li><a href="<c:url value='/GosuProfileUpdate?email=${sessionScope.email }'/>">고수프로필 수정</a></li>
 	<li><a href="<c:url value='/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
 
 </ul>

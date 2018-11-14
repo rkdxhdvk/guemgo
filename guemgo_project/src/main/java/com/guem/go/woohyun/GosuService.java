@@ -46,9 +46,19 @@ public class GosuService {
 	public int update(GosuVo vo) {
 		return dao.update(vo);
 	}
+	
 	// 고수 정보 수정(업데이트)
 	public int update_user(GosuVo vo) {
 		return dao.update_user(vo);
 	}
 	
+	// 고수 프로필 업데이트1
+	public int update_profile1(GosuVo vo) {
+		return dao.update_profile1(vo);
+	}
+	
+	// 고수 프로필 업데이트2
+	public int update_profile2(GosuVo vo) {
+		return dao.update_profile2(vo);
+	}
 }

@@ -8,7 +8,7 @@
  -->
 <mapper namespace="com.guem.go.mybatis.GosuMapper">
 	
-<!-- 고수가입 -->
+	<!-- 고수가입 -->
 	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
 	insert all 
 		into gosu(go_num, email, intro, grade, employ) values(gonum_seq.nextval, #{email}, #{intro},#{grade},#{employ} )
@@ -55,5 +55,17 @@
 	<select id="gosuNum" parameterType="String" resultType="int">
 		select go_num from gosu where email=#{email}
 	</select>
+	
+	<!-- 고수 프로필 수정1 트랜잭션 처리 해야함 -->
+	<update id="update_profile1" parameterType="com.guem.go.woohyun.GosuVo">
+		update gosu set intro=#{intro} where email=#{email}
+	</update>
+	
+	<!-- 고수 프로필 수정2 트랜잭션 처리 해야함 -->
+	<update id="update_profile2" parameterType="com.guem.go.woohyun.GosuVo">
+		update gosu_career set license=#{license}, career=#{career} where go_num=#{go_num}
+	</update>
+	
+	
 	
 </mapper>

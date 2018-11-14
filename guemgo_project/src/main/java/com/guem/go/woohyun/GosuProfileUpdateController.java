@@ -31,7 +31,7 @@ public class GosuProfileUpdateController {
 	public void setService(GosuService service) {
 		this.service = service;
 	}
-	@RequestMapping(value="/gosuProfile",method=RequestMethod.GET)
+	@RequestMapping(value="/GosuProfileUpdate",method=RequestMethod.GET)
 	public ModelAndView updateForm(String email) {
 		GosuVo vo=service.detail(email);
 		ModelAndView mv=new ModelAndView("woohyun/gosuProfile");
@@ -40,11 +40,11 @@ public class GosuProfileUpdateController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/gosuProfile",method=RequestMethod.POST)
+	@RequestMapping(value="/GosuProfileUpdate",method=RequestMethod.POST)
 	@Transactional
 	public ModelAndView update(GosuVo vo) {
-		int n=service.update(vo);
-		int j=service.update_user(vo);
+		int n=service.update_profile1(vo);
+		int j=service.update_profile2(vo);
 		//System.out.println(vo.getMnum);
 
 		ModelAndView mv=new ModelAndView("woohyun/result");
