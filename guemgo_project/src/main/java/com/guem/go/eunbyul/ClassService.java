@@ -22,15 +22,6 @@ public class ClassService {
 		return dao.classlist(go_num);
 	}
 	
-	public List<CatemVo> catemlist(){
-		return dao.catemlist();
-	}
-	public List<CatesVo> selectcates(String mname){
-		return dao.selectcates(mname);
-	}
-	public List<CatesVo> cateslist(){
-		return dao.cateslist();
-	}
 	public GosuVo gosuselect(String email) {
 		return dao.gosuselect(email);
 	}

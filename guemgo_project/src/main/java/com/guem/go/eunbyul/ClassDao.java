@@ -17,7 +17,6 @@ public class ClassDao {
 	
 	private final static String NAMESPACE="com.guem.go.mybatis.ClassMapper";
 
-
 	//강의 테이블에 insert
 	public int classinsert(LectureVo vo) {
 		return sqlSession.insert(NAMESPACE + ".classinsert",vo);
@@ -30,17 +29,10 @@ public class ClassDao {
 	public List<LectureVo> classlist(int go_num) {
 		return sqlSession.selectList(NAMESPACE + ".classlist" , go_num);
 	}
-	public List<CatemVo> catemlist() {
-		return sqlSession.selectList(NAMESPACE + ".catemlist");
-	}
-	public List<CatesVo> selectcates(String mname) {
-		return sqlSession.selectList(NAMESPACE+".selectcates",mname);
-	}
-	public List<CatesVo> cateslist() {
-		return sqlSession.selectList(NAMESPACE+".cateslist");
-	}
+	
 	public GosuVo gosuselect(String email) {
 		return sqlSession.selectOne(NAMESPACE+".gosuselect", email);
 	}
+
 	
 }

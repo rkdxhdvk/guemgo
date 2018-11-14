@@ -133,17 +133,10 @@
           <div class="col-xl-9 mx-auto">
             <h1 class="mb-5">고수를 찾으세여</h1>
           </div>
-          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto" >
             <section class="container"><!-- 본문같은 내용을 담을때 사용 -->
-		<form method="get" action="./index.jsp" class="form-inline mt-3"><!-- 위쪽으로3만큼 -->
-			<select name="lectureDivide" class="form-control mx-1 mt-2">
-				<option value="전체">전체</option>
-				<option value="음악">음악</option>
-				<option value="미술">미술</option>
-				<option value="요리">요리</option>
-				<option value="디자인">디자인</option>
-			</select>
-			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을입력하세요">
+		<form method="get" action="search" class="form-inline mt-3" style="margin-left:190px; position: absolute;"><!-- 위쪽으로3만큼 -->
+			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="관심있는 분야를 입력하세요" style="text-align:center; width:500px; height:40px; ">
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
 			<!-- <a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">test</a> -->
 			<button type="button" class="btn btn-primary mx-1 mt-2" data-toggle="modal" data-target="#registerModal">매칭신청</button>
@@ -154,7 +147,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="modal">어떤 서비스를 찾고 있나요?</h5>
+					<h5 class="modal-title" id="modal" style="color:black;">어떤 서비스를 찾고 있나요?</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span><!-- 닫기 아이콘(&times;) 넣기 -->
 					</button>

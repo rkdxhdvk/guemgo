@@ -28,7 +28,7 @@ public class SurveyController {
 	@Autowired
 	private SurveyService surveyservice;
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
-	public String survey(HttpServletRequest request, Model model){
+	public String survey(HttpServletRequest request, Model model){//설문지 작성 창으로 보내주기
 		String area=request.getParameter("area");
 		CatemVo vo=surveyservice.selectcatem(area);
 		String mname=vo.getMname();
@@ -53,13 +53,11 @@ public class SurveyController {
 	@RequestMapping(value = "/survey", method = RequestMethod.POST)
 	public ModelAndView surveyOk(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
 		
-		
 		String area=request.getParameter("selectarea");//하고싶은 과목
-		String[] ans= new String[10];
+		String[] ans= new String[10];//답변들을 담을 스트링배열
 		ans[0]=request.getParameter("purpose"); //목적(취미,입시...)
 		ans[1]=request.getParameter("experience"); //경력(입문,1년..)
-		ans[2]=request.getParameter("age"); 
-		//int age=Integer.parseInt(age1); //학생나이
+		ans[2]=request.getParameter("age");//학생나이
 		String[] days=request.getParameterValues("day"); //가능한 요일
 		ans[3]="";//요일
 		ans[4]=request.getParameter("time"); //몇시대?

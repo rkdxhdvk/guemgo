@@ -22,6 +22,8 @@ import com.guem.go.woohyun.GosuVo;
 public class ClassController {
 	@Autowired
 	private ClassService classService;
+	@Autowired
+	private CateService cateservice;
 
 	
 	@RequestMapping(value = "/classinsert", method = RequestMethod.GET)
@@ -29,7 +31,7 @@ public class ClassController {
 	
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
-		List<CatemVo> list=classService.catemlist();
+		List<CatemVo> list=cateservice.catemlist();
 		ModelAndView mv= new ModelAndView("eunbyul/classinsert");
 /*		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i).m_name);
@@ -107,7 +109,7 @@ public class ClassController {
 	public String getArea2(String val) {
 		System.out.println("val:"+val);
 		
-		List<CatesVo> list = classService.selectcates(val);
+		List<CatesVo> list = cateservice.selectcates(val);
 
 		StringBuffer sb=new StringBuffer();
 		sb.append("<?xml version='1.0' encoding='utf-8'?>");

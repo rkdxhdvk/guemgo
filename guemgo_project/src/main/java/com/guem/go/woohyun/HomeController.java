@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.guem.go.eunbyul.CateService;
 import com.guem.go.eunbyul.CatesVo;
 import com.guem.go.eunbyul.ClassService;
 
@@ -28,11 +29,11 @@ public class HomeController {
 		return list;
 	}*/
 	@Autowired
-	private ClassService classservice;
+	private CateService cateservice;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {	
 		
-		List<CatesVo> list=classservice.cateslist();
+		List<CatesVo> list=cateservice.cateslist();
 		ModelAndView mv=new ModelAndView(".main");
 		mv.addObject("list", list);
 		return mv;
