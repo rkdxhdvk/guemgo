@@ -34,6 +34,8 @@ public class CateController {
 		
 		
 		//3.검색어가 cates에 해당한다면 바로 설문지로 넘어간다.
+		
+		
 		for(int i=0; i<slist.size(); i++) {
 			if(search.equals(slist.get(i).getSname())) {
 				
