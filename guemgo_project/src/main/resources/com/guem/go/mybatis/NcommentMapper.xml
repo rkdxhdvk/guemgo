@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.NcommentMapper">
+	<select id="getMaxNum" resultType="int" parameterType="int">
+		select NVL(max(cnum),0) maxnum
+		from ncomment where num = #{num}
+	</select>
+	<select id="getCount" resultType="int" parameterType="int">
+		select NVL(count(cnum),0) cnt
+		from ncomment where num = #{num}
+	</select>
+	<insert id="insert" parameterType="com.guem.go.kidong.NcommentVo">
+		insert into ncomment
+		values(#{cnum},#{num},#{email},#{content},sysdate,#{ref},#{lev},#{step})
+	</insert>
+	<update id="insertReply" parameterType="map">
+		<![CDATA[update ncomment set step=step+1 where ref=#{ref} and step>#{step}]]>
+	</update>
+	<select id="list" resultType="com.guem.go.kidong.NcommentVo" parameterType="int">
+		select * from ncomment where num = #{num}
+		ORDER BY ref DESC,STEP ASC
+	</select>
+	<update id="update" parameterType="com.guem.go.kidong.NcommentVo">
+		update ncomment set
+		title=#{title}, content=#{content}
+		where cnum=#{cnum}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from ncomment where
+		cnum = #{cnum}
+	</delete>
+
+	<delete id="deleteRef" parameterType="int">
+		delete from ncomment where
+		ref = #{ref}
+	</delete>
+</mapper>
