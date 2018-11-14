@@ -31,9 +31,14 @@
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
+		<button type="button" class="btn btn-primary" style="float: right;"
+			onclick="location.href ='<c:url value='/gboard/list'/>'" title="취소">
+			<i class='fas fa-reply'></i>
+		</button>
+
 		<c:if test="${sessionScope.email == vo.email }">
-			<button type="submit" class="btn btn-primary" style="float: right;"
-				title="삭제"
+			<button type="submit" class="btn btn-primary"
+				style="float: right; margin-right: 10px;" title="삭제"
 				onclick="location='<c:url value='/gboard/delete?num=${vo.num }'/>'">
 				<i class="fas fa-trash-alt"></i>
 			</button>
@@ -77,9 +82,14 @@
 						<div class="form-group">
 							<input type="file" name="file1" class="form-control">
 						</div>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							title="취소">
+							<i class='fas fa-reply'></i>
+						</button>
 						<button type="submit" id="submit" name="submit"
-							class="btn btn-primary pull-right">Submit Form</button>
+							class="btn btn-primary pull-right" title="입력">
+							<i class='fas fa-edit'></i>
+						</button>
 					</form>
 				</div>
 			</div>
@@ -131,9 +141,6 @@
 					</button>
 				</c:otherwise>
 			</c:choose>
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
-
 			<div>
 				<strong>${vo.title }</strong>
 				<hr style="border: solid 1px #337ab7;">
@@ -173,12 +180,12 @@
 					onclick="location='<c:url value='/gboard/detail?num=${prev.num }'/>'">
 					<i class='fas fa-angle-double-left'></i>
 				</button>
-				${prev.title }
+				<strong>${prev.title }</strong>
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div style="float: right;">
-				없음
+				<strong>없음</strong>
 				<button type="submit" class="btn btn-primary" disabled="disabled"
 					title="이전글">
 					<i class='fas fa-angle-double-left'></i>
@@ -190,7 +197,7 @@
 	<c:choose>
 		<c:when test="${next.num != null }">
 			<div style="float: right;">
-				${next.title }
+				<strong>${next.title }</strong>
 				<button type="submit" class="btn btn-primary" title="다음글"
 					onclick="location='<c:url value='/gboard/detail?num=${next.num }'/>'">
 					<i class='fas fa-angle-double-right'></i>
@@ -199,7 +206,7 @@
 		</c:when>
 		<c:otherwise>
 			<div style="float: right;">
-				없음
+				<strong>없음</strong>
 				<button type="submit" class="btn btn-primary" disabled="disabled"
 					title="다음글">
 					<i class='fas fa-angle-double-right'></i>
@@ -223,6 +230,13 @@
 				<fmt:formatDate value="${comm.regdate }"
 					pattern="yyyy-MM-dd HH:mm:ss" var="time" />
 				<div class="panel panel-primary">
+					<c:if test="${sessionScope.email == comm.email }">
+						<button type="button" class="btn btn-primary pull-right"
+							onclick="deleteComment(${comm.cnum})" title="삭제"
+							style="margin: 3px;">
+							<i class='fas fa-trash-alt'></i>
+						</button>
+					</c:if>
 					<div class="panel-heading">
 						<div class="dropdown">
 							<span class="dropdown-toggle" data-toggle="dropdown"
@@ -236,38 +250,28 @@
 					</div>
 					<div class="panel-body">${comm.content }
 						<span class="time-right">${time }</span>
-						<hr>
-						<c:if test="${sessionScope.email == comm.email }">
-							<button type="button" class="btn btn-primary pull-right"
-								onclick="deleteComment(${comm.cnum})" title="삭제">
-								<i class='fas fa-trash-alt'></i>
-							</button>
-						</c:if>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
-		<textarea class="form-control" rows="5" id="comment"></textarea>
-		<div>
-			<span id="count">0</span>/<span id="max-count">0</span>
-		</div>
+
 		<input type="hidden" value="${sessionScope.email }" id="email">
-		<button type="button" class="btn btn-primary"
-			onclick="location.href ='<c:url value='/gboard/list'/>'" title="취소">
-			<i class='fas fa-reply'></i>
-		</button>
 
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button type="button" class="btn btn-primary pull-right"
+				<textarea class="form-control" rows="5" id="comment"></textarea>
+				<div>
+					<span id="count">0</span>/<span id="max-count">0</span>
+				</div>
+				<button type="button" class="btn btn-primary btn-block"
 					onclick="addComment()" title="입력">
-					<i class='fas fa-edit'></i>
+					<i class='fas fa-comment-dots'></i> 입력
 				</button>
 			</c:when>
 			<c:otherwise>
-				<button type="button" class="btn btn-primary pull-right"
+				<button type="button" class="btn btn-primary btn-block"
 					onclick="needLogin()" title="입력">
-					<i class='fas fa-edit'></i>
+					<i class='fas fa-comment-dots'></i> 로그인
 				</button>
 			</c:otherwise>
 		</c:choose>
@@ -276,6 +280,12 @@
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
+		<c:if test="${sessionScope.email == email}">
+						<button type="button" class="btn btn-primary pull-right"
+							onclick="deleteComment({cnum})" title="삭제" style="margin: 3px;">
+							<i class='fas fa-trash-alt'></i>
+						</button>
+					</c:if>
 		<div class="panel-heading"><div class="dropdown">
 				<span class="dropdown-toggle" data-toggle="dropdown"
 					style="cursor: pointer;"> {email} </span>
@@ -287,9 +297,6 @@
 			</div></div>
 		<div class="panel-body">{content}
 		<span class="time-right">{regdate}</span>
-	<hr>
-		<button type="button" class="btn btn-primary pull-right"
-						onclick="deleteComment({cnum})" title="삭제"><i class='fas fa-trash-alt'></i></button>
 	</div>
 	</div>
 </script>
@@ -327,34 +334,6 @@
 		});
 	});
 	
-// 	function recommUp(){
-// 		$.ajax({
-// 			url:"<c:url value='/recommUp?num=${vo.num}&email=${vo.email}'/>",
-// 			dataType:'json',
-// 			success:function(data){
-// 				$("#btn1").show();
-// 				$("#btn2").hide();
-// 				$("#btn3").hide();
-// 				$("#btn4").hide();
-// 				$("#recomm").text("${vo.recomm}");
-// 			}
-// 		});
-// 	}
-// 	function recommDown(){
-// 		$.ajax({
-// 			url:"<c:url value='/recommDown?num=${vo.num}&email=${vo.email}'/>",
-// 			dataType:'json',
-// 			success:function(data){
-// 				$("#btn2").show();
-// 				$("#btn1").hide();
-// 				$("#btn4").hide();
-// 				$("#btn3").hide();
-// 				$("#recomm").text("${vo.recomm -1}");
-// 			}
-// 		});
-// 	}
-	
-
 	function getList() {
 		$.ajax({
 			url:"<c:url value='/comment?num=${vo.num }'/>",
@@ -368,11 +347,6 @@
 										.replace("{content}", json.content)
 										.replace("{regdate}", json.regdate)
 										.replace("{cnum}", json.cnum);
-					
-// 					var div = document.createElement("div");
-// 					var str = json.cnum + " " + json.content + "<br>";
-// 					$(div).html(str);
-// 					$("#commentList").append(div);
 				});
 				document.querySelector("#commentList").innerHTML = resultHTML;
 				$('#comments').scrollTop($('#comments')[0].scrollHeight);

@@ -25,12 +25,12 @@
 		<p class="text-left" style="font-size: x-large;">QnA 게시판</p>
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button style="float: right;" type="button" class="btn btn-primary"
-					data-toggle="modal" data-target="#myModal">글쓰기</button>
+				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+					data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>글쓰기</button>
 			</c:when>
 			<c:otherwise>
-				<button style="float: right;" type="button" class="btn btn-primary"
-					onclick="needLogin()">글쓰기</button>
+				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+					onclick="needLogin()"><i class='fas fa-edit'></i>로그인</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -67,9 +67,9 @@
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
 
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-						<button type="submit" id="submit" name="submit"
-							class="btn btn-primary pull-right">Submit Form</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
+						<button type="submit" id="submit" name="submit" title="입력"
+							class="btn btn-primary pull-right"><i class='fas fa-edit'></i></button>
 					</form>
 				</div>
 			</div>

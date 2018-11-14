@@ -23,19 +23,17 @@
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">게시판</p>
-		<!-- 		<button type="button" class="btn btn-primary" style="float: right;" -->
-		<%-- 			onclick="location='<c:url value='/gboard/insert'/>'">글쓰기</button> --%>
+		
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button style="float: right;" type="button" class="btn btn-primary"
-					data-toggle="modal" data-target="#myModal">글쓰기</button>
+				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+					data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>글쓰기</button>
 			</c:when>
 			<c:otherwise>
-				<button style="float: right;" type="button" class="btn btn-primary"
-					onclick="needLogin()">글쓰기</button>
+				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+					onclick="needLogin()"><i class='fas fa-edit'></i>로그인</button>
 			</c:otherwise>
 		</c:choose>
-
 	</div>
 
 
@@ -66,9 +64,9 @@
 						<div class="form-group">
 							<input type="file" name="file1" id="file" class="form-control">
 						</div>
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
 						<button type="submit" id="submit" name="submit"
-							class="btn btn-primary pull-right">Submit Form</button>
+							class="btn btn-primary pull-right" title="입력"><i class='fas fa-edit'></i></button>
 					</form>
 				</div>
 			</div>

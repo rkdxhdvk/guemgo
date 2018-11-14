@@ -30,9 +30,10 @@
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
-
+		<button type="button" class="btn btn-primary"  style="float: right;"
+				onclick = "location.href ='<c:url value='/qboard/list'/>'" title="취소"><i class='fas fa-reply'></i></button>
 		<c:if test="${sessionScope.email == vo.email }">
-			<button type="submit" class="btn btn-primary" style="float: right;" title="삭제"
+			<button type="submit" class="btn btn-primary" style="float: right;margin-right: 10px;" title="삭제"
 				onclick="location='<c:url value='/qboard/delete?num=${vo.num }'/>'"><i class="fas fa-trash-alt"></i></button>
 			<button style="float: right; margin-right: 10px;" type="button" title="수정"
 				class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-wrench"></i></button>
@@ -90,9 +91,6 @@
 				<span class="time-right">${time }</span>
 			</div>
 
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommDown()" id="btn1">추천취소</button> -->
-			<!-- 	<button type="button" class="btn btn-primary pull-right" onclick="recommUp()" id="btn2">추천</button> -->
-
 			<hr style="border: solid 1px #337ab7;">
 			<div class="pull-right">
 				&ensp;<i class='fas fa-eye'></i> ${vo.hit }
@@ -110,17 +108,15 @@
 			</div>
 		</div>
 	</div>
-	
-	<button type="button" class="btn btn-primary"
-				onclick = "location.href ='<c:url value='/qboard/list'/>'" title="취소"><i class='fas fa-reply'></i></button>
 	<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button style="float: right;" type="button" class="btn btn-primary"
-					data-toggle="modal" data-target="#reply" title="답글"><i class='fas fa-comment-dots'></i></button>
+				<button type="button" class="btn btn-primary btn-block"
+					data-toggle="modal" data-target="#reply" title="답글"><i class='fas fa-comment-dots'></i> 답글</button>
 			</c:when>
 			<c:otherwise>
-				<button style="float: right;" type="button" class="btn btn-primary"
-					onclick="needLogin()" title="답글"><i class='fas fa-comment-dots'></i></button>
+				<button type="button" class="btn btn-primary btn-block"
+					onclick="needLogin()" title="답글"><i class='fas fa-comment-dots'></i>
+					로그인</button>
 			</c:otherwise>
 		</c:choose>
 		

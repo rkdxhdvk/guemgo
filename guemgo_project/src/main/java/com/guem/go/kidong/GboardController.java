@@ -84,7 +84,8 @@ public class GboardController {
 			} else {
 				orgfilename = "";
 				savefilename = "";
-				GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null, orgfilename, savefilename, 0);
+				GboardVo gboardVo = new GboardVo(0, vo.getEmail(), vo.getTitle(), vo.getContent(), 0, 0, 0, null,
+						orgfilename, savefilename, 0);
 				service.insert(gboardVo);
 			}
 			return "redirect:/gboard/list";
@@ -101,21 +102,21 @@ public class GboardController {
 		GboardVo vo = service.detail(num);
 		GboardVo prev = service.prev(num);
 		GboardVo next = service.next(num);
-		
+
 		String retFormat = "0";
 		long filesize = vo.getFilesize();
-		
-		String[] s = {"bytes", "KB", "MB", "GB", "TB", "PB" };
-		
-		if(filesize != 0 ) {
+
+		String[] s = { "bytes", "KB", "MB", "GB", "TB", "PB" };
+
+		if (filesize != 0) {
 			int idx = (int) Math.floor(Math.log(filesize) / Math.log(1024));
 			DecimalFormat df = new DecimalFormat("#,###.##");
 			double ret = ((filesize / Math.pow(1024, Math.floor(idx))));
 			retFormat = df.format(ret) + " " + s[idx];
-		}else {
+		} else {
 			retFormat += " " + s[0];
 		}
-		
+
 		List<GcommentVo> list = service3.list(num);
 		for (GcommentVo vo2 : list) {
 			vo2.setContent(vo2.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
@@ -142,12 +143,6 @@ public class GboardController {
 		service.delete(num);
 		return "redirect:/gboard/list";
 	}
-
-//	@RequestMapping(value = "/gboard/update", method = RequestMethod.POST)
-//	public String update(GboardVo vo, Model model) {
-//		model.addAttribute("vo", vo);
-//		return "kidong/gboard_update";
-//	}
 
 	@RequestMapping(value = "/gboard/update", method = RequestMethod.POST)
 	public String update(GboardVo vo, HttpSession session, MultipartFile file1) {
