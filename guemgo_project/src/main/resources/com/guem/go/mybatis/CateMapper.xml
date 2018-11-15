@@ -16,6 +16,12 @@
 	<select id="cateslist" resultType="com.guem.go.eunbyul.CatesVo" >
 		select * from cate_s
 	</select>
+	<select id="sfroml" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
+		select * from cate_s where mnum in (select mnum from cate_m where (select lnum from cate_l where lname=#{lname})=lnum)
+	</select>
+	<select id="sfromm" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
+		select * from cate_s where mnum in (select mnum from cate_m where mname=#{mname})
+	</select>
 
 </mapper>
 

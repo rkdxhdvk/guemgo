@@ -22,4 +22,10 @@ public class CateService {
 	public List<CatesVo> cateslist(){
 		return dao.cateslist();
 	}
+	public List<CatesVo> sfroml(String lname){
+		return dao.sfroml(lname);
+	}
+	public List<CatesVo> sfromm(String mname){
+		return dao.sfromm(mname);
+	}
 }

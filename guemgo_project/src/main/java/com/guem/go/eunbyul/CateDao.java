@@ -24,4 +24,10 @@ public class CateDao {
 	public List<CatelVo> catellist() {
 		return sqlSession.selectList(NAMESPACE+".catellist");
 	}
+	public List<CatesVo> sfroml(String lname) {
+		return sqlSession.selectList(NAMESPACE+".sfroml",lname);
+	}
+	public List<CatesVo> sfromm(String mname) {
+		return sqlSession.selectList(NAMESPACE+".sfromm",mname);
+	}
 }

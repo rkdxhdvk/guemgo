@@ -1,6 +1,5 @@
 package com.guem.go.woohyun;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.guem.go.eunbyul.CateService;
 import com.guem.go.eunbyul.CatesVo;
-import com.guem.go.eunbyul.ClassService;
+
 
 /*
 	2018-10-24	윤우현 파일생성-홈디렉토리 변경

@@ -10,8 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
 
-    <title>아아아아</title>
+$(document).ready(function() { // 로그아웃
+	var area="${area }";
+	if(area==null || area==""){
+		
+	}else{
+		/* $("#surveybt").hide(); */
+		$("#surveybt").trigger('click');
+	}
+});
+
+</script>
+    <title>금고</title>
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
@@ -138,8 +151,7 @@
 		<form method="get" action="search" class="form-inline mt-3" style="margin-left:190px; position: absolute;"><!-- 위쪽으로3만큼 -->
 			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="관심있는 분야를 입력하세요" style="text-align:center; width:500px; height:40px; ">
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
-			<!-- <a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">test</a> -->
-			<button type="button" class="btn btn-primary mx-1 mt-2" data-toggle="modal" data-target="#registerModal">매칭신청</button>
+			<button type="button" class="btn btn-primary mx-1 mt-2" data-toggle="modal" data-target="#registerModal" id="surveybt">매칭신청</button>
 		</form>
 	
 	</section>
@@ -155,7 +167,7 @@
 				<div class="modal-body">
 					<form action="survey" method="get">
 					<c:forEach var="vo" items="${list }">
-						<input type="submit" name="area" class="btn btn-primary mx-1 mt-2" value="${vo.sname }" onclick="logincheck()">
+						<input type="submit" name="area" id="area" class="btn btn-primary mx-1 mt-2" value="${vo.sname }" onclick="logincheck()">
 					</c:forEach>
 					</form>
 				
@@ -302,12 +314,20 @@ s0.parentNode.insertBefore(s1,s0);
 
 	function logincheck(){
 		var email=$('#email').val ();
+		var area=$('#area').val();
 		 if (email == '' || null || undefined || 0) {
-		      alert("로그인하세요.");
-		      document.location.href="<c:url value='/'/>";
+		      alert("로그인하면 바로 이용 가능합니다.");
+		      document.location.href="<c:url value='/'><c:param name="area" value="1234"/></c:url>";
+		  }else{
+			  document.location.href="<c:url value='/survey'/>";
 		  }
 	}
+	
+/* 	$(document).ready(function() {
 
+				$("#surveybt").trigger('click');
+			    $('#registerModal').modal('show');
+			}); */
 
 </script>
     <!-- Bootstrap core JavaScript -->

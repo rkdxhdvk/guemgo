@@ -28,7 +28,7 @@ public class SurveyController {
 	@Autowired
 	private SurveyService surveyservice;
 	@RequestMapping(value = "/survey", method = RequestMethod.GET)
-	public String survey(HttpServletRequest request, Model model){//설문지 작성 창으로 보내주기
+	public ModelAndView survey(HttpServletRequest request){//설문지 작성 창으로 보내주기
 		String area=request.getParameter("area");
 		CatemVo vo=surveyservice.selectcatem(area);
 		String mname=vo.getMname();
@@ -38,16 +38,19 @@ public class SurveyController {
 		List<QuestionVo> quelist=surveyservice.quelist();
 		//보기 찾아서 담기
 		List<ExampleVo> exlist=surveyservice.exlist();
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("eunbyul/survey");
+		mv.addObject("list", list);
+		mv.addObject("quelist", quelist);
+		mv.addObject("exlist", exlist);
+		mv.addObject("area", area);
 		String email=(String)request.getSession().getAttribute("email");
 		if(email == null || email == "") {
-			return "login";
+			mv.setViewName("redirect:/login");
+			return mv;
 		}
-		model.addAttribute("list", list);
-		model.addAttribute("quelist", quelist);
-		model.addAttribute("exlist", exlist);
-		model.addAttribute("area", area);
-	
-        return "eunbyul/survey";
+        return mv;
 	}
 
 	@RequestMapping(value = "/survey", method = RequestMethod.POST)
