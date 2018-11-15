@@ -1,23 +1,23 @@
 package com.guem.go.minsu;
 
 public class EventVo {
-	private String pointdate;
+	private String att;
 	private String email;
 	
 	public EventVo() {}
 
-	public EventVo(String pointdate, String email) {
+	public EventVo(String att, String email) {
 		super();
-		this.pointdate = pointdate;
+		this.att = att;
 		this.email = email;
 	}
 
-	public String getPointdate() {
-		return pointdate;
+	public String getAtt() {
+		return att;
 	}
 
-	public void setPointdate(String pointdate) {
-		this.pointdate = pointdate;
+	public void setAtt(String att) {
+		this.att = att;
 	}
 
 	public String getEmail() {

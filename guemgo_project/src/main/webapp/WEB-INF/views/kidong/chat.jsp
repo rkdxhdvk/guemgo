@@ -128,11 +128,14 @@ body {
 
 		$('#data').scrollTop($('#data')[0].scrollHeight);
 		
-		
-		
 		var events = [];
 		var sche_detailNum = parseInt(document.getElementById("sche_detailNum").value);
 		var scheduleNum = parseInt(document.getElementById("scheduleNum").value);
+		var lectureNum = parseInt(document.getElementById("lectureNum").value);
+		var matchNum = parseInt(document.getElementById("matchNum").value);
+		var lecturename = document.getElementById("lecturename").value;
+		var email = document.getElementById("email").value;
+		var other = document.getElementById("other").value;
 		<c:forEach items="${start}" var="vo" varStatus="status">
 			sche_detailNum = sche_detailNum + 1;
 			events.push({
@@ -144,21 +147,29 @@ body {
 			})
 		</c:forEach>
 		$("#sche_confirm").click(function() {
-			$('#calendar').fullCalendar('clientEvents', function(event) {
-				console.log(event.id);
-				$.getJSON("<c:url value='/cal'/>",
-						{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
-						function(data) {
-								alert("스케줄 확정");
-				});
-			})
-		});
+			$.ajax({
+				url:"<c:url value='/calInsert'/>",
+				data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename }, 
+				success:function(data){
+					console.log(data);
+				}
+			});
+				$('#calendar').fullCalendar('clientEvents', function(event) {
+					console.log(event.id);
+					$.getJSON("<c:url value='/cal'/>",
+							{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
+							function(data) {
+									console.log("스케줄 확정1!!");
+									alert("스케줄 확정");
+					});
+				})
+			});
 		$("#sche_cancel").click(function() {
 				$.getJSON("<c:url value='/caldelete'/>", {scheduleNum:scheduleNum}, 
 						function(data) {
 								alert("스케줄 취소");
 				});
-				location.href="/go/index_new";
+				location.href=".main";
 		});
 		$('#calendar').fullCalendar(
 				{
@@ -172,7 +183,7 @@ body {
 					},
 					editable : true,
 					///
-					dayClick : function(date, calEvent) {
+					/* dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
 		                	  var start = moment(event.start).format("YYYY-MM-DD");
@@ -231,7 +242,7 @@ body {
 		                		  })
 		                	  }
 		                  });
-					},
+					}, */
 					eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						
@@ -249,8 +260,7 @@ body {
 						    }
 
 						  },
-					events : events
-					
+					events : events	
 				});
 	});
 	var sock;
@@ -376,12 +386,19 @@ body {
 						style="border: solid 2px black; height: 600px;">
 						<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
 						<input type="hidden" value="${scheduleNum}" id="scheduleNum">
+						<input type="hidden" value="${lectureNum}" id="lectureNum">
+						<input type="hidden" value="${matchNum}" id="matchNum">
+						<input type="hidden" value="${lecturename}" id="lecturename">
+						<input type="hidden" value="${email}" id="email">
+						<input type="hidden" value="${other}" id="other">
 
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>
 								<input type="button" id="sche_confirm" value="스케줄 확정">
+								<!-- <input type="button" id="sche_cancel" value="취소"> -->
 							</c:when>
+							
 							<c:otherwise>
 								<form action="<c:url value='/calaaa'/>" method="get">
 									<label>강의명</label> <select name="lecture">
@@ -409,7 +426,7 @@ body {
 										시작날짜: <input type="text" id="datepicker" name="startDate"
 											size="30">
 									</p>
-									<input type="hidden" value=1 name="room"> <input
+									<input type="hidden" value=${room } name="room"> <input
 										type="submit" value="스케줄" id="btn">
 								</form>
 							</c:otherwise>

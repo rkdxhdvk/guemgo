@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.Sche_detailMapper">
 	<insert id="insert" parameterType="com.guem.go.minsu.Sche_detailVo">
-		insert into sche_detail values(#{Num}, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0, #{lecturename})
+		insert into sche_detail values(#{num}, #{scheduleNum}, #{memo}, #{sDate}, #{eDate}, 0, #{lecturename})
 	</insert>
 	<select id="detailNum" resultType="int">
 		<!-- select schedetail_seq.nextval from dual -->

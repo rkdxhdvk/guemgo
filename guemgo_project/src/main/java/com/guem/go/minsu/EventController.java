@@ -26,8 +26,8 @@ public class EventController {
 	}
 	@RequestMapping(value="/eventinsert", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public int insert(String pointdate, String email) {
-		EventVo vo = new EventVo(pointdate, email);
+	public int insert(String att, String email) {
+		EventVo vo = new EventVo(email, att);
 		return service.insert(vo);
 	}
 	@RequestMapping(value="/eventlist", method=RequestMethod.GET)
@@ -41,6 +41,6 @@ public class EventController {
 		model.addAttribute("list", list);
 		model.addAttribute("date", currDate);
 		
-		return "attCheck";
+		return "minsu/attCheck";
 	}
 }

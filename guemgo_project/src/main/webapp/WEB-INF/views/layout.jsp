@@ -11,10 +11,16 @@
 <link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="/go/resources/css/custom.css">
 <link rel="stylesheet" type="text/css" href="/go/resources/boot/vendor/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/boot/vendor/fontawesome-free/css/all.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/boot/vendor/simple-line-icons/css/simple-line-icons.css">
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/boot/css/landing-page.css">
+
+ <link href="${pageContext.request.contextPath}/resources/boot2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/boot2/css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="${pageContext.request.contextPath}/resources/boot2/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
 <body>
 <div id="wrap">
 	<div id="header">
@@ -32,8 +38,8 @@
 <script src="/go/resources/js/jquery.min.js"></script>
 	<script src="/go/resources/js/pooper.js"></script>
 	<script src="/go/resources/js/bootstrap.js"></script>
-	<script src="<c:url value='resources/boot/vendor/jquery/jquery.min.js' />"/>
-    <script src="<c:url value='${pageContext.request.contextPath}/resources/boot/vendor/bootstrap/js/bootstrap.bundle.min.js' />"/>
-  	
+	<script src="${pageContext.request.contextPath}/resources/boot2/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${pageContext.request.contextPath}/resources/boot2/js/bootstrap.min.js"></script>
 </body>
 </html>

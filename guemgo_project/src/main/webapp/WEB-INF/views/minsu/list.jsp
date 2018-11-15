@@ -34,7 +34,7 @@
 							var color = 'orange';
 						}
 						events.push({
-							id : ${vo.schedetailNum},
+							id : ${vo.num},
 							title : '${vo.lecturename}',
 							start : '${vo.sDate }',
 							end : '${vo.eDate}',
@@ -184,6 +184,5 @@ body {
 </head>
 <body>
 	<div id='calendar'></div>
-	<input type="button" id="btn1" value="확인">
 </body>
 </html>

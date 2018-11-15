@@ -22,12 +22,13 @@
 	</c:forEach>
 </ul> --%>
 <!-- //////////////////////////Header////////////////////////// -->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
-		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a>
+		<%-- <a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a> --%>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
@@ -97,6 +98,7 @@
 											</c:when>
 											<c:otherwise>
 													<a class="dropdown-item" href="mypage">마이페이지</a>
+													<a class="dropdown-item" href="eventlist?email=${sessionScope.email }">출석 이벤트</a>
 													<span style="margin-left:25px">--------------------</span>
 													<a class="dropdown-item" href="changeGosu">고수로 전환하기</a>
 											</c:otherwise>

@@ -34,18 +34,19 @@ public class CalController {
 	@RequestMapping(value="/calaaa", method=RequestMethod.GET)
 	public String sche(HttpServletRequest request, Model model) {
 		String email = (String)request.getSession().getAttribute("email");
-		String other = "min"; // 채팅방
+		String other = "min"; // 채팅방에서 받아오기
 		String lecture = request.getParameter("lecture");
 		String[] lss = lecture.split("/");
 		String lecturename = lss[1]; // select에서
 		int lectureNum = Integer.parseInt(lss[0]); // select에서
-		int matchNum = 1; // 요청서에서 시작
-		int scheduleNum = scheService.scheduleNum();
+		System.out.println("lectureNum: " + lectureNum );
+		int matchNum = 1; // 요청서에서 시작해서 받아오기
+		int scheduleNum = scheService.scheduleNum() + 1;
 		System.out.println("스케줄넘 " + scheduleNum);
 		int sche_detailNum = sche_detailService.sche_detailNum();
 		//먼저 스케줄 테이블 insert
-		ScheduleVo vo = new ScheduleVo(scheduleNum+1, email, other, lectureNum, matchNum, lecturename);
-		scheService.insert(vo);
+		/*ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
+		scheService.insert(vo);*/
 		
 		//매칭성공 테이블 
 		MatchingVo mvo = new MatchingVo(0, matchNum, lectureNum, email, other, null);
@@ -98,14 +99,19 @@ public class CalController {
 			//return "minsu/click";
 			return "kidong/chat";
 		}
+		
 		List<ChatVo> list = chatService.list(room);
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
+		
 		model.addAttribute("ar_sche_detailNum", array_schedetailNum);
 		model.addAttribute("sche_detailNum", sche_detailNum);
-		//model.addAttribute("email", email);
+		model.addAttribute("email", email);
 		model.addAttribute("lecturename", lecturename);
 		model.addAttribute("scheduleNum", scheduleNum);
+		model.addAttribute("other", other);
+		model.addAttribute("lectureNum", lectureNum);
+		model.addAttribute("matchNum", matchNum);
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
 		model.addAttribute("scheselect", "ok");

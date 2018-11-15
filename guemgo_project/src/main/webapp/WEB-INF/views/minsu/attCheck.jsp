@@ -33,16 +33,17 @@
 				<c:forEach items="${list}" var="vo">
 					events.push({
 						title : '출석',
-						start : '${vo.pointdate }',
+						start : '${vo.att }',
 						overlap : false
 					})
-					<c:if test="${date == vo.pointdate}">
+					<c:if test="${date == vo.att}">
 						<c:set var="flag" value="1"/>
 					</c:if>
 				</c:forEach>
+				console.log(flag);
 				$("#btn").click(function() {
 					<c:if test="${flag != 1}">
-						$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', pointdate:'${date}'}, 
+						$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', att:'${date}'}, 
 								function(data) {
 							$('#calendar').fullCalendar('renderEvent',
 									{	
