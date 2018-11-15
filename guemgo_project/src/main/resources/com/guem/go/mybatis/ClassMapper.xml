@@ -9,16 +9,14 @@
 	<select id="areainsert" parameterType="com.guem.go.eunbyul.GosuareaVo">
 		insert into gosu_area values(#{area}, lec_seq.currval)
 	</select>
-
-	<select id="cateslist" resultType="com.guem.go.eunbyul.CatesVo" >
-		select * from cate_s
-	</select>
 	<select id="gosuselect" resultType="com.guem.go.woohyun.GosuVo"  parameterType="String">
 		select * from gosu where email=#{email}
 	</select>
 	<delete id="classdelete" parameterType="int" >
 		delete from lecture where lecturenum=#{lecNum}
-		
 	</delete>
+	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
+		select * from lecture where go_num=#{go_num}
+	</select>
 </mapper>
 
