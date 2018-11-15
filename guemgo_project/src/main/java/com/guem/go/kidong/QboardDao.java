@@ -61,6 +61,10 @@ public class QboardDao {
 	public List<QboardVo> select(int grp){
 		return session.selectList(NAMESPACE + "select", grp);
 	}
+	
+	public QboardVo getQna(int grp) {
+		return session.selectOne(NAMESPACE + "getQna", grp);
+	}
 }
 
 

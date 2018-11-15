@@ -55,12 +55,7 @@ public class GboardController {
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
-		return "kidong/gboard";
-	}
-
-	@RequestMapping(value = "/gboard/insert", method = RequestMethod.GET)
-	public String insert() {
-		return "kidong/gboard_insert";
+		return ".kidong.gboard";
 	}
 
 	@RequestMapping(value = "/gboard/insert", method = RequestMethod.POST)
@@ -135,7 +130,7 @@ public class GboardController {
 		model.addAttribute("retFormat", retFormat);
 		model.addAttribute("prev", prev);
 		model.addAttribute("next", next);
-		return "kidong/gboard_detail";
+		return ".kidong.gboard_detail";
 	}
 
 	@RequestMapping(value = "/gboard/delete", method = RequestMethod.GET)

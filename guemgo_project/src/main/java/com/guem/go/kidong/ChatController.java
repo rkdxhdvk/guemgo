@@ -38,7 +38,7 @@ public class ChatController {
 		
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
-		return "/kidong/chat";
+		return ".kidong.chat";
 	}
 	
 }

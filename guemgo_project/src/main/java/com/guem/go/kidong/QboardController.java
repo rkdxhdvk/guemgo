@@ -42,7 +42,7 @@ public class QboardController {
 		model.addAttribute("sort", sort);
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
-		return "kidong/qboard";
+		return ".kidong.qboard";
 	}
 
 	@RequestMapping(value = "/qboard/insert", method = RequestMethod.POST)
@@ -84,11 +84,23 @@ public class QboardController {
 	}
 
 	@RequestMapping(value = "/qboard/detail", method = RequestMethod.GET)
-	public String detail(int num, Model model) {
+	public String detail(int num,int grp,Model model) {
 		qboardService.addHit(num);
+		List<QboardVo> list = qboardService.select(grp);
 		QboardVo vo = qboardService.detail(num);
 		model.addAttribute("vo", vo);
-		return "kidong/qboard_detail";
+		model.addAttribute("list", list);
+		return ".kidong.qboard_detail";
+	}
+	
+	@RequestMapping(value = "/qboard/getQna", method = RequestMethod.GET)
+	public String getQna(int grp,Model model) {
+		QboardVo vo = qboardService.getQna(grp);
+		qboardService.addHit(vo.getNum());
+		List<QboardVo> list = qboardService.select(grp);
+		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
+		return ".kidong.qboard_detail";
 	}
 
 	@RequestMapping(value = "/qboard/update", method = RequestMethod.POST)

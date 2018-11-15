@@ -147,7 +147,7 @@
 										&nbsp;&nbsp;
 									</c:forEach>
 									<i class="	far fa-hand-point-right"></i>
-								</c:if> <a href="<c:url value='/qboard/detail?num=${vo.num }'/>">${vo.title }</a>
+								</c:if> <a href="<c:url value='/qboard/detail?num=${vo.num }&grp=${vo.grp }'/>">${vo.title }</a>
 
 							</td>
 							<td><div class="dropdown">

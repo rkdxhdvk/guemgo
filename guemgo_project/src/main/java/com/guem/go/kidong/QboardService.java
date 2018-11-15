@@ -58,6 +58,10 @@ public class QboardService {
 	public List<QboardVo> select(int grp){
 		return qboardDao.select(grp);
 	}
+	
+	public QboardVo getQna(int grp) {
+		return qboardDao.getQna(grp);
+	}
 }
 
 

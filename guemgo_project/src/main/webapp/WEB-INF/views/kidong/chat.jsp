@@ -100,7 +100,7 @@ body {
 #data {
 	overflow: auto;
 	height: 700px;
-	border: 2px solid;
+	border: 2px solid #337ab7;
 	border-radius: 5px;
 	padding: 15px;
 }
@@ -336,7 +336,7 @@ body {
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-5">
 				<div id="data">
 					<c:forEach var="vo" items="${list }">
 						<fmt:formatDate value="${vo.time }" pattern="yyyy-MM-dd HH:mm:ss"
@@ -368,22 +368,17 @@ body {
 				<br>
 				<textarea class="form-control" rows="5" id="message"></textarea>
 				<br>
-				<button type="button" class="btn btn-primary"
-					onclick="location.href ='<c:url value='/room?email=${sessionScope.email }'/>'" title="취소">
-					<i class='fas fa-reply'></i>
-				</button>
 
 				<button type="button" id="sendBtn"
-					class="btn btn-primary pull-right" title="입력">
-					<i class='fas fa-edit'></i>
+					class="btn btn-primary btn-block" title="입력">
+					<i class='fas fa-comment-dots'></i> 전송
 				</button>
-
 			</div>
 			<!-- //////////////////////////////////추가 //////////////////////////////////// -->
-			<div class="col-sm-8">
-				<div style="border: solid 2px black; height: 900px; padding: 10px;">
+			<div class="col-sm-7">
+				<div style="height: 900px; ">
 					<div class="container-fluid"
-						style="border: solid 2px black; height: 600px;">
+						style="border: solid 2px #337ab7; border-radius: 5px; height: 630px;">
 						<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
 						<input type="hidden" value="${scheduleNum}" id="scheduleNum">
 						<input type="hidden" value="${lectureNum}" id="lectureNum">
@@ -391,7 +386,6 @@ body {
 						<input type="hidden" value="${lecturename}" id="lecturename">
 						<input type="hidden" value="${email}" id="email">
 						<input type="hidden" value="${other}" id="other">
-
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>

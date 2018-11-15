@@ -50,6 +50,11 @@
 		resultType="com.guem.go.kidong.QboardVo">
 		select * from qna_BOARD where num=#{num}
 	</select>
+	
+	<select id="getQna" resultType="com.guem.go.kidong.QboardVo" parameterType="int">
+		select * from qna_board where grp = #{grp} and lev = 0
+	</select>
+	
 	<update id="update" parameterType="com.guem.go.kidong.QboardVo">
 		update qna_BOARD set
 		title=#{title}, content=#{content}

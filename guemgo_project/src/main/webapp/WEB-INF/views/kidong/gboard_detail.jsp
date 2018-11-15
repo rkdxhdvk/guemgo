@@ -28,6 +28,7 @@
 </style>
 </head>
 <body>
+<div class="container-fluid">
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
@@ -172,7 +173,9 @@
 			</div>
 		</c:if>
 	</div>
+</div>
 
+<div class="container-fluid" style="padding-bottom: 15px;">
 	<c:choose>
 		<c:when test="${prev.num != null }">
 			<div style="float: left;">
@@ -194,6 +197,7 @@
 		</c:otherwise>
 	</c:choose>
 
+
 	<c:choose>
 		<c:when test="${next.num != null }">
 			<div style="float: right;">
@@ -214,10 +218,9 @@
 			</div>
 		</c:otherwise>
 	</c:choose>
+</div>
 
-	<br>
-	<br>
-	<br>
+<div class="container-fluid">
 	<div class="container-fluid" id="comments"
 		style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
 		<div class="panel-heading">
@@ -264,19 +267,19 @@
 					<span id="count">0</span>/<span id="max-count">0</span>
 				</div>
 				<button type="button" class="btn btn-primary btn-block"
-					onclick="addComment()" title="입력">
+					onclick="addComment()" title="입력" style="margin-bottom: 15px;">
 					<i class='fas fa-comment-dots'></i> 입력
 				</button>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary btn-block"
-					onclick="needLogin()" title="입력">
+					onclick="needLogin()" title="로그인" style="margin-bottom: 15px;">
 					<i class='fas fa-comment-dots'></i> 로그인
 				</button>
 			</c:otherwise>
 		</c:choose>
-
 	</div>
+</div>
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
