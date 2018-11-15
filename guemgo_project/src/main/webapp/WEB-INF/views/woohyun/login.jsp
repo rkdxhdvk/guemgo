@@ -17,7 +17,7 @@
 	<%
 	String area=request.getParameter("area"); 
 	%>
-	<input type="text" id="area" value="${area }">
+	<input type="hidden" id="area" value="${area }">
 	이메일(아이디) <input type="text" name="email"><br>
 	비밀번호 <input type="password" name="pwd"><br>
 	<div style="color:red;font-size: 12px">${errMsg }</div>
