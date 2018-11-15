@@ -28,7 +28,7 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>	
-		<%-- <a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a> --%>
+		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>

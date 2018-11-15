@@ -28,7 +28,7 @@ public class CalController {
 	
 	@RequestMapping(value="/select", method=RequestMethod.GET)
 	public String select() {
-		return "minsu/select";
+		return "kidong/select";
 	}
 	
 	@RequestMapping(value="/calaaa", method=RequestMethod.GET)

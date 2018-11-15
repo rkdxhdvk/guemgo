@@ -25,6 +25,24 @@
 		<put-attribute name="content" value="/WEB-INF/views/minsu/review_update.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
+	
+	<definition name=".select" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minsu/select.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+	<definition name=".chat" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/kidong/chat.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>	
+	
+	<definition name=".event" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minsu/attCheck.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
 	<!-- 
 		.member.login.loginForm
 		value="/WEB-INF/views/member/login/loginForm.jsp

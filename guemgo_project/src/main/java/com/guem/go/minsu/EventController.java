@@ -41,6 +41,6 @@ public class EventController {
 		model.addAttribute("list", list);
 		model.addAttribute("date", currDate);
 		
-		return "minsu/attCheck";
+		return ".event";
 	}
 }

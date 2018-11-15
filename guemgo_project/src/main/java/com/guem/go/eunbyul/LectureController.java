@@ -27,7 +27,7 @@ public class LectureController {
 		int gonum = goService.gosuNum(email);
 		List<LectureVo> list = classService.classlist(gonum);
 		model.addAttribute("list", list);
-		return "minsu/select";
+		return ".select";
 	}
 	@RequestMapping(value="/mylecture",method=RequestMethod.GET)
 	public ModelAndView mylecture(String email) {
