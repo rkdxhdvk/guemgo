@@ -1,32 +1,24 @@
 package com.guem.go.kidong;
 
 import java.sql.Date;
+import java.util.List;
 
-public class NcommentVo {
+public class CommentsVo {
 	private int cnum;
-	private int num;
 	private String email;
 	private String content;
 	private Date regdate;
+	private List<NreplyVo> comments;
 
-	public NcommentVo() {
-	}
+	public CommentsVo() {}
 
-	public NcommentVo(int cnum, int num, String email, String content, Date regdate) {
+	public CommentsVo(int cnum, String email, String content, Date regdate, List<NreplyVo> comments) {
 		super();
 		this.cnum = cnum;
-		this.num = num;
 		this.email = email;
 		this.content = content;
 		this.regdate = regdate;
-	}
-
-	public int getNum() {
-		return num;
-	}
-
-	public void setNum(int num) {
-		this.num = num;
+		this.comments = comments;
 	}
 
 	public int getCnum() {
@@ -59,6 +51,14 @@ public class NcommentVo {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+
+	public List<NreplyVo> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<NreplyVo> comments) {
+		this.comments = comments;
 	}
 
 }

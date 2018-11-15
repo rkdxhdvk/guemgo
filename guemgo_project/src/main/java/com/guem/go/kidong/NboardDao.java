@@ -33,6 +33,10 @@ public class NboardDao {
 	public int hitUp(int num) {
 		return session.update(NAMESPACE + "hitUp", num);
 	}
+	
+	public int hitDown(int num) {
+		return session.update(NAMESPACE + "hitDown", num);
+	}
 
 	public int update(NboardVo vo) {
 		return session.update(NAMESPACE + "update", vo);

@@ -30,6 +30,10 @@ public class NboardService {
 	public int hitUp(int num) {
 		return dao.hitUp(num);
 	}
+	
+	public int hitDown(int num) {
+		return dao.hitDown(num);
+	}
 
 	public int update(NboardVo vo) {
 		return dao.update(vo);

@@ -184,8 +184,8 @@
 				<div class="panel panel-primary">
 					<c:if test="${sessionScope.email == comm.email }">
 						<button type="button" class="btn btn-primary pull-right"
-							onclick="deleteComment(${comm.cnum})" title="삭제"
-							style="margin: 3px;">
+							onclick="location.href ='<c:url value='/ncomment/delete?cnum=${comm.cnum }&num=${vo.num }'/>'"
+							title="삭제" style="margin: 3px;">
 							<i class='fas fa-trash-alt'></i>
 						</button>
 					</c:if>
@@ -204,37 +204,56 @@
 					<div class="panel-body">${comm.content }
 						<span class="time-right">${time }</span>
 						<hr>
-
-						<c:if test="${sessionScope.email != null }">
-							<div class="input-group">
-								<input type="text" class="form-control" name="reply">
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-primary"
-										onclick="deleteComment(${comm.cnum})" title="답변">
-										<i class='fas fa-comment-dots'></i>
-									</button>
+						<div id="replyList">
+							<c:forEach var="reply" items="${comm.comments }">
+							<fmt:formatDate value="${reply.regdate }"
+								pattern="yyyy-MM-dd HH:mm:ss" var="regdate" />
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<span>${reply.email }</span> <span>${reply.content }</span> <span
+											style="float: right;">${regdate }</span>
+									</div>
 								</div>
-							</div>
+							</c:forEach>
+						</div>
+						<c:if test="${sessionScope.email != null }">
+							<form action="<c:url value='/nreply/insert'/>" method="post">
+								<input type="hidden" name="cnum" value="${comm.cnum }">
+								<input type="hidden" name="num" value="${vo.num }"> <input
+									type="hidden" name="email" value="${sessionScope.email }">
+								<div class="input-group">
+									<input type="text" class="form-control" id="reply"
+										name="content">
+									<div class="input-group-btn">
+										<button type="submit" class="btn btn-primary" title="답변">
+											<i class='fas fa-comment-dots'></i>
+										</button>
+									</div>
+								</div>
+							</form>
 						</c:if>
-
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 
 
-		<input type="hidden" value="${sessionScope.email }" id="email">
+
 
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<textarea class="form-control" rows="5" id="comment"></textarea>
-				<div>
-					<span id="count">0</span>/<span id="max-count">0</span>
-				</div>
-				<button type="button" id="submit" class="btn btn-primary btn-block"
-					onclick="addComment()" title="입력">
-					<i class='fas fa-comment-dots'></i> 입력
-				</button>
+				<form action="<c:url value='/ncomment/insert'/>" method="post">
+					<input type="hidden" value="${sessionScope.email }" name="email">
+					<input type="hidden" value="${vo.num }" name="num">
+					<textarea class="form-control" rows="5" name="content" id="comment"></textarea>
+					<div>
+						<span id="count">0</span>/<span id="max-count">0</span>
+					</div>
+					<button type="submit" id="submit" class="btn btn-primary btn-block"
+						onclick="addComment()" title="입력">
+						<i class='fas fa-comment-dots'></i> 입력
+					</button>
+				</form>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary btn-block"
@@ -247,101 +266,131 @@
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
-		<c:if test="${sessionScope.email == email}">
+					<c:if test="${sessionScope.email == email}">
 						<button type="button" class="btn btn-primary pull-right"
-							onclick="deleteComment({cnum})" title="삭제" style="margin: 3px;">
+							onclick="deleteComment({cnum})" title="삭제"
+							style="margin: 3px;">
 							<i class='fas fa-trash-alt'></i>
 						</button>
 					</c:if>
-		<div class="panel-heading"><div class="dropdown">
-				<span class="dropdown-toggle" data-toggle="dropdown"
-					style="cursor: pointer;"> {email} </span>
-				<ul class="dropdown-menu">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-				</ul>
-			</div></div>
-		<div class="panel-body">{content}
-		<span class="time-right">{regdate}</span>
-	<hr>
-					<c:if test="${sessionScope.email != null }">
+
+					<div class="panel-heading">
+						<div class="dropdown">
+							<span class="dropdown-toggle" data-toggle="dropdown"
+								style="cursor: pointer;"> {email} </span>
+							<ul class="dropdown-menu">
+								<li><a href="#">HTML</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><a href="#">JavaScript</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel-body">{content}
+						<span class="time-right">{regdate}</span>
+						<hr>
+							<div>
+						{Rregdate} {Rcontent}
+					</div>
+						<c:if test="${sessionScope.email != null }">
 							<div class="input-group">
-								<input type="text" class="form-control" name="reply">
+								<input type="text" class="form-control" id="reply">
 								<div class="input-group-btn">
 									<button type="button" class="btn btn-primary"
-										onclick="deleteComment({cnum})" title="답변">
+										onclick="addReply({num})" title="답변">
 										<i class='fas fa-comment-dots'></i>
 									</button>
 								</div>
 							</div>
 						</c:if>
-	</div>
-	</div>
+					</div>
+				</div>
 </script>
-
-
 
 </body>
 <script type="text/javascript">
-
-
-	function getList() {
-		$.ajax({
-			url:"<c:url value='/ncomment/list?num=${vo.num }'/>",
-			dataType:'json',
-			success:function(data){
-				$("#commentList").empty();
-				var html = document.querySelector("#template-list-item").innerHTML;
-				var resultHTML = "";
-				$(data).each(function(i, json){
-					resultHTML += html.replace("{email}", json.email)
-										.replace("{content}", json.content)
-										.replace("{regdate}", json.regdate)
-										.replace("{cnum}", json.cnum);
-					
-				});
-				document.querySelector("#commentList").innerHTML = resultHTML;
-				$('#comments').scrollTop($('#comments')[0].scrollHeight);
-			}
-		});
-	}
+// 	function getList() {
+// 		$.ajax({
+// 			url:"<c:url value='/ncomment/list?num=${vo.num }'/>",
+// 			dataType:'json',
+// 			success:function(data){
+// 				var html = document.querySelector("#template-list-item").innerHTML;
+// 				var resultHTML = "";
+// 				console.log(data.reply);
+// 				$(data).each(function(i, json){
+// 					resultHTML += html.replace("{email}", json.email)
+// 										.replace("{content}", json.content)
+// 										.replace("{regdate}", json.regdate)
+// 										.replace("{cnum}", json.cnum)
+// 										.replace("{num}", json.cnum);
+// 					$(data.reply).each(function(i, reply){
+// 						resultHTML += html.replace("{Rregdate}", reply.regdate)		
+// 									.replace("{Rcontent}", reply.content);
+// 					});
+// 				});
+// 				document.querySelector("#commentList").innerHTML = resultHTML;
+// 				$('#comments').scrollTop($('#comments')[0].scrollHeight);
+// 			}
+// 		});
+// 	}
 	
-	function addComment(){
-		if($("#comment").val() == ""){
-			alert('공백');
-			return;
-		}
-		var num = ${vo.num };
-		var comment = $("#comment").val();
-		var email = $("#email").val();
-		$.getJSON("<c:url value='/ncomment/insert'/>", {
-			"num" : num,
-			"content" : comment,
-			"email" : email
-		}, function(data){
-			if(data.code){
-				$("#comment").val("");
-				getList();
-			}else
-				console.log("fail");
-		});
-		$('#comment').focus();
-	}
+// 	function addComment(){
+// 		if($("#comment").val() == ""){
+// 			alert('공백');
+// 			return;
+// 		}
+// 		var num = ${vo.num };
+// 		var comment = $("#comment").val();
+// 		var email = $("#email").val();
+// 		$.getJSON("<c:url value='/ncomment/insert'/>", {
+// 			"num" : num,
+// 			"content" : comment,
+// 			"email" : email
+// 		}, function(data){
+// 			if(data.code){
+// 				$("#comment").val("");
+// 				getList();
+// 			}else
+// 				console.log("fail");
+// 		});
+// 		$('#comment').focus();
+// 	}
 	
-	function deleteComment(cnum){
-		var num = ${vo.num};
-		$.getJSON("<c:url value='/ncomment/delete'/>",{
-			"num" : num,
-			"cnum" : cnum
-		}, function(data){
-			if(data.code){
-				getList();
-			}else
-				console.log("fail");
+// 	function deleteComment(cnum){
+// 		$.getJSON("<c:url value='/ncomment/delete'/>",{
+// 			"cnum" : cnum
+// 		}, function(data){
+// 			if(data.code){
+// 				getList();
+// 			}else
+// 				console.log("fail");
 		
-		});
-	}
+// 		});
+// 	}
+	
+// 	function addReply(cnum){
+// 		if($("#reply").val() == ""){
+// 			alert('공백');
+// 			return;
+// 		}
+// 		var reply = $("#reply").val();
+// 		var email = $("#email").val();
+// 		$.getJSON("<c:url value='/nreply/insert'/>", {
+// 			"cnum" : cnum,
+// 			"content" : reply,
+// 			"email" : email
+// 		}, function(data){
+// 			if(data.code){
+// 				$("#reply").val("");
+// 				getList();
+// 			}else
+// 				console.log("fail");
+// 		});
+// 		$('#reply').focus();
+// 	}
+	
+	
+	
+	
 	
 	
 	document.getElementById('comment').addEventListener('keyup',checkByte);

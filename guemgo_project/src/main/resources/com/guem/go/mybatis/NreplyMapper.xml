@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guem.go.mybatis.NreplyMapper">
+	<select id="getCount" resultType="int" parameterType="int">
+		select NVL(count(num),0) cnt
+		from nreply where cnum = #{cnum}
+	</select>
+	<insert id="insert" parameterType="com.guem.go.kidong.NreplyVo">
+		insert into nreply
+		values(nreply_seq.nextval,#{cnum},#{email},#{content},sysdate)
+	</insert>
+	<select id="list" resultType="com.guem.go.kidong.NreplyVo" parameterType="int">
+		select * from nreply where cnum = #{cnum}
+	</select>
+	<update id="update" parameterType="com.guem.go.kidong.NreplyVo">
+		update nreply set
+		title=#{title}, content=#{content}
+		where num=#{num}
+	</update>
+	<delete id="delete" parameterType="int">
+		delete from nreply where
+		num = #{num}
+	</delete>
+</mapper>

@@ -232,7 +232,7 @@
 				<div class="panel panel-primary">
 					<c:if test="${sessionScope.email == comm.email }">
 						<button type="button" class="btn btn-primary pull-right"
-							onclick="deleteComment(${comm.cnum})" title="삭제"
+							onclick="location.href ='<c:url value='/gboard/list'/>'" title="삭제"
 							style="margin: 3px;">
 							<i class='fas fa-trash-alt'></i>
 						</button>

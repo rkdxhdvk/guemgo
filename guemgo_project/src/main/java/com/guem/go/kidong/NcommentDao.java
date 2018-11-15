@@ -1,7 +1,6 @@
 package com.guem.go.kidong;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,6 @@ public class NcommentDao {
 
 	private final static String NAMESPACE = "com.guem.go.mybatis.NcommentMapper.";
 
-	public int getMaxNum(int num) {
-		return session.selectOne(NAMESPACE + "getMaxNum", num);
-	}
-
 	public int getCount(int num) {
 		return session.selectOne(NAMESPACE + "getCount", num);
 	}
@@ -26,11 +21,19 @@ public class NcommentDao {
 		return session.insert(NAMESPACE + "insert", vo);
 	}
 
-	public int insertReply(Map<String, Object> map) {
-		return session.insert(NAMESPACE + "insertReply", map);
+	public int insertReply(NreplyVo vo) {
+		return session.insert(NAMESPACE + "insertReply", vo);
 	}
-
-	public List<NcommentVo> list(int num) {
+	
+	public List<NreplyVo> replys(int cnum) {
+		return session.selectList(NAMESPACE + "replys", cnum);
+	}
+	
+	public CommentsVo getInfo(int num) {
+		return session.selectOne(NAMESPACE + "getInfo", num);
+	}
+	
+	public List<CommentsVo> list(int num) {
 		return session.selectList(NAMESPACE + "list", num);
 	}
 
@@ -41,8 +44,8 @@ public class NcommentDao {
 	public int delete(int cnum) {
 		return session.delete(NAMESPACE + "delete", cnum);
 	}
-
-	public int deleteRef(int ref) {
-		return session.delete(NAMESPACE + "deleteGrp", ref);
+	
+	public int deleteReply(int num) {
+		return session.delete(NAMESPACE + "deleteReply", num);
 	}
 }

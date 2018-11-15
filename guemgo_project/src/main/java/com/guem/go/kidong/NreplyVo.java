@@ -2,20 +2,20 @@ package com.guem.go.kidong;
 
 import java.sql.Date;
 
-public class NcommentVo {
-	private int cnum;
+public class NreplyVo {
 	private int num;
+	private int cnum;
 	private String email;
 	private String content;
 	private Date regdate;
 
-	public NcommentVo() {
+	public NreplyVo() {
 	}
 
-	public NcommentVo(int cnum, int num, String email, String content, Date regdate) {
+	public NreplyVo(int num, int cnum, String email, String content, Date regdate) {
 		super();
-		this.cnum = cnum;
 		this.num = num;
+		this.cnum = cnum;
 		this.email = email;
 		this.content = content;
 		this.regdate = regdate;

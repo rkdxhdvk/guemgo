@@ -1,6 +1,6 @@
 package com.guem.go.kidong;
 
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 @Controller
 public class NboardController {
@@ -40,7 +36,7 @@ public class NboardController {
 		for (NboardVo vo : list) {
 			vo.setComments(service2.getCount(vo.getNum()));
 		}
-
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pu", pu);
 		model.addAttribute("field", field);
@@ -67,8 +63,8 @@ public class NboardController {
 		NboardVo prev = service.prev(num);
 		NboardVo next = service.next(num);
 
-		List<NcommentVo> list = service2.list(num);
-		for (NcommentVo vo2 : list) {
+		List<CommentsVo> list = service2.list(num);
+		for (CommentsVo vo2 : list) {
 			vo2.setContent(vo2.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
 					.replaceAll("\n", "<br>"));
 		}
@@ -100,92 +96,5 @@ public class NboardController {
 			e.printStackTrace();
 			return "error";
 		}
-	}
-
-	@RequestMapping(value = "/ncomment/insert", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String insert(int num, String content, String email) {
-		NcommentVo vo = new NcommentVo(1, num, email, content, null, 0, 0, 0);
-		int n = service2.insert(vo);
-
-		JsonObject obj = new JsonObject();
-		if (n > 0) {
-			obj.addProperty("code", true);
-		} else {
-			obj.addProperty("code", false);
-		}
-		return obj.toString();
-	}
-
-	@RequestMapping(value = "/ncomment/reply", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String insert(NcommentVo vo) {
-		JsonObject obj = new JsonObject();
-		try {
-			int boardNum = service2.getMaxNum(vo.getNum()) + 1;
-			int cnum = 0;
-			int ref = 0;
-			int lev = 0;
-			int step = 0;
-
-			if (vo.getCnum() != 0) {
-				cnum = vo.getCnum();
-				ref = vo.getRef();
-				lev = vo.getLev();
-				step = vo.getStep();
-			}
-
-			if (cnum == 0) {
-				ref = boardNum;
-			} else {
-				Map<String, Object> map = new HashMap<>();
-				map.put("ref", ref);
-				map.put("step", step);
-				service2.insertReply(map);
-				lev += 1;
-				step += 1;
-			}
-			NcommentVo vo1 = new NcommentVo(boardNum, vo.getNum(), vo.getEmail(), vo.getContent(), null, ref, lev,
-					step);
-			service2.insert(vo1);
-			obj.addProperty("code", true);
-			return obj.toString();
-		} catch (Exception e) {
-			obj.addProperty("code", false);
-			return obj.toString();
-		}
-	}
-
-	@RequestMapping(value = "/ncomment/list", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String list(int num) {
-		List<NcommentVo> list = service2.list(num);
-		JsonArray arr = new JsonArray();
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		for (NcommentVo vo : list) {
-			vo.setContent(vo.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt")
-					.replaceAll("\n", "<br>"));
-			JsonObject json = new JsonObject();
-			json.addProperty("cnum", vo.getCnum());
-			json.addProperty("content", vo.getContent());
-			String regdate = transFormat.format(vo.getRegdate());
-			json.addProperty("regdate", regdate);
-			json.addProperty("email", vo.getEmail());
-			arr.add(json);
-		}
-		return arr.toString();
-	}
-
-	@RequestMapping(value = "/ncomment/delete", produces = "application/json;charset=utf-8")
-	@ResponseBody
-	public String delete(int cnum, int num) {
-		int n = service2.delete(cnum);
-		JsonObject obj = new JsonObject();
-		if (n > 0) {
-			obj.addProperty("code", true);
-		} else {
-			obj.addProperty("code", false);
-		}
-		return obj.toString();
 	}
 }
