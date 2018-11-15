@@ -16,7 +16,7 @@
 			into gosu_career(go_num, license, career) values(gonum_seq.currval, #{license}, #{career})	<!-- gonum을 위에 gonum_seq와 동일하게 해야함 -->
 		</if>
 		<if test="image !=null and image !='' ">	<!-- image가 없으면 DB에 넣지 않음 -->
-		into gosu_image(go_num, image) values(gonum_seq.currval, #{image})
+			into gosu_image(go_num, image) values(gonum_seq.currval, #{image})
 		</if>
 		select * from dual
 	</insert>
@@ -61,11 +61,23 @@
 		update gosu set intro=#{intro} where email=#{email}
 	</update>
 	
-	<!-- 고수 프로필 수정2 트랜잭션 처리 해야함 -->
+	<!-- 고수 프로필 수정2 트랜잭션 처리 해야함, 기존에 데이터가 없을경우에는 insert 해야함 -->
 	<update id="update_profile2" parameterType="com.guem.go.woohyun.GosuVo">
-		update gosu_career set license=#{license}, career=#{career} where go_num=#{go_num}
+		<choose>
+			<when test="(license!=null and license!='') or (career!=null and career!='') ">
+				update gosu_career set license=#{license}, career=#{career} where go_num=#{go_num}
+			</when>
+			<otherwise>
+				insert into gosu_career(go_num, license, career) values(#{go_num}, #{license}, #{career})
+			</otherwise>
+		</choose>
 	</update>
 	
-	
+	<!-- 고수 이미지 넣는 부분, 아직 미구현. -->
+	<!-- 
+	<update id="update_profile3" parameterType="com.guem.go.woohyun.GosuVo">
+		update gosu_image set image=#{image} where go_num=#{go_num}
+	</update>
+	 -->
 	
 </mapper>
