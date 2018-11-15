@@ -261,6 +261,13 @@ body {
 						  },
 					events : events	
 				});
+		$( "#datepicker" ).datepicker();
+	      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	      
+	      
+	      if("${msg}"!=""){
+	    	  alert("${msg}");
+	      }
 	});
 	var sock;
 	sock = new SockJS("<c:url value="/echo"/>");
