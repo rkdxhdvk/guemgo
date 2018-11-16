@@ -4,6 +4,7 @@ public class CatemVo {
 	public int 	mnum;
 	public String mname;
 	public int lnum;
+
 	
 	public CatemVo() {}
 

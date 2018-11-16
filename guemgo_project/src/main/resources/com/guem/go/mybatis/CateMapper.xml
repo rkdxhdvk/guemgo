@@ -10,6 +10,7 @@
 	<select id="catellist" resultType="com.guem.go.eunbyul.CatelVo">
 		select * from cate_l
 	</select>
+	
 	<select id="selectcates" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
 		select * from cate_s where mnum=(select mnum from cate_m where mname=#{name})
 	</select>
