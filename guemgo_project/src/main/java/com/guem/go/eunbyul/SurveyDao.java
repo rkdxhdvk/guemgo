@@ -53,7 +53,19 @@ public class SurveyDao {
 		return sqlSession.selectOne(NAMESPACE + ".selectgosu", go_num);
 	}
 	
-	public int requestinsert(String email) {
-		return sqlSession.insert(NAMESPACE+".requestinsert",email);
+	public int requestinsert(HashMap<String, String> map) {
+		return sqlSession.insert(NAMESPACE+".requestinsert",map);
+	}
+
+	public List<RequirelistVo> requestlist(String email) {
+		return sqlSession.selectList(NAMESPACE+".requestlist",email);
+	}
+
+	public RequireVo requireselect(int num) {
+		return sqlSession.selectOne(NAMESPACE + ".requireselect", num);
+	}
+
+	public LectureVo lectureselect(String lecturename) {
+		return sqlSession.selectOne(NAMESPACE + ".lectureselect", lecturename);
 	}
 }

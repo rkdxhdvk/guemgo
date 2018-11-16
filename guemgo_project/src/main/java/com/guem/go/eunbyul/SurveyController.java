@@ -2,7 +2,7 @@ package com.guem.go.eunbyul;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -167,7 +167,6 @@ public class SurveyController {
 		//System.out.println(ans[1]+ans[2]+ans[3]+ans[4]+ans[5]);
 		for (int i = 0; i < matching.size(); i++) {
 			System.out.println("몇명한테보내니"+ matching.size());
-			System.out.println(matching.get(0).getLectureName()+"이랑"+matching.get(1).getLectureName());
 			 //누가누가 담겨있나 확인하기
 			System.out.println(matching.get(i).getLectureName() + matching.get(i).getGo_num());
 			//matching에 있는 gosunum을 가져와서 email을 뽑아내기
@@ -226,7 +225,10 @@ public class SurveyController {
 			sendMail.setFrom("92eunbyul@naver.com", "금고");
 			sendMail.setTo(gosu.getEmail());
 			sendMail.send();
-			int n2 =surveyservice.requestinsert(gosu.getEmail());
+			HashMap<String, String> map=new HashMap<>();
+			map.put("email", gosu.getEmail());
+			map.put("lecturename", matching.get(i).getLectureName());
+			int n2 =surveyservice.requestinsert(map);
 			System.out.println("요청서내역에저장"+n2);
 			
 		}

@@ -31,9 +31,20 @@
 		select * from gosu where go_num = #{go_num}
 	</select>
 	<!-- 누구에게 어떤 요청서를 보냈는지 저장(insert)하기 -->
-	<select id="requestinsert" parameterType="String">
-		insert into REQUIRELIST values(REQLISTNUM_seq.nextval, #{email}, sysdate, matchnum_seq.currval)
+	<select id="requestinsert" parameterType="hashmap">
+		insert into REQUIRELIST values(REQLISTNUM_seq.nextval, #{email}, sysdate, matchnum_seq.currval, #{lecturename})
 	</select>
+	<!-- 받은요청내역 -->
+	<select id="requestlist" parameterType="String" resultType="com.guem.go.eunbyul.RequirelistVo">
+		select * from REQUIRELIST where email=#{email}
+	</select>
+	<select id="requireselect" parameterType="int" resultType="com.guem.go.eunbyul.RequirelistVo">
+		select * from require where REQ_NUM=#{num}
+	</select>
+	<select id="lectureselect" parameterType="String" resultType="com.guem.go.eunbyul.LectureVo">
+		select * from lecture where LECTURENAME=#{LECTURENAME}
+	</select>
+	
 	
 	
 </mapper>

@@ -69,7 +69,7 @@
 				 	<c:when test="${sessionScope.flag eq '2'}">
 				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }">강의 등록</a>
 				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }">내 강의 목록</a>
-				 	<a class="dropdown-item" href="classlist?email=${sessionScope.email }">받은 요청서</a>
+				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }">받은 요청서</a>
 				 	</c:when>
 				 	</c:choose>
 				 	<input type="hidden" id="email" value="${sessionScope.email }">
