@@ -1,5 +1,6 @@
 package com.guem.go.eunbyul;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,8 @@ public class SurveyService {
 	}
 	public GosuVo selectgosu(int go_num) {
 		return dao.selectgosu(go_num);
+	}
+	public int requestinsert(String email) {
+		return dao.requestinsert(email);
 	}
 }

@@ -2,6 +2,7 @@ package com.guem.go.eunbyul;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,16 +10,15 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
+
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.guem.go.woohyun.GosuVo;
-import com.sun.mail.util.logging.MailHandler;
 
 
 
@@ -101,8 +101,9 @@ public class SurveyController {
 			List<GosuareaVo> arealist =surveyservice.gosuarealist();//arealist를 받아옴
 			ArrayList<Integer> matchlec= new ArrayList<>();
 			for(int i=0; i<arealist.size(); i++) {//들어온 요청서와 같은 area의 강의 넘버를 받아옴.
-				System.out.println("바교"+arealist.get(i).getLectureNum());
+				System.out.println("비교할 강의 넘버들"+arealist.get(i).getLectureNum());
 				if(area.equals(arealist.get(i).getArea())) {
+					System.out.println("분약가 같은 강의 넘버"+arealist.get(i).getLectureNum());
 					matchlec.add(arealist.get(i).getLectureNum());
 				}
 				
@@ -112,9 +113,10 @@ public class SurveyController {
 			
 			ArrayList<LectureVo> leclist= new ArrayList<>();
 			for(int i=0; i<matchlec.size(); i++) {
-				System.out.println("이거나오나???"+matchlec.get(i));
+				System.out.println("매칭된 강의 갯수"+matchlec.size());
+			//	System.out.println("매칭된강의번호"+matchlec.get(i));
 				LectureVo lvo = surveyservice.selectlec(matchlec.get(i));
-				System.out.println("이거나오나"+lvo.getLectureName());
+			//	System.out.println("매칭된강의명"+lvo.getLectureName());
 				leclist.add(lvo);
 			}
 			
@@ -128,10 +130,10 @@ public class SurveyController {
 			int b=0;
 			boolean d=false;
 		for (int i = 0; i < leclist.size(); i++) {
-			System.out.println(leclist.get(i).getLectureName()); 
-			System.out.println(leclist.get(i).getLectureNum());
-			System.out.println(leclist.get(i).getGo_num());
 			System.out.println("for문시작");
+			System.out.println("매칭된강의명"+leclist.get(i).getLectureName()); 
+			System.out.println("매칭된강의번호"+leclist.get(i).getLectureNum());
+			System.out.println("매칭된고수번호"+leclist.get(i).getGo_num());
 			String lecday = leclist.get(i).getDay();
 			System.out.println("강의요일" + lecday);
 			
@@ -149,34 +151,32 @@ public class SurveyController {
 			if (a >= b) {// 맞는 요일이 반이상이면 다음 조건 검사
 				System.out.println("a>b");
 				//////////// 2. time 시간대 비교
-				System.out.println(ans[4]);
-				System.out.println(leclist.get(i).getTime());
+				System.out.println("요청한시간"+ans[4]);
+				System.out.println("강의시간"+leclist.get(i).getTime());
 				if (ans[4].equals(leclist.get(i).getTime())) {// 시간대 검사 맞으면 다음조건실행
 					System.out.println("시간대매칭성공");
 					//////////// 3. region1 지역비교
 					if (ans[8].equals(leclist.get(i).getRegion1())) {
 						LectureVo lvo2 = leclist.get(i);
 						matching.add(lvo2); // 맞는 사람들 matching에 임시로 저장해두기
-						break;
+
 					}
 				}
 			}
 		}
 		//System.out.println(ans[1]+ans[2]+ans[3]+ans[4]+ans[5]);
 		for (int i = 0; i < matching.size(); i++) {
+			System.out.println("몇명한테보내니"+ matching.size());
+			System.out.println(matching.get(0).getLectureName()+"이랑"+matching.get(1).getLectureName());
 			 //누가누가 담겨있나 확인하기
 			System.out.println(matching.get(i).getLectureName() + matching.get(i).getGo_num());
 			//matching에 있는 gosunum을 가져와서 email을 뽑아내기
 			int gosunum=matching.get(i).getGo_num();
 			GosuVo gosu=surveyservice.selectgosu(gosunum);
 			System.out.println("보낼고수"+gosu.getEmail());
-			/*
-			try {
-				sender.sendMail(title, content, "92eunbyul@naver.com", "92eunbyul@naver.com");
-			}catch(Exception e) {
-			System.out.println(e.getMessage());
-			}*/
+
 			
+			//email을 찾아와서 요청서 정보들을 해당 아이디에게 email보내기
 			SimpleMailSender sendMail = new SimpleMailSender(mailSender);
 			sendMail.setSubject(area +" 레슨 요청서가 도착했습니다.");
 			sendMail.setText(new StringBuffer().append("<link rel=\"stylesheet\" href=\"/go/resources/css/custom.css\">")
@@ -224,13 +224,16 @@ public class SurveyController {
 				.append("</section>").toString());
 			
 			sendMail.setFrom("92eunbyul@naver.com", "금고");
-			sendMail.setTo("92eunbyul@naver.com");
+			sendMail.setTo(gosu.getEmail());
 			sendMail.send();
+			int n2 =surveyservice.requestinsert(gosu.getEmail());
+			System.out.println("요청서내역에저장"+n2);
 			
 		}
-
 		
-		//email을 찾아와서 요청서 정보들을 해당 아이디에게 email보내기
+		//이메일까지 보냈으니 누구누구한테 무엇을 보냈다는 것을 요청서리스트테이블에 저장하자!
+		
+		
 
 		ModelAndView mv = new ModelAndView(); 
 		mv.addObject("n", n);

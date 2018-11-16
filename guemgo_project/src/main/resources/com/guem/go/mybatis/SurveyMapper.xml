@@ -30,6 +30,10 @@
 	<select id="selectgosu" resultType="com.guem.go.woohyun.GosuVo" parameterType="int" >
 		select * from gosu where go_num = #{go_num}
 	</select>
+	<!-- 누구에게 어떤 요청서를 보냈는지 저장(insert)하기 -->
+	<select id="requestinsert" parameterType="String">
+		insert into REQUIRELIST values(REQLISTNUM_seq.nextval, #{email}, sysdate, matchnum_seq.currval)
+	</select>
 	
 	
 </mapper>

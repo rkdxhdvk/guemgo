@@ -16,6 +16,7 @@
 	<li><a href="<c:url value='/UserUpdate?email=${sessionScope.email }'/>">개인정보 수정</a></li>
 	<li><a href="<c:url value='/GosuProfileUpdate?email=${sessionScope.email }'/>">고수프로필 수정</a></li>
 	<li><a href="<c:url value='/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
+	<li><a href="<c:url value='/receiveList?email=${sessionScope.email }'/>">받은내역</a></li>
 
 </ul>
 <a href="<c:url value='/'/>">홈으로</a>

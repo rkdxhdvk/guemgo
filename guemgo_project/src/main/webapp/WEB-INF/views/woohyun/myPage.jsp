@@ -17,6 +17,7 @@
 	<li><a href="<c:url value='/pointCharge?email=${sessionScope.email }'/>">포인트 충전</a></li>
 	<li><a href="<c:url value='/pointRecord?email=${sessionScope.email }'/>">포인트 내역조회</a></li>
 	<li><a href="<c:url value='/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
+	<li><a href="<c:url value='/sendList?email=${sessionScope.email }'/>">보낸내역</a></li>
 
 </ul>
 <a href="<c:url value='/'/>">홈으로</a>

@@ -1,5 +1,6 @@
 package com.guem.go.eunbyul;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,5 +51,9 @@ public class SurveyDao {
 	
 	public GosuVo selectgosu(int go_num) {
 		return sqlSession.selectOne(NAMESPACE + ".selectgosu", go_num);
+	}
+	
+	public int requestinsert(String email) {
+		return sqlSession.insert(NAMESPACE+".requestinsert",email);
 	}
 }
