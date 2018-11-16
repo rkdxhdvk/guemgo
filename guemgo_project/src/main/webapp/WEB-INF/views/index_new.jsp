@@ -13,8 +13,8 @@
     <meta name="author" content="">
 
     <title>Landing Page - Start Bootstrap Theme</title>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/boot2/css2/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/boot2/css2/custom.css">
+	<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/boot2/css2/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/boot2/css2/custom.css"> --%>
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/resources/boot2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,7 +33,28 @@
     <![endif]-->
 
 </head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+/* $(document).ready(function() { // 로그아웃
+	var area="${area }";
+	if(area==null || area==""){
+		
+	}else{
+		//s $("#surveybt").hide(); 
+		$("#surveybt").trigger('click');
+	}
+}); */
+	$(document).ready(function() {
+		var area = "${area }";
+		if (area == null || area == "") {
 
+		} else {
+			$('#registerModal').modal('show');
+		}
+	});
+	
+</script>
+    <title>금고</title>
 <body>
    <!-- Navigation -->
     <!-- Header -->

@@ -14,7 +14,7 @@ public class CateService {
 		return dao.catellist();
 	}
 	public List<CatemVo> catemlist(){
-		return dao.catemlist();
+		return dao.catemlist();	
 	}
 	public List<CatesVo> selectcates(String mname){
 		return dao.selectcates(mname);
@@ -26,6 +26,6 @@ public class CateService {
 		return dao.sfroml(lname);
 	}
 	public List<CatesVo> sfromm(String mname){
-		return dao.sfromm(mname);
+		return dao.sfromm(mname);	
 	}
 }
