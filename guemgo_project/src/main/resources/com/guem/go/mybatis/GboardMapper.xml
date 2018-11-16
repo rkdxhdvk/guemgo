@@ -7,6 +7,9 @@
 		<if test="field!=null and field!=''">
 			where ${field} like '%'|| #{keyword} ||'%'
 		</if>
+		<if test="email!=null and email!=''">
+			where email = #{email}
+		</if>
 	</sql>
 	
 	<insert id="insert" parameterType="com.guem.go.kidong.GboardVo">

@@ -25,7 +25,7 @@ public class PointRecordController {
 	@RequestMapping(value="/pointRecord",method=RequestMethod.GET)
 	public ModelAndView list(String email) {
 		List<PointVo> list=service.list(email);
-		ModelAndView mv=new ModelAndView("woohyun/pointRecord");
+		ModelAndView mv=new ModelAndView(".pointRecord");
 		mv.addObject("list",list);
 		return mv;
 	}

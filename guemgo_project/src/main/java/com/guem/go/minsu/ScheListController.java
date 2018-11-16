@@ -35,6 +35,6 @@ public class ScheListController {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
 		list = sService.schelist(email);
 		model.addAttribute("list", list);
-		return "minsu/schedulelist";
+		return ".schedulelist";
 	}
 }

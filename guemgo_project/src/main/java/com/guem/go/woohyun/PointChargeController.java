@@ -32,7 +32,7 @@ public class PointChargeController {
 			return new ModelAndView("redirect:/");
 		}
 		
-		ModelAndView mv = new ModelAndView("woohyun/pointCharge");
+		ModelAndView mv = new ModelAndView(".pointCharge");
 		
 		UsersVo vo = userService.detail(email);
 		mv.addObject("vo", vo);

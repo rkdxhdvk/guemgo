@@ -33,7 +33,7 @@ public class UsersUpdateController {
 	@RequestMapping(value="/UserUpdate",method=RequestMethod.GET)
 	public ModelAndView updateForm(String email) {
 		UsersVo vo=service.detail(email);
-		ModelAndView mv=new ModelAndView("woohyun/userUpdate");
+		ModelAndView mv=new ModelAndView(".userUpdate");
 		mv.addObject("vo",vo);
 //		System.out.println("업데이트콘트롤러GET 완료");
 		return mv;

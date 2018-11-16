@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name=".myPage" template="/WEB-INF/views/kidong/myPage/myLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/kidong/myPage/menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+	<definition name=".userUpdate" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/userUpdate.jsp"/>
+	</definition>
+	
+	<definition name=".pointCharge" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/pointCharge.jsp"/>
+	</definition>
+	
+	<definition name=".pointRecord" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/pointRecord.jsp"/>
+	</definition>
+	
+	<definition name=".schedulelist" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
+	</definition>
+	
+	<definition name=".selectGboard" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/selectGboard.jsp"/>
+	</definition>
+	
+</tiles-definitions>
