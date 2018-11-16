@@ -15,4 +15,7 @@
 	<update id="read" parameterType="int">
 		update gchat set read = 1 where room = #{room}
 	</update>
+	<insert id="makeRoom" parameterType="com.guem.go.kidong.RoomVo">
+		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum});	
+	</insert>
 </mapper>  

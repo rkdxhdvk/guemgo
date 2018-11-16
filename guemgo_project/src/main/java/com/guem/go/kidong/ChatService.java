@@ -26,4 +26,7 @@ public class ChatService {
 		return dao.update(room);
 	}
 	
+	public int makeRoom(RoomVo vo) {
+		return dao.makeRomm(vo);
+	}
 }

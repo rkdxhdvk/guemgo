@@ -26,4 +26,8 @@ public class ChatDao {
 	public int update(int room) {
 		return session.update("com.jhta.mybatis.ChatMapper.read", room);
 	}
+	
+	public int makeRomm(RoomVo vo) {
+		return session.insert("com.jhta.mybatis.ChatMapper.makeRoom", vo);
+	}
 }
