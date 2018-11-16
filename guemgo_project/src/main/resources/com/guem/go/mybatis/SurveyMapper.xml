@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.SurveyMapper">
 	<select id="requireInsert" parameterType="com.guem.go.eunbyul.RequireVo">
-		insert into require values(matchnum_seq.nextval, #{email}, #{mnum}, 0, sysdate)
+		insert into require values(matchnum_seq.nextval, #{email}, 0, #{mnum}, sysdate)
 	</select>
 	<select id="ansinsert" parameterType="com.guem.go.eunbyul.RequireVo">
 		insert into answer values(ansnum_seq.nextval,matchnum_seq.currval, #{ques_num}, #{answer})

@@ -3,30 +3,29 @@ package com.guem.go.eunbyul;
 import java.sql.Date;
 
 public class RequireVo {
-	private int matchnum;
+	private int req_num;
 	private String email;
+	private int lec_start;
 	private int mnum;
-	private int begin;
-	private Date matchdate;
+	private Date req_date;
 	
-	public RequireVo() {	}	
+	public RequireVo() {	}
 
-	public RequireVo(int matchnum, String email, int mnum, int begin, Date matchdate) {
+	public RequireVo(int req_num, String email, int lec_start, int mnum, Date req_date) {
 		super();
-		this.matchnum = matchnum;
+		this.req_num = req_num;
 		this.email = email;
+		this.lec_start = lec_start;
 		this.mnum = mnum;
-		this.begin = begin;
-		this.matchdate=matchdate;
+		this.req_date = req_date;
 	}
 
-
-	public int getMatchnum() {
-		return matchnum;
+	public int getReq_num() {
+		return req_num;
 	}
 
-	public void setMatchnum(int matchnum) {
-		this.matchnum = matchnum;
+	public void setReq_num(int req_num) {
+		this.req_num = req_num;
 	}
 
 	public String getEmail() {
@@ -37,6 +36,14 @@ public class RequireVo {
 		this.email = email;
 	}
 
+	public int getLec_start() {
+		return lec_start;
+	}
+
+	public void setLec_start(int lec_start) {
+		this.lec_start = lec_start;
+	}
+
 	public int getMnum() {
 		return mnum;
 	}
@@ -45,22 +52,11 @@ public class RequireVo {
 		this.mnum = mnum;
 	}
 
-	public int getBegin() {
-		return begin;
+	public Date getReq_date() {
+		return req_date;
 	}
 
-	public void setBegin(int begin) {
-		this.begin = begin;
-	}
-
-	public Date getMatchdate() {
-		return matchdate;
-	}
-
-	public void setMatchdate(Date matchdate) {
-		this.matchdate = matchdate;
-	}
-	
-	
-	
+	public void setReq_date(Date req_date) {
+		this.req_date = req_date;
+	}	
 }
