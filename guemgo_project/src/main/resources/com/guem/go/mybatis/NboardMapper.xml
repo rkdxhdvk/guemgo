@@ -38,9 +38,6 @@
 	<update id="hitUp" parameterType="int">
 		update notice_board set hit = hit + 1 where num = #{num}
 	</update>
-	<update id="hitDown" parameterType="int">
-		update notice_board set hit = hit - 1 where num = #{num}
-	</update>
 	<update id="update" parameterType="com.guem.go.kidong.NboardVo">
 		update notice_board set title = #{title},content = #{content} where num = #{num}
 	</update>

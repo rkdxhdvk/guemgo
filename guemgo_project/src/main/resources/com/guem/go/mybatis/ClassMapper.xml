@@ -18,5 +18,8 @@
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where go_num=#{go_num}
 	</select>
+	<select id="classSelect" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
+ 		select * from lecture where lecturenum = #{lecturenum}
+	</select>
 </mapper>
 

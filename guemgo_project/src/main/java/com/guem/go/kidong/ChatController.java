@@ -23,22 +23,28 @@ public class ChatController {
 	@Autowired
 	private GosuService goService;
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
-	public String chat(HttpServletRequest request, int room,Model model) {
-		List<ChatVo> list = service.list(room);
-		service.update(room);
+	public String chat(HttpServletRequest request, int room,int lecturenum,Model model) {
 		
 		////////// 강의이름 목록 가져오기//////////////
 		String email = (String)request.getSession().getAttribute("email");
 		int gonum = goService.gosuNum(email);
 		List<LectureVo> lecList = classService.classlist(gonum);
 		System.out.println(lecList);
-		System.out.println(list);
 		model.addAttribute("lecList", lecList);
 		/////////////////////////////////////////
+		List<ChatVo> list = service.list(room);
+		for(ChatVo vo : list) {
+			if(!vo.getSender().equals(email)) {
+				service.update(room);
+			}
+		}
 		
+		LectureVo vo = classService.classSelect(lecturenum);
+	
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
-		return ".kidong.chat";
+		model.addAttribute("vo", vo);
+		return "/kidong/chat";
 	}
 	
 }

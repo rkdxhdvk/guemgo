@@ -34,5 +34,7 @@ public class ClassDao {
 		return sqlSession.selectOne(NAMESPACE+".gosuselect", email);
 	}
 
-	
+	public LectureVo classSelect(int lecturenum) {
+		return sqlSession.selectOne(NAMESPACE + ".classSelect", lecturenum);
+	}
 }

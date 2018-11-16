@@ -42,7 +42,7 @@ public class QboardController {
 		model.addAttribute("sort", sort);
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
-		return ".kidong.qboard";
+		return "/kidong/qboard";
 	}
 
 	@RequestMapping(value = "/qboard/insert", method = RequestMethod.POST)
@@ -90,7 +90,7 @@ public class QboardController {
 		QboardVo vo = qboardService.detail(num);
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
-		return ".kidong.qboard_detail";
+		return "/kidong/qboard_detail";
 	}
 	
 	@RequestMapping(value = "/qboard/getQna", method = RequestMethod.GET)
@@ -100,7 +100,7 @@ public class QboardController {
 		List<QboardVo> list = qboardService.select(grp);
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
-		return ".kidong.qboard_detail";
+		return "/kidong/qboard_detail";
 	}
 
 	@RequestMapping(value = "/qboard/update", method = RequestMethod.POST)

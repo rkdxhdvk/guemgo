@@ -13,16 +13,12 @@ public class NcommentController {
 	@Autowired
 	private NreplyService service2;
 	
-	@Autowired
-	private NboardService service3;
-	
 	@RequestMapping(value="/ncomment/insert",method=RequestMethod.POST)
 	public String insert(NcommentVo vo) {
 		try {
 			int num = vo.getNum();
 			service.insert(vo);
-			service3.hitDown(num);
-			return "redirect:/nboard/detail?num="+num+"";
+			return "redirect:/nboard/detail?num="+num+"&sort=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -33,8 +29,7 @@ public class NcommentController {
 	public String delete(int cnum,int num) {
 		try {
 			service.delete(cnum);
-			service3.hitDown(num);
-			return "redirect:/nboard/detail?num="+num+"";
+			return "redirect:/nboard/detail?num="+num+"&sort=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -45,8 +40,7 @@ public class NcommentController {
 	public String insertReply(NreplyVo vo,int num) {
 		try {
 			service2.insert(vo);
-			service3.hitDown(num);
-			return "redirect:/nboard/detail?num="+num+"";
+			return "redirect:/nboard/detail?num="+num+"&sort=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";

@@ -25,4 +25,5 @@ public class ChatService {
 	public int update(int room) {
 		return dao.update(room);
 	}
+	
 }

@@ -462,8 +462,10 @@ body {
 					</div>
 
 					<div class="panel panel-primary" style="margin-top: 10px;">
-						<div class="panel-heading">강좌명</div>
-						<div class="panel-body" style="height: 160px;">내용</div>
+						<div class="panel-heading">${vo.lectureName }</div>
+						<div class="panel-body" style="height: 160px;">
+							내용
+						</div>
 					</div>
 
 					<div class="btn-group btn-group-justified">

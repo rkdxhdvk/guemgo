@@ -1,6 +1,5 @@
 package com.guem.go.kidong;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +41,7 @@ public class NboardController {
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
-		return ".kidong.nboard";
+		return "/kidong/nboard";
 	}
 
 	@RequestMapping(value = "/nboard/insert", method = RequestMethod.POST)
@@ -57,8 +56,10 @@ public class NboardController {
 	}
 
 	@RequestMapping(value = "/nboard/detail", method = RequestMethod.GET)
-	public String detail(int num, Model model) {
-		service.hitUp(num);
+	public String detail(int num, Model model,@RequestParam(value = "sort", defaultValue = "0") int sort) {
+		if(sort != 1) {
+			service.hitUp(num);
+		}
 		NboardVo vo = service.detail(num);
 		NboardVo prev = service.prev(num);
 		NboardVo next = service.next(num);
@@ -73,7 +74,7 @@ public class NboardController {
 		model.addAttribute("list", list);
 		model.addAttribute("prev", prev);
 		model.addAttribute("next", next);
-		return ".kidong.nboard_detail";
+		return "/kidong/nboard_detail";
 	}
 
 	@RequestMapping(value = "/nboard/delete", method = RequestMethod.GET)

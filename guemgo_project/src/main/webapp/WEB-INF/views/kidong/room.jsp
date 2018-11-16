@@ -27,13 +27,13 @@
 	<button type="button" class="btn btn-primary" style="float: right;"
 		onclick="location='<c:url value='/'/>'">나가기</button>
 </div>
-
 <c:forEach var="vo" items="${list }">
 	<div class="container-fluid">
 		<div class="panel panel-primary">
 			<div class="panel-heading">${vo.room }</div>
 			<div class="panel-body">
-				<a href="<c:url value='/chat?room=${vo.room }'/>" class="pull-right">입장</a>
+				${vo.lecturename }
+				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }'/>" class="pull-right">입장</a>
 			</div>
 		</div>
 	</div>

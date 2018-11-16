@@ -25,4 +25,8 @@ public class ClassService {
 	public GosuVo gosuselect(String email) {
 		return dao.gosuselect(email);
 	}
+	
+	public LectureVo classSelect(int lecturenum) {
+		return dao.classSelect(lecturenum);
+	}
 }
