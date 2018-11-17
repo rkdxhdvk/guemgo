@@ -29,4 +29,8 @@
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/selectGboard.jsp"/>
 	</definition>
 	
+	<definition name=".sendList" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/sendList.jsp"/>
+	</definition>
+	
 </tiles-definitions>

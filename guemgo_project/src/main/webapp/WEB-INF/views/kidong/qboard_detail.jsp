@@ -104,13 +104,27 @@
 					<span class="time-right">${time }</span>
 				</div>
 
-				<hr style="border: solid 1px #337ab7;">
+				<hr>
 				<div class="pull-right">
 					&ensp;<i class='fas fa-eye'></i> ${vo.hit }
 				</div>
 				<div>
+				<c:choose>
+					<c:when test="${vo.sort == 'music' }">
+						<i class="fas fa-music"></i>
+					</c:when>
+					<c:when test="${vo.sort == 'art' }">
+						<i class="fas fa-palette"></i>
+					</c:when>
+					<c:when test="${vo.sort == 'cook' }">
+						<i class="fas fa-drumstick-bite"></i>
+					</c:when>
+					<c:otherwise>
+						<i class="fab fa-apple"></i>
+					</c:otherwise>
+				</c:choose>
 					<strong>${vo.title }</strong>
-					<hr style="border: solid 1px #337ab7;">
+					<hr>
 
 				</div>
 			</div>

@@ -29,23 +29,14 @@
 								class='fas fa-scroll'></i></td>
 						</c:otherwise>
 					</c:choose>
-					<td style="width: 44%"><a
+					<td style="width: 46%"><a
 						href="<c:url value='/gboard/detail?num=${vo.num }'/>">${vo.title }</a></td>
-					<td style="width: 7%"><i class='fas fa-comment'></i>
+					<td style="width: 8%"><i class='fas fa-comment'></i>
 						${vo.comments }</td>
-					<td style="width: 7%"><i class='fas fa-thumbs-up'></i>
+					<td style="width: 8%"><i class='fas fa-thumbs-up'></i>
 						${vo.recomm }</td>
-					<td style="width: 7%"><i class='fas fa-eye'></i> ${vo.hit }</td>
-					<td style="width: 15%"><div class="dropdown">
-							<span class="dropdown-toggle" data-toggle="dropdown"
-								style="cursor: pointer;"> ${vo.email } </span>
-							<ul class="dropdown-menu">
-								<li><a href="#">HTML</a></li>
-								<li><a href="#">CSS</a></li>
-								<li><a href="#">JavaScript</a></li>
-							</ul>
-						</div></td>
-					<td style="width: 10%; text-align: right;">${vo.regdate }</td>
+					<td style="width: 8%"><i class='fas fa-eye'></i> ${vo.hit }</td>
+					<td style="width: 15%;">${vo.regdate }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

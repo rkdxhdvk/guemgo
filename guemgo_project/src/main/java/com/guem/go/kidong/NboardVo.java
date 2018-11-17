@@ -10,11 +10,13 @@ public class NboardVo {
 	private String email;
 	private int hit;
 	private int comments;
+	private String sort;
 
 	public NboardVo() {
 	}
 
-	public NboardVo(int num, String title, String content, Date regdate, String email, int hit, int comments) {
+	public NboardVo(int num, String title, String content, Date regdate, String email, int hit, int comments,
+			String sort) {
 		super();
 		this.num = num;
 		this.title = title;
@@ -23,6 +25,15 @@ public class NboardVo {
 		this.email = email;
 		this.hit = hit;
 		this.comments = comments;
+		this.sort = sort;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	public int getComments() {

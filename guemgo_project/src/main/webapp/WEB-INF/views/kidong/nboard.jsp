@@ -63,6 +63,13 @@
 								placeholder="title" required>
 						</div>
 						<div class="form-group">
+							<select class="form-control" name="sort">
+								<option value="all">전체</option>
+								<option value="gosu">고수</option>
+								<option value="user">사용자</option>
+							</select>
+						</div>
+						<div class="form-group">
 							<textarea class="form-control" name="content"
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
@@ -83,11 +90,11 @@
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<div class="btn-group btn-group">
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/nboard/list?sort=hit'/>"'>조회수</button>
+				onclick='location.href="<c:url value='/nboard/list?sort=all'/>"'>전체</button>
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/nboard/list?sort=recomm'/>"'>추천수</button>
+				onclick='location.href="<c:url value='/nboard/list?sort=gosu'/>"'>고수</button>
 			<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/nboard/list?sort=comments'/>"'>코멘트수</button>
+				onclick='location.href="<c:url value='/nboard/list?sort=user'/>"'>이용자</button>
 		</div>
 
 		<form method="post" action="<c:url value='/nboard/list'/>"
@@ -139,8 +146,19 @@
 							</c:otherwise>
 						</c:choose>
 						<td style="width: 5%; text-align: center;">${vo.num }</td>
-						<td style="width: 5%; text-align: center;"><i
-							class='fas fa-exclamation-circle'></i></td>
+						<td style="width: 5%; text-align: center;">
+						<c:choose>
+								<c:when test="${vo.sort == 'all' }">
+									<i class="fas fa-exclamation-circle"></i>
+								</c:when>
+								<c:when test="${vo.sort == 'gosu' }">
+									<i class="fas fa-chalkboard-teacher"></i>
+								</c:when>
+								<c:otherwise>
+									<i class="fas fa-book-reader"></i>
+								</c:otherwise>
+							</c:choose>
+							</td>
 						<td style="width: 44%"><a
 							href="<c:url value='/nboard/detail?num=${vo.num }'/>">${vo.title }</a></td>
 						<td style="width: 7%"><i class='fas fa-comment'></i>

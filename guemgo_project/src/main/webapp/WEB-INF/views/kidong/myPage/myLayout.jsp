@@ -38,10 +38,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<div id="header">
-			<tiles:insertAttribute name="header" />
-		</div>
-		<nav class="navbar navbar-inverse visible-xs">
+		<nav class="navbar navbar-default visible-xs">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse"

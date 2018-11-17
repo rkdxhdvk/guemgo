@@ -3,20 +3,43 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <h1>회원 정보 수정</h1>
 <form method="post" action="UserUpdate">
-	<%-- <input type="hidden" value="${vo.mnum }" name="mnum"> --%> <!-- 회원번호를 vo에 넣기 위해 필요 -->
-	<input type="hidden" value="${vo.email }" name="email">
-	회원번호 ${vo.m_num }<br>
-	권한 ${vo.flag }<br>
-	아이디(이메일) ${vo.email }<br>
-	회원이름 <input type="text" name="name" value="${vo.name }"><br>
-	비밀번호 <input type="password" name="pwd" value="${vo.pwd }"><br>
-	회원등급 <input type="text" name="grade" value="${vo.grade }"><br>
-	회원이미지 <input type="text" name="image" value="${vo.image }"><br>
-	포인트 <input type="text" name="point" value="${vo.point }"><br>
-	<fmt:formatDate value="${vo.regdate }" pattern="yyyy/MM/dd" var="d"/>
-	가입일  ${d }<br>
-	<input type="submit" value="저장">
-</form>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email" value="${vo.email }">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">회원이름</span>
+      <input id="name" type="text" class="form-control" name="name" placeholder="Name" value="${vo.name }">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password" value="${vo.pwd }">
+    </div>
+    <br> <div class="input-group">
+      <span class="input-group-addon">원본 이미지</span>
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.image }">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">새 이미지</span>
+      <input id="msg" type="file" class="form-control" name="msg" placeholder="Additional Info" value="${vo.image }">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">포인트</span>
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.point }">
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon">가입일</span>
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.regdate }">
+    </div>
+    <br>
+    <input type="reset" class="btn btn-info" value="Reset">
+ 	<input type="submit" class="btn btn-info" value="Submit" style="float: right;">
+  </form>
 
 
 

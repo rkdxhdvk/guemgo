@@ -10,7 +10,7 @@
 	</sql>
 	
 	<insert id="insert" parameterType="com.guem.go.kidong.NboardVo">
-		insert into notice_board values(nboard_seq.nextval,#{title},#{content},sysdate,#{email},0)
+		insert into notice_board values(nboard_seq.nextval,#{title},#{content},sysdate,#{email},0,#{sort})
 	</insert>
 	<select id="list" parameterType="map" resultType="com.guem.go.kidong.NboardVo">
 		select * from

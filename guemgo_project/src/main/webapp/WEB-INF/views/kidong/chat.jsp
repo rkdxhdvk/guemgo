@@ -98,7 +98,7 @@ body {
 
 #data {
 	overflow: auto;
-	height: 700px;
+	height: 715px;
 	border: 2px solid #337ab7;
 	border-radius: 5px;
 	padding: 15px;
@@ -461,7 +461,7 @@ body {
 
 					</div>
 
-					<div class="panel panel-primary" style="margin-top: 10px;">
+					<div class="panel panel-primary" style="margin-top: 15px;">
 						<div class="panel-heading">${vo.lectureName }</div>
 						<div class="panel-body" style="height: 160px;">
 							내용
@@ -469,8 +469,8 @@ body {
 					</div>
 
 					<div class="btn-group btn-group-justified">
-						<a href="#" class="btn btn-primary">Apple</a> <a href="#"
-							class="btn btn-primary">Samsung</a> <a href='<c:url value="/"/>'
+						<a href="#" class="btn btn-primary">강의신청</a> <a href="#"
+							class="btn btn-primary">프로필보기</a> <a href='<c:url value="/room?email=${sessionScope.email }"/>'
 							class="btn btn-primary">나가기</a>
 					</div>
 				</div>

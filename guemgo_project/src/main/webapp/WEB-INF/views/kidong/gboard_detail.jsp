@@ -113,7 +113,7 @@
 				</ul>
 				<span class="time-right">${time }</span>
 			</div>
-			<hr style="border: solid 1px #337ab7;">
+			<hr>
 			<div class="pull-right">
 				&ensp;<span id="recomm">${vo.recomm }</span> &ensp;<i
 					class='fas fa-eye'></i> ${vo.hit }
@@ -143,8 +143,18 @@
 				</c:otherwise>
 			</c:choose>
 			<div>
+			<c:choose>
+				<c:when test="${vo.orgfilename != null }">
+					<td style="width: 5%; text-align: center;"><i
+						class='fas fa-image'></i></td>
+				</c:when>
+				<c:otherwise>
+					<td style="width: 5%; text-align: center;"><i
+						class='fas fa-scroll'></i></td>
+				</c:otherwise>
+			</c:choose>
 				<strong>${vo.title }</strong>
-				<hr style="border: solid 1px #337ab7;">
+				<hr>
 
 			</div>
 		</div>
@@ -225,7 +235,7 @@
 		style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
 		<div class="panel-heading">
 			Comment
-			<hr style="border: solid 1px #337ab7;">
+			<hr>
 		</div>
 
 		<div class="panel-body" id="commentList">

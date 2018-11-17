@@ -106,14 +106,26 @@
 				</ul>
 				<span class="time-right">${time }</span>
 			</div>
-			<hr style="border: solid 1px #337ab7;">
+			<hr>
 			<div class="pull-right">
 				<i class='fas fa-eye'></i> ${vo.hit }
 			</div>
 
 			<div>
+			<c:choose>
+				<c:when test="${vo.sort == 'all' }">
+					<i class="fas fa-exclamation-circle"></i>
+				</c:when>
+				<c:when test="${vo.sort == 'gosu' }">
+					<i class="fas fa-chalkboard-teacher"></i>
+				</c:when>
+				<c:otherwise>
+					<i class="fas fa-book-reader"></i>
+				</c:otherwise>
+			</c:choose>
+			
 				<strong>${vo.title }</strong>
-				<hr style="border: solid 1px #337ab7;">
+				<hr>
 
 			</div>
 		</div>
@@ -126,6 +138,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="container-fluid" style="padding-bottom: 15px;">
 	<c:choose>
 		<c:when test="${prev.num != null }">
@@ -175,7 +188,7 @@
 		style="overflow: auto; height: 40%; border: solid 1px #337ab7; border-radius: 5px;">
 		<div class="panel-heading">
 			Comment
-			<hr style="border: solid 1px #337ab7;">
+			<hr>
 		</div>
 
 		<div class="panel-body" id="commentList">
