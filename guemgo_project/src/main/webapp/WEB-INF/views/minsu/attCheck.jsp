@@ -138,7 +138,7 @@ body {
 					
 					<p class="lead">
 						매일 출석만 해도 포인트가 모인다!!<br>
-						매일 홈페이지에 접속하여 출석체크를 해보세요
+						매일 홈페이지에 접속하여 출석체크를 해보세요<br>
 						<a target="_blank" href="/">내 포인트 보러가기</a>
 					</p>
 					<button type="button" class="btn btn-primary" id="btn">출석체크</button>
