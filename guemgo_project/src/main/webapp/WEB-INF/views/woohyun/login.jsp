@@ -25,6 +25,7 @@
 </form>
 <a href="<c:url value='/'/>">홈으로</a>
 </body>
+
 <script type="text/javascript">
 	var area="${area }";
 	var area1=document.getElementById('area').value;
@@ -34,5 +35,7 @@
 		var area=document.getElementById("area");
 		document.area.value="aaa";
 	}
+	
+
 </script>
 </html>

@@ -77,7 +77,7 @@
 						<c:choose>
 							<c:when test="${empty sessionScope.email }">
 								<a class="dropdown-item" data-toggle="modal" data-target="#loginModal">로그인</a>	<br><!-- 로그인시 modal 사용 -->
-						 		<a class="dropdown-item" href="UserInsert">회원가입</a><br>
+						 		<a class="dropdown-item" data-toggle="modal" data-target="#userInsertModal">회원가입</a><br>
 							</c:when>
 							<c:otherwise>
 								<%-- 
@@ -156,7 +156,7 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- 		<h4 class="modal-title" id="myModalLabel">회원 로그인</h4> -->
 		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 	      </div>
-			<form name="frm" method="post" action="login" onSubmit="return checkLogin()">
+			<form name="login_form" method="post" action="login" onSubmit="return checkLogin()">
 			      <div class="modal-body">
 <!-- 						<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                     -->
            			<div class="panel panel-info" >
@@ -191,13 +191,28 @@ s0.parentNode.insertBefore(s1,s0);
                                   <button type="reset" class="btn btn-default" data-dismiss="modal">취소</button>
                                 </div>
                                 
+                                <div class="form-group">
+                                    <div class="col-md-12 control" style="margin-top:10px">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            	계정이 없을 경우 회원가입 하세요~^^ 
+                                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            	회원가입
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>    
+                                
                             </div>
                         </div>                     
                     </div>  
+                 </div>
 			</form>
 	    </div>
 	  </div>
 	</div>
+	
+<!-- 	회원가입 페이지 모달로 불러오기 -->
+	<%@include file="/WEB-INF/views/woohyun/userInsert.jsp"%>
 
 <script type="text/javascript">
 function checkLogin() {
@@ -223,7 +238,7 @@ function checkLogin() {
 			if(d.errMsg === 'no') {
 				$('#errMsg').text('아이디 또는 비밀번호가 맞지 않아요.');
 			} else {
-				document.frm.submit();
+				document.login_form.submit();
 			}
 				
 		}
@@ -246,6 +261,8 @@ $(document).ready(function()
 		
 </script>
 <!--///////////// 로그인 모달 끝 //////////// -->
+
+
 
 
 </body>
