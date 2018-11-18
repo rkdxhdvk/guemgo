@@ -67,17 +67,17 @@
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<c:choose>
 				 	<c:when test="${sessionScope.flag eq '2'}">
-				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }">강의 등록</a><br>
-				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }">내 강의 목록</a><br>
-				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }">받은 요청서</a><br>
+				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }" style="margin-left:10px">강의 등록1</a><br>
+				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }" style="margin-left:10px">내 강의 목록</a><br>
+				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }" style="margin-left:10px">받은 요청서</a><br>
 				 	</c:when>
 				 	</c:choose>
 				 	<input type="hidden" id="email" value="${sessionScope.email }">
 				 		<!-- 회원에 따라 다른 페이지 보여주기 -->
 						<c:choose>
 							<c:when test="${empty sessionScope.email }">
-								<a class="dropdown-item" data-toggle="modal" data-target="#loginModal">로그인</a>	<br><!-- 로그인시 modal 사용 -->
-						 		<a class="dropdown-item" data-toggle="modal" data-target="#userInsertModal">회원가입</a><br>
+								<a class="dropdown-item" data-toggle="modal" data-target="#loginModal" style="margin-left:10px">로그인</a>	<br><!-- 로그인시 modal 사용 -->
+						 		<a class="dropdown-item" data-toggle="modal" data-target="#userInsertModal" style="margin-left:10px">회원가입</a><br>
 							</c:when>
 							<c:otherwise>
 								<%-- 
@@ -85,31 +85,31 @@
 								권한세션 : ${ sessionScope.flag }<br>
 								고수등록여부: ${ sessionScope.gosuYN }
 								 --%>
-								<a class="dropdown-item" href="logout">로그아웃</a><br>
+								<a class="dropdown-item" href="logout" style="margin-left:10px">로그아웃</a><br>
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
-										<a class="dropdown-item" href="admin">관리자페이지</a><br>
+										<a class="dropdown-item" href="admin" style="margin-left:10px">관리자페이지</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
-									<a class="dropdown-item" href="classlist?gonum=4">보낸 요청서</a><br>
+									<a class="dropdown-item" href="classlist?gonum=4" style="margin-left:10px">보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
-												<a class="dropdown-item" href="mypage">마이페이지</a><br>
+												<a class="dropdown-item" href="mypage" style="margin-left:10px">마이페이지</a><br>
 												<span>------------------------------</span><br>
-												<a class="dropdown-item" href="GosuInsertForm">고수로 가입하기</a><br>
+												<a class="dropdown-item" href="GosuInsertForm" style="margin-left:10px">고수로 가입하기</a><br>
 											</c:when>
 											<c:otherwise>
-													<a class="dropdown-item" href="mypage">마이페이지</a><br>
-													<a class="dropdown-item" href="eventlist?email=${sessionScope.email }">출석 이벤트</a><br>
+													<a class="dropdown-item" href="mypage" style="margin-left:10px">마이페이지</a><br>
+													<a class="dropdown-item" href="eventlist?email=${sessionScope.email }" style="margin-left:10px">출석 이벤트</a><br>
 													<span >------------------------------</span><br>
-													<a class="dropdown-item" href="changeGosu">고수로 전환하기</a><br>
+													<a class="dropdown-item" href="changeGosu" style="margin-left:10px">고수로 전환하기</a><br>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '2' }">	
-										<a class="dropdown-item" href="gosupage">고수페이지</a><br>
+										<a class="dropdown-item" href="gosupage" style="margin-left:10px">고수페이지</a><br>
 										<span>------------------------------</span><br>
-										<a class="dropdown-item" href="changeUser">요청자로 전환하기</a><br>
+										<a class="dropdown-item" href="changeUser" style="margin-left:10px">요청자로 전환하기</a><br>
 									</c:when>
 								</c:choose>
 							</c:otherwise>
