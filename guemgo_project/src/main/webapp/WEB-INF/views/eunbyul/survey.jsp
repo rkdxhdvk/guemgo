@@ -188,7 +188,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="modal">어떤 서비스를 찾고 있나요?</h5>
+					<h5 class="modal-title" id="modal">고수를 소개받기 위해 몇가지 질문에 답해주세요!</h5>
 				</div>
 				<div class="modal-body">
 					<form action="<c:url value='/survey'/>" method="post">
@@ -196,7 +196,7 @@
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>${quelist[0].question }</label><br> 		
+							<label>▶ ${quelist[0].question }</label><br> 		
 							<select name="selectarea" class="form-control">
 								<c:forEach var="vo" items="${list }">									
 									<c:set var="area">${area }</c:set>	
@@ -204,7 +204,7 @@
 								</c:forEach>
 							</select>
 							</div>
-						</div>
+						</div><br>
 						${queslist[0].example }
 					
 						<%-- ${status.count} <!-- 이게 ex_num이랑 똑같음 --> --%>	
@@ -212,12 +212,12 @@
 						<c:if test="${qq.ques_num != 1 }">
 						<div class="form-row">
 						<div class="form-group col-sm-12">
-							<label>${qq.question }</label> <br>
+							<label>▶ ${qq.question }</label> <br>
 
 						<c:if test="${ss.index==1}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 									<c:if test="${vo1.ques_num == 2 }">
-									<input type="radio" name="purpose" value="${vo1.example }" class="navbar-brand">${vo1.example }
+									<input type="radio" name="purpose" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 									</c:if>
 								</c:forEach>
 						</c:if>
@@ -232,6 +232,7 @@
 									</c:if>
 								</c:forEach>
 							</select>
+							<br>
 						</c:if>
 						
 						<c:if test="${ss.index==3}">
@@ -243,13 +244,14 @@
 								</c:if>
 							</c:forEach>
 								</select>
+								<br>
 						</c:if>
 						
 						
 						<c:if test="${ss.index==4}">
 							<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 5}">
-								<input type="checkbox" name="day" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="checkbox" name="day" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -257,7 +259,7 @@
 						<c:if test="${ss.index==5}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 6}">
-								<input type="radio" name="time" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="radio" name="time" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -266,7 +268,7 @@
 						<c:if test="${ss.index==6}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 7}">
-								<input type="radio" name="times" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="radio" name="times" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -275,7 +277,7 @@
 						<c:if test="${ss.index==7}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 8}">
-								<input type="radio" name="hour" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="radio" name="hour" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -284,7 +286,7 @@
 						<c:if test="${ss.index==8}">
 								<c:forEach var="vo1" items="${exlist }" varStatus="status">
 								<c:if test="${vo1.ques_num == 9}">
-								<input type="radio" name="start" value="${vo1.example }" class="navbar-brand">${vo1.example }
+								<input type="radio" name="start" value="${vo1.example }" class="navbar-brand">${vo1.example }<pre></pre>
 								</c:if>
 								</c:forEach>
 						</c:if>
@@ -309,13 +311,16 @@
 						
 						
 						<c:if test="${ss.index==10}">
+						<!-- <a>20자이내</a> -->
 						<input type="text" class="navbar-brand" size="40" name="anything">
 						
 						</c:if>
+						
 							</div>
 						</div>
 						</c:if>	
 					</c:forEach>
+					
 						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">신청하기</button>
 					</form>
 				</div>
@@ -352,6 +357,8 @@
 				}
 			}).open();
 		}
+		
+		
 	</script>
 
 	
