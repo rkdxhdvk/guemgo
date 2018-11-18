@@ -182,7 +182,7 @@ body {
 					},
 					editable : true,
 					///
-					/* dayClick : function(date, calEvent) {
+					dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
 		                	  var start = moment(event.start).format("YYYY-MM-DD");
@@ -241,7 +241,7 @@ body {
 		                		  })
 		                	  }
 		                  });
-					}, */
+					},
 					eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						

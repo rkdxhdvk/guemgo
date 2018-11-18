@@ -13,9 +13,11 @@
 <script type="text/javascript">
 $(document).ready(
 		function() {
+			var n = 10;
 			<c:forEach items="${list }" var="vo">
+			n = n + 10;
 			$( "#progressbar" ).progressbar({
-			      value: 37
+			      value: n
 			    });
 			</c:forEach>
 		}

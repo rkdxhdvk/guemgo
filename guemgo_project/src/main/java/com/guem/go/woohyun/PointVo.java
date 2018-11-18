@@ -9,14 +9,26 @@ import java.util.Date;
 public class PointVo {
 	private int num;
 	private String email;
-	private String pointdate;
+	private Date pointdate;
 	private int division;
-	private String division_name;
 	private String detail;
 	private int dpoint;
 	private int lpoint;
 	
 	public PointVo() {}
+	
+	
+
+	public PointVo(int num, String email, Date pointdate, int division, String detail, int dpoint, int lpoint) {
+		super();
+		this.num = num;
+		this.email = email;
+		this.pointdate = pointdate;
+		this.division = division;
+		this.detail = detail;
+		this.dpoint = dpoint;
+		this.lpoint = lpoint;
+	}
 
 	public int getNum() {
 		return num;
@@ -34,11 +46,11 @@ public class PointVo {
 		this.email = email;
 	}
 
-	public String getPointdate() {
+	public Date getPointdate() {
 		return pointdate;
 	}
 
-	public void setPointdate(String pointdate) {
+	public void setPointdate(Date pointdate) {
 		this.pointdate = pointdate;
 	}
 
@@ -73,14 +85,5 @@ public class PointVo {
 	public void setLpoint(int lpoint) {
 		this.lpoint = lpoint;
 	}
-
-	public String getDivision_name() {
-		return division_name;
-	}
-
-	public void setDivision_name(String division_name) {
-		this.division_name = division_name;
-	}
-
 	
 }

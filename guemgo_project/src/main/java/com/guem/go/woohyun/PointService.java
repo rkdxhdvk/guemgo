@@ -23,4 +23,9 @@ public class PointService {
 	public List<PointVo> list(String email) {
 		return dao.list(email);
 	}
+	
+	//포인트 사용 이력 추가
+		public int insert(PointVo vo) {
+			return dao.insert(vo);
+		}
 }

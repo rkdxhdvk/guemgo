@@ -1,6 +1,7 @@
 package com.guem.go.woohyun;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +29,9 @@ public class GosuService {
 	}
 	
 	// 고수리스트 조회
-	public List<GosuVo> list(){
+	/*public List<GosuVo> list(){
 		return dao.list();
-	}
+	}*/
 	
 	// 고수 삭제
 	public int delete(String email) {
@@ -61,4 +62,12 @@ public class GosuService {
 	public int update_profile2(GosuVo vo) {
 		return dao.update_profile2(vo);
 	}
+	
+	//페이징 처리 및 검색
+		public List<GosuVo> list(Map<String, Object> map){
+			return dao.list(map);
+		}
+		public int getCount(Map<String, Object> map) {
+			return dao.getCount(map);
+		}
 }

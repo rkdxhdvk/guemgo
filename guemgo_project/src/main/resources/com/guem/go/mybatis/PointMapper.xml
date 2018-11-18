@@ -21,5 +21,8 @@
 		 where email=#{email} 
 		 order by num desc
 	</select>
+	<insert id="insert" parameterType="com.guem.go.woohyun.PointVo">
+		insert into point values(point_seq.nextval, #{email}, sysdate, #{division}, #{detail}, #{dpoint}, #{lpoint})
+	</insert>
 
 </mapper>

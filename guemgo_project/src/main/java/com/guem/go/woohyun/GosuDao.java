@@ -1,6 +1,7 @@
 package com.guem.go.woohyun;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,9 @@ public class GosuDao {
 	}
 
 	// 고수리스트 조회 DAO
-	public List<GosuVo> list(){
+	/*public List<GosuVo> list(){
 		return sqlSession.selectList(NAMESPACE + ".list");
-	}
+	}*/
 	
 	// 고수 삭제 DAO
 	public int delete(String email) {
@@ -58,4 +59,12 @@ public class GosuDao {
 	public int update_profile2(GosuVo vo) {
 		return sqlSession.update(NAMESPACE + ".update_profile2", vo);
 	}
+	
+	//페이징 처리 및 검색
+		public List<GosuVo> list(Map<String, Object> map) {
+			return sqlSession.selectList(NAMESPACE +".list", map);
+		}
+		public int getCount(Map<String, Object> map) {
+			return sqlSession.selectOne(NAMESPACE +".getCount", map);
+		}
 }

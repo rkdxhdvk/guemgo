@@ -12,38 +12,108 @@
 </head>
 <body>
 <h1>고수전체목록</h1>
-<table border="1" width="1000">
-	<tr>
-		<th>회원번호</th>
-		<th>고수번호</th>
-		<th>아이디(이메일)</th>
-		<th>회원이름</th>
-		<th>고수등급</th>
-		<th>고용횟수</th>
-		<th>포인트</th>
-		<th>삭제</th>
-		<th>수정</th>
-	</tr>
-	<c:forEach var="vo" items="${list }">
-		<tr>
-			<td>${vo.m_num }</td>
-			<td>${vo.go_num }</td>
-			<td>${vo.email }</td>
-			<td>${vo.name }</td>
-			<td>${vo.grade }</td>
-			<td>${vo.employ }</td>
-			<td>${vo.point }</td>
-			<!-- 삭제후 result.jsp에서 결과출력하기 -->
-			<td><a href='<c:url value='/GosuDelete?email=${vo.email }'/>'>삭제</a></td>
-			<td><a href='<c:url value='/GosuUpdate?email=${vo.email }'/>'>수정</a></td>
-		</tr>
-	</c:forEach>
-</table><br>
-<a href="<c:url value='/'/>">홈으로</a>
+<div class="container-fluid">
+	<div class="table-responsive">
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th style="width: 10%; text-align: center;">회원번호</th>
+					<th style="width: 10%; text-align: center;">고수번호</th>
+					<th style="width: 25%; text-align: center;">이메일</th>
+					<th style="width: 20%; text-align: center;">이름</th>
+					<th style="width: 15%; text-align: center;">고용횟수</th>
+					<th style="width: 15%; text-align: center;">포인트</th>
+					<th style="width: 5%; text-align: center;">삭제</th>
+					<th style="width: 5%; text-align: center;">수정</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="vo" items="${list }">
+					<tr>
+						<td style="width: 10%">${vo.m_num }</td>
+						<td style="width: 10%">${vo.go_num  }</td>
+						<td style="width: 20%">${vo.email }</td>
+						<td style="width: 20%">${vo.name }</td>
+						<td style="width: 15%">${vo.point }</td>
+						<td style="width: 15%">${vo.employ}</td>
+						<td style="width: 5%"><a href='<c:url value='/GosuDelete?email=${vo.email }'/>'>삭제</a></td>
+						<td style="width: 5%"><a href='<c:url value='/GosuUpdate?email=${vo.email }'/>'>수정</a></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</div>
+<form method="post" action="<c:url value='/GosuList'/>"
+			style="display: inline-flex; float: right;">
+			<div class="input-group">
+				<select class="form-control" name="field">
+					<option value="email" <c:if test="${field == 'email' }">selected="selected"</c:if>>이메일</option>
+					<option value="name" <c:if test="${field == 'name' }">selected="selected"</c:if>>이름</option>
+				</select>
+			</div>
+			<div class="input-group">
+				<input type="text" class="form-control" name="keyword"
+					value="${keyword }">
+				<div class="input-group-btn">
+					<button type="submit" class="btn">
+						<i class="fa fa-search"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+<div class="text-center">
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${pu.startPageNum > 5 }">
+						<li><a
+							href="<c:url value='/GosuList?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-left"></i>
+						</a></li>
+						<li><a
+							href="<c:url value='/GosuList?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
+						<li class="disabled"><a href="">...</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-left"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<c:forEach var="i" begin="${pu.startPageNum }"
+					end="${pu.endPageNum }">
+					<c:choose>
+						<c:when test="${pu.pageNum == i }">
+							<li class="active"><a
+								href="<c:url value='/GosuList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a
+								href="<c:url value='/GosuList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${pu.endPageNum < pu.totalPageCount }">
+						<li class="disabled"><a href="">...</a></li>
+						<li><a
+							href="<c:url value='/GosuList?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
+						<li><a
+							href="<c:url value='/GosuList?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-right"></i>
+						</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-right"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</ul>
+		</div>
 </body>
 </html>
-
-
 
 
 

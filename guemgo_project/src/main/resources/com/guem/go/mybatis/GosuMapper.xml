@@ -8,6 +8,12 @@
  -->
 <mapper namespace="com.guem.go.mybatis.GosuMapper">
 	
+	<sql id="search">
+		<if test="field!=null and field!=''">
+			where ${field} like '%'|| #{keyword} ||'%'
+		</if>
+	</sql>
+	
 	<!-- 고수가입 -->
 	<insert id="insert" parameterType="com.guem.go.woohyun.GosuVo">
 	insert all 
@@ -22,10 +28,35 @@
 	</insert>
 	
 	<!-- 고수리스트 조회 -->
-	<select id="list" resultType="com.guem.go.woohyun.GosuVo">
+	<!-- <select id="list" resultType="com.guem.go.woohyun.GosuVo">
 		select a.go_num, b.m_num, a.email, b.name, a.grade, a.employ, b.point 
 		from gosu a, users b
 		where a.email=b.email
+	</select> -->
+	
+	<select id="list" parameterType="map" resultType="com.guem.go.woohyun.GosuVo">
+		select * from
+		(
+			select aa.*,rownum rnum from
+			(
+				select * from gosu
+				<include refid="search"/>
+				<choose>
+					<when test="sort!=null and sort!=''">
+						order by ${sort} desc
+					</when>
+					<otherwise>
+						order by go_num desc
+					</otherwise>
+				</choose>
+			)aa
+		)
+		<![CDATA[ where rnum>=#{startRow} and rnum<=#{endRow} ]]>
+	</select>
+	
+	<select id="getCount" parameterType="map" resultType="int">
+		select NVL(count(*),0) cnt from gosu
+		<include refid="search"/>
 	</select>
 	
 	<!-- 고수 삭제 -->

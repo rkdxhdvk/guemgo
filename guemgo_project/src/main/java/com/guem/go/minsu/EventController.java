@@ -14,11 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.guem.go.woohyun.PointService;
+import com.guem.go.woohyun.PointVo;
+import com.guem.go.woohyun.UsersService;
+import com.guem.go.woohyun.UsersVo;
+
 
 @Controller
 public class EventController {
 	@Autowired
 	private EventService service;
+	@Autowired
+	private PointService pService;
+	@Autowired
+	private UsersService uService;
 	
 	@RequestMapping(value="/event")
 	public String event() {
@@ -27,8 +36,12 @@ public class EventController {
 	@RequestMapping(value="/eventinsert", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public int insert(String att, String email) {
-		EventVo vo = new EventVo(email, att);
-		return service.insert(vo);
+		EventVo vo = new EventVo(att, email);
+		service.insert(vo);
+		UsersVo uvo = uService.detail(email);
+		PointVo pvo = new PointVo(0, email, null, 1, "출석 이벤트 충전", 5, uvo.getPoint()+5);
+		pService.insert(pvo);
+		return 1;
 	}
 	@RequestMapping(value="/eventlist", method=RequestMethod.GET)
 	public String list(String email, Model model) {

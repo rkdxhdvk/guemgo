@@ -43,6 +43,29 @@
 		<put-attribute name="content" value="/WEB-INF/views/minsu/attCheck.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
+	
+	<definition name=".admin" template="/WEB-INF/views/minsu/adminlayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/minsu/adminmenu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/minsu/adminmain.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+	<definition name=".userList" template="/WEB-INF/views/minsu/adminlayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/minsu/adminmenu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/woohyun/userList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+	<definition name=".gosuList" template="/WEB-INF/views/minsu/adminlayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/minsu/adminmenu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/woohyun/gosuList.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
+	
 	<!-- 
 		.member.login.loginForm
 		value="/WEB-INF/views/member/login/loginForm.jsp

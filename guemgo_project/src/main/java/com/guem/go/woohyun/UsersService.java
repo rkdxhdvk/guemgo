@@ -2,10 +2,12 @@ package com.guem.go.woohyun;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.guem.go.minsu.ReviewVo;
 
 
 /*
@@ -23,9 +25,9 @@ public class UsersService {
 	}
 	
 	// 회원리스트 조회
-	public List<UsersVo> list(){
+	/*public List<UsersVo> list(){
 		return dao.list();
-	}
+	}*/
 	
 	// 회원삭제
 	public int delete(String email) {
@@ -48,5 +50,13 @@ public class UsersService {
 	//회원 포인트 수정
 	public int poitnUpdate(HashMap<String, Object> map) {
 		return dao.pointUpdate(map);
+	}
+	
+	//페이징 처리 및 검색
+	public List<UsersVo> list(Map<String, Object> map){
+		return dao.list(map);
+	}
+	public int getCount(Map<String, Object> map) {
+		return dao.getCount(map);
 	}
 }

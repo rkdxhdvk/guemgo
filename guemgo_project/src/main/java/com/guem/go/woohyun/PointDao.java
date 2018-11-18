@@ -19,4 +19,9 @@ public class PointDao {
 		return sqlSession.selectList(NAMESPACE + ".list",email); 
 	}
 	
+	//포인트 이력 추가 DAO
+	public int insert(PointVo vo) {
+		return sqlSession.insert(NAMESPACE + ".insert", vo);
+	}
+	
 }

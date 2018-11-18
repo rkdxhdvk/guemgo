@@ -12,38 +12,36 @@
 	rel='stylesheet' media='print' />
 
 <script src='resources/fullcalender/lib/moment.min.js'></script>
-<script src='resources/fullcalender/lib/jquery.min.js'></script>
+<!-- <script src='resources/fullcalender/lib/jquery.min.js'></script> -->
 <script src='resources/fullcalender/fullcalendar.min.js'></script>
 <script src='resources/fullcalender/demo-to-codepen.js'></script>
-
-<link
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
-	rel='stylesheet' />
-<script
-	src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
-<script
-	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 
 <script>
 	$(document).ready(
 			function() {
 				var events = [];
-				var flag;
-			 	//var currDate = ${date};
+				var currDate = ${date};
+				<c:set var="loop_flag" value="true" />
+				var flag = 0;
 				<c:forEach items="${list}" var="vo">
 					events.push({
 						title : '출석',
 						start : '${vo.att }',
 						overlap : false
 					})
-					<c:if test="${date == vo.att}">
-						<c:set var="flag" value="1"/>
+					<c:if test="${loop_flag }">
+						<c:if test="${date == vo.att}">
+							flag = 1;
+							<c:set var="loop_flag" value="false" />
+						</c:if>
 					</c:if>
 				</c:forEach>
 				console.log(flag);
 				$("#btn").click(function() {
-					<c:if test="${flag != 1}">
-						$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', att:'${date}'}, 
+					console.log(flag);
+					if(flag == 1){
+					alert("이미 출석햇는");
+					/* 	$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', att:'${date}'}, 
 								function(data) {
 							$('#calendar').fullCalendar('renderEvent',
 									{	
@@ -53,21 +51,25 @@
 									});
 						})
 						alert("출석체크!!!!!!!");
-						location.href="eventlist?email=${sessionScope.email}";
-					</c:if>
-					<c:if test="${flag == 1}">
-						alert("이미 출석햇는");
-					</c:if>
+						location.href="eventlist?email=${sessionScope.email}"; */
+					}else{
+					$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', att:'${date}'}, 
+							function(data) {
+						$('#calendar').fullCalendar('renderEvent',
+								{	
+									title : '출석',
+									start : '${date }',
+									overlap : false
+								});
+					});
+					alert("출석체크!!!!!!!");
+					location.href="eventlist?email=${sessionScope.email}";
+					}
 				});
 				$('#calendar').fullCalendar(
 						{
 							//selectable : true,
 							//droppable: true,
-							header : {
-								left : 'prev,next today',
-								center : 'title',
-								right : 'month'
-							},
 							events: events,
 							/* dayClick : function(date, calEvent) {
 								var start = date.format();
@@ -89,7 +91,7 @@
 								
 							}, */
 							eventClick : function(event, element) {
-								alert(event.id + event.start + " " + event.title);
+								alert(event.start.format() + " " + event.title + "완료!!");
 								
 							}/* ,
 							eventRender: function(eventObj, $el) {
@@ -112,10 +114,9 @@ body {
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 	font-size: 14px;
 }
-
 #calendar {
-	max-width: 900px;
-	margin: 0 auto;
+	max-width: 650px;
+	margin-right: 40px;
 }
 
 #calendar a.fc-event {
@@ -124,7 +125,25 @@ body {
 </style>
 </head>
 <body>
-	<input type="button" id="btn" value="출석체크">
-	<div id='calendar'></div>
+	<div id="ddd">
+	<div style="float: right;" id='calendar'></div>
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-sm-6">
+					<hr class="section-heading-spacer">
+					<div class="clearfix"></div>
+					<h2 class="section-heading">
+						매일매일 출석 이벤트!!!!!!!!!!!<br>
+					</h2>
+					
+					<p class="lead">
+						매일 출석만 해도 포인트가 모인다!!<br>
+						매일 홈페이지에 접속하여 출석체크를 해보세요
+						<a target="_blank" href="/">내 포인트 보러가기</a>
+					</p>
+					<button type="button" class="btn btn-primary" id="btn">출석체크</button>
+				</div>
+			</div>
+	</div>
 </body>
 </html>

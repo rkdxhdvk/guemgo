@@ -24,7 +24,7 @@ public class AdminPageController {
 	}*/
 	@RequestMapping("/admin")
 	public String mypage() {
-		return "woohyun/adminPage";
+		return ".admin";
 	}	
 /*	
 	@RequestMapping(value="/update",method=RequestMethod.GET)
