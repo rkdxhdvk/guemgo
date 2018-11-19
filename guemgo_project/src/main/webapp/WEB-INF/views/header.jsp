@@ -26,9 +26,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="fl">
 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
-		</button>
+		</button> -->
 		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
