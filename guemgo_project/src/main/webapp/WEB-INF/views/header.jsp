@@ -14,6 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>index.jsp</title>
 </head>
+
 <body>
 <%-- <h2>카테고리</h2>
 <ul>

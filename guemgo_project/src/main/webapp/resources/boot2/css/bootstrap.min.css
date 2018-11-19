@@ -4526,19 +4526,22 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar {
-	position: relative;
-	min-height: 50px;
-	margin-bottom: 20px;
-	border: 1px solid transparent
+	position: fixed;
+    min-height: 150px;
+    margin-bottom: 20px;
+    min-width: 100%;
+    background-color: white;
+    border: 1px solid transparent;
+    z-index: 5;
 }
 
-@media ( min-width :768px) {
+@media ( min-width :100%) {
 	.navbar {
 		border-radius: 4px
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :100%) {
 	.navbar-header {
 		float: left
 	}
