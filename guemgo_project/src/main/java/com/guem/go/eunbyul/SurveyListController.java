@@ -17,7 +17,7 @@ public class SurveyListController {
 	private SurveyService surveyservice;
 	@RequestMapping(value="/receiveList",method=RequestMethod.GET)
 	public ModelAndView receiveList(String email) {
-		ModelAndView mv=new ModelAndView(".eunbyul.receivelist");
+		ModelAndView mv=new ModelAndView(".eunbyul.index");
 		
 		ArrayList<LectureVo> list2=new ArrayList<>();
 		//이메일로 받은요청내역받아오기
