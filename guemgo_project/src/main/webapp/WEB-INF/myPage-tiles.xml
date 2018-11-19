@@ -5,7 +5,7 @@
 	<definition name=".myPage" template="/WEB-INF/views/kidong/myPage/myLayout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/views/kidong/myPage/menu.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/main.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/userUpdate.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	

@@ -34,7 +34,7 @@ public class GosuUpdateController {
 	@RequestMapping(value="/GosuUpdate",method=RequestMethod.GET)
 	public ModelAndView updateForm(String email) {
 		GosuVo vo=service.detail(email);
-		ModelAndView mv=new ModelAndView("woohyun/gosuUpdate");
+		ModelAndView mv=new ModelAndView(".gosuUpdate");
 		mv.addObject("vo",vo);
 //		System.out.println("업데이트콘트롤러GET 완료");
 		return mv;

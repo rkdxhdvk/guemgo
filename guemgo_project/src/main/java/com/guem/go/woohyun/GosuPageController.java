@@ -26,7 +26,7 @@ public class GosuPageController {
 */	
 	@RequestMapping("/gosupage")
 	public String mypage() {
-		return "woohyun/gosuPage";
+		return ".gosuPage";
 	}	
 	
 /*

@@ -24,24 +24,24 @@
  <h2>결제정보를 입력해주세요</h2>
     <div class="input-group">
       <span class="input-group-addon">카드번호</span>
-      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+      <input id="email" type="text" class="form-control" name="email">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">유효기간</span>
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+      <input id="password" type="text" class="form-control" name="password">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">생년월일(6자리)</span>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+      <input id="msg" type="text" class="form-control" name="msg">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">카드비밀번호 앞 2자리</span>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+      <input id="msg" type="password" class="form-control" name="msg">
     </div>
     <br>
-    <input type="reset" class="btn btn-info" value="Reset">
- 	<input type="submit" class="btn btn-info" value="Submit" style="float: right;">
+    <input type="reset" class="btn btn-info" value="취소">
+ 	<input type="submit" class="btn btn-info" value="충전" style="float: right;">
   </form>

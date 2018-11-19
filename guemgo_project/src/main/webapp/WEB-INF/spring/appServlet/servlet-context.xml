@@ -57,6 +57,7 @@
 				<!-- tiles설정파일 -->
 				<beans:value>/WEB-INF/tiles-def.xml</beans:value>
 				<beans:value>/WEB-INF/myPage-tiles.xml</beans:value>
+				<beans:value>/WEB-INF/gosuPage-tiles.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

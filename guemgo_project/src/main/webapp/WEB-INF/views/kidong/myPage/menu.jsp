@@ -16,7 +16,7 @@
 	<li><a
 		href="<c:url value='/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
 	<li><a
-		href="<c:url value='/sendList?email=${sessionScope.email }'/>">보낸내역</a></li>
+		href="<c:url value='/sendList?email=${sessionScope.email }'/>">보낸 요청서</a></li>
 
 	<li><a href="<c:url value='/selectGboard'/>">내가쓴글</a></li>
 </ul>
