@@ -25,7 +25,7 @@
 <!-- //////////////////////////Header////////////////////////// -->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="fl">
-		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
+<%-- 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a> --%>
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button> -->
@@ -35,6 +35,8 @@
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
 		<a class="navbar-brand" href="<c:url value='/qboard/list'/>">qna게시판</a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>">후기게시판</a>
+		<a class="navbar-brand" href="<c:url value='/'/>"><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="80px" margin-right"auto"
+    margin-left="auto"; display="block" ></a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>">채팅</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			
