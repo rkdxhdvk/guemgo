@@ -18,7 +18,6 @@ import com.google.gson.Gson;
 
 
 public class EchoHandler extends TextWebSocketHandler{
-	
 	@Inject
 	private ChatDao dao;
 	

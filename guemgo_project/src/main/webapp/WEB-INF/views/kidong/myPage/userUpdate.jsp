@@ -19,12 +19,12 @@
     </div>
     <br> <div class="input-group">
       <span class="input-group-addon">원본 이미지</span>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.image }" readonly="readonly">
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional primary" value="${vo.image }" readonly="readonly">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">새 이미지</span>
-      <input id="msg" type="file" class="form-control" name="msg" placeholder="Additional Info" value="${vo.image }">
+      <input id="msg" type="file" class="form-control" name="msg" placeholder="Additional primary" value="${vo.image }">
     </div>
     <br>
     <div class="input-group">
@@ -37,8 +37,8 @@
       <input id="msg" type="text" class="form-control" name="msg" readonly="readonly" value="${vo.regdate }">
     </div>
     <br>
-    <input type="reset" class="btn btn-info" value="취소">
- 	<input type="submit" class="btn btn-info" value="수정" style="float: right;">
+    <input type="reset" class="btn btn-primary" value="취소">
+ 	<input type="submit" class="btn btn-primary" value="수정" style="float: right;">
   </form>
 
 

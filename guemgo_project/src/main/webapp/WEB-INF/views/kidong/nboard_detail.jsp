@@ -19,6 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>	
 <title>상세보기</title>
 <style type="text/css">
 .time-right {
@@ -40,7 +41,7 @@
 		<c:if test="${sessionScope.email == vo.email }">
 			<button type="submit" class="btn btn-primary"
 				style="float: right; margin-right: 10px;" title="삭제"
-				onclick="location='<c:url value='/nboard/delete?num=${vo.num }'/>'">
+				onclick="deleteSubmit()">
 				<i class="fas fa-trash-alt"></i>
 			</button>
 			<button style="float: right; margin-right: 10px;" type="button"
@@ -458,6 +459,23 @@
 	function needLogin(){
 		alert('로그인');
 		window.location.href = '/go';
+	}
+	
+	function deleteSubmit(){
+		swal({
+			  title: "정말 삭제 함?",
+			  text: "한번 삭제하면 복구할 수 없습니다!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    window.location.href='<c:url value="/nboard/delete?num=${vo.num }"/>';
+			  } else {
+			    swal("삭제취소!");
+			  }
+			});
 	}
 </script>
 

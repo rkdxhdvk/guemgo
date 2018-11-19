@@ -25,8 +25,8 @@
        <textarea rows="10" maxlength="140" name="intro" class="form-control">${vo.career }</textarea><br>
     </div>
     <br>
-    <input type="reset" class="btn btn-info" value="취소">
- 	<input type="submit" class="btn btn-info" value="수정" style="float: right;">
+    <input type="reset" class="btn btn-primary" value="취소">
+ 	<input type="submit" class="btn btn-primary" value="수정" style="float: right;">
   </form>
 
  

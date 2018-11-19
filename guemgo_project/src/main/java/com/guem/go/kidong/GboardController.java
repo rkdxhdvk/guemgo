@@ -38,7 +38,7 @@ public class GboardController {
 
 	@RequestMapping("/gboard/list")
 	public String list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, String sort, String field,
-			String keyword, Model model) {
+			String keyword, Model model,String code) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("field", field);
 		map.put("keyword", keyword);
@@ -59,7 +59,7 @@ public class GboardController {
 	}
 
 	@RequestMapping(value = "/gboard/insert", method = RequestMethod.POST)
-	public String insert(GboardVo vo, MultipartFile file1, HttpSession session) {
+	public String insert(GboardVo vo, MultipartFile file1, HttpSession session, Model model) {
 		String uploadpath = session.getServletContext().getRealPath("/resources/upload");
 		String orgfilename = file1.getOriginalFilename();
 		String savefilename = UUID.randomUUID() + "_" + orgfilename;

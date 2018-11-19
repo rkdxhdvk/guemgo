@@ -276,7 +276,7 @@ body {
 	function sendMessage() {
 		message = {};
 		message.msg = $("#message").val();
-		message.sender = ${sessionScope.email };
+		message.sender = '${sessionScope.email }';
 		message.room = ${room };
 		sock.send(JSON.stringify(message));
 	}
@@ -313,11 +313,6 @@ body {
 		if (obj.sender === user) {
 			var str = "<div class='container1 darker'><p>" + obj.msg
 					+ "</p><span class=time-left>" + t + "</span>";
-			if (obj.read === 1) {
-				str += "<span>읽음</span></div>";
-			} else {
-				str += "<span>읽지않음</span></div>";
-			}
 			$("#data").append(str);
 		} else {
 			$("#data").append(

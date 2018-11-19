@@ -18,20 +18,27 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <title>자유 게시판</title>
 </head>
 <body>
+	<c:remove var="code" scope="session"/>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">자유 게시판</p>
-		
+
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
-					data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>글쓰기</button>
+				<button style="float: right;" type="button"
+					class="btn btn-primary btn-block" title="글쓰기" data-toggle="modal"
+					data-target="#myModal">
+					<i class='fas fa-edit'></i>글쓰기
+				</button>
 			</c:when>
 			<c:otherwise>
-				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
-					onclick="needLogin()"><i class='fas fa-edit'></i>로그인</button>
+				<button style="float: right;" type="button"
+					class="btn btn-primary btn-block" title="글쓰기" onclick="needLogin()">
+					<i class='fas fa-edit'></i>로그인
+				</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -64,9 +71,14 @@
 						<div class="form-group">
 							<input type="file" name="file1" id="file" class="form-control">
 						</div>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal"
+							title="취소">
+							<i class='fas fa-reply'></i>
+						</button>
 						<button type="submit" id="submit" name="submit"
-							class="btn btn-primary pull-right" title="입력"><i class='fas fa-edit'></i></button>
+							class="btn btn-primary pull-right" title="입력">
+							<i class='fas fa-edit'></i>
+						</button>
 					</form>
 				</div>
 			</div>
@@ -218,18 +230,24 @@
 
 			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
 
-				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+				swal({
+					title : "업로드 실패",
+					text : "gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.",
+					icon : "warning",
+					button : "확인",
+				});
 
 				return false;
 			}
+
 		}
 		return true;
+
 	}
-	
-	function needLogin(){
+
+	function needLogin() {
 		alert('로그인');
 		window.location.href = '/go';
 	}
-	
 </script>
 </html>

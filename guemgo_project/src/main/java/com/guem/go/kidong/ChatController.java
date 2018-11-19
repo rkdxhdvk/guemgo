@@ -27,12 +27,16 @@ public class ChatController {
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public String chat(HttpServletRequest request, int room,int lecturenum,Model model) {
 		
-		////////// 강의이름 목록 가져오기//////////////
+		int flag = (int)request.getSession().getAttribute("flag");
 		String email = (String)request.getSession().getAttribute("email");
+		
+		if(flag != 1) {
+		////////// 강의이름 목록 가져오기//////////////
 		int gonum = goService.gosuNum(email);
 		List<LectureVo> lecList = classService.classlist(gonum);
 		System.out.println(lecList);
 		model.addAttribute("lecList", lecList);
+		}
 		/////////////////////////////////////////
 		Map<String, Object> map = new HashMap<>();
 		map.put("sender", email);

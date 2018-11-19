@@ -42,6 +42,6 @@
       <input id="msg" type="password" class="form-control" name="msg">
     </div>
     <br>
-    <input type="reset" class="btn btn-info" value="취소">
- 	<input type="submit" class="btn btn-info" value="충전" style="float: right;">
+    <input type="reset" class="btn btn-primary" value="취소">
+ 	<input type="submit" class="btn btn-primary" value="충전" style="float: right;">
   </form>

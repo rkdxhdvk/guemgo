@@ -15,16 +15,16 @@
     </div>
     <br> <div class="input-group">
       <span class="input-group-addon">고수등급</span>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.grade }" readonly="readonly">
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional primary" value="${vo.grade }" readonly="readonly">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">고용횟수</span>
-      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info" value="${vo.employ }" readonly="readonly">
+      <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional primary" value="${vo.employ }" readonly="readonly">
     </div>
     <br>
-    <input type="reset" class="btn btn-info" value="취소">
- 	<input type="submit" class="btn btn-info" value="수정" style="float: right;">
+    <input type="reset" class="btn btn-primary" value="취소">
+ 	<input type="submit" class="btn btn-primary" value="수정" style="float: right;">
   </form>
 
 
