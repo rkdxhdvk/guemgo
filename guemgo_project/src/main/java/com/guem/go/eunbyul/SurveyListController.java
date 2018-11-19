@@ -19,12 +19,20 @@ public class SurveyListController {
 	public ModelAndView receiveList(String email) {
 		ModelAndView mv=new ModelAndView(".eunbyul.receivelist");
 		
-	
+		List<LectureVo> list2= null;
 		//이메일로 받은요청내역받아오기
+		System.out.println(email);
 		List<RequirelistVo> list=surveyservice.requestlist(email);
-		
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i).getLecturenum());
+			System.out.println(surveyservice.selectlec(list.get(i).getLecturenum()));
+			LectureVo vv=surveyservice.selectlec(list.get(i).getLecturenum());
+			System.out.println(vv.getLectureName());
+			list2.add(surveyservice.selectlec(list.get(i).getLecturenum()));
+		}
 		mv.addObject("email", email);
 		mv.addObject("list", list);
+		mv.addObject("list2", list2);
 		return mv;
 		
 	}
