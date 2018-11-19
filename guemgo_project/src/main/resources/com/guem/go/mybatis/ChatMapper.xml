@@ -12,10 +12,10 @@
 	<select id="getRoom" parameterType="string" resultType="com.guem.go.kidong.RoomVo">
 		select * from room where email = #{email} or other = #{email}
 	</select>
-	<update id="read" parameterType="int">
-		update gchat set read = 1 where room = #{room}
+	<update id="read" parameterType="map">
+		update gchat set read = 1 where room = #{room} and sender != #{sender}
 	</update>
 	<insert id="makeRoom" parameterType="com.guem.go.kidong.RoomVo">
-		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum});	
+		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum})
 	</insert>
 </mapper>  

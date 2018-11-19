@@ -1,6 +1,8 @@
 package com.guem.go.kidong;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,10 +34,13 @@ public class ChatController {
 		System.out.println(lecList);
 		model.addAttribute("lecList", lecList);
 		/////////////////////////////////////////
+		Map<String, Object> map = new HashMap<>();
+		map.put("sender", email);
+		map.put("room", room);
 		List<ChatVo> list = service.list(room);
 		for(ChatVo vo : list) {
 			if(!vo.getSender().equals(email)) {
-				service.update(room);
+				service.update(map);
 			}
 		}
 		

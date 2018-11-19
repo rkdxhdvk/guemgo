@@ -38,7 +38,7 @@
 			<c:if test="${sessionScope.email == vo.email }">
 				<button type="submit" class="btn btn-primary"
 					style="float: right; margin-right: 10px;" title="삭제"
-					onclick="location='<c:url value='/qboard/delete?num=${vo.num }'/>'">
+					onclick="location='<c:url value='/qboard/delete?num=${vo.num }&grp=${vo.grp }&lev=${vo.lev }'/>'">
 					<i class="fas fa-trash-alt"></i>
 				</button>
 				<button style="float: right; margin-right: 10px;" type="button"
@@ -55,7 +55,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Modal Header</h4>
+							<h4 class="modal-title">QnA 게시판</h4>
 						</div>
 
 						<div class="modal-body">
@@ -63,7 +63,7 @@
 								method="post">
 								<input type="hidden" name="num" value="${vo.num }"> <input
 									type="hidden" name="email" value="${sessionScope.email }">
-								<h3 style="margin-bottom: 25px;">Article Form</h3>
+								<h3 style="margin-bottom: 25px;">수정</h3>
 								<div class="form-group">
 									<input type="text" class="form-control" name="title"
 										placeholder="title" value="${vo.title }" required>
@@ -157,7 +157,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+					<h4 class="modal-title">QnA 게시판</h4>
 				</div>
 
 				<div class="modal-body">
@@ -169,7 +169,7 @@
 							type="hidden" name="step" value="${vo.step }"> <input
 							type="hidden" name="email" value="${sessionScope.email }">
 						<input type="hidden" name="sort" value="${vo.sort }">
-						<h3 style="margin-bottom: 25px;">Article Form</h3>
+						<h3 style="margin-bottom: 25px;">답변</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="title"
 								placeholder="title" required>

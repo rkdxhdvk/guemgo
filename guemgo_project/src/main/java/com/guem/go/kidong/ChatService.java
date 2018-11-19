@@ -1,6 +1,7 @@
 package com.guem.go.kidong;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,8 @@ public class ChatService {
 		return dao.getRoom(email);
 	}
 	
-	public int update(int room) {
-		return dao.update(room);
+	public int update(Map<String, Object> map) {
+		return dao.update(map);
 	}
 	
 	public int makeRoom(RoomVo vo) {

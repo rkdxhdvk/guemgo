@@ -32,4 +32,11 @@ public class RoomController {
 		model.addAttribute("list", list);
 		return "/kidong/room";
 	}
+	
+	@RequestMapping(value="/makeRoom", method = RequestMethod.GET)
+	public String makeRomm(String email, String other, int lecturenum) {
+		RoomVo vo = new RoomVo(0, email, other, lecturenum, null);
+		service.makeRoom(vo);
+		return ".main";
+	}
 }

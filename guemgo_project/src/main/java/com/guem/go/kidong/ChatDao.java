@@ -1,6 +1,7 @@
 package com.guem.go.kidong;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class ChatDao {
 		return session.selectList("com.jhta.mybatis.ChatMapper.getRoom", email);
 	}
 	
-	public int update(int room) {
-		return session.update("com.jhta.mybatis.ChatMapper.read", room);
+	public int update(Map<String, Object> map) {
+		return session.update("com.jhta.mybatis.ChatMapper.read", map);
 	}
 	
 	public int makeRomm(RoomVo vo) {

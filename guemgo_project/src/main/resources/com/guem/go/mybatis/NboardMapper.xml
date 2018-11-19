@@ -19,6 +19,9 @@
 			(
 				select * from notice_board
 				<include refid="search"/>
+				<if test="sort!=null and sort!=''">
+				where sort = #{sort}
+				</if>
 				<choose>
 					<otherwise>
 						order by num desc

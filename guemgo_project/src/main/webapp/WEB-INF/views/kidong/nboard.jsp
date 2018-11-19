@@ -18,11 +18,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<title>공지게시판</title>
+<title>공지 게시판</title>
 </head>
 <body>
 	<div class="container-fluid" style="margin-bottom: 15px;">
-		<p class="text-left" style="font-size: x-large;">공지게시판</p>
+		<p class="text-left" style="font-size: x-large;">공지 게시판</p>
 
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
@@ -49,7 +49,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+					<h4 class="modal-title">공지 게시판</h4>
 				</div>
 
 				<div class="modal-body">
@@ -57,7 +57,7 @@
 						method="post" enctype="multipart/form-data"
 						onsubmit="return submitAction()">
 						<input type="hidden" name="email" value="${sessionScope.email }">
-						<h3 style="margin-bottom: 25px;">Article Form</h3>
+						<h3 style="margin-bottom: 25px;">글쓰기</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="title"
 								placeholder="title" required>

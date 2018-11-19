@@ -20,7 +20,8 @@
 	<h1>${lecturenum }</h1>
 	<h1>${other }</h1>
 	<h1>${email }</h1>
-	<input type="button" value="채팅걸기">
+	<button type="button" class="btn btn-primary"
+				onclick='location.href="<c:url value='/makeRoom?email=${email }&other=${other }&lecturenum=${lecturenum }'/>"'>채팅걸기</button>
 
 </body>
 </html>

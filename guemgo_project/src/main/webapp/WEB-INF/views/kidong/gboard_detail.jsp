@@ -58,7 +58,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+					<h4 class="modal-title">자유 게시판</h4>
 				</div>
 
 				<div class="modal-body">
@@ -67,7 +67,7 @@
 						onsubmit="return submitAction()">
 						<input type="hidden" name="num" value="${vo.num }"> <input
 							type="hidden" name="email" value="${vo.email }">
-						<h3 style="margin-bottom: 25px;">Article Form</h3>
+						<h3 style="margin-bottom: 25px;">수정</h3>
 						<div class="form-group">
 							<input type="text" class="form-control" name="title"
 								placeholder="title" value="${vo.title }" required>
