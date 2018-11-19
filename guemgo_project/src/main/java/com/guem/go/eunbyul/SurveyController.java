@@ -225,9 +225,9 @@ public class SurveyController {
 			sendMail.setFrom("92eunbyul@naver.com", "금고");
 			sendMail.setTo(gosu.getEmail());
 			sendMail.send();
-			HashMap<String, String> map=new HashMap<>();
+			HashMap<String, Object> map=new HashMap<>();
 			map.put("email", gosu.getEmail());
-			map.put("lecturename", matching.get(i).getLectureName());
+			map.put("lecturenum", matching.get(i).getLectureNum());
 			int n2 =surveyservice.requestinsert(map);
 			System.out.println("요청서내역에저장"+n2);
 			

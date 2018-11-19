@@ -31,7 +31,7 @@ public class SurveyListController {
 	@RequestMapping(value="/receivedetail",method=RequestMethod.GET)
 	public ModelAndView receivedetail(int num, String email,String lecturename) {
 		//내꺼 상대방 강의번호
-		
+		System.out.println("확인"+lecturename);
 		ModelAndView mv=new ModelAndView(".eunbyul.receivedetail");
 		//요청서번호로 이메일찾아오기
 		RequireVo vo=surveyservice.requireselect(num);

@@ -14,9 +14,9 @@
 <title>자유게시판</title>
 </head>
 <body>
-	<%int num=Integer.parseInt(request.getParameter("lecturenum")); %>
+<%-- 	<%int num=Integer.parseInt(request.getParameter("lecturenum")); %>
 	<%int other=Integer.parseInt(request.getParameter("other")); %>
-	<%int email=Integer.parseInt(request.getParameter("email")); %>
+	<%int email=Integer.parseInt(request.getParameter("email")); %> --%>
 	<h1>${num }</h1>
 	<h1>${other }</h1>
 	<h1>${email }</h1>

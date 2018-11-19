@@ -75,9 +75,9 @@
 				<tbody>
 					<c:forEach var="vo" items="${list }">
 						<td style="width: 10%">${vo.num }</td>
-						<td style="width: 20%">${vo.lecturename }</td>
+						<td style="width: 20%">${vo.lecturenum }</td>
 						<td style="width: 10%"><a
-							href="<c:url value='/receivedetail?num=${vo.req_num } & email =${email } & lecturename = ${vo.lecturename }'/>">${vo.req_num }</a></td>
+							href="<c:url value='/receivedetail?num=${vo.req_num },email=${sessionScope.email },lecturename=${vo.lecturename }'/>">${vo.req_num }</a></td>
 						<td style="width: 10%">${vo.req_date }</td>
 						<td style="width: 10%">요청중</td>
 						<td style="width: 20%"><input type="button" value="채팅걸기"></td>

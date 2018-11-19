@@ -42,7 +42,7 @@ public class SurveyService {
 	public GosuVo selectgosu(int go_num) {
 		return dao.selectgosu(go_num);
 	}
-	public int requestinsert(HashMap<String, String> map) {
+	public int requestinsert(HashMap<String, Object> map) {
 		return dao.requestinsert(map);
 	}
 	public List<RequirelistVo> requestlist(String email){

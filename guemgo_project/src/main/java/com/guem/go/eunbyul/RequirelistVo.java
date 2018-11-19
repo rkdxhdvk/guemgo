@@ -7,17 +7,17 @@ public class RequirelistVo {
 	public String email;
 	public Date req_date;
 	public int req_num;
-	public String lecturename;
+	public int lecturenum;
 	
 	public RequirelistVo() {	}
 
-	public RequirelistVo(int num, String email, Date req_date, int req_num, String lecturename) {
+	public RequirelistVo(int num, String email, Date req_date, int req_num, int lecturenum) {
 		super();
 		this.num = num;
 		this.email = email;
 		this.req_date = req_date;
 		this.req_num = req_num;
-		this.lecturename = lecturename;
+		this.lecturenum = lecturenum;
 	}
 
 	public int getNum() {
@@ -52,15 +52,14 @@ public class RequirelistVo {
 		this.req_num = req_num;
 	}
 
-	public String getLecturename() {
-		return lecturename;
+	public int getLecturenum() {
+		return lecturenum;
 	}
 
-	public void setLecturename(String lecturename) {
-		this.lecturename = lecturename;
-	}	
-	
-	
-	
-	
+	public void setLecturenum(int lecturenum) {
+		this.lecturenum = lecturenum;
+	}
 }
+
+	
+	

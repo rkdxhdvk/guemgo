@@ -54,7 +54,7 @@ public class SurveyDao {
 		return sqlSession.selectOne(NAMESPACE + ".selectgosu", go_num);
 	}
 	
-	public int requestinsert(HashMap<String, String> map) {
+	public int requestinsert(HashMap<String, Object> map) {
 		return sqlSession.insert(NAMESPACE+".requestinsert",map);
 	}
 
