@@ -22,7 +22,7 @@ public class GosuInsertController {
 	
 	@RequestMapping(value="/GosuInsertForm",method=RequestMethod.GET)
 	public String insert() {
-		return "woohyun/gosuInsert";
+		return ".gosuInsertForm";
 	}
 	
 	@RequestMapping(value="/GosuInsert")
