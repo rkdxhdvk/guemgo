@@ -2,16 +2,16 @@ package com.guem.go.eunbyul;
 
 public class AnswerVo {
 	private int ans_num;
-	private int matchnum;
+	private int req_num;
 	private int ques_num;
 	private String answer;
 	
 	public AnswerVo() {}
 
-	public AnswerVo(int ans_num, int matchnum, int ques_num, String answer) {
+	public AnswerVo(int ans_num, int req_num, int ques_num, String answer) {
 		super();
 		this.ans_num = ans_num;
-		this.matchnum = matchnum;
+		this.req_num = req_num;
 		this.ques_num = ques_num;
 		this.answer = answer;
 	}
@@ -24,12 +24,12 @@ public class AnswerVo {
 		this.ans_num = ans_num;
 	}
 
-	public int getMatchnum() {
-		return matchnum;
+	public int getReq_num() {
+		return req_num;
 	}
 
-	public void setMatchnum(int matchnum) {
-		this.matchnum = matchnum;
+	public void setReq_num(int req_num) {
+		this.req_num = req_num;
 	}
 
 	public int getQues_num() {

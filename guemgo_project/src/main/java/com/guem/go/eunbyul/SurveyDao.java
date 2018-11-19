@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.w3c.dom.ls.LSInput;
 
 import com.guem.go.woohyun.GosuVo;
 
@@ -67,5 +68,13 @@ public class SurveyDao {
 
 	public LectureVo lectureselect(String lecturename) {
 		return sqlSession.selectOne(NAMESPACE + ".lectureselect", lecturename);
+	}
+	
+	public List<RequireVo> requirelist(String email){
+		return sqlSession.selectList(NAMESPACE+".requirelist",email);
+	}
+
+	public List<AnswerVo> answer(int num) {
+		return sqlSession.selectList(NAMESPACE+".answer",num);
 	}
 }

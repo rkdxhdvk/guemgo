@@ -292,6 +292,15 @@
 						</c:if>
 					
 						<c:if test="${ss.index==9}">
+						<div class="form-group col-sm-4 ">
+						<span style="margin:auto">
+									<button type="button" class="btn btn-primary mx-1 mt-2"
+										onclick="addrSearch();" style="background-color: #4CAF50;" >
+										<i class="fa fa-search"></i> 주소검색
+									</button>
+									</span>
+								</div>
+						
 								<div class="form-group">
 									<input class="form-control" style="top: 5px;"
 										placeholder="도로명 주소" name="addr1" id="addr1" type="text"
@@ -301,12 +310,7 @@
 									<input class="form-control" placeholder="상세주소" name="addr2"
 										id="addr2" type="text" />
 								</div>
-								<div class="form-group col-sm-4 ">
-									<button type="button" class="btn btn-primary mx-1 mt-2"
-										onclick="addrSearch();">
-										<i class="fa fa-search"></i> 주소검색
-									</button>
-								</div>
+								
 						</c:if>
 						
 						
@@ -321,7 +325,7 @@
 						</c:if>	
 					</c:forEach>
 					
-						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">신청하기</button>
+						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12" style="background-color: #4CAF50;">신청하기</button>
 					</form>
 				</div>
 			</div>

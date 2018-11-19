@@ -55,6 +55,11 @@ public class SurveyService {
 	public LectureVo lectureselect(String lecturename) {
 		return dao.lectureselect(lecturename);
 	}
-	
+	public List<RequireVo> requirelist(String email){ //이용자가 보낸요청서 확인시 email로 요청서들가져오기
+		return dao.requirelist(email);
+	}
+	public List<AnswerVo> answer(int num) {
+		return dao.answer(num);
+	}
 	
 }

@@ -1,6 +1,9 @@
 package com.guem.go.eunbyul;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +40,20 @@ public class SurveyListController {
 		mv.addObject("lecturenum", vo2.getLectureNum());
 		mv.addObject("other", vo.getEmail());
 		mv.addObject("email", email);
+		return mv;
+	}
+	@RequestMapping(value="/sendlist", method=RequestMethod.GET)
+	public ModelAndView sendList(String email) {
+		ModelAndView mv= new ModelAndView(".eunbyul.sendlist");
+		//본인 이메일로 요청서 테이블에서 요청서번호 가져와서 답변테이블에서 답변들 찾아서 보여주기
+		List<RequireVo> list=surveyservice.requirelist(email);//이메일로 요청서가져오기
+		ArrayList<List<AnswerVo>> list3=new ArrayList<List<AnswerVo>>();
+		for(int i=0; i<list.size(); i++) {
+			List<AnswerVo> list2 =surveyservice.answer(list.get(i).getReq_num()); //요청서넘버를 가져와서 답변들을 가져옴
+			list3.add(list2);
+		}
+		mv.addObject("email", email);
+		mv.addObject("list", list3);
 		return mv;
 	}
 }

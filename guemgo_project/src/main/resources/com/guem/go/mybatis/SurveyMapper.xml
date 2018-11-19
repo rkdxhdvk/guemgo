@@ -44,7 +44,13 @@
 	<select id="lectureselect" parameterType="String" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where LECTURENAME=#{LECTURENAME}
 	</select>
-	
+	<!-- 보낸요청내역 -->
+	<select id="requirelist" parameterType="String" resultType="com.guem.go.eunbyul.RequireVo">
+		select * from require where email=#{email}
+	</select>
+	<select id="answer" parameterType="int" resultType="com.guem.go.eunbyul.AnswerVo">
+		select * from answer where req_num=#{num}
+	</select>
 	
 	
 </mapper>

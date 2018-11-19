@@ -91,7 +91,7 @@
 										<a class="dropdown-item" href="admin" style="margin-left:10px">관리자페이지</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
-									<a class="dropdown-item" href="classlist?gonum=4" style="margin-left:10px">보낸 요청서</a><br>
+									<a class="dropdown-item" href="sendlist?email=${sessionScope.email }" style="margin-left:10px">보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
 												<a class="dropdown-item" href="mypage" style="margin-left:10px">마이페이지</a><br>
