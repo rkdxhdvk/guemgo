@@ -73,21 +73,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="intro-message">
-						<h1>고수를 찾으세여</h1>
+					<div class="intro-message" style="margin-bottom:100px;">
+						<h1 style="font-size: 50px">금고가 딱! 맞는 예술가를 찾아드려요</h1><br>
 						<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 							<section class="container">
 								<!-- 본문같은 내용을 담을때 사용 -->
 								<form method="get" action="search" class="form-inline mt-3"
-									style="margin-left: 190px; position: absolute;">
+									style="margin-left: auto; margin-right:auto; display:block; ">
 									<!-- 위쪽으로3만큼 -->
 									<input type="text" name="search" class="form-control mx-1 mt-2"
 										placeholder="관심있는 분야를 입력하세요"
 										style="text-align: center; width: 500px; height: 40px;">
-									<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
+									<button type="submit" class="btn btn-primary mx-1 mt-2" style="margin-bottom: 0px;margin-right: 0px;">검색</button>
 									<!-- <a class="btn btn-primary mx-1 mt-2" data-toggle="modal" href="#registerModal">test</a> -->
 									<button type="button" class="btn btn-primary mx-1 mt-2"
-										data-toggle="modal" data-target="#registerModal">매칭신청</button>
+										data-toggle="modal" data-target="#registerModal" style="margin-bottom: 0px;margin-right: 0px;">매칭신청</button>
 								</form>
 							</section>
 							<div class="modal fade" id="registerModal" tabindex="-1"
