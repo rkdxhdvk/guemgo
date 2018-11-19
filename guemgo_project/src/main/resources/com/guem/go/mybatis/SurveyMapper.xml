@@ -38,7 +38,7 @@
 	<select id="requestlist" parameterType="String" resultType="com.guem.go.eunbyul.RequirelistVo">
 		select * from REQUIRELIST where email=#{email}
 	</select>
-	<select id="requireselect" parameterType="int" resultType="com.guem.go.eunbyul.RequirelistVo">
+	<select id="requireselect" parameterType="int" resultType="com.guem.go.eunbyul.RequireVo">
 		select * from require where REQ_NUM=#{num}
 	</select>
 	<select id="lectureselect" parameterType="String" resultType="com.guem.go.eunbyul.LectureVo">

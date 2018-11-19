@@ -69,16 +69,18 @@
 					<th>요청서번호</th>
 					<th>받은 날짜</th>
 					<th>요청 상태</th>
+					<th>채팅걸기</th>
 
 				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${list }">
 						<td style="width: 10%">${vo.num }</td>
-						<td style="width: 30%">${vo.lecturename }</td>
+						<td style="width: 20%">${vo.lecturename }</td>
 						<td style="width: 10%"><a
 							href="<c:url value='/receivedetail?num=${vo.req_num } & email =${email } & lecturename = ${vo.lecturename }'/>">${vo.req_num }</a></td>
-						<td style="width: 20%">${vo.req_date }</td>
-						<td style="width: 30%">요청중</td>
+						<td style="width: 10%">${vo.req_date }</td>
+						<td style="width: 10%">요청중</td>
+						<td style="width: 20%"><input type="button" value="채팅걸기"></td>
 						</tr>
 					</c:forEach>
 				</tbody>

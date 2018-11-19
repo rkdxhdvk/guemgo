@@ -23,24 +23,86 @@
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					
-					<th>번호</th>
-					<th>강의명</th>
 					<th>요청서번호</th>
-					<th>받은 날짜</th>
+					<th>분야</th>
+					<th>요청 날짜</th>
 					<th>요청 상태</th>
+					<th>자세히 보기</th>
+					<th>요청서 삭제</th>
+					
 
 				</thead>
 				<tbody>
-				<td>d</td>
-				<td>d</td>
-				<td>d</td>
-				<td>d</td>
-				<td>d</td>
+					<c:forEach var="vo" items="${list }">
+						<td style="width: 10%">${vo.req_num }</td>
+						<%-- <td style="width: 10%"><a
+							href="<c:url value='/receivedetail?num=${vo.req_num } & email =${email } & lecturename = ${vo.lecturename }'/>">${vo.req_num }</a></td> --%>
+						<td style="width: 20%">	${vo.mnum }</td>
+						<td style="width: 10%">${vo.req_date }</td>
+						<td style="width: 10%">
+						<c:if test="${vo.lec_start==0 }">요청중</c:if>
+						<c:if test="${vo.lec_start!=0 }">요청완료</c:if>
+						</td>
+						<td style="width: 20%"><a
+							href="<c:url value='/senddetail?num=${vo.req_num }'/>">자세히 보기</a></td>
+						<td style="width: 20%">삭제</td>
+						</tr>
+						</c:forEach>
 				</tbody>
 				
 			</table>
 		</div>
+		<div class="text-center">
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${pu.startPageNum > 5 }">
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-left"></i>
+						</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
+						<li class="disabled"><a href="">...</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-left"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<c:forEach var="i" begin="${pu.startPageNum }"
+					end="${pu.endPageNum }">
+					<c:choose>
+						<c:when test="${pu.pageNum == i }">
+							<li class="active"><a
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${pu.endPageNum < pu.totalPageCount }">
+						<li class="disabled"><a href="">...</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-right"></i>
+						</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-right"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</ul>
 		</div>
+	</div>
 
 	
 
