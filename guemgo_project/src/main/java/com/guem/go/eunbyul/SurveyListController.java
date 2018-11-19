@@ -19,7 +19,7 @@ public class SurveyListController {
 	public ModelAndView receiveList(String email) {
 		ModelAndView mv=new ModelAndView(".eunbyul.receivelist");
 		
-		List<LectureVo> list2= null;
+		ArrayList<LectureVo> list2=new ArrayList<>();
 		//이메일로 받은요청내역받아오기
 		System.out.println(email);
 		List<RequirelistVo> list=surveyservice.requestlist(email);
@@ -28,7 +28,7 @@ public class SurveyListController {
 			System.out.println(surveyservice.selectlec(list.get(i).getLecturenum()));
 			LectureVo vv=surveyservice.selectlec(list.get(i).getLecturenum());
 			System.out.println(vv.getLectureName());
-			list2.add(surveyservice.selectlec(list.get(i).getLecturenum()));
+			list2.add(vv);
 		}
 		mv.addObject("email", email);
 		mv.addObject("list", list);
@@ -37,15 +37,14 @@ public class SurveyListController {
 		
 	}
 	@RequestMapping(value="/receivedetail",method=RequestMethod.GET)
-	public ModelAndView receivedetail(int num, String email,String lecturename) {
+	public ModelAndView receivedetail(int num, String email,int lecturenum) {
 		//내꺼 상대방 강의번호
-		System.out.println("확인"+lecturename);
 		ModelAndView mv=new ModelAndView(".eunbyul.receivedetail");
 		//요청서번호로 이메일찾아오기
 		RequireVo vo=surveyservice.requireselect(num);
 		//강의명으로 강의번호찾아오기
-		LectureVo vo2=surveyservice.lectureselect(lecturename);
-		mv.addObject("lecturenum", vo2.getLectureNum());
+/*		LectureVo vo2=surveyservice.lectureselect(lecturename);*/
+		mv.addObject("lecturenum", lecturenum);
 		mv.addObject("other", vo.getEmail());
 		mv.addObject("email", email);
 		return mv;
