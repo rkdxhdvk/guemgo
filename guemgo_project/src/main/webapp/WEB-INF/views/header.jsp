@@ -29,7 +29,7 @@
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
 		</button> -->
-		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a>
+<%-- 		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a> --%>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
@@ -68,7 +68,7 @@
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<c:choose>
 				 	<c:when test="${sessionScope.flag eq '2'}">
-				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }" style="margin-left:10px">강의 등록1</a><br>
+				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }" style="margin-left:10px">강의 등록</a><br>
 				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }" style="margin-left:10px">내 강의 목록</a><br>
 				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }" style="margin-left:10px">받은 요청서</a><br>
 				 	</c:when>

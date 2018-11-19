@@ -1,44 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-	
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet'
+	href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'
+	integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns'
+	crossorigin='anonymous'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <title>내 강의 목록</title>
-<link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/go/resources/css/custom.css">
+
 </head>
 <body>
-<table class="type07">
-    <thead>
-    <tr>
-        <th scope="cols">강의번호</th>
-        <th scope="cols">강의명</th>
-        <th scope="cols">지역</th>
-        <th scope="cols">요일</th>
-        <th scope="cols">시간대</th>
-        <th scope="cols">수정</th>
-        <th scope="cols">삭제</th>
-    </tr>
-    </thead>
-    
-   
-    <tbody>
-    <c:forEach var="vo" items="${list }">
-    <tr>
-        <th scope="row" style="width: 10%">${vo.lectureNum }</th>
-        <td style="width: 25%">${vo.lectureName }</td>
-        <td style="width: 30%">${vo.region1 }${vo.region2 }</td>
-        <td style="width: 10%">${vo.day }</td>
-        <td style="width: 10%" >${vo.time }</td>
-		<td style="width: 5%"><a href="<c:url value='/eunbyul/classUpdate?lectureNum=${vo.lectureNum }'/>">수정</a></td>
-		<td style="width: 5%"><a href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }'/>">삭제</a></td>
-    </tr>
-	</c:forEach>
-    </tbody>
-</table>
+	<c:if test="${sessionScope.email!=null }">
+	<div class="container-fluid" style="margin-bottom: 15px;">
+		<p class="text-left" style="font-size: x-large;">내 강의 목록</p>
+	</div>
+	</c:if>
+	<div class="container-fluid">
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th>강의번호</th>
+						<th>강의명</th>
+						<th>지역</th>
+						<th>요일</th>
+						<th>시간대</th>
+						<th>수정</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+
+
+				<tbody>
+					<c:forEach var="vo" items="${list }">
+						<tr>
+							<th scope="row" style="width: 10%">${vo.lectureNum }</th>
+							<td style="width: 25%">${vo.lectureName }</td>
+							<td style="width: 30%">${vo.region1 }${vo.region2 }</td>
+							<td style="width: 10%">${vo.day }</td>
+							<td style="width: 10%">${vo.time }</td>
+							<td style="width: 5%"><a
+								href="<c:url value='/eunbyul/classUpdate?lectureNum=${vo.lectureNum }'/>">수정</a></td>
+							<td style="width: 5%"><a
+								href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }'/>">삭제</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-center">
+			<ul class="pagination">
+				<c:choose>
+					<c:when test="${pu.startPageNum > 5 }">
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.startPageNum - 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-left"></i>
+						</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=1&field=${field }&keyword=${keyword }&sort=${sort }'/>">1</a></li>
+						<li class="disabled"><a href="">...</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-left"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+				<c:forEach var="i" begin="${pu.startPageNum }"
+					end="${pu.endPageNum }">
+					<c:choose>
+						<c:when test="${pu.pageNum == i }">
+							<li class="active"><a
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a
+								href="<c:url value='/reList?pageNum=${i }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${i }</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:choose>
+					<c:when test="${pu.endPageNum < pu.totalPageCount }">
+						<li class="disabled"><a href="">...</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.totalPageCount }&field=${field }&keyword=${keyword }&sort=${sort }'/>">${pu.totalPageCount }</a></li>
+						<li><a
+							href="<c:url value='/reList?pageNum=${pu.endPageNum + 1 }&field=${field }&keyword=${keyword }&sort=${sort }'/>">
+								<i class="fa fa-chevron-right"></i>
+						</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="disabled"><a href=""> <i
+								class="fa fa-chevron-right"></i></a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</ul>
+		</div>
+	</div>
 
 
 </body>

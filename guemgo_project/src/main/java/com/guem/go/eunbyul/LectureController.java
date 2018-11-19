@@ -31,7 +31,7 @@ public class LectureController {
 	}
 	@RequestMapping(value="/mylecture",method=RequestMethod.GET)
 	public ModelAndView mylecture(String email) {
-		ModelAndView mv= new ModelAndView("eunbyul/myLecture");
+		ModelAndView mv= new ModelAndView(".eunbyul.myLecture");
 		System.out.println(email);
 		GosuVo vo=classService.gosuselect(email);
 		List<LectureVo> list=classService.classlist(vo.getGo_num());
