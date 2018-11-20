@@ -36,6 +36,7 @@ public class CalController {
 		String email = (String)request.getSession().getAttribute("email");
 		String other = "min"; // 채팅방에서 받아오기
 		String lecture = request.getParameter("lecture");
+		System.out.println(lecture);
 		String[] lss = lecture.split("/");
 		String lecturename = lss[1]; // select에서
 		int lectureNum = Integer.parseInt(lss[0]); // select에서

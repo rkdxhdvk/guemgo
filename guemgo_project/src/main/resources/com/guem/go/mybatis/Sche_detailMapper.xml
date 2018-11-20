@@ -18,7 +18,7 @@
 		where Num=#{Num}
 	</update>
 	<select id="sche_detailList" parameterType="int" resultType="com.guem.go.minsu.Sche_detailVo">
-		select * from sche_detail where Num=#{Num}
+		select * from sche_detail where schedulenum=#{schedulenum}
 	</select>
 	<delete id="all_detailDelete" parameterType="int">
 		delete from sche_detail where Num=#{Num}

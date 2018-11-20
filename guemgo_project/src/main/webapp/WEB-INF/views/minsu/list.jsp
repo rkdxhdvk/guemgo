@@ -117,6 +117,7 @@
 							    }
 							  }, */
 							eventClick : function(event, element) {
+								alert(event.id);
 								if(event.backgroundColor=='orange'){
 		                	  		alert("이미 출석");
 		                	  	}

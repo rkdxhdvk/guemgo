@@ -141,7 +141,13 @@ body {
 						매일 홈페이지에 접속하여 출석체크를 해보세요<br>
 						<a target="_blank" href="/">내 포인트 보러가기</a>
 					</p>
-					<button type="button" class="btn btn-primary" id="btn">출석체크</button>
+					<button type="button" class="btn btn-primary" id="btn">출석체크</button><br>
+					<br><br><br><br><br><br><br><br>
+					
+					<ul style="float: left;">
+						<li>한번 출석시 5point 적립</li>
+						<li>연속 일주일 출석시 10point 추가 적립</li>
+					</ul>
 				</div>
 			</div>
 	</div>

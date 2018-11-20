@@ -29,7 +29,7 @@ public class ChatController {
 		
 		int flag = (int)request.getSession().getAttribute("flag");
 		String email = (String)request.getSession().getAttribute("email");
-		
+		String lecturename = request.getParameter("lecturename");
 		if(flag != 1) {
 		////////// 강의이름 목록 가져오기//////////////
 		int gonum = goService.gosuNum(email);
@@ -49,7 +49,8 @@ public class ChatController {
 		}
 		
 		LectureVo vo = classService.classSelect(lecturenum);
-	
+		
+		model.addAttribute("lecturename", lecturename);
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
 		model.addAttribute("vo", vo);

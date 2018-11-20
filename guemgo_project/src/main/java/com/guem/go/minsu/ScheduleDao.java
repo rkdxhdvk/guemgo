@@ -14,7 +14,7 @@ public class ScheduleDao {
 	private final static String NAMESPACE = "com.guem.go.mybatis.ScheduleMapper";
 	
 	public int insert(ScheduleVo vo) {
-		return sqlSession.insert(NAMESPACE + ".schduleInsert",vo);
+		return sqlSession.insert(NAMESPACE + ".scheduleInsert",vo);
 	}
 	public int scheduleNum() {
 		return sqlSession.selectOne(NAMESPACE + ".scheduleNum");

@@ -33,7 +33,7 @@
 			<div class="panel-heading">상대방 : ${vo.other }</div>
 			<div class="panel-body">
 				강의명 : ${vo.lecturename }
-				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }'/>" class="pull-right">입장</a>
+				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }'/>" class="pull-right">입장</a>
 			</div>
 		</div>
 	</div>

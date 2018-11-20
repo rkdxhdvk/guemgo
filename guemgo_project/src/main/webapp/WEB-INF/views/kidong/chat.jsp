@@ -134,7 +134,7 @@ body {
 		var matchNum = parseInt(document.getElementById("matchNum").value);
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
-		var other = document.getElementById("other").value;
+		var other = document.getElementById("other").value ;
 		<c:forEach items="${start}" var="vo" varStatus="status">
 			sche_detailNum = sche_detailNum + 1;
 			events.push({
@@ -146,7 +146,7 @@ body {
 			})
 		</c:forEach>
 		$("#sche_confirm").click(function() {
-			$.ajax({
+			$.getJSON({
 				url:"<c:url value='/calInsert'/>",
 				data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename }, 
 				success:function(data){
@@ -380,13 +380,12 @@ body {
 				<div style="height: 900px; ">
 					<div class="container-fluid"
 						style="border: solid 2px #337ab7; border-radius: 5px; height: 630px;">
-						<input type="hidden" value="${sche_detailNum}" id="sche_detailNum">
-						<input type="hidden" value="${scheduleNum}" id="scheduleNum">
-						<input type="hidden" value="${lectureNum}" id="lectureNum">
-						<input type="hidden" value="${matchNum}" id="matchNum">
-						<input type="hidden" value="${lecturename}" id="lecturename">
-						<input type="hidden" value="${email}" id="email">
-						<input type="hidden" value="${other}" id="other">
+						<input type="hidden" value= ${sche_detailNum } name="sche_detailNum" id="sche_detailNum">
+						<input type="hidden" value= ${scheduleNum } name="scheduleNum" id="scheduleNum">
+						<input type="hidden" value= ${lectureNum } name="lectureNum" id="lectureNum">
+						<input type="hidden" value= ${matchNum } name="matchNum" id="matchNum">
+						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
+						<input type="hidden" value="${other}" name="other" id="other"> 
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>
@@ -397,22 +396,28 @@ body {
 							<c:otherwise>
 								<h5>스케주우우우우울</h5>
 					<form action="<c:url value='/calaaa'/>" method="get">
+						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>강의명</label><br> 		
-							<select name="lecture" class="form-control">
+							<label>${lecturename }</label><br> 		
+							<%-- <select name="lecture" class="form-control">
 								<c:forEach items="${lecList }" var="vo">
 									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
 								</c:forEach>
-							</select>
+							</select> --%>
 							</div>
 						</div>
 						<label>강의횟수</label><br> 
 						<div class="form-row">
-							<div class="form-group col-sm-12">
-							<input type="text" name="count" style="width:20px;">
+							<div class="form-group col-sm-12">		
+							<select name="count" class="form-control">
+								<option value=5>5번</option>
+								<option value=10>10번</option>
+								<option value=15>15번</option>
+								<option value=20>20번</option>
+							</select>
 							</div>
 						</div>
 						
@@ -420,10 +425,10 @@ body {
 							<div class="form-group col-sm-12">
 							<label>강의시간</label><br> 		
 							<select name="time" class="form-control">
-								<option value=12>12:00</option>
-								<option value=14>14:00</option>
-								<option value=16>16:00</option>
-								<option value=18>18:00</option>
+								<option value=08>오전(08:00~12:00)</option>
+								<option value=12>점심(12:00~15:00)</option>
+								<option value=15>오후(15:00~18:00)</option>
+								<option value=18>저녁(18:00~21:00)</option>
 							</select>
 							</div>
 						</div>
@@ -464,8 +469,9 @@ body {
 					</div>
 
 					<div class="btn-group btn-group-justified">
-						<a href="#" class="btn btn-primary">강의신청</a> <a href="#"
-							class="btn btn-primary">프로필보기</a> <a href='<c:url value="/room?email=${sessionScope.email }"/>'
+						<a href="#" class="btn btn-primary">강의신청</a> 
+						<a href="#" class="btn btn-primary">프로필보기</a> 
+						<a href='<c:url value="/room?email=${sessionScope.email }"/>'
 							class="btn btn-primary">나가기</a>
 					</div>
 				</div>

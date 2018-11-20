@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.ScheduleMapper">	
-	<insert id="schduleInsert" parameterType="com.guem.go.minsu.ScheduleVo">
+	<insert id="scheduleInsert" parameterType="com.guem.go.minsu.ScheduleVo">
 		insert into schedule values(#{scheduleNum}, #{email}, #{other}, #{num}, #{matchNum}, #{lecturename})
 	</insert>
 	<select id="scheduleNum" resultType="int">
