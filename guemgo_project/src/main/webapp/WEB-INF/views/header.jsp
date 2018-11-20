@@ -15,6 +15,7 @@
 </ul> --%>
 <!-- //////////////////////////Header////////////////////////// -->
 
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="fl">
 <%-- 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a> --%>
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -22,21 +23,15 @@
 		</button> -->
 <%-- 		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a> --%>
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
-		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
-		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
-		<a class="navbar-brand" href="<c:url value='/qboard/list'/>">qna게시판</a>
-		<a class="navbar-brand" href="<c:url value='/reList'/>">후기게시판</a>
+		<a class="navbar-brand" href="<c:url value='/nboard/list'/>" style="padding-top: 80px;">공지게시판</a>
+		<a class="navbar-brand" href="<c:url value='/gboard/list'/>" style="padding-top: 80px;">게시판</a>
+		<a class="navbar-brand" href="<c:url value='/qboard/list'/>" style="padding-top: 80px;">qna게시판</a>
+		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
 		<a class="navbar-brand" href="<c:url value='/'/> " style="display:block; margin-right:auto;
     margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="70px"  ></a>
-		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>">채팅</a>
+		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">채팅</a>
 		<div id="navbar" class="collapse navbar-collapse">
-			
-			<form class="form-inline my-2 my-lg-10">
-				고수찾기
-				<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-			</form>
-			<ul class="navbar-nav mr-auto">
+			<ul class="navbar-nav mr-auto" style="float: right;padding-top: 80px;">
 				<li class="nav-item active">
 					<a class="nav-link" href="index.jsp"></a>
 				</li>
@@ -114,6 +109,11 @@
 				 	</div>
 				</li>
 			</ul>
+				<form class="form-inline my-2 my-lg-10"style="padding-top: 75px;float: right">
+				고수찾기
+				<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+			</form>
 		</div>
 	</nav>
 <!-- /////////////////////////////////////////////////////////// -->

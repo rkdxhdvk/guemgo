@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick-theme.css'/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick.css'/>" />
+<script type="text/javascript" src="<c:url value='resources/js/slick.min.js'/>"></script>
 
 <script type="text/javascript">
 /* $(document).ready(function() { // 로그아웃
@@ -83,14 +86,112 @@
 			</div>
 
 		</div>
+		<div class="panel panel-default" style="background-color: #2f2f2f;opacity: 0.5;">
+	  <div class="panel-body">
+	  	<div class="row">
+		  <div class="col-sm-4">누적 요청서<br>
+		  							123,123개</div>
+		  <div class="col-sm-4">등록된 고수<br>
+		  							1,234명</div>
+		  <div class="col-sm-4">평균 리뷰별점<br>
+		  							4.3점</div>
+		</div>
+	  </div>
+	</div>
 		<!-- /.container -->
-
 	</div>
 	<!-- /.intro-header -->
 
 
 	<!-- ///////////////////////////////////////메인 추가//////////////////////////////////////////////// -->
 	<!-- Page Content -->
+	
+	<div class="panel panel-default" style="text-align: center;">
+	  <div class="panel-body">
+	  	<div class="row">
+		  <div class="col-sm-3">음악</div>
+		  <div class="col-sm-3">미술</div>
+		  <div class="col-sm-3">요리</div>
+		  <div class="col-sm-3">디자인</div>
+		</div>
+	  </div>
+	</div>
+<div class="container">
+  <h2>추천 고수</h2>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="resources/images/1.jpg" alt="Los Angeles" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>LA is always so much fun!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="resources/images/2.jpg" alt="Chicago" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="resources/images/3.jpg" alt="New York" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>	
+	
+	
+	
+	
+<div class="container-fluid">
+	<h2>추천 강의</h2>
+	<div class="slick-items">
+
+        <div style="margin: 10px;"><img alt="" src="resources/images/1.png">
+        gggggg</div>
+        
+		 <div style="margin: 10px;"><img alt="" src="resources/images/2.png">
+		 aaaaa</div>
+
+		 <div style="margin: 10px;"><img alt="" src="resources/images/3.png">
+		 ddddd</div>
+
+		 <div style="margin: 10px;"><img alt="" src="resources/images/4.png">
+		 ccccc</div>
+
+		 <div style="margin: 10px;"><img alt="" src="resources/images/5.png">
+		 dddd</div>
+		
+    </div>
+</div>
+    
 
 	<a name="services"></a>
 	<div class="content-section-a">
@@ -238,3 +339,22 @@ s0.parentNode.insertBefore(s1,s0);
 
 
 </script>
+
+<script type="text/javascript">
+
+
+
+	$('.slick-items').slick({
+
+		slidesToShow: 3,
+		  slidesToScroll: 1,
+		  autoplay: true,
+		  autoplaySpeed: 2000,
+
+	});
+
+
+
+</script>    
+
+
