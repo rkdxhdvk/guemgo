@@ -86,9 +86,8 @@
 			</div>
 
 		</div>
-		<div class="panel panel-default" style="background-color: #2f2f2f;opacity: 0.5;">
-	  <div class="panel-body">
-	  	<div class="row">
+	  <div class="panel-body" style="background-color: rgba( 0, 0, 0, 0.5 );font-size: large;">
+	  	<div class="row" >
 		  <div class="col-sm-4">누적 요청서<br>
 		  							123,123개</div>
 		  <div class="col-sm-4">등록된 고수<br>
@@ -97,7 +96,6 @@
 		  							4.3점</div>
 		</div>
 	  </div>
-	</div>
 		<!-- /.container -->
 	</div>
 	<!-- /.intro-header -->
@@ -105,28 +103,58 @@
 
 	<!-- ///////////////////////////////////////메인 추가//////////////////////////////////////////////// -->
 	<!-- Page Content -->
-	
-	<div class="panel panel-default" style="text-align: center;">
-	  <div class="panel-body">
-	  	<div class="row">
-		  <div class="col-sm-3">음악</div>
-		  <div class="col-sm-3">미술</div>
-		  <div class="col-sm-3">요리</div>
-		  <div class="col-sm-3">디자인</div>
+	<div class="panel-group">
+		<div class="panel panel-default" style="text-align: center;padding: 15px;">
+		<div class="panel-title">
+			
+			<div class="row" style="padding-left: 12px;padding-right: 12px;">
+			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fas fa-music fa-2x"></i><br>음악</a></div>
+			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fas fa-palette fa-2x"></i><br>미술</a></div>
+			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fas fa-drumstick-bite fa-2x"></i><br>요리</a></div>
+			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fab fa-apple fa-2x"></i><br>디자인</a></div>
+			</div>
 		</div>
-	  </div>
+		   <div id="collapse1" class="panel-collapse collapse">
+		      <ul class="list-group">
+		        <li class="list-group-item">
+		        <div class="row">
+			  <div class="col-sm-3">보컬</div>
+			  <div class="col-sm-3">회화</div>
+			  <div class="col-sm-3">조리</div>
+			  <div class="col-sm-3">그래픽디자인</div>
+			</div>
+			</li>
+		        <li class="list-group-item">
+		         <div class="row">
+			  	<div class="col-sm-3">작곡</div>
+				  <div class="col-sm-3">동양화</div>
+				  <div class="col-sm-3">베이킹</div>
+				  <div class="col-sm-3">패션디자인</div>
+				</div>
+		        </li>
+		        <li class="list-group-item">
+		         <div class="row">
+			  <div class="col-sm-3">악기</div>
+			  <div class="col-sm-3">애니메이션</div>
+			  <div class="col-sm-3">식음료</div>
+			  <div class="col-sm-3">제품디자인</div>
+			</div>
+		      </ul>
+		    </div>
+		  </div>
 	</div>
+	<!--  
 <div class="container">
   <h2>추천 고수</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
+    Indicators
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
-    <!-- Wrapper for slides -->
+    Wrapper for slides
     <div class="carousel-inner">
 
       <div class="item active">
@@ -155,7 +183,7 @@
   
     </div>
 
-    <!-- Left and right controls -->
+    Left and right controls
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
       <span class="sr-only">Previous</span>
@@ -166,156 +194,41 @@
     </a>
   </div>
 </div>	
+	-->
 	
 	
 	
-	
-<div class="container-fluid">
-	<h2>추천 강의</h2>
+<div class="container">
+	<h2>추천 고수</h2>
 	<div class="slick-items">
-
-        <div style="margin: 10px;"><img alt="" src="resources/images/1.png">
-        gggggg</div>
+        <div style="margin: 11px;"><img alt="" src="resources/gosuImg/gosu01.png">
+        </div>
         
-		 <div style="margin: 10px;"><img alt="" src="resources/images/2.png">
-		 aaaaa</div>
+		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu02.png">
+		 </div>
 
-		 <div style="margin: 10px;"><img alt="" src="resources/images/3.png">
-		 ddddd</div>
+		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu03.png">
+		 </div>
 
-		 <div style="margin: 10px;"><img alt="" src="resources/images/4.png">
-		 ccccc</div>
+		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu04.png">
+		 </div>
 
-		 <div style="margin: 10px;"><img alt="" src="resources/images/5.png">
-		 dddd</div>
+		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu05.png">
+		 </div>
 		
     </div>
 </div>
     
+<div style="text-align: center;">
+	<img alt="" src="resources/gosuImg/gosuMain.png">
+</div>
+<div style="text-align: center;">
+	<img alt="" src="resources/gosuImg/gosuMain2.png">
+</div>
 
-	<a name="services"></a>
-	<div class="content-section-a">
 
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-sm-6">
-					<hr class="section-heading-spacer">
-					<div class="clearfix"></div>
-					<h2 class="section-heading">
-						Death to the Stock Photo:<br>Special Thanks
-					</h2>
-					<p class="lead">
-						A special thanks to <a target="_blank"
-							href="http://join.deathtothestockphoto.com/">Death to the
-							Stock Photo</a> for providing the photographs that you see in this
-						template. Visit their website to become a member.
-					</p>
-				</div>
-				<div class="col-lg-5 col-lg-offset-2 col-sm-6">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/boot2/img/ipad.png"
-						alt="">
-				</div>
-			</div>
-
-		</div>
-		<!-- /.container -->
-
-	</div>
-	<!-- /.content-section-a -->
-
-	<div class="content-section-b">
-
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-					<hr class="section-heading-spacer">
-					<div class="clearfix"></div>
-					<h2 class="section-heading">
-						3D Device Mockups<br>by PSDCovers
-					</h2>
-					<p class="lead">
-						Turn your 2D designs into high quality, 3D product shots in
-						seconds using free Photoshop actions by <a target="_blank"
-							href="http://www.psdcovers.com/">PSDCovers</a>! Visit their
-						website to download some of their awesome, free photoshop actions!
-					</p>
-				</div>
-				<div class="col-lg-5 col-sm-pull-6  col-sm-6">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/boot2/img/dog.png"
-						alt="">
-				</div>
-			</div>
-
-		</div>
-		<!-- /.container -->
-
-	</div>
-	<!-- /.content-section-b -->
-
-	<div class="content-section-a">
-
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-5 col-sm-6">
-					<hr class="section-heading-spacer">
-					<div class="clearfix"></div>
-					<h2 class="section-heading">
-						Google Web Fonts and<br>Font Awesome Icons
-					</h2>
-					<p class="lead">
-						This template features the 'Lato' font, part of the <a
-							target="_blank" href="http://www.google.com/fonts">Google Web
-							Font library</a>, as well as <a target="_blank"
-							href="http://fontawesome.io">icons from Font Awesome</a>.
-					</p>
-				</div>
-				<div class="col-lg-5 col-lg-offset-2 col-sm-6">
-					<img class="img-responsive"
-						src="${pageContext.request.contextPath}/resources/boot2/img/phones.png"
-						alt="">
-				</div>
-			</div>
-
-		</div>
-		<!-- /.container -->
-
-	</div>
-	<!-- /.content-section-a -->
-
-	<a name="contact"></a>
-	<div class="banner">
-
-		<div class="container">
-
-			<div class="row">
-				<div class="col-lg-6">
-					<h2>Connect to Start Bootstrap:</h2>
-				</div>
-				<div class="col-lg-6">
-					<ul class="list-inline banner-social-buttons">
-						<li><a href="https://twitter.com/SBootstrap"
-							class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i>
-								<span class="network-name">Twitter</span></a></li>
-						<li><a
-							href="https://github.com/IronSummitMedia/startbootstrap"
-							class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i>
-								<span class="network-name">Github</span></a></li>
-						<li><a href="#" class="btn btn-default btn-lg"><i
-								class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-		<!-- /.container -->
-
-	</div>
-	<!-- /.banner -->
+	
+	
 
 	<script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -336,12 +249,6 @@ s0.parentNode.insertBefore(s1,s0);
 		      document.location.href="<c:url value='/'/>";
 		  }
 	}
-
-
-</script>
-
-<script type="text/javascript">
-
 
 
 	$('.slick-items').slick({

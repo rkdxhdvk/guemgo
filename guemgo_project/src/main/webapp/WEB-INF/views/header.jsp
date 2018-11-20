@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
 <!--  
 ---------------------------------------------
 2018-10-24	윤우현 파일 생성
@@ -14,9 +17,7 @@
 	</c:forEach>
 </ul> --%>
 <!-- //////////////////////////Header////////////////////////// -->
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="fl">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex;padding-left: 100px;padding-right: 100px;">
 <%-- 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a> --%>
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>
@@ -26,15 +27,14 @@
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>" style="padding-top: 80px;">공지게시판</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>" style="padding-top: 80px;">게시판</a>
 		<a class="navbar-brand" href="<c:url value='/qboard/list'/>" style="padding-top: 80px;">qna게시판</a>
-		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
 		<a class="navbar-brand" href="<c:url value='/'/> " style="display:block; margin-right:auto;
-    margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="70px"  ></a>
+    margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="80px"  ></a>
+		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">채팅</a>
+		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">고수찾기</a>
 		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto" style="float: right;padding-top: 80px;">
-				<li class="nav-item active">
-					<a class="nav-link" href="index.jsp"></a>
-				</li>
+			<ul class="navbar-nav mr-auto" style="padding-top: 80px;">
+				
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
 				 		<!-- 로그인 구분에 따라 나오는 문구 변경 -->
@@ -109,11 +109,7 @@
 				 	</div>
 				</li>
 			</ul>
-				<form class="form-inline my-2 my-lg-10"style="padding-top: 75px;float: right">
-				고수찾기
-				<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-			</form>
+				
 		</div>
 	</nav>
 <!-- /////////////////////////////////////////////////////////// -->

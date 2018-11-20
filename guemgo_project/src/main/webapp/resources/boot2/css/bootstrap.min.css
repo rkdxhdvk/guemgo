@@ -4529,7 +4529,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 
 .navbar {
 	position: fixed;
-    min-height: 150px;
+	min-height: 140px;
     margin-bottom: 20px;
     min-width: 100%;
     background-color: white;
@@ -4648,7 +4648,6 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .navbar-brand {
-	float: left;
 	height: 50px;
 	padding: 15px 15px;
 	font-size: 18px;
