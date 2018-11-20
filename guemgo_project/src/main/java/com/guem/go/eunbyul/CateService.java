@@ -28,4 +28,12 @@ public class CateService {
 	public List<CatesVo> sfromm(String mname){
 		return dao.sfromm(mname);	
 	}
+	
+/////고수찾기 카테고리/////
+	public List<CatemVo> medium(int lnum) {
+		return dao.medium(lnum);
+	}
+	public List<CatesVo> small(int mnum) {
+		return dao.small(mnum);
+	}
 }

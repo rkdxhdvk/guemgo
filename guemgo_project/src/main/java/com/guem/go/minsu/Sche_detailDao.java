@@ -34,4 +34,8 @@ public class Sche_detailDao {
 	public int all_detailDelete(int scheduleNum) {
 		return sqlSession.delete(NAMESPACE + ".all_detailDelete", scheduleNum);
 	}
+	
+	public int progress(int scheduleNum) {
+		return sqlSession.selectOne(NAMESPACE + ".progress", scheduleNum);
+	}
 }

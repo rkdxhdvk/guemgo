@@ -32,4 +32,8 @@ public class Sche_detailService{
 	public int all_detailDelete(int scheduleNum) {
 		return sche_detailDao.all_detailDelete(scheduleNum);
 	}
+	
+	public int progress(int scheduleNum) {
+		return sche_detailDao.progress(scheduleNum);
+	}
 }

@@ -7,9 +7,18 @@
 $(document).ready(
 		function() {
 			<c:forEach items="${list }" var="vo">
-			$( "#progressbar" ).progressbar({
-			      value: 37
-			    });
+			$.getJSON({
+				url:"<c:url value='/progress'/>",
+				data : {scheduleNum:${vo.scheduleNum }}, 
+				success:function(data){		
+						$( ".progressbar"+data.scheduleNum ).progressbar({
+						      value: data.pro
+						});
+						
+						/* var ss = "진행률 " + data.pro;
+						$( ".progressbar"+data.scheduleNum ).html(ss); */
+				}
+			});
 			</c:forEach>
 		}
 );
@@ -19,11 +28,10 @@ $(document).ready(
 	<h1>스케줄 리스트</h1>
 	<ul>
 		<c:forEach items="${list }" var="vo">
-			<li>
 				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
 				${vo.lecturename }</a>
-				<div id="progressbar"></div>
-			</li>
+				
+				<div class="progressbar${vo.scheduleNum }" style="width: 100px;"></div>
 		</c:forEach>
 	</ul>
 	<a href="<c:url value='/'/>">홈으로</a>

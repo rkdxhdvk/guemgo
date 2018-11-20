@@ -23,6 +23,12 @@
 	<select id="sfromm" resultType="com.guem.go.eunbyul.CatesVo" parameterType="String">
 		select * from cate_s where mnum in (select mnum from cate_m where mname=#{mname})
 	</select>
-
+	<!-- 고수찾기 카테고리 -->
+	<select id="medium" parameterType="int" resultType="com.guem.go.eunbyul.CatemVo">
+		select * from cate_m where lnum = #{lnum}
+	</select>
+	<select id="small" parameterType="int" resultType="com.guem.go.eunbyul.CatesVo">
+		select * from cate_s where mnum = #{mnum}
+	</select>
 </mapper>
 

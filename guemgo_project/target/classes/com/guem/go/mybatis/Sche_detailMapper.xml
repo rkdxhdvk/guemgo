@@ -11,21 +11,25 @@
 		select max(num) from sche_detail
 	</select>
 	<select id="sche_detail" parameterType="int" resultType="com.guem.go.minsu.Sche_detailVo">
-		select * from sche_detail where Num=#{Num}
+		select * from sche_detail where num=#{num}
 	</select>
 	<update id="detailUpdate" parameterType="com.guem.go.minsu.Sche_detailVo">
 		update sche_detail set memo=#{memo}, sDate=#{sDate}, eDate=#{eDate}, attendance=#{attendance} 
-		where Num=#{Num}
+		where num=#{num}
 	</update>
 	<select id="sche_detailList" parameterType="int" resultType="com.guem.go.minsu.Sche_detailVo">
-		select * from sche_detail where schedulenum=#{schedulenum}
+		select * from sche_detail where scheduleNum=#{scheduleNum}
 	</select>
 	<delete id="all_detailDelete" parameterType="int">
-		delete from sche_detail where Num=#{Num}
+		delete from sche_detail where num=#{num}
 	</delete>
 	<delete id="sche_detailDelete" parameterType="int">
 		delete from sche_detail where Num=#{Num}
 	</delete>
+	
+	<select id="progress" parameterType="int" resultType="int">
+		select count(num) from sche_detail where attendance=1 and scheduleNum=#{scheduleNum}
+	</select>
 </mapper>
 
 

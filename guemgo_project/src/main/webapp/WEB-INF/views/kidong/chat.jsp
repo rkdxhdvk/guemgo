@@ -178,9 +178,9 @@ body {
 		                		        	$('#calendar').fullCalendar('removeEvents', event.id);
 		                		        	 $( this ).dialog( "close" );
 		                		        },
-		                		        "수정": function() {
+		                		        "�닔�젙": function() {
 		                		        	 $( this ).dialog( "close" );
-		                		        	  $( "<div id='dialog-update' title='메모'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;''></span>메모?</p> <input type='text' id='memo'> </div>" )
+		                		        	  $( "<div id='dialog-update' title='硫붾え'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;''></span>硫붾え?</p> <input type='text' id='memo'> </div>" )
 		                		        	  .dialog({
 		   		                		      resizable: false,
 		   		                		      height: "auto",
@@ -373,7 +373,7 @@ body {
 							</c:when>
 							
 							<c:otherwise>
-								<h5>스케주우우우우울</h5>
+								<h5>강의명 : vo.lecturename</h5>
 					<form action="<c:url value='/calaaa'/>" method="get">
 						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">

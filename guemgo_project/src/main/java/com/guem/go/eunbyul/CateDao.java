@@ -30,4 +30,12 @@ public class CateDao {
 	public List<CatesVo> sfromm(String mname) {
 		return sqlSession.selectList(NAMESPACE+".sfromm",mname);
 	}
+	
+////고수찾기 카테고리////
+	public List<CatemVo> medium(int lnum) {
+		return sqlSession.selectList(NAMESPACE + ".medium", lnum);
+	}
+	public List<CatesVo> small(int mnum) {
+		return sqlSession.selectList(NAMESPACE+ ".small", mnum);
+	}
 }
