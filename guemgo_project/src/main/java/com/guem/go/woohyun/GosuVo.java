@@ -1,35 +1,58 @@
 package com.guem.go.woohyun;
 
+/*---------------------------------------
+18-11-20	gosuDetail을 위해 vo 많이 수정
+-----------------------------------------*/
+
 public class GosuVo {
+	// gosu 테이블 정보 
+	private String email;
 	private int go_num;
 	private String intro;
-	private String license;
-	private String career;
-	private String email; 
 	private String grade;
 	private int employ;
-	private String image;
+	// gosu_image 테이블 정보 추가
+	private String g_image;	// gosu_image 테이블의 이미지
+	// gosu_career 테이블 정보 추가
+	private String license;
 	// user 테이블 정보 추가
 	private int m_num;
 	private String name;
+	private String career;
 	private int point;
+	private String u_image;	// users 테이블의 image 이미지
+	// lecture(강의) 테이블 정보추가
+	private int lecturenum;
+	// gosu_area 테이블 정보 추가
+	private String area;	
 	
 	public GosuVo() {}
 
-	public GosuVo(int go_num, String intro, String license, String career, String email, String grade, int employ,
-			String image, int m_num, String name, int point) {
+	public GosuVo(String email, int go_num, String intro, String grade, int employ, String g_image, String license,
+			int m_num, String name, String career, int point, String u_image, int lecturenum, String area) {
 		super();
+		this.email = email;
 		this.go_num = go_num;
 		this.intro = intro;
-		this.license = license;
-		this.career = career;
-		this.email = email;
 		this.grade = grade;
 		this.employ = employ;
-		this.image = image;
+		this.g_image = g_image;
+		this.license = license;
 		this.m_num = m_num;
 		this.name = name;
+		this.career = career;
 		this.point = point;
+		this.u_image = u_image;
+		this.lecturenum = lecturenum;
+		this.area = area;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public int getGo_num() {
@@ -48,30 +71,6 @@ public class GosuVo {
 		this.intro = intro;
 	}
 
-	public String getLicense() {
-		return license;
-	}
-
-	public void setLicense(String license) {
-		this.license = license;
-	}
-
-	public String getCareer() {
-		return career;
-	}
-
-	public void setCareer(String career) {
-		this.career = career;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getGrade() {
 		return grade;
 	}
@@ -88,12 +87,21 @@ public class GosuVo {
 		this.employ = employ;
 	}
 
-	public String getImage() {
-		return image;
+	
+	public String getG_image() {
+		return g_image;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setG_image(String g_image) {
+		this.g_image = g_image;
+	}
+
+	public String getLicense() {
+		return license;
+	}
+
+	public void setLicense(String license) {
+		this.license = license;
 	}
 
 	public int getM_num() {
@@ -112,6 +120,14 @@ public class GosuVo {
 		this.name = name;
 	}
 
+	public String getCareer() {
+		return career;
+	}
+
+	public void setCareer(String career) {
+		this.career = career;
+	}
+
 	public int getPoint() {
 		return point;
 	}
@@ -120,7 +136,28 @@ public class GosuVo {
 		this.point = point;
 	}
 
-	
-	
-	
+	public String getU_image() {
+		return u_image;
+	}
+
+	public void setU_image(String u_image) {
+		this.u_image = u_image;
+	}
+
+	public int getLecturenum() {
+		return lecturenum;
+	}
+
+	public void setLecturenum(int lecturenum) {
+		this.lecturenum = lecturenum;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 }

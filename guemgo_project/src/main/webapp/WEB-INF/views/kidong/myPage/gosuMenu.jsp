@@ -18,4 +18,6 @@
 		href="<c:url value='mylecture?email=${sessionScope.email }'/>">내 강의 목록</a></li>
 	<li><a
 		href="<c:url value='/receiveList?email=${sessionScope.email }'/>">받은 요청서</a></li>
+	<li><a
+		href="<c:url value='/gosuProfileDetail?email=${sessionScope.email }'/>">고수 프로필 상세</a></li>
 </ul>

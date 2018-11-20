@@ -67,4 +67,14 @@ public class GosuDao {
 		public int getCount(Map<String, Object> map) {
 			return sqlSession.selectOne(NAMESPACE +".getCount", map);
 		}
+		
+	// 고수 프로필 디테일 조회(1명 조회) DAO
+		public GosuVo gosuDetail(String email) {
+			return sqlSession.selectOne(NAMESPACE + ".gosuDetail", email); 
+		}
+		
+	// 고수 프로필 디테일 강의 조회
+	public  List<GosuVo> gosuDetailLectureList(String email) {
+		return sqlSession.selectList(NAMESPACE + ".gosuDetailLectureList", email); 
+	}
 }

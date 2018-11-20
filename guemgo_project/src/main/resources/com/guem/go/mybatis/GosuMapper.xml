@@ -110,5 +110,41 @@
 		update gosu_image set image=#{image} where go_num=#{go_num}
 	</update>
 	 -->
+	 
+	<!-- 고수 프로필 디테일 조회 -->
+	<select id="gosuDetail" resultType="com.guem.go.woohyun.GosuVo" parameterType="String">
+		select a.email
+		     , a.go_num
+		     , a.intro
+		     , a.grade
+		     , a.employ
+		     , a.career
+		     , d.image as g_image
+		     , c.license
+		     , b.m_num
+		     , b.name
+		     , b.point
+		     , b.image as u_image
+		from gosu a
+		   , users b
+		   , gosu_career c
+		   , gosu_image d
+		where a.email=b.email 
+        and a.go_num=c.go_num(+) 
+        and a.go_num=d.go_num(+) 
+		and a.email=#{email}
+	</select>
+
+	<!-- 고수 프로필 디테일 조회 -->
+	<select id="gosuDetailLectureList" resultType="com.guem.go.woohyun.GosuVo" parameterType="String">
+		select a.area
+		  from gosu_area a
+		     , lecture b
+		     , gosu c
+		 where a.lecturenum = b.lecturenum
+		   and b.go_num = c.go_num
+		   and c.email=#{email}
+	</select>
+	
 	
 </mapper>

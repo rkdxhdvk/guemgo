@@ -1,16 +1,28 @@
 package com.guem.go.woohyun;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.guem.go.minsu.ReviewVo;
 /*
 	2018-10-29	윤우현 파일 생성
 */
@@ -39,8 +51,36 @@ public class UsersUpdateController {
 		return mv;
 	}
 	@RequestMapping(value="/UserUpdate",method=RequestMethod.POST)
-	public ModelAndView update(UsersVo vo) {
+	public ModelAndView update(UsersVo vo, MultipartFile img, HttpSession session) {
+		
+		if (img != null) {
+			
+			String uploadPath=session.getServletContext().getRealPath("/resources/upload/userImg");
+			String orgfilename = img.getOriginalFilename();
+			String savefilename=UUID.randomUUID() + "_" + orgfilename;	
+			
+			
+			try {
+				// 업로드 대상 폴더가 없으면 생성
+				if (!new File(uploadPath).exists()) {
+					FileUtils.forceMkdir(new File(uploadPath));
+				}
+				
+				InputStream is=img.getInputStream();
+				FileOutputStream fos=new FileOutputStream(uploadPath +"\\" + savefilename);
+				FileCopyUtils.copy(is,fos);
+				is.close();
+				fos.close();
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			vo.setImage(savefilename);
+		}
+		
 		int n=service.update(vo);
+		
 		//System.out.println(vo.getMnum);
 
 		ModelAndView mv=new ModelAndView("woohyun/result");
@@ -52,6 +92,7 @@ public class UsersUpdateController {
 //			System.out.println("업데이트콘트롤러POST-실패");
 		}
 //		System.out.println("업데이트콘트롤러POST-완료");
+		
 		return mv;
 	}
 }

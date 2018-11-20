@@ -63,7 +63,19 @@
 	
 	<!-- 회원 정보 수정(업데이트) -->
 	<update id="update" parameterType="com.guem.go.woohyun.UsersVo">
-		update users set name=#{name},pwd=#{pwd},grade=#{grade},image=#{image},point=#{point} where email=#{email}
+		update users 
+		  set name=#{name}
+		    <if test="pwd!=null and pwd!=''">
+		     ,pwd=#{pwd}
+		    </if> 
+		    <if test="grade!=null and grade!=''">
+		     ,grade=#{grade}
+		    </if> 
+		    <if test="image!=null and image!=''">
+		     ,image=#{image}
+		    </if> 
+		     ,point=#{point} 
+	    where email=#{email}
 	</update>
 	
 	<!-- 후기게시판에 따라 포인트 업데이트 -->

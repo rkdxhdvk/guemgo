@@ -64,10 +64,22 @@ public class GosuService {
 	}
 	
 	//페이징 처리 및 검색
-		public List<GosuVo> list(Map<String, Object> map){
-			return dao.list(map);
-		}
-		public int getCount(Map<String, Object> map) {
-			return dao.getCount(map);
-		}
+	public List<GosuVo> list(Map<String, Object> map){
+		return dao.list(map);
+	}
+	public int getCount(Map<String, Object> map) {
+		return dao.getCount(map);
+	}
+	
+	// 고수 프로필 디테일 조회
+	public GosuVo gosuDetail(String email) {
+		return dao.gosuDetail(email);
+	}
+
+	// 고수 프로필 디테일 조회
+	public List<GosuVo> gosuDetailLectureList(String email) {
+		return dao.gosuDetailLectureList(email);
+	}
+	
+	
 }
