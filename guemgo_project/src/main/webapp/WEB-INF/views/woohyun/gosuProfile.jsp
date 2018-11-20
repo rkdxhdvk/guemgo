@@ -81,7 +81,7 @@ function bs_input_file() {
 	        <div class="row">
 	            <div class="col-sm-12 col-lg-12" style="text-align:center">
 	                <h2 class="h3">
-	                    	 ${ sessionScope.email } 고수의 프로필<small></small></h2>
+	                    	 ${ sessionScope.name } 고수의 프로필<small></small></h2>
 	            </div>
 	        </div>
 	    </div>
