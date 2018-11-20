@@ -18,7 +18,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3>받은 요청서 상세</h3>
+					<h3>받은 요청서</h3>
 				</div>
 				<div class="modal-body">
 					<input type="hidden" name="email" value="${sessionScope.email }">
@@ -28,7 +28,7 @@
 
 							<c:if test="${qq.ques_num != 1 }">
 
-								<label><h2>▶ ${qq.question }</h2></label><br>
+								<label><h4>▶ ${qq.question }</h4></label><br>
 								<c:forEach var="vo1" items="${list }" varStatus="rr">
 									<c:if test="${ss.index-1 eq rr.index }">
 										<%-- <input type="text" name="purpose" value="${vo1[ss.index].answer }" class="navbar-brand"> --%>
@@ -41,9 +41,14 @@
 						</div>
 					</c:forEach>
 					<br>
+					<span>------------------------------------------------------------------------------------------------</span><br>
+					<c:if test="${state==0 }">
 					<button type="button" class="btn btn-primary"
 				onclick='location.href="<c:url value='/makeRoom?email=${email }&other=${other }&lecturenum=${lecturenum }'/>"'>채팅걸기</button>
-					
+					</c:if>
+					<c:if test="${state==1 }">
+					<h3>아쉽지만 매칭이 완료된 요청서 입니다.</h3>
+					</c:if>
 				</div>
 			</div>
 		</div>

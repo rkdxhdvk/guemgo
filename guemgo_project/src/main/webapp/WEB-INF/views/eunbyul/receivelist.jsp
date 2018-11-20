@@ -32,7 +32,6 @@
 					<th>강의번호</th>
 					<th>요청서번호</th>
 					<th>받은 날짜</th>
-					<th>요청 상태</th>
 
 				</thead>
 				<tbody>
@@ -52,7 +51,6 @@
 						<td style="width: 10%"><a
 							href="<c:url value='/receivedetail?num=${vo.req_num }&email=${sessionScope.email }&lecturenum=${vo.lecturenum }'/>">${vo.req_num }</a></td>
 						<td style="width: 10%">${vo.req_date }</td>
-						<td style="width: 10%">요청중</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -85,7 +85,7 @@ public class SurveyController {
 		String email=request.getParameter("email");//로그인 사용자 email
 		//요청서 만들기
 				CatemVo mvo=surveyservice.selectcatem(area);
-				RequireVo vo=new RequireVo(0, email , mvo.mnum, 0 , null);
+				RequireVo vo=new RequireVo(0, email ,  0 , mvo.mnum, null);
 				int n=surveyservice.insert(vo);//require테이블에 insert
 
 		//답변 테이블에 값 넣기
@@ -228,6 +228,7 @@ public class SurveyController {
 			sendMail.setFrom("92eunbyul@naver.com", "금고");
 			sendMail.setTo(gosu.getEmail());
 			sendMail.send();
+			//이메일까지 보냈으니 누구누구한테 무엇을 보냈다는 것을 요청서리스트테이블에 저장하자!
 			HashMap<String, Object> map=new HashMap<>();
 			map.put("email", gosu.getEmail());
 			map.put("lecturenum", matching.get(i).getLectureNum());
@@ -236,7 +237,7 @@ public class SurveyController {
 			
 		}
 		
-		//이메일까지 보냈으니 누구누구한테 무엇을 보냈다는 것을 요청서리스트테이블에 저장하자!
+		
 		
 		
 
