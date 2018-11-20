@@ -19,7 +19,13 @@ public class ScheInsertController {
 		System.out.println(email + " " + other + " " + lectureNum);
 		ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
 		int n = scheService.insert(vo);
-		if(n>0) return "ok";
-		else return "no";
+		//요청서 변경
+		JSONObject obj = new JSONObject();
+		if(n>0) {
+			obj.put("result", "ok");
+		}else {
+			obj.put("result", "no");
+		}
+		return obj.toString();
 	}
 }

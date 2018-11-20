@@ -21,7 +21,7 @@
 			</c:choose>
 			<br><br>
 				강의명 : ${vo.lecturename }
-				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }'/>" class="pull-right">입장</a>
+				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }&other=${vo.other }'/>" class="pull-right">입장</a>
 			</div>
 		</div>
 	</div>

@@ -116,41 +116,61 @@ body {
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value ;
-		<c:forEach items="${start}" var="vo" varStatus="status">
-			sche_detailNum = sche_detailNum + 1;
+		if(${isschedule }==1){
+			var events = [];
+			<c:forEach items="${detailList }" var="vo">
+			var color = '';
+			if(${vo.attendance}==1){
+				var color = 'orange';
+			}
 			events.push({
-				id : sche_detailNum,
-				title : '${lecturename}',
-				start : '${vo }',
-				end : '${end[status.index]}',
-				description : ' '
+				id : ${vo.num },
+				title : '${vo.lecturename }',
+				start : '${vo.sDate }',
+				end : '${vo.eDate }',
+				description : '${vo.memo }',
+				backgroundColor : color
 			})
-		</c:forEach>
-		$("#sche_confirm").click(function() {
-			$.getJSON({
-				url:"<c:url value='/calInsert'/>",
-				data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename }, 
-				success:function(data){
-					console.log(data);
-				}
-			});
-				$('#calendar').fullCalendar('clientEvents', function(event) {
-					console.log(event.id);
-					$.getJSON("<c:url value='/cal'/>",
-							{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
-							function(data) {
-									console.log("스케줄 확정1!!");
-									alert("스케줄 확정");
-					});
+			</c:forEach>
+		}else{
+			<c:forEach items="${start}" var="vo" varStatus="status">
+				sche_detailNum = sche_detailNum + 1;
+				events.push({
+					id : sche_detailNum,
+					title : '${lecturename}',
+					start : '${vo }',
+					end : '${end[status.index]}',
+					description : ' '
 				})
-			});
-		$("#sche_cancel").click(function() {
-				$.getJSON("<c:url value='/caldelete'/>", {scheduleNum:scheduleNum}, 
-						function(data) {
-								alert("스케줄 취소");
+			</c:forEach>
+			$("#sche_confirm").click(function() {
+				$.getJSON({
+					url:"<c:url value='/calInsert'/>",
+					data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename }, 
+					success:function(data){
+						if(data.result=='ok'){
+							console.log("스케줄 생성");
+							$('#calendar').fullCalendar('clientEvents', function(event) {
+								console.log(event.id);
+								$.getJSON("<c:url value='/cal'/>",
+										{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
+										function(data) {
+												console.log("스케줄 확정1!!");
+												alert("스케줄 확정");
+								});
+							})
+						}
+					}
 				});
-				location.href=".main";
-		});
+			});
+			$("#sche_cancel").click(function() {
+					$.getJSON("<c:url value='/caldelete'/>", {scheduleNum:scheduleNum}, 
+							function(data) {
+									alert("스케줄 취소");
+					});
+					location.href=".main";
+			});
+		}
 		$('#calendar').fullCalendar(
 				{
 					droppable: true,
@@ -168,19 +188,20 @@ body {
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
 		                	  var start = moment(event.start).format("YYYY-MM-DD");
 		                	  if(date==start){
-		                		  $( "<div title='편집'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;'></span>ㅇㅇㅇ</p> <input type='text' id='memo'></div>" ).dialog({
+		                		  $( "<div title='편집'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;'></span>편집하시겠습니까?</p></div>" ).dialog({
 		                		      resizable: false,
 		                		      height: "auto",
 		                		      width: 400,
 		                		      modal: true,
 		                		      buttons: {
 		                		        "삭제": function() {
+		                		        	//ajax
 		                		        	$('#calendar').fullCalendar('removeEvents', event.id);
 		                		        	 $( this ).dialog( "close" );
 		                		        },
-		                		        "�닔�젙": function() {
+		                		        "수정": function() {
 		                		        	 $( this ).dialog( "close" );
-		                		        	  $( "<div id='dialog-update' title='硫붾え'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;''></span>硫붾え?</p> <input type='text' id='memo'> </div>" )
+		                		        	  $( "<div id='dialog-update' title='메모'> <p><span class='ui-icon ui-icon-alert' style='float:left; margin:12px 12px 20px 0;''></span>메모를 작성하시겠습니까?</p> <input type='text' id='memo'> </div>" )
 		                		        	  .dialog({
 		   		                		      resizable: false,
 		   		                		      height: "auto",
@@ -198,6 +219,7 @@ body {
 				   		                		    	  "수정" : function() {
 				   		                		    		var memo = document.getElementById("memo").value;
 				   		                		    		event.description = memo;
+				   		                		    		//ajax
 															$('#calendar').fullCalendar(
 																	'updateEvent', event);
 															 $( this ).dialog( "close" );
@@ -223,25 +245,26 @@ body {
 		                	  }
 		                  });
 					},
-					eventClick : function(event, element) {
+					/* eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						
-					},
+					}, */
 					eventDrop: function(event, delta, revertFunc) {
-					    if (!confirm("Are you sure about this change?")) {
+					    if (!confirm("일정을 변경하시겠습니까?")) {
 					      revertFunc();
 					    }else{
 					    	console.log(event.start.format() + " " + event.end.format() + " " + event.id);
 					    }
 					  },
 					  eventResize: function(event, delta, revertFunc) {
-						    if (!confirm("is this okay?")) {
+						    if (!confirm("시간을 바꾸시겠습니까?")) {
 						      revertFunc();
 						    }
 
 						  },
 					events : events	
 				});
+		
 		$( "#datepicker" ).datepicker();
 	      $( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	      
@@ -309,6 +332,7 @@ body {
 	}
 	////////// 스케줄 //////////////
 </script>
+	${isschedule }
 	<input type="hidden" value="${sessionScope.email }" id="email">
 	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">채팅</p>
@@ -356,6 +380,7 @@ body {
 				</button>
 			</div>
 			<!-- //////////////////////////////////추가 //////////////////////////////////// -->
+			
 			<div class="col-sm-7">
 				<div style="height: 900px; ">
 					<div class="container-fluid"
@@ -366,6 +391,10 @@ body {
 						<input type="hidden" value= ${matchNum } name="matchNum" id="matchNum">
 						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
 						<input type="hidden" value="${other}" name="other" id="other"> 
+						<c:if test="${isschedule==1 }">
+							<div id='calendar'></div>
+						</c:if>
+						<c:if test="${isschedule==0 }">
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>
@@ -373,15 +402,15 @@ body {
 								<!-- <input type="button" id="sche_cancel" value="취소"> -->
 							</c:when>
 							
-							<c:otherwise>
-								<h5>강의명 : vo.lecturename</h5>
+							<c:otherwise>	
 					<form action="<c:url value='/calaaa'/>" method="get">
 						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
+					<input type="hidden" value="${other}" name="other" id="other"> 
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>${lecturename }</label><br> 		
+							<label>강의명 : ${vo.lectureName }</label><br> 		
 							<%-- <select name="lecture" class="form-control">
 								<c:forEach items="${lecList }" var="vo">
 									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
@@ -393,7 +422,7 @@ body {
 						<div class="form-row">
 							<div class="form-group col-sm-12">		
 							<select name="count" class="form-control">
-								<option value=5>5번</option>
+								<option value=5 selected="selected">5번</option>
 								<option value=10>10번</option>
 								<option value=15>15번</option>
 								<option value=20>20번</option>
@@ -405,7 +434,7 @@ body {
 							<div class="form-group col-sm-12">
 							<label>강의시간</label><br> 		
 							<select name="time" class="form-control">
-								<option value=08>오전(08:00~12:00)</option>
+								<option value=08 selected="selected">오전(08:00~12:00)</option>
 								<option value=12>점심(12:00~15:00)</option>
 								<option value=15>오후(15:00~18:00)</option>
 								<option value=18>저녁(18:00~21:00)</option>
@@ -437,9 +466,10 @@ body {
 					</form>
 							</c:otherwise>
 						</c:choose>
-
+						</c:if>
 
 					</div>
+					
 
 					<div class="panel panel-primary" style="margin-top: 15px;">
 						<div class="panel-heading">${vo.lectureName }</div>
@@ -456,6 +486,5 @@ body {
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>

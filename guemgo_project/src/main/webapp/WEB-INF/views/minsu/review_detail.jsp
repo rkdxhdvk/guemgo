@@ -11,8 +11,8 @@
 	href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'
 	integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns'
 	crossorigin='anonymous'>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,6 @@
 			</form>
 		</c:if>
 	</div>
-
 	<div class="container-fluid"
 		style="overflow: auto; height: 45%; border: solid 1px #337ab7; border-radius: 5px; margin-bottom: 15px;">
 		<div class="panel-heading">
@@ -106,12 +105,13 @@
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
-		<div class="panel-heading">글쓴이${sessionScope.email}    {writer}</div>
+		<div class="panel-heading">글쓴이 {writer}</div>
 		<div class="panel-body">{content}
-		{if sessionScope.email== {writer} }
-		<button type="button" class="btn btn-primary pull-right"
+			<c:if test="${sessionScope.email== writer }">
+				<button type="button" class="btn btn-primary pull-right"
 						onclick="deleteComment({commentNum})">삭제</button>
-	</div>
+			</c:if>
+		</div>
 	</div>
 	</script>
 
@@ -156,7 +156,6 @@
 		$('#comment').focus();
 	}
 	
-	//갑자기 ajax로 안됨
 	function deleteComment(commentNum){
 		var reviewNum = ${vo.reviewNum};
 		$.getJSON("<c:url value='/commDelete'/>",{
@@ -164,7 +163,8 @@
 			"commentNum" : commentNum
 		}, function(data){
 			getList();
-		});
+		   }
+	    )
 	}
 	
 </script>

@@ -91,6 +91,15 @@
 		})();
 		/* End of Tawk.to Script */
 		
+		function addrSearch() {
+			new daum.Postcode({
+				oncomplete: function(data) {
+
+					$('[name=addr1]').val(data.address);
+					$('[name=addr2]').val(data.buildingName);
+				}
+			}).open();
+		}
 		
 		$("#large").change(function(){
 			var lnum = document.getElementById("large").value;

@@ -13,8 +13,13 @@
 	<select id="schelist" parameterType="String" resultType="com.guem.go.minsu.ScheduleVo">
 		select * from schedule where email=#{email} 
 	</select>
+	<select id="userschelist" parameterType="String" resultType="com.guem.go.minsu.ScheduleVo">
+		select * from schedule where other=#{other}
+	</select>
 	<delete id="schedelete" parameterType="int">
 		delete from schedule where scheduleNum=#{scheduleNum}
 	</delete>
-	
+	<select id="isschedule" resultType="com.guem.go.minsu.ScheduleVo" parameterType="hashmap">
+		select * from schedule where email=#{email} and other=#{other} and lectureNum=#{lectureNum}
+	</select>
 </mapper>

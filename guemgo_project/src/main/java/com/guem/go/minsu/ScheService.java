@@ -1,5 +1,6 @@
 package com.guem.go.minsu;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class ScheService{
 	}
 	public List<ScheduleVo> schelist(String email){
 		return scheduleDao.scheList(email);
+	}
+	public List<ScheduleVo> userschelist(String other){
+		return scheduleDao.userscheList(other);
+	}
+	public ScheduleVo isschedule(HashMap<String, Object> map) {
+		return scheduleDao.isschedule(map);
 	}
 }

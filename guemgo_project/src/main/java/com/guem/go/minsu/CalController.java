@@ -34,7 +34,8 @@ public class CalController {
 	@RequestMapping(value="/calaaa", method=RequestMethod.GET)
 	public String sche(HttpServletRequest request, Model model) {
 		String email = (String)request.getSession().getAttribute("email");
-		String other = "min"; // 채팅방에서 받아오기
+		String other = request.getParameter("other"); // 채팅방에서 받아오기
+		System.out.println("other" + other);
 		String lecture = request.getParameter("lecture");
 		System.out.println(lecture);
 		String[] lss = lecture.split("/");

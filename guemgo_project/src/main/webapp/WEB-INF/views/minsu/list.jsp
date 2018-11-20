@@ -57,18 +57,26 @@
 							events:events,
 							
 							dayClick : function(date, calEvent) {
-								if (confirm("메모를 작성하시겠습니까?") == true) {
-									//var title = prompt('일정', event.title);
-									var description = prompt('메모', event.description);
-									event.description = description;
-									$('#calendar').fullCalendar(
-											'updateEvent', event);
-							    			
-									$.getJSON("<c:url value='/calupdate'/>",{id:event.id, start:event.start, end:event.end, description:description}, 
-											function(data) {
-												alert("수정 완료");
-									});
-								}
+								var date = date.format('YYYY-MM-DD');
+				                  $('#calendar').fullCalendar('clientEvents', function(event) {
+				                	  var start = moment(event.start).format("YYYY-MM-DD");
+				                	  if(date==start){
+				                		  alert(event.id);
+											if(event.backgroundColor=='orange'){
+					                	  		alert("이미 출석");
+					                	  	}
+				                		  else if (confirm("출석체크 하시겟습니까??") == true) {
+				                	  		$.ajax({
+												url:"<c:url value='/attupdate'/>",
+												dataType:"json",
+												data : {id:event.id}
+											});
+				                	  		event.backgroundColor = 'orange';
+				                	  		$('#calendar').fullCalendar(
+													'updateEvent', event);
+				                		  }
+				                	  }
+				                  });
 							},
 							/* select : function(startDate, endDate) {
 									var memo = prompt('메모', '메모 입력');
@@ -116,7 +124,7 @@
 									});	
 							    }
 							  }, */
-							eventClick : function(event, element) {
+							/* eventClick : function(event, element) {
 								alert(event.id);
 								if(event.backgroundColor=='orange'){
 		                	  		alert("이미 출석");
@@ -131,7 +139,7 @@
 	                	  		$('#calendar').fullCalendar(
 										'updateEvent', event);
 	                		  }
-							}
+							} */
 								 /* Ext.onReady(function() {
 									Ext.MessagBox.show({
 										title : '알림',

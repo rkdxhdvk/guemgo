@@ -3,6 +3,10 @@ package com.guem.go.minsu;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tiles.request.Request;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,10 +34,19 @@ public class ScheListController {
 	}
 	
 	@RequestMapping(value="/scheList", method=RequestMethod.GET)
-	public String schelist(String email, Model model) {
+	public String schelist(String email, Model model, HttpServletRequest request) {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
-		list = sService.schelist(email);
-		model.addAttribute("list", list);
+		HttpSession session = request.getSession();
+		int flag = (int)session.getAttribute("flag");
+		System.out.println(flag);
+		if(flag==2) {
+			list = sService.schelist(email);
+			model.addAttribute("list", list);
+		}
+		if(flag==1) {
+			list = sService.userschelist(email);
+			model.addAttribute("list", list);
+		}
 		return ".schedulelist";
 	}
 	
