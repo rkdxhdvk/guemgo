@@ -30,7 +30,7 @@ public class RoomController {
 		}
 		
 		model.addAttribute("list", list);
-		return "/kidong/room";
+		return ".kidong.room";
 	}
 	
 	@RequestMapping(value="/makeRoom", method = RequestMethod.GET)

@@ -15,6 +15,7 @@
     </div>
     <br> <div class="input-group">
       <span class="input-group-addon">고수등급</span>
+      
       <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional primary" value="${vo.grade }" readonly="readonly">
     </div>
     <br>

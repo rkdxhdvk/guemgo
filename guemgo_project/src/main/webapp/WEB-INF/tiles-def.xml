@@ -79,7 +79,6 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
-	
 	<!-- 
 		.member.login.loginForm
 		value="/WEB-INF/views/member/login/loginForm.jsp

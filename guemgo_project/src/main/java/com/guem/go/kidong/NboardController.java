@@ -41,7 +41,7 @@ public class NboardController {
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
-		return "/kidong/nboard";
+		return ".kidong.nboard";
 	}
 
 	@RequestMapping(value = "/nboard/insert", method = RequestMethod.POST)
@@ -74,7 +74,7 @@ public class NboardController {
 		model.addAttribute("list", list);
 		model.addAttribute("prev", prev);
 		model.addAttribute("next", next);
-		return "/kidong/nboard_detail";
+		return ".kidong.nboard_detail";
 	}
 
 	@RequestMapping(value = "/nboard/delete", method = RequestMethod.GET)

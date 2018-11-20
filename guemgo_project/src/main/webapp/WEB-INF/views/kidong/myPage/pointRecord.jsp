@@ -20,7 +20,7 @@
 				<c:forEach var="vo" items="${list }">
 					<tr>
 						<td style="width: 15%">${vo.pointdate }</td>
-						<td style="width: 10%">${vo.division_name }</td>
+						<td style="width: 10%">${vo.division }</td>
 						<td style="width: 45%">${vo.detail }</td>
 						<td style="width: 15%">${vo.dpoint }</td>
 						<td style="width: 15%">${vo.lpoint }</td>
