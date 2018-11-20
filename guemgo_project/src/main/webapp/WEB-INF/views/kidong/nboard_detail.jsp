@@ -59,7 +59,7 @@
 						</div>
 						<div class="form-group">
 							<textarea class="form-control" name="content"
-								placeholder="content" maxlength="140" rows="7">${vo.content }</textarea>
+								placeholder="content" maxlength="140" rows="7" required="required">${vo.content }</textarea>
 						</div>
 						<button type="button" class="btn btn-primary" data-dismiss="modal"
 							title="취소">
@@ -222,7 +222,7 @@
 									type="hidden" name="email" value="${sessionScope.email }">
 								<div class="input-group">
 									<input type="text" class="form-control" id="reply"
-										name="content">
+										name="content" required="required">
 									<div class="input-group-btn">
 										<button type="submit" class="btn btn-primary" title="답변">
 											<i class='fas fa-comment-dots'></i>

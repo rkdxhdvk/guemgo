@@ -50,7 +50,7 @@
 								</div>
 								<div class="form-group">
 									<textarea class="form-control" name="content"
-										placeholder="content" maxlength="140" rows="7">${vo.content }</textarea>
+										placeholder="content" maxlength="140" rows="7" required="required">${vo.content }</textarea>
 								</div>
 								<button type="button" class="btn btn-primary"
 									data-dismiss="modal" title="취소">

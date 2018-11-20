@@ -55,7 +55,7 @@
 							</div>
 							<div class="form-group">
 								<textarea class="form-control" name="content"
-									placeholder="content" maxlength="140" rows="7">${vo.content }</textarea>
+									placeholder="content" maxlength="140" rows="7" required="required">${vo.content }</textarea>
 							</div>
 							<div class="form-group">
 								<input type="text" name="orgfilename" class="form-control"

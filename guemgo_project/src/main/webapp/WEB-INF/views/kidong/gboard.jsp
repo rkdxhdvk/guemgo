@@ -47,7 +47,7 @@
 						</div>
 						<div class="form-group">
 							<textarea class="form-control" name="content"
-								placeholder="content" maxlength="140" rows="7"></textarea>
+								placeholder="content" maxlength="140" rows="7" required="required"></textarea>
 						</div>
 						<div class="form-group">
 							<input type="file" name="file1" id="file" class="form-control">
