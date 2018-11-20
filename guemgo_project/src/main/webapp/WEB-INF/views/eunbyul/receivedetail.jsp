@@ -11,17 +11,48 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<title>자유게시판</title>
+<title>보낸 요청 내역</title>
 </head>
 <body>
-<%-- 	<%int num=Integer.parseInt(request.getParameter("lecturenum")); %>
-	<%int other=Integer.parseInt(request.getParameter("other")); %>
-	<%int email=Integer.parseInt(request.getParameter("email")); %> --%>
-	<h1>${lecturenum }</h1>
-	<h1>${other }</h1>
-	<h1>${email }</h1>
-	<button type="button" class="btn btn-primary"
+<section class="container">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>받은 요청서 상세</h3>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="email" value="${sessionScope.email }">
+					<%-- ${status.count} <!-- 이게 ex_num이랑 똑같음 --> --%>
+					<c:forEach var="qq" items="${quelist }" varStatus="ss">
+						<div class="form-row">
+
+							<c:if test="${qq.ques_num != 1 }">
+
+								<label><h2>▶ ${qq.question }</h2></label><br>
+								<c:forEach var="vo1" items="${list }" varStatus="rr">
+									<c:if test="${ss.index-1 eq rr.index }">
+										<%-- <input type="text" name="purpose" value="${vo1[ss.index].answer }" class="navbar-brand"> --%>
+										${vo1.answer  }
+									</c:if>
+
+								</c:forEach>
+								<br>
+							</c:if>
+						</div>
+					</c:forEach>
+					<br>
+					<button type="button" class="btn btn-primary"
 				onclick='location.href="<c:url value='/makeRoom?email=${email }&other=${other }&lecturenum=${lecturenum }'/>"'>채팅걸기</button>
+					
+				</div>
+			</div>
+		</div>
+
+		
+	</section>
 
 </body>
 </html>
+
+
+

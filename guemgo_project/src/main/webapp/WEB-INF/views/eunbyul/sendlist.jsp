@@ -37,7 +37,23 @@
 						<td style="width: 10%">${vo.req_num }</td>
 						<%-- <td style="width: 10%"><a
 							href="<c:url value='/receivedetail?num=${vo.req_num } & email =${email } & lecturename = ${vo.lecturename }'/>">${vo.req_num }</a></td> --%>
-						<td style="width: 20%">	${vo.mnum }</td>
+						<td style="width: 20%">	
+						<c:if test="${vo.mnum==0 }">그래픽디자인</c:if>
+						<c:if test="${vo.mnum==1 }">그래픽디자인</c:if>
+						<c:if test="${vo.mnum==2 }">패션디자인</c:if>
+						<c:if test="${vo.mnum==3 }">제품디자인</c:if>
+						<c:if test="${vo.mnum==4 }">회화</c:if>
+						<c:if test="${vo.mnum==5 }">동양화</c:if>
+						<c:if test="${vo.mnum==6 }">애니메이션</c:if>
+						<c:if test="${vo.mnum==7 }">보컬</c:if>
+						<c:if test="${vo.mnum==8 }">작곡</c:if>
+						<c:if test="${vo.mnum==9 }">악기</c:if>
+						<c:if test="${vo.mnum==10 }">조리</c:if>
+						<c:if test="${vo.mnum==11 }">베이킹</c:if>
+						<c:if test="${vo.mnum==12 }">식음료</c:if>
+						
+						
+						</td>
 						<td style="width: 10%">${vo.req_date }</td>
 						<td style="width: 10%">
 						<c:if test="${vo.lec_start==0 }">요청중</c:if>

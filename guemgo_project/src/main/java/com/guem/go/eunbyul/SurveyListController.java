@@ -44,6 +44,10 @@ public class SurveyListController {
 		RequireVo vo=surveyservice.requireselect(num);
 		//강의명으로 강의번호찾아오기
 /*		LectureVo vo2=surveyservice.lectureselect(lecturename);*/
+		List<QuestionVo> quelist=surveyservice.quelist();
+		List<AnswerVo> list=surveyservice.answer(num);
+		mv.addObject("quelist", quelist);
+		mv.addObject("list", list);
 		mv.addObject("lecturenum", lecturenum);
 		mv.addObject("other", vo.getEmail());
 		mv.addObject("email", email);
