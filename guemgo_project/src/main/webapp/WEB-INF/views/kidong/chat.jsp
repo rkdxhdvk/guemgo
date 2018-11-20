@@ -338,6 +338,7 @@ body {
 							</c:when>
 							<c:otherwise>
 								<div class='container1'>
+								<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu3.png">
 									<p>${vo.msg }</p>
 									<span class='time-right'>${time }</span>
 								</div>

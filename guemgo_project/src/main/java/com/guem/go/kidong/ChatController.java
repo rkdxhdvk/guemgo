@@ -46,6 +46,7 @@ public class ChatController {
 			if(!vo.getSender().equals(email)) {
 				service.update(map);
 			}
+			vo.setMsg(vo.getMsg().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt").replaceAll("\n", "<br>"));
 		}
 		
 		LectureVo vo = classService.classSelect(lecturenum);

@@ -10,8 +10,16 @@
 <c:forEach var="vo" items="${list }">
 	<div class="container-fluid">
 		<div class="panel panel-primary">
-			<div class="panel-heading">상대방 : ${vo.other }</div>
 			<div class="panel-body">
+			<c:choose>
+				<c:when test="${sessionScope.email == vo.email}">
+					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu3.png"> ${vo.other }
+				</c:when>
+				<c:otherwise>
+					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 상대방 : ${vo.email }
+				</c:otherwise>
+			</c:choose>
+			<br><br>
 				강의명 : ${vo.lecturename }
 				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }'/>" class="pull-right">입장</a>
 			</div>

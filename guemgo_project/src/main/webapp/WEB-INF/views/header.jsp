@@ -33,7 +33,7 @@
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">채팅</a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">고수찾기</a>
 		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto" style="padding-top: 80px;">
+			<ul class="navbar-nav mr-auto" style="padding-top: 60px;list-style: none;">
 				
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
@@ -43,13 +43,13 @@
 				 				로그인을 해주세요
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '0'}">
-				 				관리자 ${ sessionScope.email } 님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 관리자 ${ sessionScope.email } 님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '1'}">
-				 				${ sessionScope.email } 회원님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 회원님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '2'}">
-				 				${ sessionScope.email } 고수님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 고수님
 				 			</c:when>
 				 		</c:choose>
 				 	</a>

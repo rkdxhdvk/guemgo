@@ -86,7 +86,7 @@
 			</div>
 
 		</div>
-	  <div class="panel-body" style="background-color: rgba( 0, 0, 0, 0.5 );font-size: large;">
+	  <div class="panel-body" style="background-color: rgba( 0, 0, 0, 0.5 );font-size: x-large;">
 	  	<div class="row" >
 		  <div class="col-sm-4">누적 요청서<br>
 		  							123,123개</div>
