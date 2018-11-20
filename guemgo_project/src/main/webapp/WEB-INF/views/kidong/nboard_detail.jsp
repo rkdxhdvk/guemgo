@@ -49,8 +49,7 @@
 
 				<div class="modal-body">
 					<form id="articleForm" action="<c:url value='/nboard/update'/>"
-						method="post" enctype="multipart/form-data"
-						onsubmit="return submitAction()">
+						method="post">
 						<input type="hidden" name="num" value="${vo.num }"> <input
 							type="hidden" name="email" value="${vo.email }">
 						<h3 style="margin-bottom: 25px;">수정</h3>
@@ -66,7 +65,7 @@
 							title="취소">
 							<i class='fas fa-reply'></i>
 						</button>
-						<button type="submit" id="submit" name="submit"
+						<button type="submit" name="submit"
 							class="btn btn-primary pull-right" title="입력">
 							<i class='fas fa-edit'></i>
 						</button>
@@ -238,11 +237,10 @@
 		</div>
 
 
-
-
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<form action="<c:url value='/ncomment/insert'/>" method="post">
+				<form action="<c:url value='/ncomment/insert'/>" method="post"
+					onsubmit="return addComment()">
 					<input type="hidden" value="${sessionScope.email }" name="email">
 					<input type="hidden" value="${vo.num }" name="num">
 					<textarea class="form-control" rows="5" name="content" id="comment"></textarea>
@@ -250,15 +248,15 @@
 						<span id="count">0</span>/<span id="max-count">0</span>
 					</div>
 					<button type="submit" id="submit" class="btn btn-primary btn-block"
-						onclick="addComment()" title="입력" style="margin-bottom: 15px;">
+						title="입력" style="margin-bottom: 15px;">
 						<i class='fas fa-comment-dots'></i> 입력
 					</button>
 				</form>
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary btn-block"
-					onclick="needLogin()" title="로그인" style="margin-bottom: 15px;">
-					<i class='fas fa-comment-dots'></i> 로그인
+					onclick="needLogin()" title="입력" style="margin-bottom: 15px;">
+					<i class='fas fa-comment-dots'></i> 입력
 				</button>
 			</c:otherwise>
 		</c:choose>
@@ -333,11 +331,18 @@
 // 		});
 // 	}
 	
-// 	function addComment(){
-// 		if($("#comment").val() == ""){
-// 			alert('공백');
-// 			return;
-// 		}
+	function addComment(){
+		if($("#comment").val() == ""){
+			swal({
+				title : "공백",
+				text : "내용을 입력해 주세요.",
+				icon : "warning",
+				button : "확인",
+			});
+			return false;
+		}
+	}
+	
 // 		var num = ${vo.num };
 // 		var comment = $("#comment").val();
 // 		var email = $("#email").val();
@@ -422,27 +427,14 @@
 		}
 	}
 	
-	function submitAction() {
-
-		var ext = $('#file').val().split('.').pop().toLowerCase();
-
-		if ($("#file").val() != "") {
-
-			var ext = $('#file').val().split('.').pop().toLowerCase();
-
-			if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-
-				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
-
-				return false;
-			}
-		}
-		return true;
-	}
 	
 	function needLogin(){
-		alert('로그인');
-		window.location.href = '/go';
+		swal({
+			title : "로그인",
+			text : "로그인 후에 이용",
+			icon : "warning",
+			button : "확인",
+		});
 	}
 	
 	function deleteSubmit(){

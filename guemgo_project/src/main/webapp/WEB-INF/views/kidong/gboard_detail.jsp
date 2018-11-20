@@ -96,9 +96,10 @@
 				</div>
 				<hr>
 				<div class="pull-right">
-					&ensp;<span id="recomm">${vo.recomm }</span> &ensp;<i
+					<span id="recomm">${vo.recomm }</span> &ensp;<i
 						class='fas fa-eye'></i> ${vo.hit }
 				</div>
+				
 				<c:choose>
 					<c:when test="${sessionScope.email != null }">
 						<c:choose>
@@ -264,8 +265,8 @@
 				</c:when>
 				<c:otherwise>
 					<button type="button" class="btn btn-primary btn-block"
-						onclick="needLogin()" title="로그인" style="margin-bottom: 15px;">
-						<i class='fas fa-comment-dots'></i> 로그인
+						onclick="needLogin()" title="입력" style="margin-bottom: 15px;">
+						<i class='fas fa-comment-dots'></i> 입력
 					</button>
 				</c:otherwise>
 			</c:choose>
@@ -350,7 +351,12 @@
 	
 	function addComment(){
 		if($("#comment").val() == ""){
-			alert('공백');
+			swal({
+				title : "공백",
+				text : "내용을 입력해 주세요.",
+				icon : "warning",
+				button : "확인",
+			});
 			return;
 		}
 		var num = ${vo.num };
@@ -408,7 +414,12 @@
 			countSpan.innerText = totalByte.toString();
 			message = event.target.value;
 		}else{
-			alert(MAX_MESSAGE_BYTE + "바이트까지 전송가능합니다.");
+			swal({
+				title : "글자수 제한",
+				text : MAX_MESSAGE_BYTE + "바이트까지 전송가능합니다.",
+				icon : "warning",
+				button : "확인",
+			});
 			countSpan.innerText = count(message).toString();
 			event.target.value = message;
 		}
@@ -438,8 +449,12 @@
 	}
 	
 	function needLogin(){
-		alert('로그인');
-		window.location.href = '/go';
+		swal({
+			title : "로그인",
+			text : "로그인 후에 이용",
+			icon : "warning",
+			button : "확인",
+		});
 	}
 	
 	function deleteSubmit(){

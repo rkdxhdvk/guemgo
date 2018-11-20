@@ -10,7 +10,7 @@
 			</c:when>
 			<c:otherwise>
 				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
-					onclick="needLogin()"><i class='fas fa-edit'></i>로그인</button>
+					onclick="needLogin()"><i class='fas fa-edit'></i>글쓰기</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -194,8 +194,12 @@
 	</div>
 <script type="text/javascript">
 	function needLogin() {
-		alert('로그인');
-		window.location.href = '/go';
+		swal({
+			title : "로그인",
+			text : "로그인 후에 이용",
+			icon : "warning",
+			button : "확인",
+		});
 	}
 </script>
 

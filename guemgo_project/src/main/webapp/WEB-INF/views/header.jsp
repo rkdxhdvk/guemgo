@@ -61,9 +61,9 @@
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">
 				 	<c:choose>
 				 	<c:when test="${sessionScope.flag eq '2'}">
-				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-lecturer-24.png">&nbsp 강의 등록</a><br>
-				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-class-filled-24.png">&nbsp 내 강의 목록</a><br>
-				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-invite-24.png">&nbsp 받은 요청서</a><br>
+				 	<a class="dropdown-item" href="<c:url value='/classinsert?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-lecturer-24.png">&nbsp 강의 등록</a><br>
+				 	<a class="dropdown-item" href="<c:url value='/mylecture?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-class-filled-24.png">&nbsp 내 강의 목록</a><br>
+				 	<a class="dropdown-item" href="<c:url value='/receiveList?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-invite-24.png">&nbsp 받은 요청서</a><br>
 				 	</c:when>
 				 	</c:choose>
 				 	<input type="hidden" id="email" value="${sessionScope.email }">
@@ -82,33 +82,33 @@
 								
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
-										<a class="dropdown-item" href="admin" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-24.png">&nbsp 관리자페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/admin'/>" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-24.png">&nbsp 관리자페이지</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
-									<a class="dropdown-item" href="sendlist?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-request-service-24.png">&nbsp 보낸 요청서</a><br>
+									<a class="dropdown-item" href="<c:url value='/sendlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-request-service-24.png">&nbsp 보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
-												<a class="dropdown-item" href="mypage" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
-												<a class="dropdown-item" href="eventlist?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
+												<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+												<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
 												<span>------------------------------</span><br>
-												<a class="dropdown-item" href="GosuInsertForm" style="margin-left:10px"><img src="resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
+												<a class="dropdown-item" href="<c:url value='/GosuInsertForm'/>" style="margin-left:10px"><img src="resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
 											</c:when>
 											<c:otherwise>
-													<a class="dropdown-item" href="mypage" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
-													<a class="dropdown-item" href="eventlist?email=${sessionScope.email }" style="margin-left:10px"><img src="resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
+													<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+													<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
 													<span style="margin:5px">----------------------------</span><br>
-													<a class="dropdown-item" href="changeGosu" style="margin-left:10px"><img src="resources/img/static/icons8-sync-24.png">&nbsp 고수로 전환하기</a><br>
+													<a class="dropdown-item" href="<c:url value='/changeGosu'/>" style="margin-left:10px"><img src="resources/img/static/icons8-sync-24.png">&nbsp 고수로 전환하기</a><br>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '2' }">	
-										<a class="dropdown-item" href="gosupage" style="margin-left:10px"><img src="resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/gosupage'/>" style="margin-left:10px"><img src="resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
 
 										<span style="margin:5px">----------------------------</span><br>
-										<a class="dropdown-item" href="changeUser" style="margin-left:10px"><img src="resources/img/static/icons8-sync-24.png">&nbsp 요청자로 전환하기</a><br>
+										<a class="dropdown-item" href="<c:url value='/changeUser'/>" style="margin-left:10px"><img src="resources/img/static/icons8-sync-24.png">&nbsp 요청자로 전환하기</a><br>
 									</c:when>
 								</c:choose>
-								<a class="dropdown-item" href="logout" style="margin-left:10px"><img src="resources/img/static/icons8-sign-out-24.png">&nbsp 로그아웃</a><br>
+								<a class="dropdown-item" href="<c:url value='/logout'/>" style="margin-left:10px"><img src="resources/img/static/icons8-sign-out-24.png">&nbsp 로그아웃</a><br>
 							</c:otherwise>
 						</c:choose>
 				 	</div>
@@ -153,7 +153,7 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- 		<h4 class="modal-title" id="myModalLabel">회원 로그인</h4> -->
 		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 	      </div>
-			<form name="login_form" method="post" action="login" onSubmit="return checkLogin()">
+			<form name="login_form" method="post" action="<c:url value='/login'/>" onSubmit="return checkLogin()">
 			      <div class="modal-body">
 <!-- 						<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                     -->
            			<div class="panel panel-info" >
