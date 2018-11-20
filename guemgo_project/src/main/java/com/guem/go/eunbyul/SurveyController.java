@@ -128,7 +128,6 @@ public class SurveyController {
 			String day[] =ans[3].split("/"); //요일이 배열로 담김.
 			int a=0;
 			int b=0;
-			boolean d=false;
 		for (int i = 0; i < leclist.size(); i++) {
 			System.out.println("for문시작");
 			System.out.println("매칭된강의명"+leclist.get(i).getLectureName()); 
@@ -139,13 +138,17 @@ public class SurveyController {
 			
 			for (int j = 1; j < day.length; j++) {
 				System.out.println("학생이 가능한 요일:" + day[j]);
+				if(day[j].equals("상관없음")) {
+					System.out.println("상관없음!!!!!!!!!!!예!!!");
+					a=a+10;
+				}
 				if (lecday.contains(day[j])) {// 강의의 요일에 요청한 요일이 있는지 체크하기
 					System.out.println("a" + day[j] + "가들었음");
 					a++;
 				} else if (!lecday.contains(day[j])) {
 					b++;
 					System.out.println("b");
-				}
+				} 
 			}
 			
 			if (a >= b) {// 맞는 요일이 반이상이면 다음 조건 검사
