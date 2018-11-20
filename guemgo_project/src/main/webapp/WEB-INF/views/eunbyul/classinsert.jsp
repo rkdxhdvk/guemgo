@@ -184,10 +184,8 @@
 
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>성별을 알려주세요</label> <select name="sex" class="form-control">
-									<option value="여자" selected>여자</option>
-									<option value="남자">남자</option>
-								</select>
+								<label>강의 설명을 간략히 남겨주세요</label> 
+								<input type="text" class="navbar-brand" size="40" name="explanation">
 							</div>
 						</div>
 						<div class="form-row">

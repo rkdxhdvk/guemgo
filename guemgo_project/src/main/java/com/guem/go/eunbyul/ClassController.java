@@ -49,7 +49,7 @@ public class ClassController {
 		
 		//1.파라미터로 작성한 값 받아오기
 		String classname=request.getParameter("classname"); //강의명
-		String gender=request.getParameter("sex"); //고수성별
+		String explanation=request.getParameter("explanation"); //강의설명
 		String gonum=request.getParameter("gonum"); //고수번호
 		int num=Integer.parseInt(gonum); //int로변환
 		String area=request.getParameter("area2"); //레슨할 분야
@@ -73,7 +73,7 @@ public class ClassController {
 		region2+=addr2;
 		
 		//3.lecture 테이블에 insert하기
-		LectureVo vo=new LectureVo(0,classname,region1,region2,gender,day,time,num);
+		LectureVo vo=new LectureVo(0,classname,region1,region2,day,time,num,explanation);
 		classService.classinsert(vo);
 		
 		//4.gosu_area테이블에 insert

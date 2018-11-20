@@ -6,5 +6,5 @@
 <ul class="nav nav-pills nav-stacked">
 	<li><a href="<c:url value='/UserList'/>">회원관리</a></li>
 	<li><a href="<c:url value='/GosuList'/>">고수관리</a></li>
-	<li><a href="<c:url value='/#'/>">통계관리</a></li>
+	<li><a href="<c:url value='/Statistics'/>">통계관리</a></li>
 </ul>

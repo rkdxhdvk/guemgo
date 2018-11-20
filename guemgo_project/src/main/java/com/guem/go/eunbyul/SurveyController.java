@@ -243,7 +243,7 @@ public class SurveyController {
 		ModelAndView mv = new ModelAndView(); 
 		mv.addObject("n", n);
 		mv.addObject("n1", n1);
-		mv.setViewName("eunbyul/surveyOk");
+		mv.setViewName(".eunbyul.surveyOk");
 		 return mv;
 		
 	}

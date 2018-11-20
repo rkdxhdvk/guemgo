@@ -5,24 +5,24 @@ public class LectureVo {
 	public String lectureName;
 	public String region1;
 	public String region2;
-	public String gender;
 	public String day;
 	public String time;
 	public int go_num;
+	public String explanation;
 	
 	public LectureVo() {}
 
-	public LectureVo(int lectureNum, String lectureName, String region1, String region2, String gender, String day,
-			String time, int go_num) {
+	public LectureVo(int lectureNum, String lectureName, String region1, String region2, String day, String time,
+			int go_num, String explanation) {
 		super();
 		this.lectureNum = lectureNum;
 		this.lectureName = lectureName;
 		this.region1 = region1;
 		this.region2 = region2;
-		this.gender = gender;
 		this.day = day;
 		this.time = time;
 		this.go_num = go_num;
+		this.explanation = explanation;
 	}
 
 	public int getLectureNum() {
@@ -57,14 +57,6 @@ public class LectureVo {
 		this.region2 = region2;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 	public String getDay() {
 		return day;
 	}
@@ -88,7 +80,14 @@ public class LectureVo {
 	public void setGo_num(int go_num) {
 		this.go_num = go_num;
 	}
-	
+
+	public String getExplanation() {
+		return explanation;
+	}
+
+	public void setExplanation(String explanation) {
+		this.explanation = explanation;
+	}
 	
 	
 }
