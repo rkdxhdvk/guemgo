@@ -98,7 +98,7 @@ public class CalController {
 			model.addAttribute("msg", "선택한 요일 중 시작날짜를 골라주세여");
 			model.addAttribute("room", room);
 			//return "minsu/click";
-			return "kidong/chat";
+			return ".kidong.chat";
 		}
 		
 		List<ChatVo> list = chatService.list(room);
@@ -117,6 +117,6 @@ public class CalController {
 		model.addAttribute("end", end);
 		model.addAttribute("scheselect", "ok");
 		//return "minsu/click";
-		return "kidong/chat";
+		return ".kidong.chat";
 	}
 }
