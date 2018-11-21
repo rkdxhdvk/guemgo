@@ -64,5 +64,9 @@ public class SurveyService {
 	public int requiredelete(int num) { //보낸 요청서 삭제기능
 		return dao.requiredelete(num);
 	}
+	/// 스케줄 생성시 요청서 상태 업데이트 ///
+			public int requpdate(int req_num) {
+				return dao.requpdate(req_num);
+			}
 	
 }

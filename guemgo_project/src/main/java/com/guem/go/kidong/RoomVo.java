@@ -6,11 +6,11 @@ public class RoomVo {
 	private String other;
 	private int lecturenum;
 	private String lecturename;
-
+	private int req_num;
 	public RoomVo() {
 	}
 
-	public RoomVo(int room, String email, String other, int lecturenum, String lecturename) {
+	public RoomVo(int room, String email, String other, int lecturenum, String lecturename, int req_num) {
 		super();
 		this.room = room;
 		this.email = email;
@@ -62,5 +62,14 @@ public class RoomVo {
 	public void setOther(String other) {
 		this.other = other;
 	}
+
+	public int getReq_num() {
+		return req_num;
+	}
+
+	public void setReq_num(int req_num) {
+		this.req_num = req_num;
+	}
+	
 
 }

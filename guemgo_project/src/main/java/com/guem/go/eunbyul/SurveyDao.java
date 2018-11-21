@@ -81,4 +81,9 @@ public class SurveyDao {
 	public int requiredelete(int num) {
 		return sqlSession.delete(NAMESPACE+".requiredelete",num);
 	}
+	
+	/// 스케줄 생성시 요청서 상태 업데이트 ///
+		public int requpdate(int req_num) {
+			return sqlSession.update(NAMESPACE + ".requpdate", req_num);
+		}
 }

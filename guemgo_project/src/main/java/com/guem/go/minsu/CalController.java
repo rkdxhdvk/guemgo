@@ -42,7 +42,7 @@ public class CalController {
 		String lecturename = lss[1]; // select에서
 		int lectureNum = Integer.parseInt(lss[0]); // select에서
 		System.out.println("lectureNum: " + lectureNum );
-		int matchNum = 1; // 요청서에서 시작해서 받아오기
+		int matchNum = Integer.parseInt(request.getParameter("matchNum")); // 요청서에서 시작해서 받아오기
 		int scheduleNum = scheService.scheduleNum() + 1;
 		System.out.println("스케줄넘 " + scheduleNum);
 		int sche_detailNum = sche_detailService.sche_detailNum();

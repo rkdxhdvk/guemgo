@@ -118,6 +118,7 @@ html, body {
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value;
+		var matchNum = document.getElementById("matchNum").value;
 		/* ar isschedule = parseInt(document.getElementById("isschedule").value) ; */
 		if(${isschedule }==1){
 			var events = [];
@@ -417,6 +418,7 @@ html, body {
 						<input type="hidden" value= ${req_num } name="matchNum" id="matchNum">
 						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
 						<input type="hidden" value="${other}" name="other" id="other">
+						<input type="hidden" value="${req_num}" name="matchNum" id="matchNum">
 						
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
@@ -433,6 +435,7 @@ html, body {
 						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<input type="hidden" value="${other}" name="other" id="other"> 
+					<input type="hidden" value="${req_num}" name="matchNum" id="matchNum">
 					<input type="hidden" value="${isschedule}" name="isschedule" id="isschedule"> 
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">

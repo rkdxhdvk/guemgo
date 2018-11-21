@@ -66,6 +66,38 @@ public class ScheListController {
 		}
 		return ".gosuschedulelist";
 	}
+	
+	@RequestMapping(value="/scheList", method=RequestMethod.GET)
+	public String schelist(String email, Model model, HttpServletRequest request) {
+		List<ScheduleVo> schelist = sService.schelist(email);
+		/*ArrayList<List<Sche_detailVo>> dlist = new ArrayList<>();
+		for(ScheduleVo svo : schelist) {
+			List<Sche_detailVo> detaillist = dService.sche_detailList(svo.getScheduleNum());
+			dlist.add(detaillist);
+		}*/
+		model.addAttribute("schelist", schelist);
+		return "minsu/list2";
+	}
+	
+	@RequestMapping(value="/detaillist", produces="application/json;charset=utf-8", method=RequestMethod.GET)
+	@ResponseBody
+	public String detail(int scheduleNum, Model model) {
+		List<Sche_detailVo> list = dService.sche_detailList(scheduleNum);
+		model.addAttribute("detaillist", list);
+		org.json.JSONArray arr=new org.json.JSONArray();
+		for(Sche_detailVo vo : list) {
+			JSONObject json=new JSONObject();
+			json.put("num",vo.getNum());
+			json.put("lecturename",vo.getLecturename());
+			json.put("sDate",vo.getsDate());
+			json.put("eDate",vo.geteDate());
+			json.put("memo",vo.getMemo());
+			json.put("attendance",vo.getAttendance());
+			arr.put(json);
+		}
+		return arr.toString();
+	}
+	
 	@RequestMapping(value="/progress", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String medium(int scheduleNum, Model model) {

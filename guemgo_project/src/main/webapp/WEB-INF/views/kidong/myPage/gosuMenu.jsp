@@ -11,7 +11,7 @@
 		href="<c:url value='/GosuProfileUpdate?email=${sessionScope.email }'/>">고수프로필
 			수정</a></li>
 	<li><a
-		href="<c:url value='/gosu/scheList?email=${sessionScope.email }&flag=${sessionScope.flag }'/>">스케줄리스트</a></li>
+		href="<c:url value='/scheList?email=${sessionScope.email }&flag=${sessionScope.flag }'/>">스케줄리스트</a></li>
 	<li><a
 		href="<c:url value='/classinsert?email=${sessionScope.email }'/>">강의 등록</a></li>
 	<li><a

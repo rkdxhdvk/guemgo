@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.guem.go.eunbyul.SurveyService;
+
 
 @Controller
 public class ScheInsertController {
 	@Autowired
 	private ScheService scheService;
-	
+	@Autowired
+	private SurveyService surService;
 	@RequestMapping(value="/calInsert",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String insert(String email, int scheduleNum, String other, int lectureNum, int matchNum, String lecturename) {
@@ -20,6 +23,8 @@ public class ScheInsertController {
 		ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
 		int n = scheService.insert(vo);
 		//요청서 변경
+		surService.requpdate(matchNum);
+		
 		JSONObject obj = new JSONObject();
 		if(n>0) {
 			obj.put("result", "ok");

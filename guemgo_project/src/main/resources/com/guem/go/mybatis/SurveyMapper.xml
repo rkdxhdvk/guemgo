@@ -54,5 +54,9 @@
 	<update id="requiredelete" parameterType="int">
 		update require set LEC_START=3 where req_num=#{num}
 	</update>
+	<!-- 요청서 상태 업데이트 -->
+	<update id="requpdate" parameterType="int">
+		update require set lec_start=1 where req_num=#{num}
+	</update>
 </mapper>
 

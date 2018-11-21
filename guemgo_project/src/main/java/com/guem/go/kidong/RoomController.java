@@ -34,10 +34,10 @@ public class RoomController {
 	}
 	
 	@RequestMapping(value="/makeRoom", method = RequestMethod.GET)
-	public String makeRomm(String email, String other, int lecturenum) {
-		RoomVo vo = new RoomVo(0, email, other, lecturenum, null);
+	public String makeRomm(String email, String other, int lecturenum, int req_num) {
+		RoomVo vo = new RoomVo(0, email, other, lecturenum, null, req_num);
 		service.makeRoom(vo);
 		int room = service.selectRoom(vo);
-		return "redirect:/chat?room="+room+"&email="+email+"&other="+other+"&lecturenum="+lecturenum+"";
+		return "redirect:/chat?room="+room+"&email="+email+"&other="+other+"&lecturenum="+lecturenum+"&req_num="+req_num+"";
 	}
 }
