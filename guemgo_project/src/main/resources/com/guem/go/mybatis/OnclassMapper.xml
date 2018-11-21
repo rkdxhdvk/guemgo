@@ -3,11 +3,14 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.guem.go.mybatis.OnclassMapper">
-	<select id="select_onreq" parameterType="String" resultType="com.guem.go.eunbyul.RequireVo">
+	<select id="select_ongoing" parameterType="String" resultType="com.guem.go.eunbyul.RequireVo">
 		select * from require where lec_start>0 and email=#{email}
 	</select>
-	<select id="select_email" parameterType="int" resultType="String">
-		select email from requirelist where req_num=#{num}
+	<select id="select_list" parameterType="int" resultType="com.guem.go.eunbyul.RequirelistVo">
+		select * from requirelist where req_num=#{num}
+	</select>
+	<select id="select_lec" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
+		select * from lecture where lecturenum=#{num}
 	</select>
 	
 </mapper>
