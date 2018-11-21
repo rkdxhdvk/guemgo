@@ -11,4 +11,7 @@ public class OngoingService {
 	public List<RequireVo> select_ongoing(String email){
 		return dao.select_ongoing(email);
 	}
+	public String select_email(int num) {
+		return dao.select_email(num);
+	}
 }

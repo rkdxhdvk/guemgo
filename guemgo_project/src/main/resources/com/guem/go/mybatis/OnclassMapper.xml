@@ -2,9 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.guem.go.mybatis.OnclassMapper">
+ <mapper namespace="com.guem.go.mybatis.OnclassMapper">
 	<select id="select_onreq" parameterType="String" resultType="com.guem.go.eunbyul.RequireVo">
-		select * from require where req_start>0 and email=#{email};
+		select * from require where lec_start>0 and email=#{email}
+	</select>
+	<select id="select_email" parameterType="int" resultType="String">
+		select email from requirelist where req_num=#{num}
 	</select>
 	
 </mapper>
