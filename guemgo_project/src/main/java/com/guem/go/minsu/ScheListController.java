@@ -50,7 +50,7 @@ public class ScheListController {
 		return ".userschedulelist";
 	}
 	
-	@RequestMapping(value="/gous/scheList", method=RequestMethod.GET)
+	@RequestMapping(value="/gosu/scheList", method=RequestMethod.GET)
 	public String gosuschelist(String email, Model model, HttpServletRequest request) {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
 		HttpSession session = request.getSession();

@@ -31,4 +31,8 @@ public class ChatDao {
 	public int makeRomm(RoomVo vo) {
 		return session.insert("com.jhta.mybatis.ChatMapper.makeRoom", vo);
 	}
+	
+	public int selectRoom(RoomVo vo) {
+		return session.selectOne("com.jhta.mybatis.ChatMapper.selectRoom", vo);
+	}
 }

@@ -35,7 +35,6 @@
 <style type="text/css">
 	#content {
 		min-height: 1100px;
-		padding-top: 145px;
 	}
 </style>
 </head>

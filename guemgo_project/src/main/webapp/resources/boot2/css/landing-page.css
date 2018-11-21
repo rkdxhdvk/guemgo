@@ -31,7 +31,6 @@ h6 {
 }
 
 .intro-header {
-    padding-top: 150px; /* If you'renavbar-nav mr-auto making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     text-align: center;
     color: #f8f8f8;
     background: url(../css/Designer.jpg) no-repeat center center;

@@ -37,6 +37,7 @@ public class RoomController {
 	public String makeRomm(String email, String other, int lecturenum) {
 		RoomVo vo = new RoomVo(0, email, other, lecturenum, null);
 		service.makeRoom(vo);
-		return ".main";
+		int room = service.selectRoom(vo);
+		return "redirect:/chat?room="+room+"&email="+email+"&other="+other+"&lecturenum="+lecturenum+"";
 	}
 }

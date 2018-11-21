@@ -31,7 +31,7 @@
 	<!-- Navigation -->
 	<!-- Header -->
 	<a name="about"></a>
-	<div class="intro-header">
+	<div class="intro-header" style="padding-top: 145px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">

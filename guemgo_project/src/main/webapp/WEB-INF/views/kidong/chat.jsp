@@ -26,8 +26,6 @@
 
 <style>
 html, body {
-	margin: 0;
-	padding: 0;
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 	font-size: 14px;
 }
@@ -36,10 +34,6 @@ html, body {
 	max-width: 900px;
 	margin: 40px auto;
 } */
-body {
-	margin: 0 auto;
-	padding: 0 20px;
-}
 
 .container1 {
 	border: 2px solid #dedede;
@@ -506,7 +500,7 @@ body {
 					<div class="panel panel-primary" style="margin-top: 15px;">
 						<div class="panel-heading">${vo.lectureName }</div>
 						<div class="panel-body" style="height: 160px;">
-							내용
+							내용 : ${vo.explanation }
 						</div>
 					</div>
 
