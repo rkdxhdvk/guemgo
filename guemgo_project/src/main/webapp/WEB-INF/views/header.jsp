@@ -33,7 +33,8 @@
 		<a class="navbar-brand" href="<c:url value='/findgosu'/>" style="padding-top: 80px;">고수찾기</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto" style="padding-top: 60px;list-style: none;">
-				
+			
+			
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
 				 		<!-- 로그인 구분에 따라 나오는 문구 변경 -->

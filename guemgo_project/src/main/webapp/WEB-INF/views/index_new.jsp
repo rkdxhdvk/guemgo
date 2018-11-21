@@ -16,6 +16,7 @@
 		$("#surveybt").trigger('click');
 	}
 }); */
+
 	$(document).ready(function() {
 		var area = "${area }";
 		if (area == null || area == "") {
