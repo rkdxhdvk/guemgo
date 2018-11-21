@@ -9,7 +9,7 @@
 	color: #999;
 }
 </style>
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding-top: 145px;">
 		<div class="container-fluid" style="margin-bottom: 15px;">
 			<p class="text-left" style="font-size: x-large;">상세보기</p>
 

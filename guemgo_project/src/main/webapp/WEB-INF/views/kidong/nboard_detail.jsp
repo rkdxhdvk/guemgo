@@ -15,7 +15,7 @@
 </style>
 <body>
 <div class="container-fluid">
-	<div class="container-fluid" style="margin-bottom: 15px;">
+	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
 		<button type="button" class="btn btn-primary" style="float: right;"

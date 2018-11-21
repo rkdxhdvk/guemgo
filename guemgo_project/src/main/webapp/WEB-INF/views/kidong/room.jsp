@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 
-<div class="container-fluid" style="margin-bottom: 15px;">
+<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 	<p class="text-left" style="font-size: x-large;">채팅방</p>
 	<button type="button" class="btn btn-primary" style="float: right;"
 		onclick="location='<c:url value='/'/>'">나가기</button>
