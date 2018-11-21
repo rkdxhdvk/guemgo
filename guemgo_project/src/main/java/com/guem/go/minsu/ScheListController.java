@@ -33,8 +33,8 @@ public class ScheListController {
 		return "minsu/list";
 	}
 	
-	@RequestMapping(value="/scheList", method=RequestMethod.GET)
-	public String schelist(String email, Model model, HttpServletRequest request) {
+	@RequestMapping(value="/user/scheList", method=RequestMethod.GET)
+	public String userschelist(String email, Model model, HttpServletRequest request) {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
 		HttpSession session = request.getSession();
 		int flag = (int)session.getAttribute("flag");
@@ -47,9 +47,25 @@ public class ScheListController {
 			list = sService.userschelist(email);
 			model.addAttribute("list", list);
 		}
-		return ".schedulelist";
+		return ".usershcedulelist";
 	}
 	
+	@RequestMapping(value="/gous/scheList", method=RequestMethod.GET)
+	public String gosuschelist(String email, Model model, HttpServletRequest request) {
+		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
+		HttpSession session = request.getSession();
+		int flag = (int)session.getAttribute("flag");
+		System.out.println(flag);
+		if(flag==2) {
+			list = sService.schelist(email);
+			model.addAttribute("list", list);
+		}
+		if(flag==1) {
+			list = sService.userschelist(email);
+			model.addAttribute("list", list);
+		}
+		return ".gosushcedulelist";
+	}
 	@RequestMapping(value="/progress", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String medium(int scheduleNum, Model model) {
