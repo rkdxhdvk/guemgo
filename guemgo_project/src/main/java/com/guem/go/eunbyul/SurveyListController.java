@@ -75,4 +75,15 @@ public class SurveyListController {
 		mv.addObject("list", list);
 		return mv;
 	}
+	@RequestMapping(value="/senddelete",method=RequestMethod.GET)
+	public ModelAndView senddelete(int num,String email) {
+		System.out.println(num+email);
+		ModelAndView mv = new ModelAndView();
+		int n=surveyservice.requiredelete(num);
+		System.out.println(n);
+		mv.addObject("email", email);
+		mv.addObject("n", n);
+		mv.setViewName("redirect:/sendlist");
+		return mv;
+	}
 }

@@ -61,5 +61,8 @@ public class SurveyService {
 	public List<AnswerVo> answer(int num) {
 		return dao.answer(num);
 	}
+	public int requiredelete(int num) { //보낸 요청서 삭제기능
+		return dao.requiredelete(num);
+	}
 	
 }

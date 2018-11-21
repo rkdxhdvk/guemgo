@@ -132,4 +132,11 @@ public class ClassController {
 		
 	}
 	
+	@RequestMapping(value="/classUpdate",method=RequestMethod.GET)
+	public ModelAndView classupdate() {
+
+		ModelAndView mv=new ModelAndView(".eunbyul.classUpdate");
+		return mv;
+	}
+	
 }
