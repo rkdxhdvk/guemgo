@@ -18,4 +18,8 @@
 	<insert id="makeRoom" parameterType="com.guem.go.kidong.RoomVo">
 		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum})
 	</insert>
+	<select id="selectRoom" parameterType="com.guem.go.kidong.RoomVo" resultType="int">
+		select * from room where email = #{email} and other = #{other} and lecturenum = #{lecturenum} and rownum = 1 
+		order by room desc
+	</select>
 </mapper>  

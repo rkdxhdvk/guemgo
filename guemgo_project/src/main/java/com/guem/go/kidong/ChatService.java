@@ -30,4 +30,8 @@ public class ChatService {
 	public int makeRoom(RoomVo vo) {
 		return dao.makeRomm(vo);
 	}
+	
+	public int selectRoom(RoomVo vo) {
+		return dao.selectRoom(vo);
+	}
 }
