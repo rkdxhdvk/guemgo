@@ -25,7 +25,7 @@ public class NreplyService {
 		return dao.update(vo);
 	}
 	
-	public int delete(int num) {
-		return dao.delete(num);
+	public int delete(int rnum) {
+		return dao.delete(rnum);
 	}
 }

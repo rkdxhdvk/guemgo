@@ -31,7 +31,7 @@ public class QboardController {
 		map.put("field", field);
 
 		int totalRowCount = qboardService.getCount(map);
-		PageUtil pu = new PageUtil(pageNum, totalRowCount, 15, 5);
+		PageUtil pu = new PageUtil(pageNum, totalRowCount, 20, 5);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 

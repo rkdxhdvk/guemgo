@@ -15,7 +15,7 @@
 </style>
 <body>
 <div class="container-fluid">
-	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">상세보기</p>
 
 		<button type="button" class="btn btn-primary" style="float: right;"
@@ -23,7 +23,7 @@
 			<i class='fas fa-reply'></i>
 		</button>
 
-		<c:if test="${sessionScope.email == vo.email }">
+		<c:if test="${sessionScope.email == vo.email || sessionScope.flag == 0}">
 			<button type="submit" class="btn btn-primary"
 				style="float: right; margin-right: 10px;" title="삭제"
 				onclick="deleteSubmit()">
@@ -181,7 +181,7 @@
 				<fmt:formatDate value="${comm.regdate }"
 					pattern="yyyy-MM-dd HH:mm:ss" var="time" />
 				<div class="panel panel-primary">
-					<c:if test="${sessionScope.email == comm.email }">
+					<c:if test="${sessionScope.email == comm.email || sessionScope.flag == 0}">
 						<button type="button" class="btn btn-primary pull-right"
 							onclick="location.href ='<c:url value='/ncomment/delete?cnum=${comm.cnum }&num=${vo.num }'/>'"
 							title="삭제" style="margin: 3px;">
@@ -209,8 +209,15 @@
 								pattern="yyyy-MM-dd HH:mm:ss" var="regdate" />
 								<div class="panel panel-default">
 									<div class="panel-body">
+									<c:if test="${sessionScope.email == reply.email || sessionScope.flag == 0 }">
+										<button type="submit" class="btn btn-primary"
+											style="float: right;margin-left: 10px;" title="삭제"
+											onclick="location.href ='<c:url value='/nreply/delete?rnum=${reply.num }&num=${vo.num }'/>'">
+											<i class="fas fa-trash-alt fa-xs"></i>
+										</button>
+									</c:if>
 										<span>${reply.email }</span> <span>${reply.content }</span> <span
-											class="time-right">${regdate }</span>
+											class="time-right" style="padding-top: 10px;">${regdate }</span>
 									</div>
 								</div>
 							</c:forEach>

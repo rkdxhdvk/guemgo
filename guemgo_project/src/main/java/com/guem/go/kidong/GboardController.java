@@ -45,7 +45,7 @@ public class GboardController {
 		map.put("sort", sort);
 
 		int totalRowCount = service.getCount(map);
-		PageUtil pu = new PageUtil(pageNum, totalRowCount, 10, 5);
+		PageUtil pu = new PageUtil(pageNum, totalRowCount, 20, 5);
 		map.put("startRow", pu.getStartRow());
 		map.put("endRow", pu.getEndRow());
 		List<GboardVo> list = service.list(map);

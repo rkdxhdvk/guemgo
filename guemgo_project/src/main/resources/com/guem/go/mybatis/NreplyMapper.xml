@@ -21,6 +21,6 @@
 	</update>
 	<delete id="delete" parameterType="int">
 		delete from nreply where
-		num = #{num}
+		num = #{rnum}
 	</delete>
 </mapper>

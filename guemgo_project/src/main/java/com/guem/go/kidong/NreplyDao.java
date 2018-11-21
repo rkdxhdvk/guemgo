@@ -28,7 +28,7 @@ public class NreplyDao {
 		return session.update(NAMESPACE + "update", vo);
 	}
 
-	public int delete(int num) {
-		return session.delete(NAMESPACE + "delete", num);
+	public int delete(int rnum) {
+		return session.delete(NAMESPACE + "delete", rnum);
 	}
 }

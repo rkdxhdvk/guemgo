@@ -32,6 +32,12 @@
 	integrity='sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns'
 	crossorigin='anonymous'>    
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>	
+<style type="text/css">
+	#content {
+		min-height: 1100px;
+		padding-top: 145px;
+	}
+</style>
 </head>
 <body>
 <div id="wrap">

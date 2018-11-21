@@ -17,7 +17,7 @@
 	</c:forEach>
 </ul> --%>
 <!-- //////////////////////////Header////////////////////////// -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex;padding-left: 100px;padding-right: 100px;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex;padding-left: 80px;padding-right: 80px;">
 <%-- 		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a> --%>
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
 			<span class="navbar-toggler-icon"></span>

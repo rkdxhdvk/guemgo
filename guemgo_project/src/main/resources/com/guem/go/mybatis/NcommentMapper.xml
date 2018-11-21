@@ -23,7 +23,7 @@
 
 	<select id="replys" resultType="com.guem.go.kidong.NreplyVo"
 		parameterType="int">
-		select cnum,email,content,regdate from nreply where cnum = #{cnum}
+		select num,cnum,email,content,regdate from nreply where cnum = #{cnum}
 	</select>
 
 	<select id="list" resultMap="commentMap" parameterType="int">
@@ -39,6 +39,7 @@
 		<collection property="comments"
 			javaType="java.util.ArrayList" column="cnum" ofType="com.guem.go.kidong.NreplyVo"
 			select="replys">
+			<result property="num" column="num" />
 			<result property="cnum" column="cnum" />
 			<result property="email" column="email" />
 			<result property="content" column="content" />

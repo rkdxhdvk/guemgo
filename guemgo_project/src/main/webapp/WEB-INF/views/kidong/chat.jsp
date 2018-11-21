@@ -334,7 +334,7 @@ body {
 </script>
 	${isschedule }
 	<input type="hidden" value="${sessionScope.email }" id="email">
-	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">채팅</p>
 	</div>
 

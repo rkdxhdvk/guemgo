@@ -47,6 +47,17 @@ public class NcommentController {
 		}
 	}
 	
+	@RequestMapping(value="/nreply/delete", method=RequestMethod.GET)
+	public String deleteReply(int rnum,int num) {
+		System.out.println(rnum);
+		try {
+			service2.delete(rnum);
+			return "redirect:/nboard/detail?num="+num+"&sort=1";
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+	}
 	
 	
 }

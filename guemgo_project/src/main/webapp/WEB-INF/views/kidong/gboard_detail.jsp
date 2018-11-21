@@ -10,7 +10,7 @@
 }
 </style>
 	<div class="container-fluid">
-		<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+		<div class="container-fluid" style="margin-bottom: 15px;">
 			<p class="text-left" style="font-size: x-large;">상세보기</p>
 
 			<button type="button" class="btn btn-primary" style="float: right;"
@@ -18,7 +18,7 @@
 				<i class='fas fa-reply'></i>
 			</button>
 
-			<c:if test="${sessionScope.email == vo.email }">
+			<c:if test="${sessionScope.email == vo.email || sessionScope.flag == 0}">
 				<button type="submit" class="btn btn-primary"
 					style="float: right; margin-right: 10px;" title="삭제"
 					onclick="deleteSubmit()">
@@ -225,7 +225,7 @@
 					<fmt:formatDate value="${comm.regdate }"
 						pattern="yyyy-MM-dd HH:mm:ss" var="time" />
 					<div class="panel panel-primary">
-						<c:if test="${sessionScope.email == comm.email }">
+						<c:if test="${sessionScope.email == comm.email || sessionScope.flag == 0}">
 							<button type="button" class="btn btn-primary pull-right"
 								onclick="location.href ='<c:url value='/gboard/list'/>'"
 								title="삭제" style="margin: 3px;">
@@ -275,7 +275,7 @@
 
 	<script id="template-list-item" type="text/template">
 	<div class="panel panel-primary">
-		<c:if test="${sessionScope.email == email}">
+		<c:if test="${sessionScope.email == email || sessionScope.flag == 0}">
 						<button type="button" class="btn btn-primary pull-right"
 							onclick="deleteComment({cnum})" title="삭제" style="margin: 3px;">
 							<i class='fas fa-trash-alt'></i>

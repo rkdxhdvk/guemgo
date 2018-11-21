@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">공지 게시판</p>
 
 		<c:choose>

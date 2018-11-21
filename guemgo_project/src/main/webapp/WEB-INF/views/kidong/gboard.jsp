@@ -4,7 +4,7 @@
 
 <body>
 	<c:remove var="code" scope="session"/>
-	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">자유 게시판</p>
 
 		<c:choose>

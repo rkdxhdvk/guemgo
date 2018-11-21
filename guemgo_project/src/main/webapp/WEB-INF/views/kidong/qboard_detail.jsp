@@ -8,14 +8,14 @@
 	color: #999;
 }
 </style>
-	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
+	<div class="container-fluid" style="margin-bottom: 15px;">
 		<div class="container-fluid" style="margin-bottom: 15px;">
 			<p class="text-left" style="font-size: x-large;">상세보기</p>
 			<button type="button" class="btn btn-primary" style="float: right;"
 				onclick="location.href ='<c:url value='/qboard/list'/>'" title="취소">
 				<i class='fas fa-reply'></i>
 			</button>
-			<c:if test="${sessionScope.email == vo.email }">
+			<c:if test="${sessionScope.email == vo.email || sessionScope.flag == 0}">
 				<button type="submit" class="btn btn-primary"
 					style="float: right; margin-right: 10px;" title="삭제"
 					onclick="deleteSubmit()">
@@ -189,6 +189,8 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:choose>
+								<c:when test="${list } != ''">
 							<c:forEach var="vo2" items="${list }" varStatus="status">
 								<tr>
 									<td style="text-align: center;"><c:choose>
@@ -227,11 +229,16 @@
 									<td style="text-align: right;">${vo2.regdate }</td>
 								</tr>
 							</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td colspan="5">답변이 없습니다.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 				</div>
-
-
 			</c:when>
 			<c:otherwise>
 				<button type="button" class="btn btn-primary btn-block"
