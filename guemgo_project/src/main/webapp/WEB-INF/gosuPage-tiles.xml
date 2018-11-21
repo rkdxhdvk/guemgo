@@ -17,7 +17,7 @@
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/gosuProfile.jsp"/>
 	</definition>
 	
-	<definition name=".schedulelist" extends=".gosuPage">
+	<definition name=".gosuschedulelist" extends=".gosuPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
 	</definition>
 	

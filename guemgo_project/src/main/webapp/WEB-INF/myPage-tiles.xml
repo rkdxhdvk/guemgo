@@ -21,7 +21,7 @@
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/pointRecord.jsp"/>
 	</definition>
 	
-	<definition name=".schedulelist" extends=".myPage">
+	<definition name=".userschedulelist" extends=".myPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
 	</definition>
 	

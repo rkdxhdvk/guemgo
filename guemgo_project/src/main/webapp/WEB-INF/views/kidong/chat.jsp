@@ -16,13 +16,13 @@
 <script src='resources/fullcalender/lib/moment.min.js'></script>
 <script src='resources/fullcalender/fullcalendar.min.js'></script>
 <script src='resources/fullcalender/demo-to-codepen.js'></script>
-<link
+<!-- <link
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
 	rel='stylesheet' />
 <script
 	src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
 <script
-	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script> -->
 
 <style>
 html, body {
@@ -123,7 +123,7 @@ body {
 		var matchNum = parseInt(document.getElementById("matchNum").value);
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
-		var other = document.getElementById("other").value ;
+		var other = document.getElementById("other").value;
 		/* ar isschedule = parseInt(document.getElementById("isschedule").value) ; */
 		if(${isschedule }==1){
 			var events = [];
@@ -189,6 +189,7 @@ body {
 					editable : true,
 					displayEventTime : false,
 					///
+					if(${sessionScope.flag == 2}){
 					dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
@@ -262,7 +263,7 @@ body {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						
 					}, */
-					eventRender: function(eventObj, $el) {
+					/* eventRender: function(eventObj, $el) {
 				        $el.popover({
 				          title: eventObj.title,
 				          content: eventObj.description,
@@ -270,7 +271,7 @@ body {
 				          placement: 'top',
 				          container: 'body'
 				        });
-					},
+					}, */
 					eventDrop: function(event, delta, revertFunc) {
 					    if (!confirm("일정을 변경하시겠습니까?")) {	
 					      revertFunc();
@@ -291,7 +292,8 @@ body {
 						    	});
 						    }
 
-						  },
+						  }
+					  },
 					events : events	
 				});
 		
@@ -418,9 +420,9 @@ body {
 						<input type="hidden" value= ${sche_detailNum } name="sche_detailNum" id="sche_detailNum">
 						<input type="hidden" value= ${scheduleNum } name="scheduleNum" id="scheduleNum">
 						<input type="hidden" value= ${lectureNum } name="lectureNum" id="lectureNum">
-						<input type="hidden" value= ${matchNum } name="matchNum" id="matchNum">
+						<input type="hidden" value= ${req_num } name="matchNum" id="matchNum">
 						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
-						<input type="hidden" value="${other}" name="other" id="other"> 
+						<input type="hidden" value="${other}" name="other" id="other">
 						
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
