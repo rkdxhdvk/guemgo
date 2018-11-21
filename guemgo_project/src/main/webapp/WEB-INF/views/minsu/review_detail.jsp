@@ -53,7 +53,9 @@
 			</div>
 		</div>
 		<div class="panel-body">${vo.content }</div>
-		<div class="panel-body"><img src="resources/upload/${vo.img}"></div>
+		<c:if test="${vo.img != 'non'}">
+			<div class="panel-body"><img src="resources/upload/${vo.img}"></div>
+		</c:if>
 	</div>
 
 	<div class="container-fluid" id="comments"

@@ -43,7 +43,13 @@ public class ReviewController {
 	public String insert(HttpServletRequest req, MultipartFile img, HttpSession session) {
 		String uploadPath=session.getServletContext().getRealPath("/resources/upload");
 		String orgfilename = img.getOriginalFilename();
-		String savefilename=UUID.randomUUID() + "_" + orgfilename;	
+		System.out.println("daw" + orgfilename);
+		String savefilename = "";
+		if(orgfilename=="") {
+			savefilename = "non";
+		}else {
+			savefilename = UUID.randomUUID() + "_" + orgfilename;	
+		}
 		System.out.println("ddd");
 		try {
 			InputStream is=img.getInputStream();
@@ -57,7 +63,7 @@ public class ReviewController {
 		String content = req.getParameter("content");
 		int flag = Integer.parseInt(req.getParameter("flag"));
 		int star = Integer.parseInt(req.getParameter("star"));
-		String other = req.getParameter("email");
+		String other = req.getParameter("other");
 		ReviewVo vo = new ReviewVo(0, email, title, content, 0, flag, star, other, null, 0, savefilename);
 		reService.insert(vo);
 		HashMap<String, Object> map = new HashMap<>();

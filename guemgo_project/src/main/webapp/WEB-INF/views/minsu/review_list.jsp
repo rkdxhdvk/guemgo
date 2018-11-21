@@ -27,6 +27,8 @@
 						<c:if test="${field == 'email' }">selected="selected"</c:if>>작성자</option>
 					<option value="content"
 						<c:if test="${field == 'content' }">selected="selected"</c:if>>내용</option>
+					<option value="content"
+						<c:if test="${field == 'other' }">selected="selected"</c:if>>고수</option>
 				</select>
 			</div>
 			<div class="input-group">
@@ -48,6 +50,7 @@
 				<thead>
 					
 					<th>글번호</th>
+					<th>후기대상</th>
 					<th>평점</th>
 					<th>글제목</th>
 					<th>댓글</th>
@@ -58,6 +61,7 @@
 				<tbody>
 					<c:forEach var="vo" items="${list }">
 						<td style="width: 5%">${vo.reviewNum }</td>
+						<td style="width: 5%">${vo.other } 고수님</td>
 						<c:choose>
 							<c:when test="${vo.star==5 }">
 								<td style="width:5%">★★★★★</td>

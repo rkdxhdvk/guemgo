@@ -48,7 +48,6 @@ star>.input.focus{outline:1px dotted #ddd;}
 		<input type="hidden" name="flag" value="${sessionScope.flag }">
 		
 		<h3 style="margin-bottom: 25px;">후기 등록</h3>
-		<!-- 별점 주기 임시-->
 		<div class="form-group">
 	<span class="star">
 		<span class="input">
@@ -67,9 +66,9 @@ star>.input.focus{outline:1px dotted #ddd;}
 	</div>
 	<script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/star.js"></script>
-	
+		
 		<!-- 누구에 대해 쓸거니? 어디서 가져올까-->
-		<input type="hidden" name="other" value="min">
+		<input type="hidden" name="other" value="<%=request.getParameter("other") %>">
 		<!-- ////////////////////////////// -->
 		
 		<div class="form-group">

@@ -108,6 +108,7 @@ public class ScheListController {
 		else pro1 = (double)attCnt/list.size();
 		System.out.println(pro1);
 		double pro = Double.parseDouble(String.format("%.2f",pro1));
+		model.addAttribute("pro", pro);
 		JSONObject obj = new JSONObject();
 		obj.put("pro", pro*100);
 		obj.put("scheduleNum", scheduleNum);

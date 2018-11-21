@@ -14,24 +14,33 @@ $(document).ready(
 						$( ".progressbar"+data.scheduleNum ).progressbar({
 						      value: data.pro
 						});
+						console.log(data.pro);
 						
-						/* var ss = "진행률 " + data.pro;
-						$( ".progressbar"+data.scheduleNum ).html(ss); */
+						var ss = "진행률 " + data.pro;
+						$( ".progress"+data.scheduleNum ).html(ss);
+						if(data.pro>=100){
+							console.log("dddd");
+							var sss = "<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${vo.other }'> <input type='submit' value='후기 남기기'> </form>";
+							$( ".pro"+data.scheduleNum ).html(sss);
+						}
 				}
 			});
 			</c:forEach>
+			
 		}
 );
 </script>
 
-	${sessionScope.email }
 	<h1>스케줄 리스트</h1>
 	<ul>
 		<c:forEach items="${list }" var="vo">
 				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
-				${vo.lecturename }</a>
+				${vo.other}님과의 ${vo.lecturename }</a>
 				
-				<div class="progressbar${vo.scheduleNum }" style="width: 100px;"></div>
+				<div class="progressbar${vo.scheduleNum }" style="width: 200px;">
+				<a class="progress${vo.scheduleNum }"></a>
+				</div>
+				<div class="pro${vo.scheduleNum }"></div>
+				
 		</c:forEach>
 	</ul>
-	<a href="<c:url value='/'/>">홈으로</a>
