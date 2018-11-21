@@ -7,7 +7,6 @@
 <!--  
 ---------------------------------------------
 2018-10-24	윤우현 파일 생성
-
 ---------------------------------------------
 -->
 <%-- <h2>카테고리</h2>
@@ -31,7 +30,7 @@
     margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="80px"  ></a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
 		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">채팅</a>
-		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">고수찾기</a>
+		<a class="navbar-brand" href="<c:url value='/findgosu'/>" style="padding-top: 80px;">고수찾기</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto" style="padding-top: 60px;list-style: none;">
 				
@@ -126,8 +125,6 @@ s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
-
-
 	function logincheck(){
 		var email=$('#email').val ();
 		 if (email == '' || null || undefined || 0) {
@@ -135,8 +132,6 @@ s0.parentNode.insertBefore(s1,s0);
 		      document.location.href="<c:url value='/'/>";
 		  }
 	}
-
-
 </script>
 <!--End of Tawk.to Script-->
 
@@ -239,7 +234,6 @@ function checkLogin() {
 	
 	return false;
 }
-
 $(document).ready(function()
 		{
 			
@@ -249,12 +243,8 @@ $(document).ready(function()
 		        $(this).find("input").val("");
 		        $(this).find("#errMsg").html("");
 		    }) ;
-
 		});
 		
 </script>
 <!--///////////// 로그인 모달 끝 //////////// -->
-
-
-
 

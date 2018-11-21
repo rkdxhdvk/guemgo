@@ -117,6 +117,9 @@ public class CalController {
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
 		model.addAttribute("scheselect", "ok");
+		
+		int isschedule = Integer.parseInt(request.getParameter("isschedule"));
+		model.addAttribute("isschedule", isschedule);
 		//return "minsu/click";
 		return ".kidong.chat";
 	}

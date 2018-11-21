@@ -16,6 +16,14 @@
 <script src='resources/fullcalender/lib/moment.min.js'></script>
 <script src='resources/fullcalender/fullcalendar.min.js'></script>
 <script src='resources/fullcalender/demo-to-codepen.js'></script>
+<link
+	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+	rel='stylesheet' />
+<script
+	src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+<script
+	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+
 <style>
 html, body {
 	margin: 0;
@@ -116,6 +124,7 @@ body {
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value ;
+		/* ar isschedule = parseInt(document.getElementById("isschedule").value) ; */
 		if(${isschedule }==1){
 			var events = [];
 			<c:forEach items="${detailList }" var="vo">
@@ -164,11 +173,7 @@ body {
 				});
 			});
 			$("#sche_cancel").click(function() {
-					$.getJSON("<c:url value='/caldelete'/>", {scheduleNum:scheduleNum}, 
-							function(data) {
-									alert("스케줄 취소");
-					});
-					location.href=".main";
+					location.href=".kidong.chat";
 			});
 		}
 		$('#calendar').fullCalendar(
@@ -182,6 +187,7 @@ body {
 						right : 'month,agendaDay'
 					},
 					editable : true,
+					displayEventTime : false,
 					///
 					dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
@@ -195,7 +201,11 @@ body {
 		                		      modal: true,
 		                		      buttons: {
 		                		        "삭제": function() {
-		                		        	//ajax
+		                		        	$.ajax({
+												url:"<c:url value='/caldelete'/>",
+												dataType:"json",
+												data : {id:event.id}
+											});	
 		                		        	$('#calendar').fullCalendar('removeEvents', event.id);
 		                		        	 $( this ).dialog( "close" );
 		                		        },
@@ -219,7 +229,10 @@ body {
 				   		                		    	  "수정" : function() {
 				   		                		    		var memo = document.getElementById("memo").value;
 				   		                		    		event.description = memo;
-				   		                		    		//ajax
+				   		                		    		$.getJSON("<c:url value='/calupdate'/>",{id:event.id, start:event.start.format(), end:event.end.format(), description:event.description}, 
+				   		     									function(data) {
+				   		     					    				console.log(event.start.format() + " " + event.end.format() + " " + event.id);
+				   		     					    			});
 															$('#calendar').fullCalendar(
 																	'updateEvent', event);
 															 $( this ).dialog( "close" );
@@ -249,16 +262,33 @@ body {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						
 					}, */
+					eventRender: function(eventObj, $el) {
+				        $el.popover({
+				          title: eventObj.title,
+				          content: eventObj.description,
+				          trigger: 'hover',
+				          placement: 'top',
+				          container: 'body'
+				        });
+					},
 					eventDrop: function(event, delta, revertFunc) {
-					    if (!confirm("일정을 변경하시겠습니까?")) {
+					    if (!confirm("일정을 변경하시겠습니까?")) {	
 					      revertFunc();
 					    }else{
+					    	$.getJSON("<c:url value='/calupdate'/>",{id:event.id, start:event.start.format(), end:event.end.format(), description:event.description}, 
+									function(data) {
 					    	console.log(event.start.format() + " " + event.end.format() + " " + event.id);
+					    	});
 					    }
 					  },
 					  eventResize: function(event, delta, revertFunc) {
 						    if (!confirm("시간을 바꾸시겠습니까?")) {
 						      revertFunc();
+						    }else{
+						    	$.getJSON("<c:url value='/calupdate'/>",{id:event.id, start:event.start.format(), end:event.end.format(), description:event.description}, 
+										function(data) {
+						    	console.log(event.start.format() + " " + event.end.format() + " " + event.id);
+						    	});
 						    }
 
 						  },
@@ -391,22 +421,23 @@ body {
 						<input type="hidden" value= ${matchNum } name="matchNum" id="matchNum">
 						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
 						<input type="hidden" value="${other}" name="other" id="other"> 
+						
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
 						</c:if>
-						<c:if test="${isschedule==0 }">
+						<c:if test="${sessionScope.flag==2 && isschedule==0 }">
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>
 								<input type="button" id="sche_confirm" value="스케줄 확정">
 								<!-- <input type="button" id="sche_cancel" value="취소"> -->
 							</c:when>
-							
 							<c:otherwise>	
 					<form action="<c:url value='/calaaa'/>" method="get">
 						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<input type="hidden" value="${other}" name="other" id="other"> 
+					<input type="hidden" value="${isschedule}" name="isschedule" id="isschedule"> 
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
@@ -467,7 +498,6 @@ body {
 							</c:otherwise>
 						</c:choose>
 						</c:if>
-
 					</div>
 					
 

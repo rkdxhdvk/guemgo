@@ -14,14 +14,16 @@
 			<c:choose>
 				<c:when test="${sessionScope.email == vo.email}">
 					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu3.png"> ${vo.other }
+					<c:set var="other1" value="${vo.other }"/>
 				</c:when>
 				<c:otherwise>
 					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 상대방 : ${vo.email }
+					<c:set var="other1" value="${vo.email }"/>
 				</c:otherwise>
 			</c:choose>
 			<br><br>
 				강의명 : ${vo.lecturename }
-				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }&other=${vo.other }'/>" class="pull-right">입장</a>
+				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }&other=${other1 }'/>" class="pull-right">입장</a>
 			</div>
 		</div>
 	</div>

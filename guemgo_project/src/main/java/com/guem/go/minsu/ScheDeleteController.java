@@ -15,9 +15,9 @@ public class ScheDeleteController {
 	private ScheService sService;
 	@RequestMapping(value="/caldelete",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public String delete(int scheduleNum) {
-		System.out.println(scheduleNum);
-		sService.schedelete(scheduleNum);
+	public String delete(int id) {
+		System.out.println(id);
+		dService.sche_detailDelete(id);
 		return "";
 	}
 	
