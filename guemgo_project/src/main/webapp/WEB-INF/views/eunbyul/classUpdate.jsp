@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <style>
+h1 {
+	font-family: 'Jeju Gothic';
+	font-size:28px;
+}
+
 input[type="checkbox"] {
 	display: inline-block;
 	width: 20px;
@@ -13,27 +18,13 @@ input[type="checkbox"] {
 	border: 2px solid #bcbcbc;
 	cursor: pointer;
 }
-input[type="radio"] {
-    display:none;
-}
 
-input[type="radio"] + label {
-    color:#f2f2f2;
-    font-family:Arial, sans-serif;
-}
 
-input[type="radio"] + label span {
-    display:inline-block;
-    width:19px;
-    height:19px;
-    margin:-2px 10px 0 0;
-    vertical-align:middle;
-    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -38px top no-repeat;
-    cursor:pointer;
-}
-input[type="radio"]:checked + label span {
-    background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/check_radio_sheet.png) -57px top no-repeat;
-}
+.radio {overflow:hidden;display:inline-block;position:relative;height:26px;box-sizing:border-box;cursor:pointer;}
+.radio input {overflow:hidden;display:none;width:0px;height:0px;border:0 none;font-size:0;line-height:0;clip:rect(0 0 0 0);opacity:0;}
+.radio .ico {position:absolute;left:3px;top:3px;width:20px;height:20px;background:url("images/ico_radiocomm.jpg") no-repeat 0 0;}/* 이미지는 디자인에 맞게 변경 */
+.radio .txt {display:inline-block;padding-left:30px;font-size:16px;color:#333;}/* 텍스트는 디자인에 맞게 변경 */
+.radio input:checked + .ico {background-position:0 -40px;}/* 체크됐을때, 이미지변경 */
 </style>
 <title>내 강의 목록</title>
 
@@ -41,12 +32,13 @@ input[type="radio"]:checked + label span {
 <body>
 	<div class="container-fluid"
 		style="margin-bottom: 15px; padding-top: 180px;">
-		<div style="width: 500px; height: 830px; margin: auto; border-radius: 10px; box-shadow: 5px 5px 20px #636363;">
+		<div style="width: 500px; height: 830px; margin: auto; border-radius: 10px; border: 0.5px solid #a7a8a9;">
 			<div style="width: 500px; height: 830px; margin: auto;">
+			<div  style="width: 498px; height: 120px;border-bottom: 1px solid #e9ecef; margin: auto;">
 			<br>
 				<h1 style="text-align: center;">강의정보 수정하기</h1>
 				<br>
-
+					</div>
 				<div class="modal-body">
 					<form action="classinsertOk" method="post">
 						<input type="hidden" name="gonum" value=${vo.go_num }>
@@ -87,6 +79,7 @@ input[type="radio"]:checked + label span {
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>가능한 요일은 언제인가요?</label><br> 
+								
 								<input type="checkbox" name="days" value="월" class="cb1" >월 &nbsp; &nbsp;
 								<input	type="checkbox" name="days" value="화" class="cb1" >화&nbsp; &nbsp;
 								<input type="checkbox" name="days" value="수"
@@ -101,13 +94,14 @@ input[type="radio"]:checked + label span {
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>언제 레슨을 하기를 원하시나요</label><br> <input type="radio"
-									name="time" value="오전(8시~12시)" class="navbar-brand">오전(8시~12시)
+								<label>언제 레슨을 하기를 원하시나요</label>
+								<br> <input type="radio"
+									name="time" value="오전(8시~12시)" id="ex_rd2">오전(8시~12시)
 								<input type="radio" name="time" value="점심(12시~3시)"
-									class="navbar-brand">점심(12시~3시) <input type="radio"
-									name="time" value="오후(3시~6시)" class="navbar-brand">오후(3시~6시)
+									id="ex_rd2">점심(12시~3시) <input type="radio"
+									name="time" value="오후(3시~6시)" id="ex_rd2">오후(3시~6시)
 								<input type="radio" name="time" value="저녁(6시~11시)"
-									class="navbar-brand">저녁(6시~11시)
+									id="ex_rd2">저녁(6시~11시)
 							</div>
 						</div>
 						<div class="form-row">
