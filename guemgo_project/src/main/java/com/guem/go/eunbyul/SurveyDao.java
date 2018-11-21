@@ -77,4 +77,8 @@ public class SurveyDao {
 	public List<AnswerVo> answer(int num) {
 		return sqlSession.selectList(NAMESPACE+".answer",num);
 	}
+
+	public int requiredelete(int num) {
+		return sqlSession.delete(NAMESPACE+".requiredelete",num);
+	}
 }

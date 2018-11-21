@@ -50,7 +50,7 @@
 							<td style="width: 10%">${vo.day }</td>
 							<td style="width: 10%">${vo.time }</td>
 							<td style="width: 5%"><a
-								href="<c:url value='/eunbyul/classUpdate?lectureNum=${vo.lectureNum }'/>">수정</a></td>
+								href="<c:url value='/classUpdate?lectureNum=${vo.lectureNum }'/>">수정</a></td>
 							<td style="width: 5%"><a
 								href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }'/>">삭제</a></td>
 						</tr>

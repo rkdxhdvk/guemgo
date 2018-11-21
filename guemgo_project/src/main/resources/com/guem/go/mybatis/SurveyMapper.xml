@@ -51,7 +51,8 @@
 	<select id="answer" parameterType="int" resultType="com.guem.go.eunbyul.AnswerVo">
 		select * from answer where req_num=#{num}
 	</select>
-	
-	
+	<update id="requiredelete" parameterType="int">
+		update require set LEC_START=3 where req_num=#{num}
+	</update>
 </mapper>
 

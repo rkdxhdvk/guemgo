@@ -34,6 +34,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${list }">
+					<c:if test="${vo.lec_start!=3 }">
 						<td style="width: 10%">${vo.req_num }</td>
 						<%-- <td style="width: 10%"><a
 							href="<c:url value='/receivedetail?num=${vo.req_num } & email =${email } & lecturename = ${vo.lecturename }'/>">${vo.req_num }</a></td> --%>
@@ -61,9 +62,12 @@
 						</td>
 						<td style="width: 20%"><a
 							href="<c:url value='/senddetail?num=${vo.req_num }'/>">자세히 보기</a></td>
-						<td style="width: 20%">삭제</td>
+						<td style="width: 20%"><a
+							href="<c:url value='/senddelete?num=${vo.req_num }&email=${email }'/>">삭제</a></td>
 						</tr>
+						</c:if>
 						</c:forEach>
+						
 				</tbody>
 				
 			</table>

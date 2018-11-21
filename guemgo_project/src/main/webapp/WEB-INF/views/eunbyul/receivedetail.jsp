@@ -42,13 +42,18 @@
 					</c:forEach>
 					<br>
 					<span>------------------------------------------------------------------------------------------------</span><br>
-					<c:if test="${state==0 }">
+					<c:choose>
+					<c:when test="${state==0 }">
 					<button type="button" class="btn btn-primary"
-				onclick='location.href="<c:url value='/makeRoom?email=${email }&other=${other }&lecturenum=${lecturenum }'/>"'>채팅걸기</button>
-					</c:if>
-					<c:if test="${state==1 }">
+				onclick='location.href="<c:url value='/makeRoom?email=${email }&other=${other }&lecturenum=${lecturenum }&req_num=${req_num }'/>"'>채팅걸기</button>
+					</c:when>
+					<c:when test="${state==1 || state==2 }">
 					<h3>아쉽지만 매칭이 완료된 요청서 입니다.</h3>
-					</c:if>
+					</c:when>
+					<c:when test="${state==3 }">
+					<h3>아쉽지만 취소된 요청서 입니다.</h3>
+					</c:when>
+					</c:choose>
 				</div>
 			</div>
 		</div>
