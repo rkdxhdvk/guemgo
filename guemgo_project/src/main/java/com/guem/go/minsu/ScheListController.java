@@ -47,10 +47,10 @@ public class ScheListController {
 			list = sService.userschelist(email);
 			model.addAttribute("list", list);
 		}
-		return ".usershcedulelist";
+		return ".userschedulelist";
 	}
 	
-	@RequestMapping(value="/gous/scheList", method=RequestMethod.GET)
+	@RequestMapping(value="/gosu/scheList", method=RequestMethod.GET)
 	public String gosuschelist(String email, Model model, HttpServletRequest request) {
 		List<ScheduleVo> list=new ArrayList<ScheduleVo>();
 		HttpSession session = request.getSession();
@@ -64,7 +64,7 @@ public class ScheListController {
 			list = sService.userschelist(email);
 			model.addAttribute("list", list);
 		}
-		return ".gosushcedulelist";
+		return ".gosuschedulelist";
 	}
 	@RequestMapping(value="/progress", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody

@@ -5,21 +5,13 @@
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<p class="text-left" style="font-size: x-large;">공지 게시판</p>
 
-		<c:choose>
-			<c:when test="${sessionScope.email != null }">
+			<c:if test="${sessionScope.flag == 0 }">
 				<button style="float: right;" type="button"
 					class="btn btn-primary btn-block" title="글쓰기" data-toggle="modal"
 					data-target="#myModal">
 					<i class='fas fa-edit'></i>글쓰기
 				</button>
-			</c:when>
-			<c:otherwise>
-				<button style="float: right;" type="button"
-					class="btn btn-primary btn-block" title="글쓰기" onclick="needLogin()">
-					<i class='fas fa-edit'></i>글쓰기
-				</button>
-			</c:otherwise>
-		</c:choose>
+			</c:if>
 	</div>
 
 

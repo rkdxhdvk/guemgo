@@ -14,7 +14,7 @@
 			<p class="text-left" style="font-size: x-large;">상세보기</p>
 
 			<button type="button" class="btn btn-primary" style="float: right;"
-				onclick="location.href ='<c:url value='/gboard/list'/>'" title="취소">
+				onclick="location.href ='<c:url value='/gboard/list'/>'" title="목록으로">
 				<i class='fas fa-reply'></i>
 			</button>
 
@@ -193,7 +193,7 @@
 		<c:choose>
 			<c:when test="${next.num != null }">
 				<div style="float: right;">
-					<strong>${next.title }</strong>
+					<strong style="margin-right: 10px;">${next.title }</strong>
 					<button type="submit" class="btn btn-primary" title="다음글"
 						onclick="location='<c:url value='/gboard/detail?num=${next.num }'/>'">
 						<i class='fas fa-angle-double-right'></i>
@@ -202,7 +202,7 @@
 			</c:when>
 			<c:otherwise>
 				<div style="float: right;">
-					<strong>없음</strong>
+					<strong style="margin-right: 10px;">없음</strong>
 					<button type="submit" class="btn btn-primary" disabled="disabled"
 						title="다음글">
 						<i class='fas fa-angle-double-right'></i>

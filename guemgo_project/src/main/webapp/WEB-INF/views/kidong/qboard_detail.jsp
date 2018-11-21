@@ -12,7 +12,7 @@
 		<div class="container-fluid" style="margin-bottom: 15px;">
 			<p class="text-left" style="font-size: x-large;">상세보기</p>
 			<button type="button" class="btn btn-primary" style="float: right;"
-				onclick="location.href ='<c:url value='/qboard/list'/>'" title="취소">
+				onclick="location.href ='<c:url value='/qboard/list'/>'" title="목록으로">
 				<i class='fas fa-reply'></i>
 			</button>
 			<c:if test="${sessionScope.email == vo.email || sessionScope.flag == 0}">
