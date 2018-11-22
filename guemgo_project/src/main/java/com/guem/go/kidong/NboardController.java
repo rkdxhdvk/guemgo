@@ -21,7 +21,7 @@ public class NboardController {
 
 	@RequestMapping("/nboard/list")
 	public String list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, String sort, String field,
-			String keyword, Model model) {
+			String keyword, Model model,String code) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("field", field);
 		map.put("keyword", keyword);
@@ -41,6 +41,7 @@ public class NboardController {
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
+		model.addAttribute("code", code);
 		return ".kidong.nboard";
 	}
 
@@ -48,10 +49,10 @@ public class NboardController {
 	public String insert(NboardVo vo) {
 		try {
 			service.insert(vo);
-			return "redirect:/nboard/list";
+			return "redirect:/nboard/list?code=success";
 		} catch (Exception ie) {
 			System.out.println(ie.getMessage());
-			return "error";
+			return "redirect:/nboard/list?code=fail";
 		}
 	}
 
@@ -82,10 +83,10 @@ public class NboardController {
 	public String delete(int num) {
 		try {
 			service.delete(num);
-			return "redirect:/nboard/list";
+			return "redirect:/nboard/list?code=success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "redirect:/nboard/list?code=fail";
 		}
 	}
 
@@ -93,10 +94,10 @@ public class NboardController {
 	public String update(NboardVo vo) {
 		try {
 			service.update(vo);
-			return "redirect:/nboard/list";
+			return "redirect:/nboard/list?code=success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "redirect:/nboard/list?code=fail";
 		}
 	}
 }

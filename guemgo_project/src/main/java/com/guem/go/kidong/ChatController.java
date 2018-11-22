@@ -19,6 +19,7 @@ import com.guem.go.minsu.Sche_detailService;
 import com.guem.go.minsu.Sche_detailVo;
 import com.guem.go.minsu.ScheduleVo;
 import com.guem.go.woohyun.GosuService;
+import com.guem.go.woohyun.GosuVo;
 
 @Controller
 public class ChatController {
@@ -27,7 +28,7 @@ public class ChatController {
 	@Autowired
 	private ClassService classService;
 	@Autowired
-	private GosuService goService;
+	private GosuService gosuService;
 	@Autowired
 	private ScheService sService;
 	@Autowired
@@ -66,6 +67,7 @@ public class ChatController {
 			System.out.println(schemap.get("email"));
 			System.out.println(schemap.get("other"));
 			System.out.println(schemap.get("lectureNum"));
+			
 		}else {
 			schemap.put("email", other);
 			schemap.put("other", email);
@@ -73,6 +75,10 @@ public class ChatController {
 			System.out.println(schemap.get("email"));
 			System.out.println(schemap.get("other"));
 			System.out.println(schemap.get("lectureNum"));
+			GosuVo gosuVo=gosuService.gosuDetail(other);
+			List<GosuVo> lectureList = gosuService.gosuDetailLectureList(other);
+			model.addAttribute("gosuVo", gosuVo);
+			model.addAttribute("lectureList",lectureList); 
 		}
 		ScheduleVo scheVo = sService.isschedule(schemap);
 		if(scheVo!=null) {

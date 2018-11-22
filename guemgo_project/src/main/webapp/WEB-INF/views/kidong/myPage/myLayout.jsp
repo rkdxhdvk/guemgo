@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://soomgo.s3.ap-northeast-2.amazonaws.com/static/img/soomgo.ico">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel='stylesheet'
@@ -22,7 +23,7 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<title>Insert title here</title>
+<title>마이페이지</title>
 <style>
 .sidenav {
 	background-color: #f1f1f1;
@@ -33,6 +34,16 @@
 	.row.content {
 		height: auto;
 	}
+}
+#content {
+	min-height: 1100px;
+	}
+#menu {
+	min-height: 1100px;
+}
+#footer {
+	padding-top: 15px;
+	height: 140px;
 }
 </style>
 </head>
@@ -71,8 +82,7 @@
 
 		<div class="container-fluid">
 			<div class="row content">
-				<div id="menu" class="col-sm-2 sidenav hidden-xs"
-					style="height: 800px;">
+				<div id="menu" class="col-sm-2 sidenav hidden-xs">
 					<tiles:insertAttribute name="menu" />
 				</div>
 				<div id="content" class="col-sm-10">

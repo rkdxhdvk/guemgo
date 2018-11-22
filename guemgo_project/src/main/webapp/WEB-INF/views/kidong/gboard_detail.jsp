@@ -259,7 +259,7 @@
 			<c:choose>
 				<c:when test="${sessionScope.email != null }">
 					<textarea class="form-control" rows="5" id="comment"></textarea>
-					<div>
+					<div style="float: right;">
 						<span id="count">0</span>/<span id="max-count">0</span>
 					</div>
 					<button type="button" class="btn btn-primary btn-block"

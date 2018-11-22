@@ -55,6 +55,7 @@ public class GboardController {
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("sort", sort);
+		model.addAttribute("code", code);
 		return ".kidong.gboard";
 	}
 
@@ -83,10 +84,10 @@ public class GboardController {
 						orgfilename, savefilename, 0);
 				service.insert(gboardVo);
 			}
-			return "redirect:/gboard/list";
+			return "redirect:/gboard/list?code=success";
 		} catch (Exception ie) {
 			System.out.println(ie.getMessage());
-			return "error";
+			return "redirect:/gboard/list?code=fail";
 		}
 	}
 
@@ -135,8 +136,13 @@ public class GboardController {
 
 	@RequestMapping(value = "/gboard/delete", method = RequestMethod.GET)
 	public String delete(int num) {
-		service.delete(num);
-		return "redirect:/gboard/list";
+		try {
+			service.delete(num);
+			return "redirect:/gboard/list?code=success";
+		}catch(Exception e) {
+			e.getStackTrace();
+			return "redirect:/gboard/list?code=fail";
+		}
 	}
 
 	@RequestMapping(value = "/gboard/update", method = RequestMethod.POST)
@@ -170,11 +176,11 @@ public class GboardController {
 			}
 			service.update(vo);
 
-			return "redirect:/gboard/list";
+			return "redirect:/gboard/list?code=success";
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "redirect:/gboard/list?code=fail";
 		}
 	}
 
