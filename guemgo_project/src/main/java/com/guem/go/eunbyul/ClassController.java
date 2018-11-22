@@ -1,4 +1,3 @@
-
 package com.guem.go.eunbyul;
 
 
@@ -28,7 +27,7 @@ public class ClassController {
 	
 	@RequestMapping(value = "/classinsert", method = RequestMethod.GET)
 	public ModelAndView classinsert(String email){
-	
+		System.out.println("jmjmjmjmjmjmjmjmjmjmjmjmjmjmjmjm");
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
 		List<CatemVo> list=cateservice.catemlist();
@@ -39,7 +38,7 @@ public class ClassController {
 		GosuVo vo=classService.gosuselect(email);
 		mv.addObject("vo", vo);
 		mv.addObject("list", list);
-		
+		System.out.println("hhhhhhhhhhhhhhhhhhhhh");
         return mv;
 	}
 	@RequestMapping(value="/classinsertOk", method=RequestMethod.POST)
@@ -73,7 +72,7 @@ public class ClassController {
 		region2+=addr2;
 		
 		//3.lecture 테이블에 insert하기
-		LectureVo vo=new LectureVo(0,classname,region1,region2,day,time,num,explanation);
+		LectureVo vo=new LectureVo(0,classname,region1,region2,day,time,num,explanation,0);
 		classService.classinsert(vo);
 		
 		//4.gosu_area테이블에 insert
@@ -132,11 +131,7 @@ public class ClassController {
 		
 	}
 	
-	@RequestMapping(value="/classUpdate",method=RequestMethod.GET)
-	public ModelAndView classupdate() {
 
-		ModelAndView mv=new ModelAndView(".eunbyul.classUpdate");
-		return mv;
-	}
+
 	
 }
