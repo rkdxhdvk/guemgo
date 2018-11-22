@@ -32,7 +32,8 @@
 <br>
 <br>
 
-<a class="navbar-brand" href="<c:url value='/'/>" >홈으로 이동</a>
+				<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/'/>"'>
+						홈으로 가기</button>
 </div>
 </div>
 

@@ -54,7 +54,7 @@ public class LectureController {
 		ModelAndView mv =new ModelAndView();
 		//mv.setView(new RedirectView("/mylecture?email=email"));
 		mv.addObject("email", email);
-		mv.setViewName("redirect:/sendlist");
+		mv.setViewName("redirect:/mylecture");
 		return mv;
 	}
 	@RequestMapping(value="/classUpdate",method=RequestMethod.GET)
@@ -100,7 +100,7 @@ public class LectureController {
 		int b=classService.classupdate(vo);
 		
 		if(a>0 && b>0) {
-			return ".eunbyul.classupdateOk";
+			return ".eunbyul.classUpdateOk";
 		}
 		return ".eunbyul.statistics";
 	}
