@@ -1,3 +1,4 @@
+
 package com.guem.go.eunbyul;
 
 
@@ -18,7 +19,7 @@ import com.guem.go.woohyun.GosuVo;
 
 
 @Controller
-public class ClassController {
+public class ClassinsertController {
 	@Autowired
 	private ClassService classService;
 	@Autowired
@@ -27,7 +28,6 @@ public class ClassController {
 	
 	@RequestMapping(value = "/classinsert", method = RequestMethod.GET)
 	public ModelAndView classinsert(String email){
-		System.out.println("jmjmjmjmjmjmjmjmjmjmjmjmjmjmjmjm");
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
 		List<CatemVo> list=cateservice.catemlist();
@@ -38,7 +38,6 @@ public class ClassController {
 		GosuVo vo=classService.gosuselect(email);
 		mv.addObject("vo", vo);
 		mv.addObject("list", list);
-		System.out.println("hhhhhhhhhhhhhhhhhhhhh");
         return mv;
 	}
 	@RequestMapping(value="/classinsertOk", method=RequestMethod.POST)
@@ -100,7 +99,7 @@ public class ClassController {
 
 		
 		
-		return "eunbyul/classinsertOk";
+		return ".eunbyul.classinsertOk";
 		
 	}
 	@RequestMapping(value="/select/xml",produces="application/xml;charset=utf-8")

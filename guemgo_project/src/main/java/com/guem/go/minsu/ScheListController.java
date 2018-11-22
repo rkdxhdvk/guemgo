@@ -70,12 +70,12 @@ public class ScheListController {
 	@RequestMapping(value="/scheList", method=RequestMethod.GET)
 	public String schelist(String email, Model model, HttpServletRequest request) {
 		List<ScheduleVo> schelist = sService.schelist(email);
-		/*ArrayList<List<Sche_detailVo>> dlist = new ArrayList<>();
+		ArrayList<List<Sche_detailVo>> dlist = new ArrayList<>();
 		for(ScheduleVo svo : schelist) {
 			List<Sche_detailVo> detaillist = dService.sche_detailList(svo.getScheduleNum());
 			dlist.add(detaillist);
-		}*/
-		model.addAttribute("schelist", schelist);
+		}
+		model.addAttribute("dlist", dlist);
 		return "minsu/list2";
 	}
 	

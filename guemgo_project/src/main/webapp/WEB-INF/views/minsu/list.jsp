@@ -55,7 +55,16 @@
 							businessHours : true,
 							editable : true,
 							events:events,
-							
+							eventRender: function(eventObj, $el) {
+						        $el.popover({
+						          title: eventObj.title,
+						          content: eventObj.description,
+						          trigger: 'hover',
+						          placement: 'top',
+						          container: 'body'
+						        });
+							},
+							<c:if test="${sessionScope.flag==2}">
 							dayClick : function(date, calEvent) {
 								var date = date.format('YYYY-MM-DD');
 				                  $('#calendar').fullCalendar('clientEvents', function(event) {
@@ -78,99 +87,10 @@
 				                	  }
 				                  });
 							},
-							/* select : function(startDate, endDate) {
-									var memo = prompt('메모', '메모 입력');
-									//var sTime = prompt('시작시간');
-									//var eTime = prompt('끝시간');
-									var start = startDate.format();
-									var end = endDate.format();
-									console.log(start + " " + end + " " + scheduleNum);
-									if(memo!=null){
-									$.getJSON("<c:url value='/cal'/>",{scheduleNum:scheduleNum, memo:memo, lecturename:lecturename, start:start, end:end}, 
-											function(data) {
-													console.log(data.sche_detailNum);
-													$('#calendar').fullCalendar('renderEvent',
-															{
-																id : data.sche_detailNum,
-																description : memo,
-																title : lecturename,
-																start : start,
-																end : end,
-																overlap : false,
-																color : '#ff9f89'
-															}); 
-									});
-									}
-								
-							}, */
-							eventRender: function(eventObj, $el) {
-						        $el.popover({
-						          title: eventObj.title,
-						          content: eventObj.description,
-						          trigger: 'hover',
-						          placement: 'top',
-						          container: 'body'
-						        });
-							},
-							/* eventDrop: function(event, delta, revertFunc) {
-							    if (!confirm("Are you sure about this change?")) {
-							      revertFunc();
-							    }else{
-							    	console.log(event.start + " " + event.end + " " + event.id);
-									$.ajax({
-										url:"<c:url value='/calupdate'/>",
-										dataType:"json",
-										data : {id:event.id, start:event.start.format(), end:event.end.format(), description:event.description}
-									});	
-							    }
-							  }, */
-							/* eventClick : function(event, element) {
-								alert(event.id);
-								if(event.backgroundColor=='orange'){
-		                	  		alert("이미 출석");
-		                	  	}
-	                		  else if (confirm("출석 체크하시겟??") == true) {
-	                	  		$.ajax({
-									url:"<c:url value='/attupdate'/>",
-									dataType:"json",
-									data : {id:event.id}
-								});
-	                	  		event.backgroundColor = 'orange';
-	                	  		$('#calendar').fullCalendar(
-										'updateEvent', event);
-	                		  }
-							} */
-								 /* Ext.onReady(function() {
-									Ext.MessagBox.show({
-										title : '알림',
-										msg : '이벤트를 변경하시겠습니까?',
-										buttonText : {
-									           ok : '삭제',
-									           no : '수정'
-										}
-									})
-								}); */
-								/* alert(event.id + " " + event.start + " " + event.description);
-								if (confirm("정말 삭제하시겠습니까??") == true) {
-									$('#calendar').fullCalendar('removeEvents',
-											event.id);
-								} else {
-									if (confirm("수정하시겠습니까") == true) {
-										//var title = prompt('일정', event.title);
-										var description = prompt('메모', event.description);
-										event.description = description;
-										$('#calendar').fullCalendar(
-												'updateEvent', event);
-								    			
-										$.getJSON("<c:url value='/calupdate'/>",{id:event.id, start:event.start.format(), end:event.end.format(), description:description}, 
-												function(data) {
-											alert("수정 완료");
-										});
-									} else {
-										return;
-									}
-								} */
+							
+							</c:if>
 							})
+						
 			});
 </script>
 <style>

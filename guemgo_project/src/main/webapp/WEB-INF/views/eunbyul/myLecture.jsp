@@ -32,8 +32,9 @@
 
 
 				<tbody>
-				<c:if test="${vo.state==0 }">
+				
 					<c:forEach var="vo" items="${list }">
+					<c:if test="${vo.state==0 }"> 
 						<tr>
 							<th scope="row" style="width: 10%">${vo.lectureNum }</th>
 							<td style="width: 20%">${vo.lectureName }</td>
@@ -44,11 +45,12 @@
 							<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/classUpdate?lectureNum=${vo.lectureNum }'/>"'>
 						수정</button></td>
 							<td style="width: 10%">
-							<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }'/>"'>
+							<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }&email=${email }'/>"'>
 						삭제</button></td>
 						</tr>
+						</c:if>
 					</c:forEach>
-					</c:if>
+				
 				</tbody>
 			</table>
 		</div>

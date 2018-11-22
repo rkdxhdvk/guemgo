@@ -38,6 +38,7 @@ $(document).ready(
 					<c:set var="other" value="${vo.email }"/>
 				</c:if>
 				<c:if test="${sessionScope.flag==2 }">
+					<a href="/go/scheList?email=${sessionScope.email }">전체리스트 보기</a><br>
 					<c:set var="other" value="${vo.other }"/>
 				</c:if>
 				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">

@@ -182,7 +182,7 @@ html, body {
 					editable : true,
 					displayEventTime : false,
 					///
-					if(${sessionScope.flag} == 2){
+					<c:if test="${sessionScope.flag==2}">
 					dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
@@ -287,7 +287,7 @@ html, body {
 						    }
 
 					 },
-					}
+					</c:if>
 					events : events	
 				});
 		
