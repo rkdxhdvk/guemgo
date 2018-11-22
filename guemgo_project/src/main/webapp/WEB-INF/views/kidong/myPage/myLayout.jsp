@@ -38,6 +38,9 @@
 </head>
 <body>
 	<div id="wrap">
+		<div id="header">
+			<tiles:insertAttribute name="header"/>
+		</div>
 		<nav class="navbar navbar-default visible-xs">
 			<div class="container-fluid">
 				<div class="navbar-header">

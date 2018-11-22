@@ -5,11 +5,11 @@
 		<p class="text-left" style="font-size: x-large;">QnA 게시판</p>
 		<c:choose>
 			<c:when test="${sessionScope.email != null }">
-				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+				<button type="button" class="btn btn-primary btn-block" title="글쓰기"
 					data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>글쓰기</button>
 			</c:when>
 			<c:otherwise>
-				<button style="float: right;" type="button" class="btn btn-primary btn-block" title="글쓰기"
+				<button type="button" class="btn btn-primary btn-block" title="글쓰기"
 					onclick="needLogin()"><i class='fas fa-edit'></i>글쓰기</button>
 			</c:otherwise>
 		</c:choose>

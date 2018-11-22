@@ -56,7 +56,7 @@ public class NboardController {
 	}
 
 	@RequestMapping(value = "/nboard/detail", method = RequestMethod.GET)
-	public String detail(int num, Model model,@RequestParam(value = "sort", defaultValue = "0") int sort) {
+	public String detail(int num, Model model,@RequestParam(value = "sort", defaultValue = "0") int sort,@RequestParam(value = "scroll", defaultValue = "0") int scroll) {
 		if(sort != 1) {
 			service.hitUp(num);
 		}
@@ -70,6 +70,7 @@ public class NboardController {
 					.replaceAll("\n", "<br>"));
 		}
 
+		model.addAttribute("scroll", scroll);
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
 		model.addAttribute("prev", prev);

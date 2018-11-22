@@ -455,9 +455,14 @@
 			.then((willDelete) => {
 			  if (willDelete) {
 			    window.location.href='<c:url value="/nboard/delete?num=${vo.num }"/>';
+			    scrollBottom();
 			  } else {
 			    swal("삭제취소!");
 			  }
 			});
+	}
+	
+	if(${scroll == 1}) {	
+		$(document).scrollTop($(document).height());
 	}
 </script>

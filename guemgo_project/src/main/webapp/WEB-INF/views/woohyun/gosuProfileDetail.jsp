@@ -1,38 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 
-	2018-11-20	윤우현 파일 생성
- -->
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>gosuProfileDetail.jsp</title>
-<script>
-</script>
-<body>
+
+<div class="container-fluid" style="padding-top: 145px;padding-left: 100px;padding-right: 100px;">
 <h1>고수프로필</h1>
 
-<h2><br>${vo.name } 님의 프로필 입니다.</h2>		 <!-- users 테이블의 name 출력 -->
+	<div class="row">
+		<div class="col-sm-3">
+			<img src="resources/gosuImg/gosu3.png" width="150" height="150"/>
+			</div>	 <!-- users 테이블의 image 출력  -->
+			<div class="col-sm-9">
+			<span style="font-size: large;">
+			<strong>쇼미더 머니</strong>
+			<br>
+			${vo.name }&nbsp;&nbsp;
+			<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+			|&nbsp;&nbsp;
+			리뷰	2
+			</span>
+			<br><br>
+			<span>
+			<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+			고용횟수 ${vo.employ }번	
+			</span>
+		</div> 
+	</div>
+	<br>
+	<button type="button" class="btn btn-primary btn-block" title="글쓰기"
+			data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>견적 받아보기</button>
 
-<img src="resources/upload/userImg/${vo.u_image }" width="100" height="100"/>	 <!-- users 테이블의 image 출력  --> 
-<br>고용횟수 ${vo.employ } 번	<!-- gosu 테이블의 employ 출력 -->
-<br>서비스 카테고리
-<c:forEach var="item" items="${ lectureList }">
-<br>	${item.area }	<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
+<h2>서비스 카테고리</h2>
+	<c:forEach var="item" items="${ lectureList }">
+	<br>
+	<span class="label label-info" style="font-size: large;">${item.area }</span>
+	<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
 </c:forEach>
-<br>미디어
-<%-- <br>	${vo.g_image }	<!-- gosu 테이블의 image 출력 --> --%>
- <br><img src="resources/upload/gosuImg/${vo.g_image }" width="200" height="200"/>
-<br>고수소개
-<br>	${vo.intro }	 <!-- gosu 테이블의 intro 출력 -->
-<br>경력사항
-<br>	${vo.career }	 <!-- users 테이블의 career 출력 -->
-<br>사업자등록증&자격증
+<h2>사진</h2>
 <br>
-<img src="resources/upload/gosuCareerImg/${vo.license }" width="200" height="200"/>	<!-- gosu_career 테이블의 license image 출력 -->
+${vo.g_image }	<!-- gosu 테이블의 image 출력 -->
+<h2>고수소개</h2>
+<br>	${vo.intro }	 <!-- gosu 테이블의 intro 출력 -->
+<h2>사업자등록증&자격증</h2>
+<br>
+<img src="resources/upload/gosuCareerImg/${vo.license }" width="100" height="100"/>	<!-- gosu_career 테이블의 license image 출력 -->
+</div>
 
 
-</body>
-</html>

@@ -16,6 +16,9 @@
 		select NVL(count(num),0) cnt
 		from qna_BOARD
 		<include refid="search"/>
+		<if test="sort!=null and sort!=''">
+			where sort = #{sort}
+		</if>
 	</select>
 	<insert id="insert" parameterType="com.guem.go.kidong.QboardVo">
 		insert into qna_BOARD

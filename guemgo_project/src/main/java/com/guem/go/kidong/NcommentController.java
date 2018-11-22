@@ -18,7 +18,7 @@ public class NcommentController {
 		try {
 			int num = vo.getNum();
 			service.insert(vo);
-			return "redirect:/nboard/detail?num="+num+"&sort=1";
+			return "redirect:/nboard/detail?num="+num+"&sort=1&scroll=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -29,7 +29,7 @@ public class NcommentController {
 	public String delete(int cnum,int num) {
 		try {
 			service.delete(cnum);
-			return "redirect:/nboard/detail?num="+num+"&sort=1";
+			return "redirect:/nboard/detail?num="+num+"&sort=1&scroll=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -40,7 +40,7 @@ public class NcommentController {
 	public String insertReply(NreplyVo vo,int num) {
 		try {
 			service2.insert(vo);
-			return "redirect:/nboard/detail?num="+num+"&sort=1";
+			return "redirect:/nboard/detail?num="+num+"&sort=1&scroll=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -52,7 +52,7 @@ public class NcommentController {
 		System.out.println(rnum);
 		try {
 			service2.delete(rnum);
-			return "redirect:/nboard/detail?num="+num+"&sort=1";
+			return "redirect:/nboard/detail?num="+num+"&sort=1&scroll=1";
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "error";

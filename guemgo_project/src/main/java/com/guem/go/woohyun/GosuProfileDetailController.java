@@ -19,7 +19,7 @@ public class GosuProfileDetailController {
 		// lecturelist 를 하나 더 받아옴
 		List<GosuVo> lectureList = gosuService.gosuDetailLectureList(email);
 		
-		ModelAndView mv=new ModelAndView("/woohyun/gosuProfileDetail");
+		ModelAndView mv=new ModelAndView(".woohyun.gosuProfileDetail");
 		mv.addObject("vo",vo);
 		mv.addObject("lectureList",lectureList); 
 		

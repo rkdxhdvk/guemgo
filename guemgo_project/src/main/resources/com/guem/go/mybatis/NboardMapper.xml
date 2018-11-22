@@ -34,6 +34,9 @@
 	<select id="getCount" parameterType="map" resultType="int">
 		select NVL(count(*),0) cnt from notice_board
 		<include refid="search"/>
+		<if test="sort!=null and sort!=''">
+			where sort = #{sort}
+		</if>
 	</select>
 	<select id="detail" parameterType="int" resultType="com.guem.go.kidong.NboardVo">
 		select * from notice_board where num = #{num}
