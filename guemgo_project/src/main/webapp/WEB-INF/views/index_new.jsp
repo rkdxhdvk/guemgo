@@ -377,7 +377,7 @@ div p {
 			style="position: relative;
 		    background-image: url(resources/upload/${userdetail[status.index].user});                                                               
 		    height: 380px;
-		    background-size: cover;"> <!-- css따로 -->
+		    background-size: cover;"><!-- css따로 -->
        		 <div class="content" 
        		 style=" position: relative;
 		     top:90%;
