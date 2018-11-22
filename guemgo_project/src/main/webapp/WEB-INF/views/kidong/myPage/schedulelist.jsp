@@ -6,7 +6,7 @@
 <script type="text/javascript">
 $(document).ready(
 		function() {
-			<c:forEach items="${list }" var="vo">
+			<c:forEach items="${schelist }" var="vo">
 			$.getJSON({
 				url:"<c:url value='/progress'/>",
 				data : {scheduleNum:${vo.scheduleNum }}, 
@@ -16,9 +16,9 @@ $(document).ready(
 						});
 						console.log(data.pro);
 						
-						var ss = "진행률 " + data.pro;
+						var ss = "진행률 " + data.pro + "%";
 						$( ".progress"+data.scheduleNum ).html(ss);
-						if(data.pro>=100){
+						if(data.pro>=100 && ${sessionScope.flag}==1){
 							console.log("dddd");
 							var sss = "<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${vo.other }'> <input type='submit' value='후기 남기기'> </form>";
 							$( ".pro"+data.scheduleNum ).html(sss);
@@ -30,12 +30,18 @@ $(document).ready(
 		}
 );
 </script>
-
+<body>
 	<h1>스케줄 리스트</h1>
 	<ul>
-		<c:forEach items="${list }" var="vo">
+		<c:forEach items="${schelist }" var="vo">
+				<c:if test="${sessionScope.flag==1 }">
+					<c:set var="other" value="${vo.email }"/>
+				</c:if>
+				<c:if test="${sessionScope.flag==2 }">
+					<c:set var="other" value="${vo.other }"/>
+				</c:if>
 				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
-				${vo.other}님과의 ${vo.lecturename }</a>
+				${other}님과의 ${vo.lecturename }</a>
 				
 				<div class="progressbar${vo.scheduleNum }" style="width: 200px;">
 				<a class="progress${vo.scheduleNum }"></a>
@@ -44,3 +50,4 @@ $(document).ready(
 				
 		</c:forEach>
 	</ul>
+</body>

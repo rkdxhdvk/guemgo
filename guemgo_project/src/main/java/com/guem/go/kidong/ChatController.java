@@ -32,13 +32,13 @@ public class ChatController {
 	private ScheService sService;
 	@Autowired
 	private Sche_detailService dServie;
+	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
-	public String chat(HttpServletRequest request, int room, int lecturenum, String other, Model model) {
+	public String chat(HttpServletRequest request, int room, int lecturenum, String lecturename, String other, int req_num, Model model) {
 		
 		int flag = (int)request.getSession().getAttribute("flag");
 		System.out.println(flag);
 		String email = (String)request.getSession().getAttribute("email");
-		String lecturename = request.getParameter("lecturename");
 		/*if(flag != 1) {
 		////////// 강의이름 목록 가져오기//////////////
 		int gonum = goService.gosuNum(email);
@@ -85,6 +85,7 @@ public class ChatController {
 			System.out.println("isschedule " + 0);
 		}
 		LectureVo vo = classService.classSelect(lecturenum);
+		model.addAttribute("req_num", req_num);
 		model.addAttribute("other", other);
 		model.addAttribute("lecturename", lecturename);
 		model.addAttribute("list", list);

@@ -29,9 +29,9 @@ public class EventController {
 	@Autowired
 	private UsersService uService;
 	
-	@RequestMapping(value="/event")
+	@RequestMapping(value="/point")
 	public String event() {
-		return "minsu/attCheck";
+		return ".pointRecord";
 	}
 	@RequestMapping(value="/eventinsert", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
@@ -56,4 +56,5 @@ public class EventController {
 		
 		return ".event";
 	}
+	
 }

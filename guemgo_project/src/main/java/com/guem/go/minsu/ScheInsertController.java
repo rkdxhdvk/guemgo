@@ -16,6 +16,9 @@ public class ScheInsertController {
 	private ScheService scheService;
 	@Autowired
 	private SurveyService surService;
+	@Autowired
+	private MatchingService matService;
+	
 	@RequestMapping(value="/calInsert",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String insert(String email, int scheduleNum, String other, int lectureNum, int matchNum, String lecturename) {
@@ -24,6 +27,9 @@ public class ScheInsertController {
 		int n = scheService.insert(vo);
 		//요청서 변경
 		surService.requpdate(matchNum);
+		//매칭성공 추가
+		MatchingVo mvo = new MatchingVo(0, matchNum, lectureNum, email, other, null);
+		matService.insert(mvo);
 		
 		JSONObject obj = new JSONObject();
 		if(n>0) {

@@ -41,11 +41,11 @@ public class ScheListController {
 		System.out.println(flag);
 		if(flag==2) {
 			list = sService.schelist(email);
-			model.addAttribute("list", list);
+			model.addAttribute("schelist", list);
 		}
 		if(flag==1) {
 			list = sService.userschelist(email);
-			model.addAttribute("list", list);
+			model.addAttribute("schelist", list);
 		}
 		return ".userschedulelist";
 	}
@@ -58,11 +58,11 @@ public class ScheListController {
 		System.out.println(flag);
 		if(flag==2) {
 			list = sService.schelist(email);
-			model.addAttribute("list", list);
+			model.addAttribute("schelist", list);
 		}
 		if(flag==1) {
 			list = sService.userschelist(email);
-			model.addAttribute("list", list);
+			model.addAttribute("schelist", list);
 		}
 		return ".gosuschedulelist";
 	}

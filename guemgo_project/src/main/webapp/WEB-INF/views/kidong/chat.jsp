@@ -114,14 +114,12 @@ html, body {
 		var sche_detailNum = parseInt(document.getElementById("sche_detailNum").value);
 		var scheduleNum = parseInt(document.getElementById("scheduleNum").value);
 		var lectureNum = parseInt(document.getElementById("lectureNum").value);
-		var matchNum = parseInt(document.getElementById("matchNum").value);
+		var matchNum = parseInt(document.getElementById("req_num").value);
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value;
-		var matchNum = document.getElementById("matchNum").value;
 		/* ar isschedule = parseInt(document.getElementById("isschedule").value) ; */
 		if(${isschedule }==1){
-			var events = [];
 			<c:forEach items="${detailList }" var="vo">
 			var color = '';
 			if(${vo.attendance}==1){
@@ -147,6 +145,7 @@ html, body {
 					description : ' '
 				})
 			</c:forEach>
+		}
 			$("#sche_confirm").click(function() {
 				$.getJSON({
 					url:"<c:url value='/calInsert'/>",
@@ -170,7 +169,6 @@ html, body {
 			$("#sche_cancel").click(function() {
 					location.href=".kidong.chat";
 			});
-		}
 		$('#calendar').fullCalendar(
 				{
 					droppable: true,
@@ -184,7 +182,7 @@ html, body {
 					editable : true,
 					displayEventTime : false,
 					///
-					if(${sessionScope.flag == 2}){
+					if(${sessionScope.flag} == 2){
 					dayClick : function(date, calEvent) {
 						var date = date.format('YYYY-MM-DD');
 		                  $('#calendar').fullCalendar('clientEvents', function(event) {
@@ -252,8 +250,9 @@ html, body {
 		                		      }
 		                		  })
 		                	  }
-		                  });
+		                  })
 					},
+					
 					/* eventClick : function(event, element) {
 						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
 						
@@ -287,8 +286,8 @@ html, body {
 						    	});
 						    }
 
-						  }
-					  },
+					 },
+					}
 					events : events	
 				});
 		
@@ -300,6 +299,8 @@ html, body {
 	    	  alert("${msg}");
 	      }
 	});
+	
+	
 	var sock;
 	sock = new SockJS("<c:url value="/echo"/>");
 	sock.onmessage = onMessage;
@@ -361,7 +362,7 @@ html, body {
 </script>
 	${isschedule }
 	<input type="hidden" value="${sessionScope.email }" id="email">
-	<div class="container-fluid" style="margin-bottom: 15px;">
+	<div class="container-fluid" style="margin-bottom: 15px; padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">채팅</p>
 	</div>
 
@@ -415,10 +416,9 @@ html, body {
 						<input type="hidden" value= ${sche_detailNum } name="sche_detailNum" id="sche_detailNum">
 						<input type="hidden" value= ${scheduleNum } name="scheduleNum" id="scheduleNum">
 						<input type="hidden" value= ${lectureNum } name="lectureNum" id="lectureNum">
-						<input type="hidden" value= ${req_num } name="matchNum" id="matchNum">
+						<input type="hidden" value= ${req_num } name="req_num" id="req_num">
 						<input type="hidden" value="${lecturename}" name=lecturename id="lecturename">
 						<input type="hidden" value="${other}" name="other" id="other">
-						<input type="hidden" value="${req_num}" name="matchNum" id="matchNum">
 						
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
@@ -492,7 +492,7 @@ html, body {
 							</div>
 						</div>
 						<input type="hidden" value=${room } name="room">
-						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">스케줄</button>
+						<button type="submit" >스케줄</button>
 					</form>
 							</c:otherwise>
 						</c:choose>
@@ -506,13 +506,12 @@ html, body {
 							내용 : ${vo.explanation }
 						</div>
 					</div>
-
 					<div class="btn-group btn-group-justified">
 						<a href="#" class="btn btn-primary">강의신청</a> 
 						<a href="#" class="btn btn-primary">프로필보기</a> 
 						<a href='<c:url value="/room?email=${sessionScope.email }"/>'
 							class="btn btn-primary">나가기</a>
-					</div>
+						</div>
 				</div>
 			</div>
 		</div>

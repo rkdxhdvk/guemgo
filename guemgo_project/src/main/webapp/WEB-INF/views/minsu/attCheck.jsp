@@ -108,12 +108,12 @@
 				});
 </script>
 <style>
-body {
+/* body {
 	margin: 40px 10px;
 	padding: 0;
 	font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
 	font-size: 14px;
-}
+} */
 #calendar {
 	max-width: 650px;
 	margin-right: 40px;
@@ -125,8 +125,9 @@ body {
 </style>
 </head>
 <body>
-	<div id="ddd">
+	<div id="ddd" style="padding-top: 300px;">
 	<div style="float: right;" id='calendar'></div>
+	
 	<div class="container">
 			<div class="row">
 				<div class="col-lg-5 col-sm-6">
@@ -139,7 +140,7 @@ body {
 					<p class="lead">
 						매일 출석만 해도 포인트가 모인다!!<br>
 						매일 홈페이지에 접속하여 출석체크를 해보세요<br>
-						<a target="_blank" href="/">내 포인트 보러가기</a>
+						<a target="_blank" href="/point">내 포인트 보러가기</a>
 					</p>
 					<button type="button" class="btn btn-primary" id="btn">출석체크</button><br>
 					<br><br><br><br><br><br><br><br>
@@ -150,6 +151,7 @@ body {
 					</ul>
 				</div>
 			</div>
+	</div>
 	</div>
 </body>
 </html>

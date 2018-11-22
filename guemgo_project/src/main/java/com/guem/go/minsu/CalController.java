@@ -23,8 +23,6 @@ public class CalController {
 	private Sche_detailService sche_detailService;
 	@Autowired
 	private ChatService chatService;
-	@Autowired
-	private MatchingService matService;
 	
 	@RequestMapping(value="/select", method=RequestMethod.GET)
 	public String select() {
@@ -50,9 +48,7 @@ public class CalController {
 		/*ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
 		scheService.insert(vo);*/
 		
-		//매칭성공 테이블 
-		MatchingVo mvo = new MatchingVo(0, matchNum, lectureNum, email, other, null);
-		matService.insert(mvo);
+		
 		
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -113,7 +109,7 @@ public class CalController {
 		model.addAttribute("scheduleNum", scheduleNum);
 		model.addAttribute("other", other);
 		model.addAttribute("lectureNum", lectureNum);
-		model.addAttribute("matchNum", matchNum);
+		model.addAttribute("req_num", matchNum);
 		model.addAttribute("start", start);
 		model.addAttribute("end", end);
 		model.addAttribute("scheselect", "ok");

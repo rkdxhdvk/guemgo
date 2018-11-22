@@ -36,7 +36,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="/reInsert", method=RequestMethod.GET)
 	public String insert() {
-		return "minsu/review_insert";
+		return ".review_insert";
 	}
 	
 	@RequestMapping(value = "/reInsert", method = RequestMethod.POST)
