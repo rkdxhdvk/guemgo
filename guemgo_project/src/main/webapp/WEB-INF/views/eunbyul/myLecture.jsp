@@ -32,7 +32,7 @@
 
 
 				<tbody>
-				<c:if test="${vo.lec_start==0 }">
+				<c:if test="${vo.state==0 }">
 					<c:forEach var="vo" items="${list }">
 						<tr>
 							<th scope="row" style="width: 10%">${vo.lectureNum }</th>

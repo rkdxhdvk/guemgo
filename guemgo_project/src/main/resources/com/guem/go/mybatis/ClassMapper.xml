@@ -12,9 +12,9 @@
 	<select id="gosuselect" resultType="com.guem.go.woohyun.GosuVo"  parameterType="String">
 		select * from gosu where email=#{email}
 	</select>
-	<delete id="classdelete" parameterType="int" >
-		delete from lecture where lecturenum=#{lecNum}
-	</delete>
+	<update id="classdelete" parameterType="int" >
+		update lecture set state=1 where lecturenum={lecNum}
+	</update>
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where go_num=#{go_num}
 	</select>
