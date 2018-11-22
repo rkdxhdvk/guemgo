@@ -13,7 +13,7 @@
     <br>
     <div class="input-group">
       <span class="input-group-addon">고수소개 및 서비스 설명</span>
-      <textarea rows="10" maxlength="140" name="intro" class="form-control">${vo.license }</textarea><br>
+      <textarea rows="10" maxlength="140" name="intro" class="form-control" required="required" >${vo.license }</textarea><br>
     </div>
     <br>
     <div class="input-group">
@@ -22,7 +22,7 @@
     </div>
     <br> <div class="input-group">
       <span class="input-group-addon">경력</span>
-       <textarea rows="10" maxlength="140" name="intro" class="form-control">${vo.career }</textarea><br>
+       <textarea rows="10" maxlength="140" name="intro" class="form-control" required="required">${vo.career }</textarea><br>
     </div>
     <br>
     <input type="reset" class="btn btn-primary" value="취소">
