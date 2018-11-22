@@ -23,7 +23,7 @@
 					<c:set var="other1" value="${vo.other }"/>
 				</c:when>
 				<c:otherwise>
-					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 상대방 : ${vo.email }
+					<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu3.png"> 상대방 : ${vo.email }
 					<c:set var="other1" value="${vo.email }"/>
 				</c:otherwise>
 			</c:choose>

@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-
+<style>
+.avatar {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+</style>
 <!--  
 ---------------------------------------------
 2018-10-24	윤우현 파일 생성
@@ -41,13 +46,13 @@
 				 				로그인을 해주세요
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '0'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 관리자 ${ sessionScope.email } 님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> 관리자 ${ sessionScope.name } 님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '1'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 회원님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 회원님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '2'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 고수님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 고수님
 				 			</c:when>
 				 		</c:choose>
 				 	</a>

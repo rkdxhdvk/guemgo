@@ -72,7 +72,7 @@ public class UsersUpdateController {
 				FileCopyUtils.copy(is,fos);
 				is.close();
 				fos.close();
-				
+				System.out.println(uploadPath);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
