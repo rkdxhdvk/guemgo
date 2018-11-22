@@ -7,7 +7,13 @@
 
 	<div class="row">
 		<div class="col-sm-3">
-			<img src="resources/upload/userImg/${vo.u_image }" width="150" height="150"/>
+			<c:if test="${ not empty vo.u_image }">
+				<img src="resources/upload/userImg/${vo.u_image }" width="150" height="150" style="border-radius:50%" />
+			</c:if>
+			<c:if test="${     empty vo.u_image }">
+				<img src="https://img.icons8.com/ios/100/000000/user-male-circle-filled.png" width="150" height="150">
+			</c:if>
+			
 			</div>	 <!-- users 테이블의 image 출력  -->
 			<div class="col-sm-9">
 			<span style="font-size: large;">
@@ -38,7 +44,13 @@
 <br>
 <h2>미디어</h2>
 <br>
-<img src="resources/upload/gosuImg/${vo.g_image }" width="200" height="200"/>	<!-- gosu 테이블의 image 출력 -->
+<c:if test="${ not empty vo.g_image }">
+	<img src="resources/upload/gosuImg/${vo.g_image }" width="150" height="150"/>	<!-- gosu 테이블의 image 출력 -->
+</c:if>
+<c:if test="${     empty vo.g_image }">
+	<img src="https://img.icons8.com/color/96/000000/picture.png" width="150" height="150">
+</c:if>
+
 <br>
 <h2>고수소개</h2>
 <br>	${vo.intro }	 <!-- gosu 테이블의 intro 출력 -->
@@ -48,7 +60,12 @@ ${vo.career }	 <!-- users 테이블의 career 출력 -->
 <br>
 <h2>사업자등록증&자격증</h2>
 <br>
-<img src="resources/upload/gosuCareerImg/${vo.license }" width="100" height="100"/>	<!-- gosu_career 테이블의 license image 출력 -->
+<c:if test="${ not empty vo.license }">
+	<img src="resources/upload/gosuCareerImg/${vo.license }" width="150" height="150"/>	<!-- gosu_career 테이블의 license image 출력 -->
+</c:if>
+<c:if test="${     empty vo.license }">
+	<img src="https://img.icons8.com/color/96/000000/picture.png" width="150" height="150">
+</c:if>
 </div>
 
 

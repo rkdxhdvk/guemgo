@@ -24,4 +24,8 @@ public class PointDao {
 		return sqlSession.insert(NAMESPACE + ".insert", vo);
 	}
 	
+	//포인트 충전 DAO
+	public int update(PointVo vo) {
+		return sqlSession.update(NAMESPACE + ".update", vo);
+	}
 }

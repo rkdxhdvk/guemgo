@@ -28,4 +28,9 @@ public class PointService {
 		public int insert(PointVo vo) {
 			return dao.insert(vo);
 		}
+	
+	// 포인트 충전
+		public int update(PointVo vo) {
+			return dao.update(vo);
+		}
 }

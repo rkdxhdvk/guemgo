@@ -35,7 +35,7 @@ public class GosuInsertController {
 	@RequestMapping(value="/GosuInsert",method=RequestMethod.POST)
 	public ModelAndView insert(GosuVo vo, MultipartFile g_img, MultipartFile l_img, HttpSession session, HttpServletRequest request) {
 		
-		if (g_img != null) {
+		if (g_img.getSize() > 0) {
 			
 			String uploadPath=session.getServletContext().getRealPath("/resources/upload/gosuImg");
 			String orgfilename = g_img.getOriginalFilename();
@@ -61,9 +61,9 @@ public class GosuInsertController {
 			vo.setG_image(savefilename);	//?
 
 		}
+		
+		if (l_img.getSize() > 0) {
 
-		if (l_img != null) {	// 자격증 이미지 추가
-			
 			String uploadPath=session.getServletContext().getRealPath("/resources/upload/gosuCareerImg");
 			String orgfilename = l_img.getOriginalFilename();
 			String savefilename=UUID.randomUUID() + "_" + orgfilename;	
@@ -94,14 +94,17 @@ public class GosuInsertController {
 		vo.setGrade("초수");
 		vo.setEmploy(0);
 		int n=gosuService.insert(vo);
+		
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
 			session.setAttribute("gosuYN", vo.getEmail());	// 고수 등록하면서 바로 세션에 고수로 등록 함
 			session.setAttribute("flag", 2);	// 고수 등록하면서 바로 세션에 flag 2:고수 등록 함
-			mv.addObject("code","success");
+			mv.addObject("code","gosuInsert_success");
 		}else {
-			mv.addObject("code","fail");
+			mv.addObject("code","gosuInsert_fail");
 		}
+		
+		mv.addObject("goUrl","/");
 		return mv;
 	}
 }

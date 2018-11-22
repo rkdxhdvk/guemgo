@@ -59,10 +59,15 @@
 		<include refid="search"/>
 	</select>
 	
-	<!-- 고수 삭제 -->
-	<delete id="delete" parameterType="String">
-		delete from gosu where email=#{email}
-	</delete>
+	<!-- 고수 삭제(실제) -->
+<!-- 	<delete id="delete" parameterType="String"> -->
+<!-- 		delete from gosu where email=#{email} -->
+<!-- 	</delete> -->
+	
+	<!-- 고수 삭제 (flag만 9로 변경)-->
+	<delete id="update_f" parameterType="String">
+		update users set flag='9' where email=#{email}
+	</delete>	
 	
 	<!-- 고수 정보 수정(1명 조회) -->
 	<select id="detail" resultType="com.guem.go.woohyun.GosuVo" parameterType="String">

@@ -23,9 +23,11 @@ public class OngoingController {
 		//2. 1번의 요청서번호를 가지고 받은요청내역 테이블에가서 이메일을 찾아온다.
 		ArrayList<RequirelistVo> requlist2=new ArrayList<>();
 		for(int i=0; i<list.size(); i++) {
+			System.out.println("나오나요"+list.get(i));
 			RequirelistVo vo=onservice.select_email(list.get(i));
+			
 			requlist2.add(vo);
-			System.out.println(requlist2.get(i).getEmail()+requlist2.get(i).getLecturenum());
+			System.out.println("qqq"+requlist2.get(i).getEmail()+requlist2.get(i).getLecturenum());
 		}
 	
 		//3. 2번의 이메일을 가지고 고수테이블에서 고수번호를 찾아온다

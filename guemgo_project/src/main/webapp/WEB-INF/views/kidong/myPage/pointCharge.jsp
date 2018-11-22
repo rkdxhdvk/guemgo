@@ -7,7 +7,8 @@
       <span class="input-group-addon">포인트</span>
       <input id="point" type="text" class="form-control" name="point" value="${vo.point }" readonly="readonly">
   	</div>
- <form>
+  	
+ <form name="point_frm" method="post" action="point_frm">
  	<div class="radio">
 	  <label><input type="radio" name="point" value="100" checked>100포인트	1,000원(0%)</label>
 	</div>

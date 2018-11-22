@@ -8,16 +8,18 @@ public class RequirelistVo {
 	public Date req_date;
 	public int req_num;
 	public int lecturenum;
+	public int state;
 	
 	public RequirelistVo() {	}
 
-	public RequirelistVo(int num, String email, Date req_date, int req_num, int lecturenum) {
+	public RequirelistVo(int num, String email, Date req_date, int req_num, int lecturenum, int state) {
 		super();
 		this.num = num;
 		this.email = email;
 		this.req_date = req_date;
 		this.req_num = req_num;
 		this.lecturenum = lecturenum;
+		this.state = state;
 	}
 
 	public int getNum() {
@@ -59,7 +61,13 @@ public class RequirelistVo {
 	public void setLecturenum(int lecturenum) {
 		this.lecturenum = lecturenum;
 	}
-}
 
-	
-	
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+}
