@@ -238,4 +238,20 @@
 		});
 	}
 	
+	if(${code == 'success'}){
+		swal({
+			title : "성공!!",
+			text : "요청하신 작업이 성공",
+			icon : "success",
+			button : "확인",
+		});
+	}else if(${code == 'fail'}){
+		swal({
+			title : "실패!!",
+			text : "요청하신 작업이 실패",
+			icon : "error",
+			button : "확인",
+		});
+	}
+	
 </script>

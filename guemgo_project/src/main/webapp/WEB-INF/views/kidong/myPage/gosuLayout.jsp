@@ -34,6 +34,16 @@
 		height: auto;
 	}
 }
+#content {
+	min-height: 1100px;
+	}
+#menu {
+	min-height: 1100px;
+}
+#footer {
+	padding-top: 15px;
+	height: 140px;
+}
 </style>
 </head>
 <body>

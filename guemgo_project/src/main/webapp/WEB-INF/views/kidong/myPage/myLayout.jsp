@@ -34,6 +34,16 @@
 		height: auto;
 	}
 }
+#content {
+	min-height: 1100px;
+	}
+#menu {
+	min-height: 1100px;
+}
+#footer {
+	padding-top: 15px;
+	height: 140px;
+}
 </style>
 </head>
 <body>
@@ -71,8 +81,7 @@
 
 		<div class="container-fluid">
 			<div class="row content">
-				<div id="menu" class="col-sm-2 sidenav hidden-xs"
-					style="height: 800px;">
+				<div id="menu" class="col-sm-2 sidenav hidden-xs">
 					<tiles:insertAttribute name="menu" />
 				</div>
 				<div id="content" class="col-sm-10">
