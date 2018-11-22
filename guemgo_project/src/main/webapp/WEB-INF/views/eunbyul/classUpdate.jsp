@@ -40,6 +40,7 @@ input[type="checkbox"] {
 				<div class="modal-body">
 					<form action="classupdateOk" method="post">
 						<input type="hidden" name="gonum" value=${vo.go_num }>
+						<input type="hidden" name="lectureNum" value=${vo.lectureNum }>
 						<%-- console.log(${gonum }); --%>
 						<div class="form-row">
 

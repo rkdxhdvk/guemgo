@@ -45,25 +45,29 @@ public class LectureController {
 		return mv;
 	}
 	@RequestMapping(value="/classdelete",method=RequestMethod.GET)
-	public String classdelete(String lectureNum) {
+	public ModelAndView classdelete(String lectureNum) {
 		System.out.println("강의번호:"+lectureNum);
 		int lecNum=Integer.parseInt(lectureNum);
 		System.out.println(lecNum);
 		int n=lecService.classdelete(lecNum);
 		ModelAndView mv =new ModelAndView();
 		//mv.setView(new RedirectView("/mylecture?email=email"));
-		return "redirect:mylecture.do";
+		mv.setViewName("redirect:/sendlist");
+		return mv;
 	}
 	@RequestMapping(value="/classUpdate",method=RequestMethod.GET)
 	public ModelAndView classupdate(int lectureNum) {
-	
+		System.out.println("qqqqq"+lectureNum);
 		//해당넘버의 정보를 가져와서 뿌려주는 기능
 		LectureVo vo= classService.classSelect(lectureNum);
 		//해당강의번호의 상세분야를 가져오는 메소드
 		GosuareaVo vo2=lecService.gosuareaselect(lectureNum);
 		//분야선택에서 뿌려줄 거
 		//고수상세로 mnum가져오기
+		System.out.println("1111"+vo2.getLectureNum());
+		System.out.println("wwwww"+vo2.getArea());
 		int mnum=catesurvice.selectmnum(vo2.getArea());
+		System.out.println("eeeee"+mnum);
 		//mnum으로 mname가져오기
 		String mname=catesurvice.selectmname(mnum);
 		//mnum으로 해당넘버의 cates가져와서 뿌려주기
@@ -79,8 +83,24 @@ public class LectureController {
 	}
 	@RequestMapping(value="/classupdateOk",method=RequestMethod.POST)
 	public String classupdateOk(HttpServletRequest request) {
+		String area=request.getParameter("selectarea");
+		String lectureName=request.getParameter("classname");
+		String explanation=request.getParameter("explanation");
+		String day=request.getParameter("days");
+		String time=request.getParameter("time");
+		String region1=request.getParameter("addr1");
+		String region2=request.getParameter("addr2");
+		String lecturenum=request.getParameter("lectureNum");
+		int lectureNum=Integer.parseInt(lecturenum);
+		LectureVo vo=new LectureVo(lectureNum, lectureName, region1, region2, day, time, 0, explanation, 0);
+		GosuareaVo vo2=new GosuareaVo(area, lectureNum);
+		int a=classService.areaupdate(vo2);
+		int b=classService.classupdate(vo);
 		
-		return ".eunbyul.classinsertOk";
+		if(a>0 && b>0) {
+			return ".eunbyul.classinsertOk";
+		}
+		return ".eunbyul.statistics";
 	}
 	
 }

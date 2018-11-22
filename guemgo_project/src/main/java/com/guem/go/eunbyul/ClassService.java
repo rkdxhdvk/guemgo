@@ -29,4 +29,11 @@ public class ClassService {
 	public LectureVo classSelect(int lecturenum) {
 		return dao.classSelect(lecturenum);
 	}
+	//classupdate
+	public int classupdate(LectureVo vo) {
+		return dao.classupdate(vo);
+	}
+	public int areaupdate(GosuareaVo vo) {
+		return dao.areaupdate(vo);
+	}
 }
