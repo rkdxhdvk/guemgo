@@ -5,7 +5,16 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick-theme.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick.css'/>" />
 <script type="text/javascript" src="<c:url value='resources/js/slick.min.js'/>"></script>
-
+<style>
+div p {
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  height: 100px;
+}
+#gosuImg {
+	margin: 15px;
+}
+</style>
 <script type="text/javascript">
 /* $(document).ready(function() { // 로그아웃
 	var area="${area }";
@@ -202,24 +211,159 @@
 <div class="container">
 	<h2>추천 고수</h2>
 	<div class="slick-items">
-        <div style="margin: 11px;"><img alt="" src="resources/gosuImg/gosu01.png">
-        </div>
-        
-		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu02.png">
-		 </div>
-
-		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu03.png">
-		 </div>
-
-		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu04.png">
-		 </div>
-
-		 <div style="margin: 10px;"><img alt="" src="resources/gosuImg/gosu05.png">
-		 </div>
-		
+        <div class="gosuImg">
+       		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+			<div class="row">
+			<div class="col-sm-4">
+				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				</div>	 <!-- users 테이블의 image 출력  -->
+				<div class="col-sm-8">
+				<span style="font-size: large;">
+				고수<br>
+				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				|&nbsp;&nbsp;
+				리뷰	2
+				</span>
+				<br><br>
+				<span>
+				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				고용횟수 ${vo.employ }번	
+				</span>
+			</div> 
+			</div>
+			<br>
+			<span style="font-size: large;">쇼미더 머니</span>
+			<br><br>
+			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
+			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
+			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+		</div>
+		</div>
+	<div class="gosuImg">			
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+			<div class="row">
+			<div class="col-sm-4">
+				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				</div>	 <!-- users 테이블의 image 출력  -->
+				<div class="col-sm-8">
+				<span style="font-size: large;">
+				고수<br>
+				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				|&nbsp;&nbsp;
+				리뷰	2
+				</span>
+				<br><br>
+				<span>
+				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				고용횟수 ${vo.employ }번	
+				</span>
+			</div> 
+			</div>
+			<br>
+			<span style="font-size: large;">쇼미더 머니</span>
+			<br><br>
+			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
+			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
+			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+		</div>
+		</div>
+		 <div class="gosuImg">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+			<div class="row">
+			<div class="col-sm-4">
+				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				</div>	 <!-- users 테이블의 image 출력  -->
+				<div class="col-sm-8">
+				<span style="font-size: large;">
+				고수<br>
+				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				|&nbsp;&nbsp;
+				리뷰	2
+				</span>
+				<br><br>
+				<span>
+				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				고용횟수 ${vo.employ }번	
+				</span>
+			</div> 
+			</div>
+			<br>
+			<span style="font-size: large;">쇼미더 머니</span>
+			<br><br>
+			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
+			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
+			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+		</div>
+		</div>
+		 <div class="gosuImg">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+			<div class="row">
+			<div class="col-sm-4">
+				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				</div>	 <!-- users 테이블의 image 출력  -->
+				<div class="col-sm-8">
+				<span style="font-size: large;">
+				고수<br>
+				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				|&nbsp;&nbsp;
+				리뷰	2
+				</span>
+				<br><br>
+				<span>
+				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				고용횟수 ${vo.employ }번	
+				</span>
+			</div> 
+			</div>
+			<br>
+			<span style="font-size: large;">쇼미더 머니</span>
+			<br><br>
+			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
+			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
+			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+		</div>
+		</div>
+		 <div class="gosuImg">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+			<div class="row">
+			<div class="col-sm-4">
+				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				</div>	 <!-- users 테이블의 image 출력  -->
+				<div class="col-sm-8">
+				<span style="font-size: large;">
+				고수<br>
+				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				|&nbsp;&nbsp;
+				리뷰	2
+				</span>
+				<br><br>
+				<span>
+				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				고용횟수 ${vo.employ }번	
+				</span>
+			</div> 
+			</div>
+			<br>
+			<span style="font-size: large;">쇼미더 머니</span>
+			<br><br>
+			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
+			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
+			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+		</div>
+		</div>
     </div>
 </div>
-    
+	
 <div style="text-align: center;">
 	<img alt="" src="resources/gosuImg/gosuMain.png">
 </div>

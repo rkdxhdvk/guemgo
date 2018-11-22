@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <style>
 h1 {
 	font-family: 'Jeju Gothic';
@@ -32,34 +33,25 @@ input[type="checkbox"] {
 <body>
 	<div class="container-fluid"
 		style="margin-bottom: 15px; padding-top: 180px;">
-		<div style="width: 500px; height: 830px; margin: auto; border-radius: 10px; border: 0.5px solid #a7a8a9;">
-			<div style="width: 500px; height: 830px; margin: auto;">
-			<div  style="width: 498px; height: 120px;border-bottom: 1px solid #e9ecef; margin: auto;">
-			<br>
-				<h1 style="text-align: center;">강의정보 수정하기</h1>
-				<br>
+		<div style="width: 500px; height: 800px; margin: auto; border-radius: 10px; border: 0.5px solid #a7a8a9;">
+			<div class="modal-header">
+						<h5 class="modal-title" id="modal">강의를 수정하시겠습니까?</h5>
 					</div>
 				<div class="modal-body">
-					<form action="classinsertOk" method="post">
+					<form action="classupdateOk" method="post">
 						<input type="hidden" name="gonum" value=${vo.go_num }>
 						<%-- console.log(${gonum }); --%>
 						<div class="form-row">
 
-							<div class="form-group col-sm-6">
-								<label>대분류</label> <select name="area1" class="form-control"
-									onchange="selectArea1(this.value,'area2')">
-									<c:forEach var="vo1" items="${list }">
-										<option value="${vo1.mname }">${vo1.mname }</option>
-									</c:forEach>
-								</select>
 
-							</div>
-
-							<div class="form-group col-sm-6">
-								<label>소분류</label> <select name="area2" class="form-control"
-									id="area2">
-									<option value="default">- 선택하세요 -</option>
-								</select>
+							<div class="form-group col-sm-12">
+								<label>분야</label>
+								<select name="selectarea" class="form-control">
+								<c:forEach var="vo3" items="${list }">									
+									<c:set var="area">${vo2.area }</c:set>	
+									<option value="${vo3.sname }" <c:if test="${area == vo3.sname}">  selected</c:if> >${vo3.sname }</option> 
+								</c:forEach>
+							</select>
 							</div>
 						</div>
 
@@ -67,13 +59,14 @@ input[type="checkbox"] {
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>강의명은 무엇인가요?</label><br> <input type="text"
-									name="classname" class="navbar-brand" size="40">
+									name="classname" class="navbar-brand" size="40" value=${vo.lectureName } style="font-size:15px">
+									
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>강의 설명을 간략히 남겨주세요</label> <input type="text"
-									class="navbar-brand" size="40" name="explanation">
+									class="navbar-brand" size="40" name="explanation" value=${vo.explanation } style="font-size:15px">
 							</div>
 						</div>
 						<div class="form-row">
@@ -92,6 +85,7 @@ input[type="checkbox"] {
 									type="checkbox" name="days" value="매일" class="cb1">상관없음
 							</div>
 						</div>
+						<br>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>언제 레슨을 하기를 원하시나요</label>
@@ -104,6 +98,9 @@ input[type="checkbox"] {
 									id="ex_rd2">저녁(6시~11시)
 							</div>
 						</div>
+						<br>
+						
+						<br>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>레슨을 원하는 지역을 선택해주세요.</label><br>
@@ -126,16 +123,28 @@ input[type="checkbox"] {
 
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">강의
-							개설하기</button>
+						<br>
+						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12">
+							수정하기</button>
 					</form>
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 
 
 
 </body>
+<script type="text/javascript">
+function addrSearch() {
+	new daum.Postcode({
+		oncomplete: function(data) {
+
+			$('[name=addr1]').val(data.address);
+			$('[name=addr2]').val(data.buildingName);
+		}
+	}).open();
+}
+</script>
 </html>

@@ -200,8 +200,7 @@ s0.parentNode.insertBefore(s1,s0);
 	  </div>
 	</div>
 	
-<!-- 	회원가입 페이지 모달로 불러오기 -->
-	<%@include file="/WEB-INF/views/woohyun/userInsert.jsp"%>
+
 
 <script type="text/javascript">
 function checkLogin() {

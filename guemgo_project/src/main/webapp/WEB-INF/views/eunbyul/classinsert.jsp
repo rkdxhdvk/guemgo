@@ -1,137 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>index.jsp</title>
-<link rel="stylesheet" href="/go/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="/go/resources/css/custom.css">
-<%-- <script type="text/javascript">
+<style>
+h1 {
+	font-family: 'Jeju Gothic';
+	font-size:28px;
+}
 
-<c:set var="area" value="${area}" />
-	<c:set var="area2" value="<%=movieList%>" />
-	<c:if test="${area eq area1}">
-		$("input[name='네임명']").prop("checked", true);
-	
-	</c:if>
-</script> --%>
+input[type="checkbox"] {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+}
+
+
+.radio {overflow:hidden;display:inline-block;position:relative;height:26px;box-sizing:border-box;cursor:pointer;}
+.radio input {overflow:hidden;display:none;width:0px;height:0px;border:0 none;font-size:0;line-height:0;clip:rect(0 0 0 0);opacity:0;}
+.radio .ico {position:absolute;left:3px;top:3px;width:20px;height:20px;background:url("images/ico_radiocomm.jpg") no-repeat 0 0;}/* 이미지는 디자인에 맞게 변경 */
+.radio .txt {display:inline-block;padding-left:30px;font-size:16px;color:#333;}/* 텍스트는 디자인에 맞게 변경 */
+.radio input:checked + .ico {background-position:0 -40px;}/* 체크됐을때, 이미지변경 */
+</style>
+<title>내 강의 목록</title>
+
 </head>
 <body>
-<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-	<%-- <h2>카테고리</h2>
-<ul>
-	<c:forEach var="header" items="${header }">
-		<li>${header }</li>
-	</c:forEach>
-</ul> --%>
-	
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="fl">
-		<a class="navbar-brand" href="<c:url value='/'/>">Guemgo</a>
-		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-			<span class="navbar-toggler-icon"></span>
-		</button> -->
-<%-- 		<a class="navbar-brand" href="<c:url value='/lectureName?email=${sessionScope.email }'/>">스케쥬우울</a> --%>
-		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
-		<a class="navbar-brand" href="<c:url value='/nboard/list'/>">공지게시판</a>
-		<a class="navbar-brand" href="<c:url value='/gboard/list'/>">게시판</a>
-		<a class="navbar-brand" href="<c:url value='/qboard/list'/>">qna게시판</a>
-		<a class="navbar-brand" href="<c:url value='/reList'/>">후기게시판</a>
-		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>">채팅</a>
-		<div id="navbar" class="collapse navbar-collapse">
-			
-			<form class="form-inline my-2 my-lg-10">
-				고수찾기
-				<input class="form-control mr-sm-2" type="search" placeholder="내용을 입력하세요" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-			</form>
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="index.jsp"></a>
-				</li>
-				<li class="nav-item dropdown">
-				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
-				 		<!-- 로그인 구분에 따라 나오는 문구 변경 -->
-				 		<c:choose>
-				 			<c:when test="${empty sessionScope.flag }">
-				 				로그인을 해주세요
-				 			</c:when>
-				 			<c:when test="${sessionScope.flag eq '0'}">
-				 				관리자 ${ sessionScope.email } 님
-				 			</c:when>
-				 			<c:when test="${sessionScope.flag eq '1'}">
-				 				${ sessionScope.email } 회원님
-				 			</c:when>
-				 			<c:when test="${sessionScope.flag eq '2'}">
-				 				${ sessionScope.email } 고수님
-				 			</c:when>
-				 		</c:choose>
-				 	</a>
-				 	<div class="dropdown-menu" aria-labelledby="dropdown">
-				 	<c:choose>
-				 	<c:when test="${sessionScope.flag eq '2'}">
-				 	<a class="dropdown-item" href="classinsert?email=${sessionScope.email }" style="margin-left:10px">강의 등록</a><br>
-				 	<a class="dropdown-item" href="mylecture?email=${sessionScope.email }" style="margin-left:10px">내 강의 목록</a><br>
-				 	<a class="dropdown-item" href="receiveList?email=${sessionScope.email }" style="margin-left:10px">받은 요청서</a><br>
-				 	</c:when>
-				 	</c:choose>
-				 	<input type="hidden" id="email" value="${sessionScope.email }">
-				 		<!-- 회원에 따라 다른 페이지 보여주기 -->
-						<c:choose>
-							<c:when test="${empty sessionScope.email }">
-								<a class="dropdown-item" data-toggle="modal" data-target="#loginModal" style="margin-left:10px">로그인</a>	<br><!-- 로그인시 modal 사용 -->
-						 		<a class="dropdown-item" data-toggle="modal" data-target="#userInsertModal" style="margin-left:10px">회원가입</a><br>
-							</c:when>
-							<c:otherwise>
-								<%-- 
-								아이디(이메일) : ${ sessionScope.email }<br>
-								권한세션 : ${ sessionScope.flag }<br>
-								고수등록여부: ${ sessionScope.gosuYN }
-								 --%>
-								<a class="dropdown-item" href="logout" style="margin-left:10px">로그아웃</a><br>
-					 			<c:choose>
-					 				<c:when test="${sessionScope.flag eq '0' }">
-										<a class="dropdown-item" href="admin" style="margin-left:10px">관리자페이지</a><br>
-									</c:when>
-									<c:when test="${sessionScope.flag eq '1' }">
-									<a class="dropdown-item" href="sendlist?email=${sessionScope.email }" style="margin-left:10px">보낸 요청서</a><br>
-										<c:choose>
-											<c:when test="${empty sessionScope.gosuYN }">
-												<a class="dropdown-item" href="mypage" style="margin-left:10px">마이페이지</a><br>
-												<a class="dropdown-item" href="eventlist?email=${sessionScope.email }" style="margin-left:10px">출석 이벤트</a><br>
-												<span>------------------------------</span><br>
-												<a class="dropdown-item" href="GosuInsertForm" style="margin-left:10px">고수로 가입하기</a><br>
-											</c:when>
-											<c:otherwise>
-													<a class="dropdown-item" href="mypage" style="margin-left:10px">마이페이지</a><br>
-													
-													<span >------------------------------</span><br>
-													<a class="dropdown-item" href="changeGosu" style="margin-left:10px">고수로 전환하기</a><br>
-											</c:otherwise>
-										</c:choose>
-									</c:when>
-									<c:when test="${sessionScope.flag eq '2' }">	
-										<a class="dropdown-item" href="gosupage" style="margin-left:10px">고수페이지</a><br>
-										<a class="dropdown-item" href="eventlist?email=${sessionScope.email }" style="margin-left:10px">출석 이벤트</a><br>
-										<span>------------------------------</span><br>
-										<a class="dropdown-item" href="changeUser" style="margin-left:10px">요청자로 전환하기</a><br>
-									</c:when>
-								</c:choose>
-							</c:otherwise>
-						</c:choose>
-				 	</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-	<section class="container">
-		<div class="modal-dialog">
-			<div class="modal-content">
+	<div class="container-fluid"
+		style="margin-bottom: 15px; padding-top: 180px; ">
+		<div style="width: 500px; height: 750px; margin: auto; border-radius: 10px; border: 0.5px solid #a7a8a9;">
+			<div style="width: 500px; height: 800px; margin: auto;">
 			<div class="modal-header">
 						<h5 class="modal-title" id="modal">어떤 레슨을 진행하시나요?</h5>
 					</div>
@@ -142,7 +44,7 @@
 						<div class="form-row">
 						
 							<div class="form-group col-sm-6">
-								<label>대분류</label> 
+								<label>중분류</label> 
 								
 								<select name="area1" class="form-control" onchange="selectArea1(this.value,'area2')">
 									<c:forEach var="vo1" items="${list }">
@@ -190,28 +92,37 @@
 						</div>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>가능한 요일은 언제인가요?</label><br> <input type="checkbox"
-									name="days" value="월" class="navbar-brand">월 <input
-									type="checkbox" name="days" value="화" class="navbar-brand">화
+								<label>가능한 요일은 언제인가요?</label><br> 
+								
+								<input type="checkbox" name="days" value="월" class="cb1" >월 &nbsp; &nbsp;
+								<input	type="checkbox" name="days" value="화" class="cb1" >화&nbsp; &nbsp;
 								<input type="checkbox" name="days" value="수"
-									class="navbar-brand">수 <input type="checkbox"
-									name="days" value="목" class="navbar-brand">목 <input
-									type="checkbox" name="days" value="금" class="navbar-brand">금
+									class="cb1">수&nbsp; &nbsp; <input type="checkbox"
+									name="days" value="목" class="cb1">목&nbsp; &nbsp; <input
+									type="checkbox" name="days" value="금" class="cb1">금&nbsp; &nbsp;
 								<input type="checkbox" name="days" value="토"
-									class="navbar-brand">토 <input type="checkbox"
-									name="days" value="일" class="navbar-brand">일 <input
-									type="checkbox" name="days" value="매일" class="navbar-brand">상관없음
+									class="cb1">토&nbsp; &nbsp; <input type="checkbox"
+									name="days" value="일" class="cb1">일&nbsp; &nbsp;<input
+									type="checkbox" name="days" value="매일" class="cb1">상관없음
 							</div>
 						</div>
+						<br>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-								<label>언제 레슨을 하기를 원하시나요</label><br> <input type="radio"
-									name="time" value="오전(8시~12시)" class="navbar-brand">오전(8시~12시)
-								<input type="radio" name="time" value="점심(12시~3시)" class="navbar-brand">점심(12시~3시)
-								<input type="radio" name="time" value="오후(3시~6시)" class="navbar-brand">오후(3시~6시)
-								<input type="radio" name="time" value="저녁(6시~11시)" class="navbar-brand">저녁(6시~11시)
+								<label>언제 레슨을 하기를 원하시나요</label>
+								<br> <input type="radio"
+									name="time" value="오전(8시~12시)" id="ex_rd2">오전(8시~12시)
+								<input type="radio" name="time" value="점심(12시~3시)"
+									id="ex_rd2">점심(12시~3시) <input type="radio"
+									name="time" value="오후(3시~6시)" id="ex_rd2">오후(3시~6시)
+								<input type="radio" name="time" value="저녁(6시~11시)"
+									id="ex_rd2">저녁(6시~11시)
 							</div>
 						</div>
+						<br>
+						<br>
+						<br>
+						<br>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
 								<label>레슨을 원하는 지역을 선택해주세요.</label><br>
@@ -239,9 +150,8 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-
-	</section>
 
 
 
