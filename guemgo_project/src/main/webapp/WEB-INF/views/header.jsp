@@ -87,7 +87,6 @@
 												<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
 												<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 												<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
-												
 												<span>------------------------------</span><br>
 												<a class="dropdown-item" href="<c:url value='/GosuInsertForm'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
 											</c:when>
