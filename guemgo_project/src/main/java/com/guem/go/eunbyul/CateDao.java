@@ -38,4 +38,10 @@ public class CateDao {
 	public List<CatesVo> small(int mnum) {
 		return sqlSession.selectList(NAMESPACE+ ".small", mnum);
 	}
+	public int selectmnum(String sname) {
+		return sqlSession.selectOne(NAMESPACE+ ".selectmnum", sname);
+	}
+	public String selectmname(int mnum) {
+		return sqlSession.selectOne(NAMESPACE+ ".selectmname", mnum);
+	}
 }
