@@ -36,4 +36,10 @@ public class CateService {
 	public List<CatesVo> small(int mnum) {
 		return dao.small(mnum);
 	}
+	public int selectmnum(String sname) {
+		return dao.selectmnum(sname);
+	}
+	public String selectmname(int mnum) {
+		return dao.selectmname(mnum);
+	}
 }

@@ -1,5 +1,7 @@
 package com.guem.go.eunbyul;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,10 @@ public class LectureDao {
 
 	public int classdelete(int lecNum) {
 		return sqlSession.delete(NAMESPACE+".classdelete", lecNum);
+	}
+	
+	public GosuareaVo gosuareaselect(int lecturenum){
+		return sqlSession.selectOne(NAMESPACE+".gosuareaselect", lecturenum);
 	}
 
 }

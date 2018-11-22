@@ -12,4 +12,7 @@ public class LectureService {
 	public int classdelete(int lecNum) {
 		return dao.classdelete(lecNum);
 	}
+	public GosuareaVo gosuareaselect(int lecturenum) {
+		return dao.gosuareaselect(lecturenum);
+	}
 }

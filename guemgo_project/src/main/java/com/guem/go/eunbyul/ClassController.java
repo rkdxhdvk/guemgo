@@ -32,7 +32,7 @@ public class ClassController {
 		//여기서 area랑 카테고리(소)테이블 명칭을 비교해서 해당 명칭의 중넘버를 찾는다
 		//중넘버를 찾아서 카테고리 중으로 가고
 		List<CatemVo> list=cateservice.catemlist();
-		ModelAndView mv= new ModelAndView("eunbyul/classinsert");
+		ModelAndView mv= new ModelAndView(".eunbyul.classinsert");
 /*		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i).m_name);
 		}*/
@@ -132,11 +132,7 @@ public class ClassController {
 		
 	}
 	
-	@RequestMapping(value="/classUpdate",method=RequestMethod.GET)
-	public ModelAndView classupdate() {
 
-		ModelAndView mv=new ModelAndView(".eunbyul.classUpdate");
-		return mv;
-	}
+
 	
 }
