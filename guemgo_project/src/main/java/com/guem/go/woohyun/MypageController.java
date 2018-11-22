@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.guem.go.kidong.GboardService;
 import com.guem.go.kidong.GboardVo;
@@ -33,8 +34,11 @@ public class MypageController {
 	}
 */	
 	@RequestMapping("/mypage")
-	public String mypage() {
-		return ".myPage";
+	public ModelAndView mypage(String email) {
+		UsersVo vo=service.detail(email);
+		ModelAndView mv=new ModelAndView(".myPage");
+		mv.addObject("vo",vo);
+		return mv;
 	}	
 	
 /*

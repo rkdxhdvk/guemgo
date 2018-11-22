@@ -12,6 +12,10 @@
 #replyList {
 	font-size: smaller;
 }
+#content {
+	padding-left: 85px;
+    padding-right: 85px;
+}
 </style>
 <body>
 <div class="container-fluid">

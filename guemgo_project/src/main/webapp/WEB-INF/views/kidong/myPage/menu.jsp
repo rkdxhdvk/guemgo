@@ -21,6 +21,4 @@
 		href="<c:url value='/sendList?email=${sessionScope.email }'/>">보낸 요청서</a></li> --%>
 
 	<li><a href="<c:url value='/selectGboard'/>">내가쓴글</a></li>
-	
-	<li><a href='<c:url value='/'/>'>홈으로</a></li>
 </ul>

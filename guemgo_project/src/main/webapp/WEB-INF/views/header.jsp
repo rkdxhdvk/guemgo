@@ -78,27 +78,30 @@
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
 										<a class="dropdown-item" href="<c:url value='/admin'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-24.png">&nbsp 관리자페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
 									<a class="dropdown-item" href="<c:url value='/sendlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-request-service-24.png">&nbsp 보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
-												<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+												<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
 												<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
+												<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 												<span>------------------------------</span><br>
 												<a class="dropdown-item" href="<c:url value='/GosuInsertForm'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
 											</c:when>
 											<c:otherwise>
 													<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
 													<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
+													<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 													<span style="margin:5px">----------------------------</span><br>
 													<a class="dropdown-item" href="<c:url value='/changeGosu'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 고수로 전환하기</a><br>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '2' }">	
-										<a class="dropdown-item" href="<c:url value='/gosupage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
-
+										<a class="dropdown-item" href="<c:url value='/gosuPage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 										<span style="margin:5px">----------------------------</span><br>
 										<a class="dropdown-item" href="<c:url value='/changeUser'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 요청자로 전환하기</a><br>
 									</c:when>

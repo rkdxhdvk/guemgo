@@ -29,6 +29,13 @@ public class HomeController {
 	}*/
 	@Autowired
 	private CateService cateservice;
+	
+	
+	@Autowired
+	private GosuService gosuService;
+	
+	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {	
 		

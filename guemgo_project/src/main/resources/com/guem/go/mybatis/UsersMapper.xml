@@ -87,4 +87,6 @@
 	<insert id="cate_insert" parameterType="com.guem.go.woohyun.UsersVo">
 		insert into FAVORITE(fa_num, email, favorite) values(fa_num_seq.nextval, #{email}, #{sname})
 	</insert>
+	
+	
 </mapper>
