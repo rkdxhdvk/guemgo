@@ -13,6 +13,7 @@ public class UsersVo {
 	private int point;
 	private Date regdate;
 	private String gosuyn;
+	private String sname;
 	
 	public UsersVo() {}
 
@@ -109,6 +110,14 @@ public class UsersVo {
 
 	public void setGosuyn(String gosuyn) {
 		this.gosuyn = gosuyn;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
 
 	

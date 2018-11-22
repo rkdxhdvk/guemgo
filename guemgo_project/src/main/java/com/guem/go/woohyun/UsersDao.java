@@ -59,4 +59,8 @@ public class UsersDao {
 	public int getCount(Map<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE +".getCount", map);
 	}
+	
+	public int cate_insert(UsersVo vo) {
+		return sqlSession.insert(NAMESPACE +".cate_insert", vo);
+	}
 }

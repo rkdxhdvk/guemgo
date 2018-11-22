@@ -57,6 +57,13 @@
                                			<span class="input-group-addon">이름 <span style="margin-left:65px"></span></span>
                                         <input type="text" class="form-control" name="name" placeholder="name" required="required">
                                 </div>
+                                <div style="margin-top: 10px" class="input-group">
+                               			<span class="input-group-addon">관심사<span style="margin-left:65px"></span></span>
+	                                    <c:forEach var="vo" items="${list }" varStatus="vs">
+												<input type="checkbox" style="margin-left:10px" name="sname" value="${ vo.sname }"/>${ vo.sname } &nbsp&nbsp
+												<c:if test="${ vs.count % 3 == 0 }"><br/></c:if>
+										</c:forEach>
+                                </div>
                                     
 
                                 <div class="form-group" style="margin-top: 20px;" >
@@ -84,13 +91,7 @@
                          
                     </div>
 
-               
-               
-                
          </div> 
-    
-           			
-           			
            			
                  </div>
 	    </div>

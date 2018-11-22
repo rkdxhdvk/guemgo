@@ -59,4 +59,9 @@ public class UsersService {
 	public int getCount(Map<String, Object> map) {
 		return dao.getCount(map);
 	}
+	
+	// 회원 가입시 관심사 
+	public int cate_insert(UsersVo vo){
+		return dao.cate_insert(vo);
+	}
 }
