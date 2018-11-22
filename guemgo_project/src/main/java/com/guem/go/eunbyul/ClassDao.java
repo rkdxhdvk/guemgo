@@ -37,4 +37,10 @@ public class ClassDao {
 	public LectureVo classSelect(int lecturenum) {
 		return sqlSession.selectOne(NAMESPACE + ".classSelect", lecturenum);
 	}
+	public int classupdate(LectureVo vo) {
+		return sqlSession.update(NAMESPACE+ ".classupdate", vo);
+	}
+	public int areaupdate(GosuareaVo vo) {
+		return sqlSession.update(NAMESPACE+ ".areaupdate", vo);
+	}
 }

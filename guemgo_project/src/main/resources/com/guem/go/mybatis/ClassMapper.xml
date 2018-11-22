@@ -12,9 +12,9 @@
 	<select id="gosuselect" resultType="com.guem.go.woohyun.GosuVo"  parameterType="String">
 		select * from gosu where email=#{email}
 	</select>
-	<delete id="classdelete" parameterType="int" >
-		delete from lecture where lecturenum=#{lecNum}
-	</delete>
+	<update id="classdelete" parameterType="int" >
+		update lecture set state=1 where lecturenum={lecNum}
+	</update>
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where go_num=#{go_num}
 	</select>
@@ -27,5 +27,12 @@
 	<select id="gosuareaselect"  parameterType="int" resultType="com.guem.go.eunbyul.GosuareaVo">
 		select * from gosu_area where lecturenum = #{lecturenum} 
 	</select>
+	<!-- 강의 수정하기 -->
+ 	<update id="classupdate" parameterType="com.guem.go.eunbyul.LectureVo" >
+		update lecture set lectureName=#{lectureName}, region1=#{region1}, region2=#{region2}, day=#{day}, time=#{time}, explanation=#{explanation} where lecturenum=#{lectureNum}
+	</update>
+	<update id="areaupdate" parameterType="com.guem.go.eunbyul.GosuareaVo">
+		update gosu_area set area=#{area} where lecturenum=#{lectureNum}
+	</update> 
 </mapper>
 

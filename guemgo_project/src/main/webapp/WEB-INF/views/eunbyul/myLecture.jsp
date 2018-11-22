@@ -32,6 +32,7 @@
 
 
 				<tbody>
+				<c:if test="${vo.state==0 }">
 					<c:forEach var="vo" items="${list }">
 						<tr>
 							<th scope="row" style="width: 10%">${vo.lectureNum }</th>
@@ -47,6 +48,7 @@
 						삭제</button></td>
 						</tr>
 					</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
 		</div>

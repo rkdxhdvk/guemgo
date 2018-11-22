@@ -42,4 +42,6 @@ public class CateService {
 	public String selectmname(int mnum) {
 		return dao.selectmname(mnum);
 	}
+	
+
 }

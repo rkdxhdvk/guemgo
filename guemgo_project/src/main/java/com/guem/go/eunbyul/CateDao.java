@@ -44,4 +44,5 @@ public class CateDao {
 	public String selectmname(int mnum) {
 		return sqlSession.selectOne(NAMESPACE+ ".selectmname", mnum);
 	}
+	
 }

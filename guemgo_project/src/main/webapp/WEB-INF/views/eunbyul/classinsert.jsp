@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <style>
 h1 {
 	font-family: 'Jeju Gothic';
@@ -226,6 +227,15 @@ input[type="checkbox"] {
 				    for(var i = 0, limit = e.options.length; i < limit - 1; ++i){
 				        e.remove(1);
 				    }
+				}
+				function addrSearch() {
+					new daum.Postcode({
+						oncomplete: function(data) {
+
+							$('[name=addr1]').val(data.address);
+							$('[name=addr2]').val(data.buildingName);
+						}
+					}).open();
 				}
 /* 		}); */
 	</script>

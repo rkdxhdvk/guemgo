@@ -62,7 +62,7 @@
                                 <div style="margin-top: 10px" class="input-group">
                                			<span class="input-group-addon">관심사<span style="margin-left:65px"></span></span>
 	                                    <c:forEach var="vo" items="${list }" varStatus="vs">
-												<input type="checkbox" style="margin-left:10px" name="sname" value="${ vo.sname }"/>${ vo.sname } &nbsp&nbsp
+												<input type="checkbox" style="margin-left:10px" name="sname" value="123"/>${ vo.sname } &nbsp&nbsp
 												<c:if test="${ vs.count % 3 == 0 }"><br/></c:if>
 										</c:forEach>
                                 </div> 

@@ -29,7 +29,7 @@ public class UsersInsertController {
 		return mv;
 	}
 	
-	//	관심사 추가 기능
+	
 	@RequestMapping(value="/UserInsert",method=RequestMethod.POST)
 	public ModelAndView insertOk(UsersVo vo, HttpServletRequest request) {
 		vo.setFlag(1);	// 회원가입시 사용자 구분:일반(0-관리자,1-일반회원,2-고수)
@@ -38,6 +38,8 @@ public class UsersInsertController {
 		vo.setPoint(500);	// 회원가입시 기본 포인트
 		int n=service.insert(vo);	// users 테이블 insert
 		
+		//	관심사 추가 기능, 기능 재확인 필요
+		/*
 		String sname[] = request.getParameterValues("sname");
 		
 		
@@ -46,7 +48,7 @@ public class UsersInsertController {
 			
 			int j=service.cate_insert(vo);	// favorite 테이블 insert
 		}
-
+		 */
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
 			mv.addObject("code","success");

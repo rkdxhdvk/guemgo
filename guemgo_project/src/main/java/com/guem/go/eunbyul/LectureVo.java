@@ -9,11 +9,12 @@ public class LectureVo {
 	public String time;
 	public int go_num;
 	public String explanation;
+	public int state;
 	
 	public LectureVo() {}
 
 	public LectureVo(int lectureNum, String lectureName, String region1, String region2, String day, String time,
-			int go_num, String explanation) {
+			int go_num, String explanation, int state) {
 		super();
 		this.lectureNum = lectureNum;
 		this.lectureName = lectureName;
@@ -23,6 +24,7 @@ public class LectureVo {
 		this.time = time;
 		this.go_num = go_num;
 		this.explanation = explanation;
+		this.state = state;
 	}
 
 	public int getLectureNum() {
@@ -88,6 +90,14 @@ public class LectureVo {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
-	
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
 	
 }
