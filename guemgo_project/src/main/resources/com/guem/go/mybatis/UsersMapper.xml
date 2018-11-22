@@ -87,4 +87,9 @@
 	<insert id="cate_insert" parameterType="com.guem.go.woohyun.UsersVo">
 		insert into FAVORITE(fa_num, email, favorite) values(fa_num_seq.nextval, #{email}, #{sname})
 	</insert>
+	
+	<!-- 포인트 추가 -->
+	<update id="userpoint" parameterType="hashmap">
+		update users set point=point+#{point} where email=#{email}
+	</update>
 </mapper>
