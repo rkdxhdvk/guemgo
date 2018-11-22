@@ -30,5 +30,14 @@
 	<select id="small" parameterType="int" resultType="com.guem.go.eunbyul.CatesVo">
 		select * from cate_s where mnum = #{mnum}
 	</select>
+	<!-- s이름으로 m넘버 가져오기 -->
+	<select id="selectmnum" parameterType="String" resultType="int">
+		select mnum from cate_s where sname=#{sname}
+	</select>
+	<!-- m넘버로 m이름가져오기 -->
+	<select id="selectmname" parameterType="int" resultType="String">
+		select mname from cate_m where mnum=#{mnum}
+	</select>
+
 </mapper>
 
