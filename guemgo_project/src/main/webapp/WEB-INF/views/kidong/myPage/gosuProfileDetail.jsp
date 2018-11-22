@@ -28,11 +28,13 @@
 	<br>
 
 <h2>서비스 카테고리</h2>
+	<div style="display: inline-flex;">
 	<c:forEach var="item" items="${ lectureList }">
 	<br>
-	<span class="label label-info" style="font-size: large;">${item.area }</span>
+	<span class="label label-info" style="font-size: large;margin-right: 10px;">${item.area }</span>
 	<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
 </c:forEach>
+</div>
 <br>
 <h2>미디어</h2>
 <br>
