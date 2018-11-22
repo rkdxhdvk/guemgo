@@ -58,5 +58,8 @@
 	<update id="requpdate" parameterType="int">
 		update require set lec_start=1 where req_num=#{num}
 	</update>
+	<update id="reqlistupdate" parameterType="hashmap">
+		update requirelist set state=1 where req_num=#{req_num} and lecturenum=#{lectureNum}
+	</update>
 </mapper>
 

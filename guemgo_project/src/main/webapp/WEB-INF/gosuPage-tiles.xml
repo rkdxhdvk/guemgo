@@ -20,6 +20,12 @@
 	<definition name=".gosuschedulelist" extends=".gosuPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
 	</definition>
+	<definition name=".gosuschedulelistdetail" extends=".gosuPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/minsu/list.jsp"/>
+	</definition>
+	<definition name=".gosuschedulelisttotal" extends=".gosuPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/minsu/list2.jsp"/>
+	</definition>
 	
 	<definition name=".receiveList" extends=".gosuPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/receiveList.jsp"/>

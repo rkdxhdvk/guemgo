@@ -20,7 +20,8 @@ $(document).ready(
 						$( ".progress"+data.scheduleNum ).html(ss);
 						if(data.pro>=100 && ${sessionScope.flag}==1){
 							console.log("dddd");
-							var sss = "<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${vo.other }'> <input type='submit' value='후기 남기기'> </form>";
+						var sss = 
+							"<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${vo.email }'> <input type='hidden' name='lectureNum' id='lectureNum' value='${vo.lectureNum }'> <input type='submit' value='후기 남기기'> </form>";
 							$( ".pro"+data.scheduleNum ).html(sss);
 						}
 				}
@@ -36,15 +37,17 @@ $(document).ready(
 		<c:forEach items="${schelist }" var="vo">
 				<c:if test="${sessionScope.flag==1 }">
 					<c:set var="other" value="${vo.email }"/>
+					<a href="<c:url value='/user/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
+				${other}님과의 ${vo.lecturename }</a>
 				</c:if>
 				<c:if test="${sessionScope.flag==2 }">
 					<a href="/go/scheList?email=${sessionScope.email }">전체리스트 보기</a><br>
 					<c:set var="other" value="${vo.other }"/>
-				</c:if>
-				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
+					<a href="<c:url value='/gosu/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
 				${other}님과의 ${vo.lecturename }</a>
+				</c:if>
 				
-				<div class="progressbar${vo.scheduleNum }" style="width: 200px;">
+				<div class="progressbar${vo.scheduleNum }" style="width: 300px;">
 				<a class="progress${vo.scheduleNum }"></a>
 				</div>
 				<div class="pro${vo.scheduleNum }"></div>

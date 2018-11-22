@@ -6,24 +6,24 @@
 <head>
 <meta charset='utf-8' />
 
-<link href='resources/fullcalender/demo-topbar.css' rel='stylesheet' />
-<link href='resources/fullcalender/fullcalendar.min.css'
+<link href='${pageContext.request.contextPath}/resources/fullcalender/demo-topbar.css' rel='stylesheet' />
+<link href='${pageContext.request.contextPath}/resources/fullcalender/fullcalendar.min.css'
 	rel='stylesheet' />
-<link href='resources/fullcalender/fullcalendar.print.min.css'
+<link href='${pageContext.request.contextPath}/resources/fullcalender/fullcalendar.print.min.css'
 	rel='stylesheet' media='print' />
 
-<script src='resources/fullcalender/lib/moment.min.js'></script>
-<script src='resources/fullcalender/lib/jquery.min.js'></script>
-<script src='resources/fullcalender/fullcalendar.min.js'></script>
-<script src='resources/fullcalender/demo-to-codepen.js'></script>
+<script src='${pageContext.request.contextPath}/resources/fullcalender/lib/moment.min.js'></script>
+<!-- <script src='resources/fullcalender/lib/jquery.min.js'></script> -->
+<script src='${pageContext.request.contextPath}/resources/fullcalender/fullcalendar.min.js'></script>
+<script src='${pageContext.request.contextPath}/resources/fullcalender/demo-to-codepen.js'></script>
 
-<link
+<!-- <link
 	href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
 	rel='stylesheet' />
 <script
 	src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
 <script
-	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+	src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>-->
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -58,7 +58,7 @@
 										editable : true,
 										events:events,
 										
-										dayClick : function(date, calEvent) {
+										/* dayClick : function(date, calEvent) {
 											var date = date.format('YYYY-MM-DD');
 							                  $('#calendar').fullCalendar('clientEvents', function(event) {
 							                	  var start = moment(event.start).format("YYYY-MM-DD");
@@ -79,7 +79,7 @@
 							                		  }
 							                	  }
 							                  });
-										},
+										}, */
 										eventRender: function(eventObj, $el) {
 									        $el.popover({
 									          title: eventObj.title,
@@ -88,7 +88,10 @@
 									          placement: 'top',
 									          container: 'body'
 									        });
-										}
+										},
+										eventRender: function (event, element, view) {
+										    element.find('.fc-title').append('<div class="hr-line-solid-no-margin"></div><span style="font-size: 10px">'+ "메모 :" + event.description+'</span></div>');
+										},
 										})
 			});
 </script>

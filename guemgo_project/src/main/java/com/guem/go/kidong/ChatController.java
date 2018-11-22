@@ -90,13 +90,13 @@ public class ChatController {
 			model.addAttribute("isschedule", 0);
 			System.out.println("isschedule " + 0);
 		}
-		LectureVo vo = classService.classSelect(lecturenum);
+		LectureVo lvo = classService.classSelect(lecturenum);
 		model.addAttribute("req_num", req_num);
 		model.addAttribute("other", other);
 		model.addAttribute("lecturename", lecturename);
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
-		model.addAttribute("vo", vo);
+		model.addAttribute("lvo", lvo);
 		return ".kidong.chat";
 	}
 	

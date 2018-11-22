@@ -29,8 +29,14 @@ $(document).ready(
 	<ul>
 		<c:forEach items="${list }" var="vo">
 			<li>
-				<a href="<c:url value='/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
+				<c:if test="${sessionScope.flag==1 }">
+				<a href="<c:url value='/user/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
 				${vo.lecturename }</a>
+				</c:if>
+				<c:if test="${sessionScope.flag==2 }">
+				<a href="<c:url value='/gosu/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
+				${vo.lecturename }</a>
+				</c:if>
 				<div id="progressbar"></div>
 			</li>
 		</c:forEach>

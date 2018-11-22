@@ -19,6 +19,9 @@ public class ReviewDao {
 	public List<ReviewVo> list(Map<String, Object> map) {
 		return sqlSession.selectList(NAMESPACE +".list", map);
 	}
+	public List<ReviewVo> relist() {
+		return sqlSession.selectList(NAMESPACE +".relist");
+	}
 	public int getCount(Map<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE +".getCount", map);
 	}

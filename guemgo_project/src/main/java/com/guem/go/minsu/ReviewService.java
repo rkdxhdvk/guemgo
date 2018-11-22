@@ -15,6 +15,9 @@ public class ReviewService{
 	public int insert(ReviewVo vo) {
 		return dao.insert(vo);
 	}
+	public List<ReviewVo> relist() {
+		return dao.relist();
+	}
 	public List<ReviewVo> list(Map<String, Object> map){
 		return dao.list(map);
 	}

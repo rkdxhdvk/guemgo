@@ -186,6 +186,10 @@ html, body {
 					},
 					editable : true,
 					displayEventTime : false,
+					events : events	,
+					eventRender: function (event, element, view) {
+					    element.find('.fc-title').append('<div class="hr-line-solid-no-margin"></div><span style="font-size: 10px">'+ "메모 :" + event.description+'</span></div>');
+					},
 					///
 					<c:if test="${sessionScope.flag==2}">
 					dayClick : function(date, calEvent) {
@@ -257,20 +261,6 @@ html, body {
 		                	  }
 		                  })
 					},
-					
-					/* eventClick : function(event, element) {
-						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
-						
-					}, */
-					/* eventRender: function(eventObj, $el) {
-				        $el.popover({
-				          title: eventObj.title,
-				          content: eventObj.description,
-				          trigger: 'hover',
-				          placement: 'top',
-				          container: 'body'
-				        });
-					}, */
 					eventDrop: function(event, delta, revertFunc) {
 					    if (!confirm("일정을 변경하시겠습니까?")) {	
 					      revertFunc();
@@ -293,7 +283,7 @@ html, body {
 
 					 },
 					</c:if>
-					events : events	
+					 
 				});
 		
 		$( "#datepicker" ).datepicker();
@@ -430,6 +420,7 @@ html, body {
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
 						</c:if>
+						
 						<c:if test="${sessionScope.flag==2 && isschedule==0 }">
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
@@ -439,7 +430,7 @@ html, body {
 							</c:when>
 							<c:otherwise>	
 					<form action="<c:url value='/calaaa'/>" method="get">
-						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
+						<input type="hidden" value="${lvo.lectureNum }/${lvo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<input type="hidden" value="${other}" name="other" id="other"> 
 					<input type="hidden" value="${req_num}" name="matchNum" id="matchNum">
@@ -447,7 +438,7 @@ html, body {
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>강의명 : ${vo.lectureName }</label><br> 		
+							<label>강의명 : ${lvo.lectureName }</label><br> 		
 							<%-- <select name="lecture" class="form-control">
 								<c:forEach items="${lecList }" var="vo">
 									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
@@ -508,9 +499,9 @@ html, body {
 					
 
 					<div class="panel panel-primary" style="margin-top: 15px;">
-						<div class="panel-heading">${vo.lectureName }</div>
+						<div class="panel-heading">${lvo.lectureName }</div>
 						<div class="panel-body" style="height: 160px;">
-							내용 : ${vo.explanation }
+							내용 : ${lvo.explanation }
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">

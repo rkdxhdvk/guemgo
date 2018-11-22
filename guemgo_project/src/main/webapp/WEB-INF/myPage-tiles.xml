@@ -25,6 +25,10 @@
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
 	</definition>
 	
+	<definition name=".userschedulelistdetail" extends=".myPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/minsu/list.jsp"/>
+	</definition>
+	
 	<definition name=".selectGboard" extends=".myPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/selectGboard.jsp"/>
 	</definition>
