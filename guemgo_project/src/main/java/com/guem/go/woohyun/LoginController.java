@@ -86,6 +86,7 @@ public class LoginController {
 			session.setAttribute("email",email);	// 세션에 이메일로 로그인 여부 판별
 			session.setAttribute("flag",vo.getFlag());	// 세션에 플래그로 관리자, 일반회원 판별
 			session.setAttribute("gosuYN",vo.getGosuyn());	// 세션에 이메일로 고수등록여부 판별
+			session.setAttribute("name",vo.getName());	// 세션에 name등록
 			mv.setViewName("redirect:/");
 			return mv; //리다이렉트 방식으로 이동하기
 		}else {

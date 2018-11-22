@@ -87,19 +87,31 @@
 		select go_num from gosu where email=#{email}
 	</select>
 	
-	<!-- 고수 프로필 수정1 트랜잭션 처리 해야함 -->
+	<!-- 고수 프로필 수정1,  트랜잭션 처리 해야함 -->
 	<update id="update_profile1" parameterType="com.guem.go.woohyun.GosuVo">
-		update gosu set intro=#{intro} where email=#{email}
+		update gosu set intro=#{intro }, career=#{career } where email=#{email }
 	</update>
 	
-	<!-- 고수 프로필 수정2 트랜잭션 처리 해야함, 기존에 데이터가 없을경우에는 insert 해야함 -->
+	<!-- 고수 프로필 수정2, 자격증 넣기, 트랜잭션 처리 해야함, 기존에 데이터가 없을경우에는 insert 해야함 -->
 	<update id="update_profile2" parameterType="com.guem.go.woohyun.GosuVo">
 		<choose>
-			<when test="(license!=null and license!='') or (career!=null and career!='') ">
-				update gosu_career set license=#{license}, career=#{career} where go_num=#{go_num}
+			<when test="org_license!=null and org_license!='' ">
+					update gosu_career set license=#{license} where go_num=#{go_num}
 			</when>
 			<otherwise>
-				insert into gosu_career(go_num, license, career) values(#{go_num}, #{license}, #{career})
+				insert into gosu_career(go_num, license) values(#{go_num}, #{license})
+			</otherwise>
+		</choose>
+	</update>
+	
+	<!-- 고수 프로필 수정3 고수 이미지 넣기, 트랜잭션 처리 해야함, 기존에 데이터가 없을경우에는 insert 해야함 -->
+	<update id="update_profile3" parameterType="com.guem.go.woohyun.GosuVo">
+		<choose>
+			<when test="org_g_image!=null and org_g_image!='' ">
+					update gosu_image set image=#{g_image} where go_num=#{go_num}
+			</when>
+			<otherwise>
+				insert into gosu_image(go_num, image) values(#{go_num}, #{g_image})
 			</otherwise>
 		</choose>
 	</update>

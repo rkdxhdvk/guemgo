@@ -13,8 +13,10 @@ public class GosuVo {
 	private int employ;
 	// gosu_image 테이블 정보 추가
 	private String g_image;	// gosu_image 테이블의 이미지
+	private String org_g_image; // 이미지 등록여부 확인
 	// gosu_career 테이블 정보 추가
 	private String license;
+	private String org_license;
 	// user 테이블 정보 추가
 	private int m_num;
 	private String name;
@@ -45,6 +47,15 @@ public class GosuVo {
 		this.u_image = u_image;
 		this.lecturenum = lecturenum;
 		this.area = area;
+	}
+
+		
+	public String getOrg_g_image() {
+		return org_g_image;
+	}
+
+	public void setOrg_g_image(String org_g_image) {
+		this.org_g_image = org_g_image;
 	}
 
 	public String getEmail() {
@@ -102,6 +113,14 @@ public class GosuVo {
 
 	public void setLicense(String license) {
 		this.license = license;
+	}
+	
+	public String getOrg_license() {
+		return org_license;
+	}
+
+	public void setOrg_license(String org_license) {
+		this.org_license = org_license;
 	}
 
 	public int getM_num() {

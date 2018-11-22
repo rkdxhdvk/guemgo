@@ -63,6 +63,11 @@ public class GosuService {
 		return dao.update_profile2(vo);
 	}
 	
+	// 고수 프로필 업데이트3
+	public int update_profile3(GosuVo vo) {
+		return dao.update_profile3(vo);
+	}
+	
 	//페이징 처리 및 검색
 	public List<GosuVo> list(Map<String, Object> map){
 		return dao.list(map);
@@ -71,12 +76,12 @@ public class GosuService {
 		return dao.getCount(map);
 	}
 	
-	// 고수 프로필 디테일 조회
+	// 고수 프로필 디테일 조회1
 	public GosuVo gosuDetail(String email) {
 		return dao.gosuDetail(email);
 	}
 
-	// 고수 프로필 디테일 조회
+	// 고수 프로필 디테일 조회2
 	public List<GosuVo> gosuDetailLectureList(String email) {
 		return dao.gosuDetailLectureList(email);
 	}

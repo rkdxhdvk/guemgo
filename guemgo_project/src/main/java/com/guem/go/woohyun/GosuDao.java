@@ -60,6 +60,11 @@ public class GosuDao {
 		return sqlSession.update(NAMESPACE + ".update_profile2", vo);
 	}
 	
+	// 고수 프로필 업데이트3 DAO
+	public int update_profile3(GosuVo vo) {
+		return sqlSession.update(NAMESPACE + ".update_profile3", vo);
+	}
+	
 	//페이징 처리 및 검색
 		public List<GosuVo> list(Map<String, Object> map) {
 			return sqlSession.selectList(NAMESPACE +".list", map);

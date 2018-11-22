@@ -70,11 +70,9 @@ function bs_input_file() {
 //파일 추가시 필요한 jquery END
 </script>
 </head>
+
+
 <body>
-	
-
-
-
 <!-- //////////	타이틀 START ////////// -->
 	<div class="jumbotron jumbotron-sm" style="padding-top: 5px;  padding-bottom: 10px;">
 	    <div class="container">
@@ -87,7 +85,6 @@ function bs_input_file() {
 	    </div>
 	</div>
 <!-- //////////	타이틀 END ////////// -->	
-	
 <!-- //////////	고수가입 양식 START ////////// -->
 	<div class="container" style=" margin-top:0px">    
             
@@ -95,42 +92,85 @@ function bs_input_file() {
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">프로필 수정</div>
-                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="/accounts/login/">홈으로</a></div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href='<c:url value='/' />' >홈으로</a></div>
             </div>  
             <div class="panel-body" >
-                <form method="post" action=".">
-                    <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            
-
+                <form method="post" action="GosuProfileUpdate" enctype="multipart/form-data">
+                	<input type="hidden" value="${vo.email }" name="email">
+					<input type="hidden" value="${vo.go_num }" name="go_num">
+					<input type="hidden" name="org_license" value="${ vo.license }" />	<!-- gosu_career 테이블에 기존 데이터 존재하면 불러옴 -->
+					<input type="hidden" name="org_g_image" value="${ vo.g_image }" />	<!-- gosu_image 테이블에 기존 테이터 존재하면 불러옴 -->
+<!-- 미사용                    <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' /> -->
 <!--                     <form  class="form-horizontal" method="post" > -->
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+<!--                         <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' /> -->
 
 					<div class="row" style="margin-bottom:15px;">
                         <div id="div_id_company" class="form-group required" style="margin-left:15px; margin-bottom:5px;">
                             <label for="id_company" class="control-label col-md-10  requiredField"> 미디어 </label>
-                            <button type="button" class="btn btn-xs">수정</button>
+<!--                             <button type="button" class="btn btn-xs">수정</button> -->
                             <div class="controls col-md-12">
- 								<img src="resources/img/gosuImg/1.jpg" class="img-thumbnail" alt="Cinque Terre" style="max-width:150px; height:auto;">
- 								<img src="resources/img/gosuImg/2.jpg" class="img-thumbnail" alt="Cinque Terre" style="max-width:100px; height:auto;">
- 								<img src="resources/img/gosuImg/3.jpg" class="img-thumbnail" alt="Cinque Terre" style="max-width:100px; height:auto;">
+ 								<img src="resources/upload/gosuImg/1.jpg" class="img-thumbnail" alt="Cinque Terre" style="width:100px; height:100px;">
+ 								<img src="resources/upload/gosuImg/2.jpg" class="img-thumbnail" alt="Cinque Terre" style="width:100px; height:100px;">
+ 								<img src="resources/upload/gosuImg/3.jpg" class="img-thumbnail" alt="Cinque Terre" style="width:100px; height:100px;">
 							</div>
+							
+							
+							<%-- 
+                    		<div class="form-group col-md-5" style="margin-top:15px">
+								<div class="input-group input-file" >
+									<span class="input-group-btn">
+						        		<button class="btn btn-default btn-choose" type="button">파일찾기</button>
+						    		</span>
+						    		<input type="text" class="form-control" name="g_image" placeholder='Choose a file...'  style="width:200px" value="${vo.g_image }"/>
+						    		<span class="input-group-btn">
+						       			 <button class="btn btn-warning btn-reset" type="button">Reset</button>
+						    		</span>
+						    		 --%>
+<!--  미디어 새로운 파일 업로드 양식 START-->
+<!-- 						<div class="container" style="margin-left: 15px;"> -->
+							<div class="row col-md-12" style="margin-top: 15px">
+								<div class="control-group " id="fields" >
+									<label class="control-label" for="field1">미디어 사진 추가</label>  
+									<div class="controls">
+										<div class="entry input-group "> 
+											<div class="input-group">
+												<span class="input-group-addon">이미지</span> 
+												<input id="msg"
+													type="file" class="form-control" name="g_img"
+													placeholder="Additional primary" value="${vo.g_image }">
+											</div>
+										</div>
+									</div>
+<!--  미디어 새로운 파일 업로드 양식 END-->
+						    		 
+						    		 
+						    		<!-- 플러스 기능 미사용 -->
+<!-- 						    		<span class="input-group-btn"> -->
+<!-- 			                            <button class="btn btn-success btn-add" type="button"> -->
+<!-- 			                                <span class="glyphicon glyphicon-plus"></span> -->
+<!-- 			                            </button> -->
+<!--                      				</span> -->
+								</div>
+							</div>
+							
 							<br>
                         </div> 
                     </div>
                     <div class="row" style="margin-bottom:15px;">
-                        <div id="div_id_company" class="form-group required" style="margin-left:15px; margin-bottom:5px;">
+                        <div class="form-group required" style="margin-left:15px; margin-bottom:5px;">
                             <label for="id_company" class="control-label col-md-12  requiredField"> 고수 소개 <span class="asteriskField">*</span> </label>
-                            <div class="controls col-md-12">
- 								 <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" style="width:95%;"></textarea>
+                            <div class="controls col-md-12" >
+ 								 <textarea class="form-control" name="intro" rows="5" style="width:95%;" value="${vo.intro }"></textarea>
 							</div>
 							<br>
                         </div> 
                     </div>
-                        
+                    
+<%-- 파일 업로드 방식 변경으로 미사용 처리                        
 <!-- ////////// 자격증 사진 추가 START. +하면 파일 추가 안되는 버그 수정필요 ////////// -->
 <div class="container" style="margin-left:15px; ">
 	<div class="row">
-        <div class="control-group" id="fields">
+        <div class="control-group" id="fields" style="margin-top:15px">
             <label class="control-label" for="field1">자격증 사진 추가</label>
             <div class="controls"> 
 <!--                 <form role="form" autocomplete="off"> -->
@@ -139,19 +179,21 @@ function bs_input_file() {
                     
                     
                     	<div class="form-group">
-								<div class="input-group input-file" name="Fichier1">
+								<div class="input-group input-file" >
 									<span class="input-group-btn">
 						        		<button class="btn btn-default btn-choose" type="button">파일찾기</button>
 						    		</span>
-						    		<input type="text" class="form-control" placeholder='Choose a file...'  style="width:200px"/>
+						    		<input type="text" class="form-control" name="license" placeholder='Choose a file...'  style="width:200px" value="${vo.license }" />
 						    		<span class="input-group-btn">
 						       			 <button class="btn btn-warning btn-reset" type="button">Reset</button>
 						    		</span>
-						    		<span class="input-group-btn">
-			                            <button class="btn btn-success btn-add" type="button">
-			                                <span class="glyphicon glyphicon-plus"></span>
-			                            </button>
-                        </span>
+						    		
+						    		<!-- 플러스 기능 미사용 -->
+<!-- 						    		<span class="input-group-btn"> -->
+<!-- 			                            <button class="btn btn-success btn-add" type="button"> -->
+<!-- 			                                <span class="glyphicon glyphicon-plus"></span> -->
+<!-- 			                            </button> -->
+<!--                      				</span> -->
 								</div>
 							</div>
 				                    
@@ -165,18 +207,38 @@ function bs_input_file() {
 <!--                         </span> -->
                     </div>
 <!--                 </form> -->
-            <small><span class="glyphicon glyphicon-plus gs" style="margin-bottom:20px"></span> 플러스를 누르면 추가등록 할 수 있습니다 :)</small>
+<!--             <small><span class="glyphicon glyphicon-plus gs" style="margin-bottom:20px"></span> 플러스를 누르면 추가등록 할 수 있습니다 :)</small> -->
             </div>
         </div>
 	</div>
 </div>
 <!-- ////////// 자격증 사진 추가 END ////////// -->		
+ --%>
+ 
+<!--  자격증 새로운 파일 업로드 양식 START-->
+						<div class="container" style="margin-left: 15px;">
+							<div class="row">
+								<div class="control-group" id="fields" style="margin-top: 15px">
+									<label class="control-label" for="field1">자격증 사진 추가</label>
+									<div class="controls">
+										<div class="entry input-group col-xs-3">
+											<div class="input-group">
+												<span class="input-group-addon">이미지</span> 
+												<input id="msg"
+													type="file" class="form-control" name="l_img"
+													placeholder="Additional primary" value="${vo.license }">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+<!--  자격증 새로운 파일 업로드 양식 END-->
 
-
-                        <div id="div_id_company1" class="form-group required"> 
+                        <div id="div_id_company1" class="form-group required" style="margin-top:15px"> 
                             <label for="id_company" class="control-label col-md-12  requiredField"> 경력 사항 수정 <span class="asteriskField">*</span> </label>
                             <div class="form-group green-border-focus controls col-md-12">
- 								 <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" style="width:95%;"></textarea>
+ 								 <textarea class="form-control" name="career" rows="5" style="width:95%;" value="${vo.career }"></textarea>
 							</div>
                         </div> 
                         
@@ -212,7 +274,7 @@ function bs_input_file() {
                         <div class="form-group"> 
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-12 " style="text-align:center">
-                                <input type="submit" name="Signup" value="수정" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                                <input type="submit" name="modify" value="수정" class="btn btn-primary btn btn-info" id="submit-id-signup" />
                             </div>
                         </div> 
                             
