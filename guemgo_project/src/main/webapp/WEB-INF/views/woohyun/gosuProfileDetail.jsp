@@ -7,7 +7,7 @@
 
 	<div class="row">
 		<div class="col-sm-3">
-			<img src="resources/gosuImg/gosu3.png" width="150" height="150"/>
+			<img src="resources/upload/userImg/${vo.u_image }" width="150" height="150"/>
 			</div>	 <!-- users 테이블의 image 출력  -->
 			<div class="col-sm-9">
 			<span style="font-size: large;">
@@ -35,11 +35,17 @@
 	<span class="label label-info" style="font-size: large;">${item.area }</span>
 	<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
 </c:forEach>
-<h2>사진</h2>
 <br>
-${vo.g_image }	<!-- gosu 테이블의 image 출력 -->
+<h2>미디어</h2>
+<br>
+<img src="resources/upload/gosuImg/${vo.g_image }" width="200" height="200"/>	<!-- gosu 테이블의 image 출력 -->
+<br>
 <h2>고수소개</h2>
 <br>	${vo.intro }	 <!-- gosu 테이블의 intro 출력 -->
+<h2>경력사항</h2>
+<br>	
+${vo.career }	 <!-- users 테이블의 career 출력 -->
+<br>
 <h2>사업자등록증&자격증</h2>
 <br>
 <img src="resources/upload/gosuCareerImg/${vo.license }" width="100" height="100"/>	<!-- gosu_career 테이블의 license image 출력 -->

@@ -37,9 +37,6 @@ public class GosuProfileUpdateController {
 		binder.registerCustomEditor(Date.class, dateEditor);
 	}
 	
-	public void setService(GosuService service) {
-		this.service = service;
-	}
 	@RequestMapping(value="/GosuProfileUpdate",method=RequestMethod.GET)
 	public ModelAndView updateForm(String email) {
 		GosuVo vo=service.gosuDetail(email);
