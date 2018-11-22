@@ -7,7 +7,7 @@
 		select * from require where lec_start>0 and email=#{email}
 	</select>
 	<select id="select_list" parameterType="int" resultType="com.guem.go.eunbyul.RequirelistVo">
-		select * from requirelist where req_num=#{num}
+		select * from requirelist where req_num=#{num} and state=1
 	</select>
 	<select id="select_lec" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where lecturenum=#{num}
