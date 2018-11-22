@@ -88,8 +88,12 @@
 		insert into FAVORITE(fa_num, email, favorite) values(fa_num_seq.nextval, #{email}, #{sname})
 	</insert>
 	
+<<<<<<< HEAD
 	<!-- 포인트 추가 -->
 	<update id="userpoint" parameterType="hashmap">
 		update users set point=point+#{point} where email=#{email}
 	</update>
+=======
+	
+>>>>>>> branch 'master' of https://github.com/rkdxhdvk/guemgo.git
 </mapper>
