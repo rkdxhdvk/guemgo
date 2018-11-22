@@ -63,4 +63,9 @@ public class UsersDao {
 	public int cate_insert(UsersVo vo) {
 		return sqlSession.insert(NAMESPACE +".cate_insert", vo);
 	}
+	
+	//포인트 업데이트
+	public int userpoint(HashMap<String, Object> map) {
+		return sqlSession.update(NAMESPACE + ".userpoint", map);
+	}
 }

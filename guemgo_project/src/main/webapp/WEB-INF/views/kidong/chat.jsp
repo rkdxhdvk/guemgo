@@ -409,7 +409,7 @@ html, body {
 			</div>
 			<!-- //////////////////////////////////추가 //////////////////////////////////// -->
 			
-			<div class="col-sm-7">
+			<div class="col-sm-7" >
 				<div style="height: 900px; ">
 					<div class="container-fluid"
 						style="border: solid 2px #337ab7; border-radius: 5px; height: 630px;">

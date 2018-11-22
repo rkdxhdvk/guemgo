@@ -70,11 +70,11 @@
 
 		<div class="container-fluid">
 			<div class="row content">
-				<div id="menu" class="col-sm-3 sidenav hidden-xs"
+				<div id="menu" class="col-sm-2 sidenav hidden-xs"
 					style="height: 800px;">
 					<tiles:insertAttribute name="menu" />
 				</div>
-				<div id="content" class="col-sm-9">
+				<div id="content" class="col-sm-10">
 					<tiles:insertAttribute name="content" />
 				</div>
 			</div>

@@ -64,4 +64,9 @@ public class UsersService {
 	public int cate_insert(UsersVo vo){
 		return dao.cate_insert(vo);
 	}
+	
+	//포인트 업데이트
+	public int userpoint(HashMap<String, Object> map) {
+		return dao.userpoint(map);
+	}
 }

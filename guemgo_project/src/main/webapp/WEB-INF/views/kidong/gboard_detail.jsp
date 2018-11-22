@@ -8,6 +8,10 @@
 	float: right;
 	color: #999;
 }
+#content {
+	padding-left: 85px;
+    padding-right: 85px;
+}
 </style>
 	<div class="container-fluid" style="padding-top: 145px;">
 		<div class="container-fluid" style="margin-bottom: 15px;">

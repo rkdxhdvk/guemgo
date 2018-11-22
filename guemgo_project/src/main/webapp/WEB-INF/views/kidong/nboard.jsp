@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+#content {
+	padding-left: 85px;
+    padding-right: 85px;
+}
+</style>
 	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">공지 게시판</p>
 
 			<c:if test="${sessionScope.flag == 0 }">
-				<button style="float: right;" type="button"
+				<button type="button"
 					class="btn btn-primary btn-block" title="글쓰기" data-toggle="modal"
 					data-target="#myModal">
 					<i class='fas fa-edit'></i>글쓰기
