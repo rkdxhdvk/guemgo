@@ -45,13 +45,15 @@ public class LectureController {
 		return mv;
 	}
 	@RequestMapping(value="/classdelete",method=RequestMethod.GET)
-	public ModelAndView classdelete(String lectureNum) {
+	public ModelAndView classdelete(String lectureNum,String email) {
 		System.out.println("강의번호:"+lectureNum);
 		int lecNum=Integer.parseInt(lectureNum);
 		System.out.println(lecNum);
 		int n=lecService.classdelete(lecNum);
+		System.out.println("성공"+n);
 		ModelAndView mv =new ModelAndView();
 		//mv.setView(new RedirectView("/mylecture?email=email"));
+		mv.addObject("email", email);
 		mv.setViewName("redirect:/sendlist");
 		return mv;
 	}
@@ -98,7 +100,7 @@ public class LectureController {
 		int b=classService.classupdate(vo);
 		
 		if(a>0 && b>0) {
-			return ".eunbyul.classinsertOk";
+			return ".eunbyul.classupdateOk";
 		}
 		return ".eunbyul.statistics";
 	}

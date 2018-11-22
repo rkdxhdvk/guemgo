@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.ClassMapper">
 	<select id="classinsert" parameterType="com.guem.go.eunbyul.LectureVo">
-		insert into lecture values(lec_seq.nextval, #{lectureName}, #{region1}, #{region2},  #{day}, #{time}, #{go_num}, #{explanation})
+		insert into lecture values(lec_seq.nextval, #{lectureName}, #{region1}, #{region2},  #{day}, #{time}, #{go_num}, #{explanation}, 0)
 	</select>
 	<select id="areainsert" parameterType="com.guem.go.eunbyul.GosuareaVo">
 		insert into gosu_area values(#{area}, lec_seq.currval)
@@ -12,8 +12,8 @@
 	<select id="gosuselect" resultType="com.guem.go.woohyun.GosuVo"  parameterType="String">
 		select * from gosu where email=#{email}
 	</select>
-	<update id="classdelete" parameterType="int" >
-		update lecture set state=1 where lecturenum={lecNum}
+	<update id="classdelete" parameterType="int">
+		update lecture set state=1 where lecturenum=#{lecNum}
 	</update>
 	<select id="classlist" parameterType="int" resultType="com.guem.go.eunbyul.LectureVo">
 		select * from lecture where go_num=#{go_num}
