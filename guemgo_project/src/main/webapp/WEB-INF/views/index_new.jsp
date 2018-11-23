@@ -128,26 +128,26 @@ div p {
 		      <ul class="list-group">
 		        <li class="list-group-item">
 		        <div class="row">
-			  <div class="col-sm-3">보컬</div>
-			  <div class="col-sm-3">회화</div>
-			  <div class="col-sm-3">조리</div>
-			  <div class="col-sm-3">그래픽디자인</div>
+			  <div class="col-sm-3"><a href="/go/search?search=보컬">보컬</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=회화">회화</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=조리">조리</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=그래픽디자인">그래픽디자인</a></div>
 			</div>
 			</li>
 		        <li class="list-group-item">
 		         <div class="row">
-			  	<div class="col-sm-3">작곡</div>
-				  <div class="col-sm-3">동양화</div>
-				  <div class="col-sm-3">베이킹</div>
-				  <div class="col-sm-3">패션디자인</div>
+			  	<div class="col-sm-3"><a href="/go/search?search=작곡">작곡</a></div>
+				  <div class="col-sm-3"><a href="/go/search?search=동양화">동양화</a></div>
+				  <div class="col-sm-3"><a href="/go/search?search=베이킹">베이킹</a></div>
+				  <div class="col-sm-3"><a href="/go/search?search=패션디자인">패션디자인</a></div>
 				</div>
 		        </li>
 		        <li class="list-group-item">
 		         <div class="row">
-			  <div class="col-sm-3">악기</div>
-			  <div class="col-sm-3">애니메이션</div>
-			  <div class="col-sm-3">식음료</div>
-			  <div class="col-sm-3">제품디자인</div>
+			  <div class="col-sm-3"><a href="/go/search?search=악기">악기</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=애니메이션">애니메이션</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=식음료">식음료</a></div>
+			  <div class="col-sm-3"><a href="/go/search?search=제품디자인">제품디자인</a></div>
 			</div>
 		      </ul>
 		    </div>
@@ -212,7 +212,7 @@ div p {
 	<h2>추천 고수</h2>
 	<div class="slick-items">
         <div class="gosuImg">
-       		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+       		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
 				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
@@ -227,7 +227,6 @@ div p {
 				<br><br>
 				<span>
 				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 ${vo.employ }번	
 				</span>
 			</div> 
 			</div>
@@ -242,7 +241,7 @@ div p {
 		</div>
 		</div>
 	<div class="gosuImg">			
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
 				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
@@ -257,7 +256,6 @@ div p {
 				<br><br>
 				<span>
 				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 ${vo.employ }번	
 				</span>
 			</div> 
 			</div>
@@ -272,7 +270,7 @@ div p {
 		</div>
 		</div>
 		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
 				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
@@ -287,7 +285,7 @@ div p {
 				<br><br>
 				<span>
 				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 ${vo.employ }번	
+				고용횟수 번	
 				</span>
 			</div> 
 			</div>
@@ -302,7 +300,7 @@ div p {
 		</div>
 		</div>
 		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
 				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
@@ -317,7 +315,6 @@ div p {
 				<br><br>
 				<span>
 				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 ${vo.employ }번	
 				</span>
 			</div> 
 			</div>
@@ -332,7 +329,7 @@ div p {
 		</div>
 		</div>
 		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;">
+		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
 				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
@@ -347,7 +344,6 @@ div p {
 				<br><br>
 				<span>
 				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 ${vo.employ }번	
 				</span>
 			</div> 
 			</div>
@@ -370,7 +366,265 @@ div p {
 <div style="text-align: center;">
 	<img alt="" src="resources/gosuImg/gosuMain2.png">
 </div>
-
+<div class="container">
+<h1>금고를 통해 도움 받았어여!!</h1>
+<div class="slick-items">
+		<c:forEach items="${reviewList}" var="vo" varStatus="status">
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/upload/${userdetail[status.index].user});                                                               
+		    height: 380px;
+		    background-size: cover;"><!-- css따로 -->
+       		 <div class="content" 
+       		 style=" position: relative;
+		     top:90%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h4>${vo.title }</h4>
+            		<h4>${userdetail[status.index].gosuname} ${userdetail[status.index].lecture}고수님</h4>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>${vo.content }</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">${userdetail[status.index].username}<br>
+				;<i class='far fa-star'></i>${vo.star }점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		</c:forEach>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>
+		<div class="gosu">
+		<div style="width: 350px;height: 700px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
+			<div class="row">
+			<div class="img" 
+			style="position: relative;
+		    background-image: url(resources/gosuImg/gosu3.png);                                                               
+		    height: 380px;
+		    background-size: cover;">
+       		 <div class="content" 
+       		 style=" position: absolute;
+		     top:50%;
+		     left:50%;
+		     transform: translate(-50%, -50%);                                                                   
+		     font-size:5rem;
+		     color: white;
+		     z-index: 2;
+		     text-align: left;">
+            		<h2>후기 제목</h2>
+        	</div>
+        	
+        	<div class="img-cover" 
+        	style="position: absolute;
+  			 height: 100%;
+   			width: 100%;
+   			background-color: rgba(0, 0, 0, 0.4);                                                                 
+   			z-index:1;"></div>
+    		</div>
+			</div>
+			<p>게시글 내용</p>
+			<p>-------------------------------------------------------</p>
+				<img src="resources/gosuImg/gosu3.png" width="75" height="75" style="float: left;"/>
+				<span style="font-size: large;">회원이름<br>
+				<i class='far fa-star'></i> vo.star 점&nbsp;&nbsp;
+				</span>
+		</div>
+		</div>	
+		</div>
+		</div>
 
 	
 	

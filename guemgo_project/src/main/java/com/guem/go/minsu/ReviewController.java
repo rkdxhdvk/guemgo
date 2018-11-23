@@ -36,7 +36,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="/reInsert", method=RequestMethod.GET)
 	public String insert() {
-		return ".review_insert";
+		return ".reviewInsert";
 	}
 	
 	@RequestMapping(value = "/reInsert", method = RequestMethod.POST)
@@ -61,7 +61,7 @@ public class ReviewController {
 		String email = req.getParameter("email");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		int flag = Integer.parseInt(req.getParameter("flag"));
+		int flag = Integer.parseInt(req.getParameter("lectureNum"));
 		int star = Integer.parseInt(req.getParameter("star"));
 		String other = req.getParameter("other");
 		ReviewVo vo = new ReviewVo(0, email, title, content, 0, flag, star, other, null, 0, savefilename);

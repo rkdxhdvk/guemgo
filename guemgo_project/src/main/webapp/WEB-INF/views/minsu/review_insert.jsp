@@ -45,7 +45,7 @@ star>.input.focus{outline:1px dotted #ddd;}
 	<form id="articleForm" action="<c:url value='/reInsert'/>" enctype="multipart/form-data"
 		method="post">
 		<input type="hidden" name="email" value="${sessionScope.email }">
-		<input type="hidden" name="flag" value="${sessionScope.flag }">
+		<input type="hidden" name="lectureNum" value="<%=request.getParameter("lectureNum") %>">
 		
 		<h3 style="margin-bottom: 25px;">후기 등록</h3>
 		<div class="form-group">

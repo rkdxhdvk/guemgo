@@ -4,10 +4,10 @@
 
 	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">후기 게시판</p>
-	<%-- <c:if test="${sessionScope.email!=null }">
+	<c:if test="${sessionScope.email!=null }">
 		<button type="button" class="btn btn-primary" style="float: right;"
 			onclick="location='<c:url value='/reInsert'/>'">글쓰기</button>
-	</c:if> --%>
+	</c:if>
 	</div>
 	<div class="container-fluid" style="margin-bottom: 15px;">
 		<div class="btn-group btn-group">

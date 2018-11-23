@@ -23,7 +23,7 @@ public class QboardController {
 
 	@RequestMapping("/qboard/list")
 	public String list(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, Model model, String sort,
-			String field, String keyword) {
+			String field, String keyword,String code) {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("sort", sort);
@@ -42,6 +42,7 @@ public class QboardController {
 		model.addAttribute("sort", sort);
 		model.addAttribute("field", field);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("code", code);
 		return ".kidong.qboard";
 	}
 
@@ -76,10 +77,10 @@ public class QboardController {
 			QboardVo vo = new QboardVo(boardNum, qboardVo.getTitle(), qboardVo.getContent(), null, qboardVo.getEmail(),
 					grp, lev, step, 0, qboardVo.getSort(), 0);
 			qboardService.insert(vo);
-			return "redirect:/qboard/list";
+			return "redirect:/qboard/list?code=success";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return "error";
+			return "redirect:/qboard/list?code=fail";
 		}
 	}
 
@@ -107,10 +108,10 @@ public class QboardController {
 	public String update(QboardVo vo) {
 		try {
 			qboardService.update(vo);
-			return "redirect:/qboard/list";
+			return "redirect:/qboard/list?code=success";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return "error";
+			return "redirect:/qboard/list?code=fail";
 		}
 	}
 
@@ -122,10 +123,10 @@ public class QboardController {
 			} else {
 				qboardService.deleteGrp(grp);
 			}
-			return "redirect:/qboard/list";
+			return "redirect:/qboard/list?code=success";
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return "error";
+			return "redirect:/qboard/list?code=fail";
 		}
 	}
 

@@ -182,11 +182,7 @@ function bs_input_file() {
             </div>  
             <div class="panel-body" >
                 
-                <form method="post" action="GosuInsert">
-                    <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
-                            
-
-                        <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
+                <form method="post" action="GosuInsert"  enctype="multipart/form-data">
 					
 						<!-- 본인인증 기능 미구현
                   		<div id="div_id_name" class="form-group required"> 
@@ -202,22 +198,24 @@ function bs_input_file() {
 <!-- 						<div class="container" style="margin-left: 15px;"> -->
 							<div class="row col-md-12" style="margin-top: 15px">
 								<div class="control-group " id="fields" >
-									<label class="control-label" for="field1">미디어 사진 추가</label>  
-									<div class="controls">
+									<label class="control-label col-md-12" for="field1">미디어 사진 추가 </label>  
+									<div class="controls col-md-12">
 										<div class="entry input-group "> 
-											<div class="input-group">
-												<span class="input-group-addon">이미지</span> 
+											<div class="input-group ">
+												<span class="input-group-addon ">이미지</span> 
 												<input id="msg"
 													type="file" class="form-control" name="g_img"
-													placeholder="Additional primary" value="${vo.g_image }">
+													placeholder="Additional primary" >
 											</div>
 										</div>
 									</div>
+								</div>
+							</div>
 <!--  미디어 파일 업로드 양식 END-->
                         
-					<div class="row" style="margin-bottom:15px;">
-                        <div id="div_id_company" class="form-group required" style="margin-left:15px; margin-bottom:5px;">
-                            <label for="id_company" class="control-label col-md-12  requiredField"> 고수 소개 <span class="asteriskField">*</span> </label>
+					<div class="row" >
+                        <div id="div_id_company" class="form-group required" style="margin-left:15px;">
+                            <label for="id_company" class="control-label col-md-12  requiredField" style="margin-top: 20px;"> 고수 소개 <span class="asteriskField">*</span> </label>
                             <div class="controls col-md-12">
  								 <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" style="width:95%;" name="intro"></textarea>
 							</div>
@@ -229,14 +227,14 @@ function bs_input_file() {
 						<div class="container" style="margin-left: 15px;">
 							<div class="row">
 								<div class="control-group" id="fields" style="margin-top: 15px">
-									<label class="control-label" for="field1">자격증 사진 추가</label>
+									<label class="control-label" for="field1" style="margin-top: 20px;" >자격증 사진 추가</label>
 									<div class="controls">
 										<div class="entry input-group col-xs-3">
-											<div class="input-group">
+											<div class="input-group  col-md-12">
 												<span class="input-group-addon">이미지</span> 
 												<input id="msg"
 													type="file" class="form-control" name="l_img"
-													placeholder="Additional primary" value="${vo.license }">
+													placeholder="Additional primary">
 											</div>
 										</div>
 									</div>
@@ -247,7 +245,7 @@ function bs_input_file() {
 
 
                         <div id="div_id_company1" class="form-group required"> 
-                            <label for="id_company" class="control-label col-md-12  requiredField"> 경력 <span class="asteriskField">*</span> </label>
+                            <label for="id_company" class="control-label col-md-12  requiredField" style="margin-top: 20px;"> 경력 <span class="asteriskField">*</span> </label>
                             <div class="form-group green-border-focus controls col-md-12">
  								 <textarea class="form-control" id="exampleFormControlTextarea5" rows="5" style="width:95%;" name="career"></textarea>
 							</div>
@@ -272,7 +270,7 @@ function bs_input_file() {
 <!--                             </div>  -->
 <!--                         </div> -->
                         <div class="form-group">
-                            <div class="controls col-md-offset-2 col-md-12 " >
+                            <div class="controls col-md-offset-2  " >
                                 <div id="div_id_terms" class="checkbox required" >
                                     <label for="id_terms" class=" requiredField" style="text-align:center">
                                          <input class="input-ms checkboxinput" id="id_terms" name="terms" style="margin-bottom: 10px" type="checkbox" />

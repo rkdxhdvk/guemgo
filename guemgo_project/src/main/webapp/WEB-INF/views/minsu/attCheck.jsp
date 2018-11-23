@@ -68,41 +68,11 @@
 				});
 				$('#calendar').fullCalendar(
 						{
-							//selectable : true,
-							//droppable: true,
 							events: events,
-							/* dayClick : function(date, calEvent) {
-								var start = date.format();
-								console.log(start);
-								if(currDate==start){
-								$.getJSON("<c:url value='/eventinsert'/>",{email:'${sessionScope.email}', pointdate:start}, 
-										function(data) {
-									$('#calendar').fullCalendar('renderEvent',
-											{	
-												title : '출석',
-												start : start,
-												overlap : false,
-												color : '#ff9f89'
-											}); 
-										});
-								}else{
-									alert("오늘 날짜");
-								}
-								
-							}, */
 							eventClick : function(event, element) {
 								alert(event.start.format() + " " + event.title + "완료!!");
 								
-							}/* ,
-							eventRender: function(eventObj, $el) {
-						        $el.popover({
-						          title: eventObj.title,
-						          content: eventObj.description,
-						          trigger: 'hover',
-						          placement: 'top',
-						          container: 'body'
-						        }); 
-							} */
+							}
 						});
 				
 				});
@@ -140,7 +110,7 @@
 					<p class="lead">
 						매일 출석만 해도 포인트가 모인다!!<br>
 						매일 홈페이지에 접속하여 출석체크를 해보세요<br>
-						<a target="_blank" href="/point">내 포인트 보러가기</a>
+						<a href="/go/pointRecord?email=${sessionScope.email }">내 포인트 보러가기</a>
 					</p>
 					<button type="button" class="btn btn-primary" id="btn">출석체크</button><br>
 					<br><br><br><br><br><br><br><br>

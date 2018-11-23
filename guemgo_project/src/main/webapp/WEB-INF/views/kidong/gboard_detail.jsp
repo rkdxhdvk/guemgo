@@ -8,6 +8,10 @@
 	float: right;
 	color: #999;
 }
+#content {
+	padding-left: 85px;
+    padding-right: 85px;
+}
 </style>
 	<div class="container-fluid" style="padding-top: 145px;">
 		<div class="container-fluid" style="margin-bottom: 15px;">
@@ -255,7 +259,7 @@
 			<c:choose>
 				<c:when test="${sessionScope.email != null }">
 					<textarea class="form-control" rows="5" id="comment"></textarea>
-					<div>
+					<div style="float: right;">
 						<span id="count">0</span>/<span id="max-count">0</span>
 					</div>
 					<button type="button" class="btn btn-primary btn-block"

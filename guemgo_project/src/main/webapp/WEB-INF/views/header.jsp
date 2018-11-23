@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-
+<style>
+.avatar {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+</style>
 <!--  
 ---------------------------------------------
 2018-10-24	윤우현 파일 생성
@@ -29,11 +34,9 @@
 		<a class="navbar-brand" href="<c:url value='/'/> " style="display:block; margin-right:auto;
     margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="80px"  ></a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
-		<a class="navbar-brand" href="<c:url value='/room?email=${sessionScope.email }'/>" style="padding-top: 80px;">채팅</a>
 		<a class="navbar-brand" href="<c:url value='/findgosu'/>" style="padding-top: 80px;">고수찾기</a>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto" style="padding-top: 60px;list-style: none;">
-			
 			
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
@@ -43,13 +46,13 @@
 				 				로그인을 해주세요
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '0'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> 관리자 ${ sessionScope.email } 님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> 관리자 ${ sessionScope.name } 님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '1'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 회원님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 회원님
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '2'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/gosuImg/gosu2.png"> ${ sessionScope.email } 고수님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 고수님
 				 			</c:when>
 				 		</c:choose>
 				 	</a>
@@ -78,27 +81,30 @@
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
 										<a class="dropdown-item" href="<c:url value='/admin'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-24.png">&nbsp 관리자페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
 									<a class="dropdown-item" href="<c:url value='/sendlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-request-service-24.png">&nbsp 보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
-												<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+												<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+												<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 												<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
 												<span>------------------------------</span><br>
 												<a class="dropdown-item" href="<c:url value='/GosuInsertForm'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
 											</c:when>
 											<c:otherwise>
-													<a class="dropdown-item" href="<c:url value='/mypage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
+													<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
 													<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
+													<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 													<span style="margin:5px">----------------------------</span><br>
 													<a class="dropdown-item" href="<c:url value='/changeGosu'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 고수로 전환하기</a><br>
 											</c:otherwise>
 										</c:choose>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '2' }">	
-										<a class="dropdown-item" href="<c:url value='/gosupage'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
-
+										<a class="dropdown-item" href="<c:url value='/gosuPage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 										<span style="margin:5px">----------------------------</span><br>
 										<a class="dropdown-item" href="<c:url value='/changeUser'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 요청자로 전환하기</a><br>
 									</c:when>
@@ -200,7 +206,8 @@ s0.parentNode.insertBefore(s1,s0);
 	  </div>
 	</div>
 	
-
+<!-- 	회원가입 페이지 모달로 불러오기 -->
+	<%@include file="/WEB-INF/views/woohyun/userInsert.jsp"%>
 
 <script type="text/javascript">
 function checkLogin() {
@@ -247,4 +254,3 @@ $(document).ready(function()
 		
 </script>
 <!--///////////// 로그인 모달 끝 //////////// -->
-

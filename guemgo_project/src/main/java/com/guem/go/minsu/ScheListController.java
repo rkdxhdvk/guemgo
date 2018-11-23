@@ -23,14 +23,23 @@ public class ScheListController {
 	@Autowired
 	private Sche_detailService dService;
 	
-	@RequestMapping(value="/sche_detailList", method=RequestMethod.GET)
+	@RequestMapping(value="/user/sche_detailList", method=RequestMethod.GET)
 	public String list(int scheduleNum, Model model) {
 		List<Sche_detailVo> list=new ArrayList<Sche_detailVo>();
 		list = dService.sche_detailList(scheduleNum);
 		
 		model.addAttribute("list", list);
 		
-		return "minsu/list";
+		return ".userschedulelistdetail";
+	}
+	@RequestMapping(value="/gosu/sche_detailList", method=RequestMethod.GET)
+	public String gosulist(int scheduleNum, Model model) {
+		List<Sche_detailVo> list=new ArrayList<Sche_detailVo>();
+		list = dService.sche_detailList(scheduleNum);
+		
+		model.addAttribute("list", list);
+		
+		return ".gosuschedulelistdetail";
 	}
 	
 	@RequestMapping(value="/user/scheList", method=RequestMethod.GET)
@@ -76,10 +85,10 @@ public class ScheListController {
 			dlist.add(detaillist);
 		}
 		model.addAttribute("dlist", dlist);
-		return "minsu/list2";
+		return ".gosuschedulelisttotal";
 	}
 	
-	@RequestMapping(value="/detaillist", produces="application/json;charset=utf-8", method=RequestMethod.GET)
+	/*@RequestMapping(value="/detaillist", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String detail(int scheduleNum, Model model) {
 		List<Sche_detailVo> list = dService.sche_detailList(scheduleNum);
@@ -97,7 +106,7 @@ public class ScheListController {
 		}
 		return arr.toString();
 	}
-	
+	*/
 	@RequestMapping(value="/progress", produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
 	public String medium(int scheduleNum, Model model) {

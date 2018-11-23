@@ -30,8 +30,12 @@ public class UsersService {
 	}*/
 	
 	// 회원삭제
-	public int delete(String email) {
-		return dao.delete(email);
+//	public int delete(String email) {
+//		return dao.delete(email);
+//	}
+	// 회원삭제
+	public int update_f(String email) {
+		return dao.update_f(email);
 	}
 	
 	// 회원 정보 수정(1명 조회)
@@ -63,5 +67,10 @@ public class UsersService {
 	// 회원 가입시 관심사 
 	public int cate_insert(UsersVo vo){
 		return dao.cate_insert(vo);
+	}
+	
+	//포인트 업데이트
+	public int userpoint(HashMap<String, Object> map) {
+		return dao.userpoint(map);
 	}
 }

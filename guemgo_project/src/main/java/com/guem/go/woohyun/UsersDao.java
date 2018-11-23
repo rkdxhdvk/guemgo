@@ -32,8 +32,12 @@ public class UsersDao {
 	}*/
 	
 	// 회원삭제 DAO
-	public int delete(String email) {
-		return sqlSession.delete(NAMESPACE + ".delete",email);
+//	public int delete(String email) {
+//		return sqlSession.delete(NAMESPACE + ".delete",email);
+//	}
+	// 회원삭제 DAO
+	public int update_f(String email) {
+		return sqlSession.update(NAMESPACE + ".update_f",email);
 	}
 	
 	// 회원 정보 수정(1명 조회) DAO
@@ -62,5 +66,10 @@ public class UsersDao {
 	
 	public int cate_insert(UsersVo vo) {
 		return sqlSession.insert(NAMESPACE +".cate_insert", vo);
+	}
+	
+	//포인트 업데이트
+	public int userpoint(HashMap<String, Object> map) {
+		return sqlSession.update(NAMESPACE + ".userpoint", map);
 	}
 }

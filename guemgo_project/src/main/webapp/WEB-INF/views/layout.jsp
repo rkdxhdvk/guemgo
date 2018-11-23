@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>금고</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://soomgo.s3.ap-northeast-2.amazonaws.com/static/img/soomgo.ico">
 <script src="${pageContext.request.contextPath}/resources/boot2/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
 <!-- <script src='resources/fullcalender/lib/jquery.min.js'></script> -->
@@ -36,6 +38,11 @@
 	#content {
 		min-height: 1100px;
 	}
+	#footer {
+		padding-top: 33px;
+		height: 140px;
+	}
+	
 </style>
 </head>
 <body>

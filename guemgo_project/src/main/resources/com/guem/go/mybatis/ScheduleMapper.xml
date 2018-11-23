@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.guem.go.mybatis.ScheduleMapper">	
 	<insert id="scheduleInsert" parameterType="com.guem.go.minsu.ScheduleVo">
-		insert into schedule values(#{scheduleNum}, #{email}, #{other}, #{num}, #{matchNum}, #{lecturename})
+		insert into schedule values(#{scheduleNum}, #{email}, #{other}, #{lectureNum}, #{matchNum}, #{lecturename})
 	</insert>
 	<select id="scheduleNum" resultType="int">
 		<!-- select sche_seq.currval from dual -->

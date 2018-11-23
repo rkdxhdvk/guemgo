@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PointChargeController {
 	@Autowired private UsersService userService;
+	@Autowired private PointService pointService;
 
+	
 	@RequestMapping(value="/pointCharge",method=RequestMethod.GET)
 	public  ModelAndView pointcharge(HttpSession session, HttpServletResponse response) {
 		String email = (String)session.getAttribute("email");
@@ -39,6 +41,24 @@ public class PointChargeController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value="/pointCharge",method=RequestMethod.POST)
+	public  ModelAndView pointcharge(PointVo vo) {
+			int n=pointService.update(vo);
+			//System.out.println(vo.getMnum);
+
+			ModelAndView mv=new ModelAndView("woohyun/result");
+			if(n>0) {
+				mv.addObject("code","pointChange_success");
+//				System.out.println("업데이트콘트롤러POST-성공");
+			}else {
+				mv.addObject("code","pointChange_fail");
+//				System.out.println("업데이트콘트롤러POST-실패");
+			}
+//			System.out.println("업데이트콘트롤러POST-완료");
+			mv.addObject("goUrl","/");
+			return mv;
+		}
 	
 	
 }

@@ -5,7 +5,7 @@
 	<definition name=".gosuPage" template="/WEB-INF/views/kidong/myPage/gosuLayout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="menu" value="/WEB-INF/views/kidong/myPage/gosuMenu.jsp"/>
-		<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/gosuProfile.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/gosuProfileDetail.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
@@ -20,9 +20,17 @@
 	<definition name=".gosuschedulelist" extends=".gosuPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/schedulelist.jsp"/>
 	</definition>
+	<definition name=".gosuschedulelistdetail" extends=".gosuPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/minsu/list.jsp"/>
+	</definition>
+	<definition name=".gosuschedulelisttotal" extends=".gosuPage">
+	 	<put-attribute name="content" value="/WEB-INF/views/minsu/list2.jsp"/>
+	</definition>
 	
 	<definition name=".receiveList" extends=".gosuPage">
 	 	<put-attribute name="content" value="/WEB-INF/views/kidong/myPage/receiveList.jsp"/>
 	</definition>
-	
+	<definition name=".gosuProfileC" extends=".gosuPage">
+		<put-attribute name="content" value="/WEB-INF/views/woohyun/gosuProfile.jsp"/>
+	</definition>
 </tiles-definitions>

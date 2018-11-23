@@ -68,5 +68,8 @@ public class SurveyService {
 			public int requpdate(int req_num) {
 				return dao.requpdate(req_num);
 			}
+			public int reqlistupdate(HashMap<String, Integer> map) {
+				return dao.reqlistupdate(map);
+			}
 	
 }

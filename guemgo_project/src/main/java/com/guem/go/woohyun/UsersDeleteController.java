@@ -18,13 +18,15 @@ public class UsersDeleteController {
 	}
 	@RequestMapping("/UserDelete")
 	public ModelAndView delete(String email) {
-		int n=service.delete(email);
+//		int n=service.delete(email);	// 실제 삭제하지 않음
+		int n=service.update_f(email);
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
-			mv.addObject("code","success");
+			mv.addObject("code","userDelete_success");
 		}else {
-			mv.addObject("code","fail");
+			mv.addObject("code","userDelete_fail");
 		}
+		mv.addObject("goUrl","/");
 		return mv;
 	}
 }

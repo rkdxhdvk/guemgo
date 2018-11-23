@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<style>
+#content {
+	padding-left: 85px;
+    padding-right: 85px;
+}
+</style>
 	<div class="container-fluid" style="margin-bottom: 15px;padding-top: 145px;">
 		<p class="text-left" style="font-size: x-large;">공지 게시판</p>
 
 			<c:if test="${sessionScope.flag == 0 }">
-				<button style="float: right;" type="button"
+				<button type="button"
 					class="btn btn-primary btn-block" title="글쓰기" data-toggle="modal"
 					data-target="#myModal">
 					<i class='fas fa-edit'></i>글쓰기
@@ -212,6 +217,22 @@
 			title : "로그인",
 			text : "로그인 후에 이용",
 			icon : "warning",
+			button : "확인",
+		});
+	}
+	
+	if(${code == 'success'}){
+		swal({
+			title : "성공!!",
+			text : "요청하신 작업이 성공",
+			icon : "success",
+			button : "확인",
+		});
+	}else if(${code == 'fail'}){
+		swal({
+			title : "실패!!",
+			text : "요청하신 작업이 실패",
+			icon : "error",
 			button : "확인",
 		});
 	}

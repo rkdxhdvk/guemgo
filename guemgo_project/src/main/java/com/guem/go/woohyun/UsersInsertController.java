@@ -34,7 +34,7 @@ public class UsersInsertController {
 	public ModelAndView insertOk(UsersVo vo, HttpServletRequest request) {
 		vo.setFlag(1);	// 회원가입시 사용자 구분:일반(0-관리자,1-일반회원,2-고수)
 		vo.setGrade("초급");	// 회원가입시 기본 회원등급
-		vo.setImage("0");	// 회원가입시 기본 이미지
+		vo.setImage("");	// 회원가입시 기본 이미지
 		vo.setPoint(500);	// 회원가입시 기본 포인트
 		int n=service.insert(vo);	// users 테이블 insert
 		
@@ -50,11 +50,14 @@ public class UsersInsertController {
 		}
 		 */
 		ModelAndView mv=new ModelAndView("woohyun/result");
+		
 		if(n>0) {
-			mv.addObject("code","success");
+			mv.addObject("code","join_success");
 		}else {
-			mv.addObject("code","fail");
+			mv.addObject("code","join_fail");
 		}
+		
+		mv.addObject("goUrl","/");
 		return mv;
 	}
 }

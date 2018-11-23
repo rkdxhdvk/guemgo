@@ -99,8 +99,13 @@ html, body {
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#sendBtn").click(function() {
-			if ($("#message").val() == "") {
-				alert('공백');
+			if($("#message").val() == ""){
+				swal({
+					title : "공백",
+					text : "내용을 입력해 주세요.",
+					icon : "warning",
+					button : "확인",
+				});
 				return;
 			}
 			sendMessage();
@@ -181,6 +186,10 @@ html, body {
 					},
 					editable : true,
 					displayEventTime : false,
+					events : events	,
+					eventRender: function (event, element, view) {
+					    element.find('.fc-title').append('<div class="hr-line-solid-no-margin"></div><span style="font-size: 10px">'+ "메모 :" + event.description+'</span></div>');
+					},
 					///
 					<c:if test="${sessionScope.flag==2}">
 					dayClick : function(date, calEvent) {
@@ -252,20 +261,6 @@ html, body {
 		                	  }
 		                  })
 					},
-					
-					/* eventClick : function(event, element) {
-						alert(event.id + " " + event.description + " " + event.end.format()+ " " + event.title);
-						
-					}, */
-					/* eventRender: function(eventObj, $el) {
-				        $el.popover({
-				          title: eventObj.title,
-				          content: eventObj.description,
-				          trigger: 'hover',
-				          placement: 'top',
-				          container: 'body'
-				        });
-					}, */
 					eventDrop: function(event, delta, revertFunc) {
 					    if (!confirm("일정을 변경하시겠습니까?")) {	
 					      revertFunc();
@@ -288,7 +283,7 @@ html, body {
 
 					 },
 					</c:if>
-					events : events	
+					 
 				});
 		
 		$( "#datepicker" ).datepicker();
@@ -400,8 +395,10 @@ html, body {
 				</div>
 				<br>
 				<textarea class="form-control" rows="5" id="message"></textarea>
+				<div style="float: right;">
+					<span id="count">0</span>/<span id="max-count">0</span>
+				</div>
 				<br>
-
 				<button type="button" id="sendBtn"
 					class="btn btn-primary btn-block" title="입력">
 					<i class='fas fa-comment-dots'></i> 전송
@@ -409,7 +406,7 @@ html, body {
 			</div>
 			<!-- //////////////////////////////////추가 //////////////////////////////////// -->
 			
-			<div class="col-sm-7">
+			<div class="col-sm-7" >
 				<div style="height: 900px; ">
 					<div class="container-fluid"
 						style="border: solid 2px #337ab7; border-radius: 5px; height: 630px;">
@@ -423,6 +420,7 @@ html, body {
 						<c:if test="${isschedule==1 }">
 							<div id='calendar'></div>
 						</c:if>
+						
 						<c:if test="${sessionScope.flag==2 && isschedule==0 }">
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
@@ -432,7 +430,7 @@ html, body {
 							</c:when>
 							<c:otherwise>	
 					<form action="<c:url value='/calaaa'/>" method="get">
-						<input type="hidden" value="${vo.lectureNum }/${vo.lectureName }" name="lecture" id="lecture">
+						<input type="hidden" value="${lvo.lectureNum }/${lvo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<input type="hidden" value="${other}" name="other" id="other"> 
 					<input type="hidden" value="${req_num}" name="matchNum" id="matchNum">
@@ -440,7 +438,7 @@ html, body {
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>강의명 : ${vo.lectureName }</label><br> 		
+							<label>강의명 : ${lvo.lectureName }</label><br> 		
 							<%-- <select name="lecture" class="form-control">
 								<c:forEach items="${lecList }" var="vo">
 									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
@@ -501,14 +499,15 @@ html, body {
 					
 
 					<div class="panel panel-primary" style="margin-top: 15px;">
-						<div class="panel-heading">${vo.lectureName }</div>
+						<div class="panel-heading">${lvo.lectureName }</div>
 						<div class="panel-body" style="height: 160px;">
-							내용 : ${vo.explanation }
+							내용 : ${lvo.explanation }
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">
 						<a href="#" class="btn btn-primary">강의신청</a> 
-						<a href="#" class="btn btn-primary">프로필보기</a> 
+						<a href="#" class="btn btn-primary" data-toggle="modal"
+					data-target="#myModal">프로필보기</a> 
 						<a href='<c:url value="/room?email=${sessionScope.email }"/>'
 							class="btn btn-primary">나가기</a>
 						</div>
@@ -516,3 +515,110 @@ html, body {
 			</div>
 		</div>
 	</div>
+	
+<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">고수 프로필</h4>
+					</div>
+
+					<div class="modal-body">
+
+	<div class="row">
+		<div class="col-sm-3">
+			<img src="resources/upload/userImg/${gosuVo.u_image }" width="150" height="150"/>
+			</div>	 <!-- users 테이블의 image 출력  -->
+			<div class="col-sm-9">
+			<span style="font-size: large;">
+			<strong>쇼미더 머니</strong>
+			<br>
+			${gosuVo.name }&nbsp;&nbsp;
+			<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+			|&nbsp;&nbsp;
+			리뷰	2
+			</span>
+			<br><br>
+			<span>
+			<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+			고용횟수 ${gosuVo.employ }번	
+			</span>
+		</div> 
+	</div>
+	<br>
+
+	<h2>서비스 카테고리</h2>
+		<c:forEach var="item" items="${ lectureList }">
+		<br>
+		<span class="label label-info" style="font-size: large;">${item.area }</span>
+		<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
+	</c:forEach>
+	<br>
+	<h2>미디어</h2>
+	<br>
+	<img src="resources/upload/gosuImg/${gosuVo.g_image }" width="200" height="200"/>	<!-- gosu 테이블의 image 출력 -->
+	<br>
+	<h2>고수소개</h2>
+	<br>	${gosuVo.intro }	 <!-- gosu 테이블의 intro 출력 -->
+	<h2>경력사항</h2>
+	<br>	
+	${gosuVo.career }	 <!-- users 테이블의 career 출력 -->
+	<br>
+	<h2>사업자등록증&자격증</h2>
+	<br>
+	<img src="resources/upload/gosuCareerImg/${gosuVo.license }" width="100" height="100"/>	<!-- gosu_career 테이블의 license image 출력 -->
+	</div>
+								
+							
+							
+							<button type="button" class="btn btn-primary"
+								data-dismiss="modal" title="취소">
+								<i class='fas fa-reply'></i>
+							</button>
+							<button type="submit" id="submit" name="submit"
+								class="btn btn-primary pull-right" title="입력">
+								<i class='fas fa-edit'></i>
+							</button>
+					</div>
+				</div>
+			</div>
+	
+<script>
+
+document.getElementById('message').addEventListener('keyup',checkByte);
+var countSpan = document.getElementById('count');
+var message = '';
+var MAX_MESSAGE_BYTE = 100;
+document.getElementById('max-count').innerHTML = MAX_MESSAGE_BYTE.toString();
+
+function count(message){
+	var totalByte = 0;
+	
+	for(var index = 0, length = message.length; index < length; index++){
+		var currentByte = message.charCodeAt(index);
+		(currentByte > 128) ? totalByte += 2 : totalByte++;
+	}
+	return totalByte;
+}
+
+function checkByte(event){
+	const totalByte = count(event.target.value);
+	
+	if(totalByte <= MAX_MESSAGE_BYTE){
+		countSpan.innerText = totalByte.toString();
+		message = event.target.value;
+	}else{
+		swal({
+			title : "글자수 제한",
+			text : MAX_MESSAGE_BYTE + "바이트까지 전송가능합니다.",
+			icon : "warning",
+			button : "확인",
+		});
+		countSpan.innerText = count(message).toString();
+		event.target.value = message;
+	}
+}
+</script>

@@ -1,5 +1,7 @@
 package com.guem.go.minsu;
 
+import java.util.HashMap;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +27,13 @@ public class ScheInsertController {
 		System.out.println(email + " " + other + " " + lectureNum);
 		ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
 		int n = scheService.insert(vo);
-		//요청서 변경
+		//요청서 상태 변경
 		surService.requpdate(matchNum);
+		//받은요청서 상태 변경
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("lectureNum", lectureNum);
+		map.put("req_num", matchNum);
+		surService.reqlistupdate(map);
 		//매칭성공 추가
 		MatchingVo mvo = new MatchingVo(0, matchNum, lectureNum, email, other, null);
 		matService.insert(mvo);

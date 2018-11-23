@@ -11,6 +11,7 @@
 	<sql id="search">
 		<if test="field!=null and field!=''">
 			where ${field} like '%'|| #{keyword} ||'%'
+<!-- 			  and flag != '9' -->
 		</if>
 	</sql>
 	
@@ -29,7 +30,7 @@
 		(
 			select aa.*,rownum rnum from
 			(
-				select * from users
+				select * from users where flag != '9'
 				<include refid="search"/>
 				<choose>
 					<when test="sort!=null and sort!=''">
@@ -50,10 +51,15 @@
 	</select>
 	
 	
-	<!-- 회원삭제 -->
-	<delete id="delete" parameterType="String">
-		delete from users where email=#{email}
-	</delete>	
+<!-- 	회원삭제(실제)  -->
+<!-- 	<delete id="delete" parameterType="String"> -->
+<!-- 		delete from users where email=#{email} -->
+<!-- 	</delete>	 -->
+
+	<!-- 회원삭제(flag값 9로 변경) -->
+	<update id="update_f" parameterType="String">
+		update users set flag='9' where email=#{email}
+	</update>	
 	
 	<!-- 회원 정보 수정(1명 조회) -->
 	<select id="detail" resultType="com.guem.go.woohyun.UsersVo" parameterType="String">
@@ -87,4 +93,19 @@
 	<insert id="cate_insert" parameterType="com.guem.go.woohyun.UsersVo">
 		insert into FAVORITE(fa_num, email, favorite) values(fa_num_seq.nextval, #{email}, #{sname})
 	</insert>
+	
+	<!-- 포인트 추가 -->
+	<update id="userpoint" parameterType="hashmap">
+		update users set point=point+#{point} where email=#{email}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

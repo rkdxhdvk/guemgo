@@ -49,13 +49,14 @@ public class GosuUpdateController {
 
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0 && j>0) {
-			mv.addObject("code","success");
+			mv.addObject("code","gosuUpdate_success");
 //			System.out.println("업데이트콘트롤러POST-성공");
 		}else {
-			mv.addObject("code","fail");
+			mv.addObject("code","gosuUpdate_fail");
 //			System.out.println("업데이트콘트롤러POST-실패");
 		}
 //		System.out.println("업데이트콘트롤러POST-완료");
+		mv.addObject("goUrl","/");
 		return mv;
 	}
 }

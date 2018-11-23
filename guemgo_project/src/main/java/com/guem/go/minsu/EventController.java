@@ -3,6 +3,7 @@ package com.guem.go.minsu;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -38,6 +39,10 @@ public class EventController {
 	public int insert(String att, String email) {
 		EventVo vo = new EventVo(att, email);
 		service.insert(vo);
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("email", email);
+		map.put("point", 5);
+		uService.userpoint(map);
 		UsersVo uvo = uService.detail(email);
 		PointVo pvo = new PointVo(0, email, null, 1, "출석 이벤트 충전", 5, uvo.getPoint()+5);
 		pService.insert(pvo);

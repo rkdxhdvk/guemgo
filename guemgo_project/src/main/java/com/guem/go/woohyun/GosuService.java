@@ -33,9 +33,13 @@ public class GosuService {
 		return dao.list();
 	}*/
 	
+//	// 고수 삭제
+//	public int delete(String email) {
+//		return dao.delete(email);
+//	}
 	// 고수 삭제
-	public int delete(String email) {
-		return dao.delete(email);
+	public int update_f(String email) {
+		return dao.update_f(email);
 	}
 	
 	// 고수 정보 수정(1명 조회)

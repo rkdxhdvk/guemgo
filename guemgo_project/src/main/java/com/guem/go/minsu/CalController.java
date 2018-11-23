@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.guem.go.eunbyul.ClassService;
+import com.guem.go.eunbyul.LectureVo;
 import com.guem.go.kidong.ChatService;
 import com.guem.go.kidong.ChatVo;
 
@@ -23,7 +25,8 @@ public class CalController {
 	private Sche_detailService sche_detailService;
 	@Autowired
 	private ChatService chatService;
-	
+	@Autowired
+	private ClassService classService;
 	@RequestMapping(value="/select", method=RequestMethod.GET)
 	public String select() {
 		return "kidong/select";
@@ -101,8 +104,8 @@ public class CalController {
 		List<ChatVo> list = chatService.list(room);
 		model.addAttribute("list", list);
 		model.addAttribute("room", room);
-		
-		model.addAttribute("ar_sche_detailNum", array_schedetailNum);
+		LectureVo lvo = classService.classSelect(lectureNum);
+		model.addAttribute("lvo", lvo);
 		model.addAttribute("sche_detailNum", sche_detailNum);
 		model.addAttribute("email", email);
 		model.addAttribute("lecturename", lecturename);
