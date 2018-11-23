@@ -91,6 +91,7 @@ public class ChatController {
 			System.out.println("isschedule " + 0);
 		}
 		LectureVo lvo = classService.classSelect(lecturenum);
+		System.out.println("√§∆√√¢ " + req_num);
 		model.addAttribute("req_num", req_num);
 		model.addAttribute("other", other);
 		model.addAttribute("lecturename", lecturename);

@@ -119,7 +119,7 @@ html, body {
 		var sche_detailNum = parseInt(document.getElementById("sche_detailNum").value);
 		var scheduleNum = parseInt(document.getElementById("scheduleNum").value);
 		var lectureNum = parseInt(document.getElementById("lectureNum").value);
-		var matchNum = parseInt(document.getElementById("req_num").value);
+		var req_num = parseInt(document.getElementById("req_num").value);
 		var lecturename = document.getElementById("lecturename").value;
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value;
@@ -154,7 +154,7 @@ html, body {
 			$("#sche_confirm").click(function() {
 				$.getJSON({
 					url:"<c:url value='/calInsert'/>",
-					data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, matchNum:matchNum, lecturename:lecturename }, 
+					data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, req_num:req_num, lecturename:lecturename }, 
 					success:function(data){
 						if(data.result=='ok'){
 							console.log("스케줄 생성");
@@ -438,7 +438,7 @@ html, body {
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
 							<div class="form-group col-sm-12">
-							<label>강의명 : ${lvo.lectureName }</label><br> 		
+							<label>강의명 : ${lvo.lectureName } ${req_num }</label><br> 		
 							<%-- <select name="lecture" class="form-control">
 								<c:forEach items="${lecList }" var="vo">
 									<option value="${vo.lectureNum }/${vo.lectureName}">${vo.lectureName }</option>
