@@ -15,8 +15,6 @@
 			<br>
 			${vo.name }&nbsp;&nbsp;
 			<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-			|&nbsp;&nbsp;
-			리뷰	2
 			</span>
 			<br><br>
 			<span>

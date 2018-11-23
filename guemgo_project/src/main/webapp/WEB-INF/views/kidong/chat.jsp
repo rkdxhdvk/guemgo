@@ -349,7 +349,7 @@ html, body {
 		}
 		$('#data').scrollTop($('#data')[0].scrollHeight);
 	}
-
+	
 	function onClose(evt) {
 		$("#data").append("연결끊김");
 	}

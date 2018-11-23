@@ -86,4 +86,8 @@ public class GosuDao {
 	public  List<GosuVo> gosuDetailLectureList(String email) {
 		return sqlSession.selectList(NAMESPACE + ".gosuDetailLectureList", email); 
 	}
+	
+	public List<GosuVo> mainGosu(){
+		return sqlSession.selectList(NAMESPACE + ".mainGosu");
+	}
 }
