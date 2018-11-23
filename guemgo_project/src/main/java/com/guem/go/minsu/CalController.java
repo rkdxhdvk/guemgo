@@ -89,8 +89,16 @@ public class CalController {
 			for(int i=0,j=index;i<count;i++,j++) {
 				array_schedetailNum[i] = sche_detailNum + i; 
 				if(j>=day.length) j =0;
-				start[i] = sdf.format(cal.getTime()) + "T" + time + ":00:00";
-				end[i] = sdf.format(cal.getTime()) + "T" + (time+2) + ":00:00";
+				if(time<10) {
+					start[i] = sdf.format(cal.getTime()) + "T0" + time + ":00:00";
+				}else {
+					start[i] = sdf.format(cal.getTime()) + "T" + time + ":00:00";
+				}
+				if(time+2<10) {
+					end[i] = sdf.format(cal.getTime()) + "T0" + (time+2) + ":00:00";
+				}else {
+					end[i] = sdf.format(cal.getTime()) + "T" + (time+2) + ":00:00";
+				}
 				cal.add(Calendar.DATE, addDay[j]);
 				System.out.println(start[i] + " " + end[i]);
 			}

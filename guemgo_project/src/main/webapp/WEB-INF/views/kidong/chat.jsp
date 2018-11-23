@@ -124,10 +124,10 @@ html, body {
 		var email = document.getElementById("email").value;
 		var other = document.getElementById("other").value;
 		/* ar isschedule = parseInt(document.getElementById("isschedule").value) ; */
-		if(${isschedule }==1){
+		if('${isschedule }'=='1'){
 			<c:forEach items="${detailList }" var="vo">
 			var color = '';
-			if(${vo.attendance}==1){
+			if('${vo.attendance}'==1){
 				var color = 'orange';
 			}
 			events.push({
@@ -281,7 +281,7 @@ html, body {
 						    	});
 						    }
 
-					 },
+					 }
 					</c:if>
 					 
 				});
