@@ -163,5 +163,27 @@
 		   and c.email=#{email}
 	</select>
 	
+	<select id="mainGosu" resultType="com.guem.go.woohyun.GosuVo">
+		select a.email
+		     , a.go_num
+		     , a.intro
+		     , a.grade
+		     , a.employ
+		     , a.career
+		     , d.image as g_image
+		     , c.license
+		     , b.m_num
+		     , b.name
+		     , b.point
+		     , b.image as u_image
+		from gosu a
+		   , users b
+		   , gosu_career c
+		   , gosu_image d
+		where a.email=b.email 
+        and a.go_num=c.go_num
+        and a.go_num=d.go_num
+        order by go_num asc
+	</select>
 	
 </mapper>

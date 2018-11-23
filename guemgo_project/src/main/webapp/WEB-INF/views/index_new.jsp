@@ -211,152 +211,40 @@ div p {
 <div class="container">
 	<h2>추천 고수</h2>
 	<div class="slick-items">
-        <div class="gosuImg">
+	<c:forEach var="gosuVo" items="${gosuList }" begin="1" end="5">
+		<div class="gosuImg">
        		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
 			<div class="col-sm-4">
-				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
+				<c:choose>
+					<c:when test="${gosuVo.g_image != ' ' }">
+						<img src="resources/upload/gosuImg/${gosuVo.g_image }" width="85" height="85" style="border-radius: 50%"/>
+					</c:when>
+					<c:otherwise>
+						<img src="resources/gosuImg/gosu2.png" width="85" height="85" style="border-radius: 50%"/>
+					</c:otherwise>
+				</c:choose>
 				</div>	 <!-- users 테이블의 image 출력  -->
 				<div class="col-sm-8">
 				<span style="font-size: large;">
-				고수<br>
+				${gosuVo.name }<br>
 				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-				|&nbsp;&nbsp;
-				리뷰	2
 				</span>
 				<br><br>
 				<span>
-				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
+				<i class='fas fa-map-marker-alt'></i> 태초마을&nbsp;&nbsp;
 				</span>
 			</div> 
 			</div>
 			<br>
-			<span style="font-size: large;">쇼미더 머니</span>
+			<span style="font-size: large;">포켓몬친구들</span>
 			<br><br>
-			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
-			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
-			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
+			<p>${gosuVo.intro } </p>
 			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
 					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
 		</div>
 		</div>
-	<div class="gosuImg">			
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
-			<div class="row">
-			<div class="col-sm-4">
-				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
-				</div>	 <!-- users 테이블의 image 출력  -->
-				<div class="col-sm-8">
-				<span style="font-size: large;">
-				고수<br>
-				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-				|&nbsp;&nbsp;
-				리뷰	2
-				</span>
-				<br><br>
-				<span>
-				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				</span>
-			</div> 
-			</div>
-			<br>
-			<span style="font-size: large;">쇼미더 머니</span>
-			<br><br>
-			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
-			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
-			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
-			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
-					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
-		</div>
-		</div>
-		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
-			<div class="row">
-			<div class="col-sm-4">
-				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
-				</div>	 <!-- users 테이블의 image 출력  -->
-				<div class="col-sm-8">
-				<span style="font-size: large;">
-				고수<br>
-				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-				|&nbsp;&nbsp;
-				리뷰	2
-				</span>
-				<br><br>
-				<span>
-				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				고용횟수 번	
-				</span>
-			</div> 
-			</div>
-			<br>
-			<span style="font-size: large;">쇼미더 머니</span>
-			<br><br>
-			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
-			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
-			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
-			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
-					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
-		</div>
-		</div>
-		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
-			<div class="row">
-			<div class="col-sm-4">
-				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
-				</div>	 <!-- users 테이블의 image 출력  -->
-				<div class="col-sm-8">
-				<span style="font-size: large;">
-				고수<br>
-				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-				|&nbsp;&nbsp;
-				리뷰	2
-				</span>
-				<br><br>
-				<span>
-				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				</span>
-			</div> 
-			</div>
-			<br>
-			<span style="font-size: large;">쇼미더 머니</span>
-			<br><br>
-			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
-			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
-			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
-			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
-					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
-		</div>
-		</div>
-		 <div class="gosuImg">
-		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
-			<div class="row">
-			<div class="col-sm-4">
-				<img src="resources/gosuImg/gosu3.png" width="85" height="85"/>
-				</div>	 <!-- users 테이블의 image 출력  -->
-				<div class="col-sm-8">
-				<span style="font-size: large;">
-				고수<br>
-				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
-				|&nbsp;&nbsp;
-				리뷰	2
-				</span>
-				<br><br>
-				<span>
-				<i class='fas fa-map-marker-alt'></i> 서울 강남구&nbsp;&nbsp;
-				</span>
-			</div> 
-			</div>
-			<br>
-			<span style="font-size: large;">쇼미더 머니</span>
-			<br><br>
-			<p>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㅇㄻㄴ
-			ㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴㅁㅇㄻㄴㅇㄹㄴㅁㅇㄹㄴㅁㅇㄹㄴ
-			ㅇㅁㄻㅇㄴㄹㄴㅇㅁasdfsadfsadfsadfasdfsadfsadfsadfsdafsadfsadfasdfsadfasdfasdfasdfdsafasdfasdfsadfsad</p>
-			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
-					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
-		</div>
-		</div>
+	</c:forEach>
     </div>
 </div>
 	
