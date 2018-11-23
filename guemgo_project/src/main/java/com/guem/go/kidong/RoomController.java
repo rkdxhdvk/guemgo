@@ -38,6 +38,7 @@ public class RoomController {
 		RoomVo vo = new RoomVo(0, email, other, lecturenum, null, req_num);
 		service.makeRoom(vo);
 		int room = service.selectRoom(vo);
+		System.out.println("√§∆√√¢ " + req_num);
 		return "redirect:/chat?room="+room+"&email="+email+"&other="+other+"&lecturenum="+lecturenum+"&req_num="+req_num+"";
 	}
 }

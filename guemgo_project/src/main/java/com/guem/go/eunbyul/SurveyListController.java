@@ -44,6 +44,7 @@ public class SurveyListController {
 /*		LectureVo vo2=surveyservice.lectureselect(lecturename);*/
 		List<QuestionVo> quelist=surveyservice.quelist();
 		List<AnswerVo> list=surveyservice.answer(num);
+		System.out.println(num);
 		mv.addObject("req_num", num);
 		mv.addObject("state", vo.getLec_start());
 		mv.addObject("quelist", quelist);

@@ -23,19 +23,19 @@ public class ScheInsertController {
 	
 	@RequestMapping(value="/calInsert",produces="application/json;charset=utf-8", method=RequestMethod.GET)
 	@ResponseBody
-	public String insert(String email, int scheduleNum, String other, int lectureNum, int matchNum, String lecturename) {
-		System.out.println(email + " " + other + " " + lectureNum);
-		ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
+	public String insert(String email, int scheduleNum, String other, int lectureNum, int req_num, String lecturename) {
+		System.out.println(email + " " + other + " " + lectureNum + "matchNum" + req_num);
+		ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, req_num, lecturename);
 		int n = scheService.insert(vo);
 		//요청서 상태 변경
-		surService.requpdate(matchNum);
+		surService.requpdate(req_num);
 		//받은요청서 상태 변경
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("lectureNum", lectureNum);
-		map.put("req_num", matchNum);
+		map.put("req_num", req_num);
 		surService.reqlistupdate(map);
 		//매칭성공 추가
-		MatchingVo mvo = new MatchingVo(0, matchNum, lectureNum, email, other, null);
+		MatchingVo mvo = new MatchingVo(0, req_num, lectureNum, email, other, null);
 		matService.insert(mvo);
 		
 		JSONObject obj = new JSONObject();

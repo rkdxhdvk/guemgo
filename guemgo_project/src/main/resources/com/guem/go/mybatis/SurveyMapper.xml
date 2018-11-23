@@ -56,7 +56,7 @@
 	</update>
 	<!-- 요청서 상태 업데이트 -->
 	<update id="requpdate" parameterType="int">
-		update require set lec_start=1 where req_num=#{num}
+		update require set lec_start=1 where req_num=#{req_num}
 	</update>
 	<update id="reqlistupdate" parameterType="hashmap">
 		update requirelist set state=1 where req_num=#{req_num} and lecturenum=#{lectureNum}

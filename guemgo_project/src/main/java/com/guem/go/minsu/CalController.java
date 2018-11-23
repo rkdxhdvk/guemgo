@@ -45,7 +45,7 @@ public class CalController {
 		System.out.println("lectureNum: " + lectureNum );
 		int matchNum = Integer.parseInt(request.getParameter("matchNum")); // 요청서에서 시작해서 받아오기
 		int scheduleNum = scheService.scheduleNum() + 1;
-		System.out.println("스케줄넘 " + scheduleNum);
+		System.out.println("스케줄넘 " + scheduleNum + " 요청서번호 " + matchNum);
 		int sche_detailNum = sche_detailService.sche_detailNum();
 		//먼저 스케줄 테이블 insert
 		/*ScheduleVo vo = new ScheduleVo(scheduleNum, email, other, lectureNum, matchNum, lecturename);
