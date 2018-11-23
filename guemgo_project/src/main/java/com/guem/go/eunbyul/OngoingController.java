@@ -1,6 +1,8 @@
 package com.guem.go.eunbyul;
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.guem.go.minsu.MatchingVo;
+
 @Controller
 public class OngoingController {
 	@Autowired private OngoingService onservice;
@@ -18,9 +22,25 @@ public class OngoingController {
 	public ModelAndView ongoingClass(String email) {
 		ModelAndView mv=new ModelAndView();
 		ArrayList<OngoingVo> list= new ArrayList<>();
-		//1.이메일로 요청서테이블(require)에서 req_start가 1이거나 2인 요청서를 찾아온다
+		mv.setViewName(".eunbyul.ongoingClass");
+		
+		//매칭테이블로가서 해당 이메일에 매칭되어있는거 가져오기
+		List<MatchingVo> macthlist=onservice.matchselect(email);
+		for(int i=0; i<macthlist.size(); i++) {
+			int matchingnum=macthlist.get(i).getMatchingNum();
+			String gosuemail=macthlist.get(i).getGosu();
+			Date startday=macthlist.get(i).getMatchDate();
+			//강의번호로 강의이름가져오기
+			LectureVo vo=classsurvice.classSelect(macthlist.get(i).getLectureNum());
+			String lecturename=vo.getLectureName();
+			int state=1;
+			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state);
+			list.add(onvo);
+		}
+		/*//1.이메일로 요청서테이블(require)에서 req_start가 1이거나 2인 요청서를 찾아온다
 		List<RequireVo> reqlist=onservice.select_ongoing(email);
-		mv.setViewName("eunbyul/ongoingClass");
+		System.out.println("dd"+reqlist.get(0).getReq_num());
+		
 		for(int i=0; i<reqlist.size(); i++) {
 		//2. 1번의 요청서번호를 가지고 받은요청내역 테이블에가서 이메일을 찾아온다.
 			System.out.println("나오나요"+reqlist.get(i).getReq_num());
@@ -37,11 +57,22 @@ public class OngoingController {
 			int ongoing=50;
 			int state=vo.getState();
 			OngoingVo onlist=new OngoingVo(lecturenum, lecturename, gosuemail , ongoing, state);
+			System.out.println(onlist.getLecturenum()+onlist.getLecturename());
 			list.add(onlist);
 			
-		}
+		}*/
+		
+		
+		
+		
 		mv.addObject("list", list);
-		//3. 2번의 이메일을 가지고 고수테이블에서 고수번호를 찾아온다
+		
+		return mv;
+	}
+}
+
+
+//3. 2번의 이메일을 가지고 고수테이블에서 고수번호를 찾아온다
 		//일단 받은요청 내역에 강의번호를 넣어야겟다..!
 /*		ArrayList<LectureVo> leclist=new ArrayList<>();
 		for(int i=0; i<requlist2.size(); i++) {
@@ -70,6 +101,3 @@ public class OngoingController {
 		진행중인 강의 페이지에서 필요함 값들:
 		강의명, 강의번호, 강의시작일, 고수이메일, 강의진행률, 진행상황
 		*/
-		return mv;
-	}
-}

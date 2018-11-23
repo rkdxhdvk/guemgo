@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.guem.go.minsu.MatchingVo;
+
 @Repository
 public class OngoingDao {
 	@Autowired
@@ -23,4 +25,9 @@ public class OngoingDao {
 		return sqlSession.selectOne(NAMESPACE+ ".select_lec", num);
 	}
 	
+	
+	public List<MatchingVo> matchselect(String email) {
+		return sqlSession.selectList(NAMESPACE+ ".matchselect", email);
+	}
 }
+

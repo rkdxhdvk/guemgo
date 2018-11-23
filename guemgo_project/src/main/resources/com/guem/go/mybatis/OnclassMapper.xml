@@ -13,5 +13,9 @@
 		select * from lecture where lecturenum=#{num}
 	</select>
 	
+	<select id="matchselect" parameterType="String" resultType="com.guem.go.minsu.MatchingVo">
+		select * from matching where student=#{email}
+	</select>
+	
 </mapper>
 

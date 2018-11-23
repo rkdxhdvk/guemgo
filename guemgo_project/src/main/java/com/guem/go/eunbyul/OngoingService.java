@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guem.go.minsu.MatchingVo;
+
 @Service
 public class OngoingService {
 	@Autowired private OngoingDao dao;
@@ -17,5 +19,9 @@ public class OngoingService {
 	}
 	public LectureVo select_lec(int num){
 		return dao.select_lec(num);
+	}
+	
+	public List<MatchingVo> matchselect(String email) {
+		return dao.matchselect(email);
 	}
 }
