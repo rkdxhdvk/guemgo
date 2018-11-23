@@ -90,5 +90,7 @@ public class GosuService {
 		return dao.gosuDetailLectureList(email);
 	}
 	
-	
+	public List<GosuVo> mainGosu(){
+		return dao.mainGosu();
+	}
 }

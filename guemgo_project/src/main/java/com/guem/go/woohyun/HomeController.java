@@ -41,12 +41,21 @@ public class HomeController {
 	private UsersService userService;
 	@Autowired
 	private ClassService classService;
+	@Autowired
+	private GosuService gosuService;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {	
 		
 		List<CatesVo> list=cateservice.cateslist();
 		ModelAndView mv=new ModelAndView(".main");
 		mv.addObject("list", list);
+		
+		
+		
+		List<GosuVo> gosuList = gosuService.mainGosu();
+		mv.addObject("gosuList", gosuList);
+		
+		
 		
 		//////////메인 리뷰게시판 //////////////
 		List<ReviewVo> reviewList = reviewService.relist();
