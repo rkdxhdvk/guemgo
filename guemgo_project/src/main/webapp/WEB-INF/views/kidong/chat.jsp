@@ -307,7 +307,6 @@ html, body {
 		message.room = ${room };
 		sock.send(JSON.stringify(message));
 	}
-
 	function getTimeStamp() {
 		var d = new Date();
 		var s = leadingZeros(d.getFullYear(), 4) + '-'
