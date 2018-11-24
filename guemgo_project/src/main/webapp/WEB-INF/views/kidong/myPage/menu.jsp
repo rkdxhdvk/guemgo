@@ -16,7 +16,7 @@
 	<li><a
 		href="<c:url value='/user/scheList?email=${sessionScope.email }'/>">스케줄리스트</a></li>
 		<li><a
-		href="<c:url value='/ongoingClass?email=${sessionScope.email }'/>">수강 강의</a></li>
+		href="<c:url value='/ongoingClass?email=${sessionScope.email }'/>">수강중인 강의</a></li>
 <%-- 	<li><a
 		href="<c:url value='/sendList?email=${sessionScope.email }'/>">보낸 요청서</a></li> --%>
 

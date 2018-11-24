@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.guem.go.minsu.MatchingVo;
+import com.guem.go.minsu.ScheService;
+import com.guem.go.minsu.ScheduleVo;
 
 @Controller
 public class OngoingController {
 	@Autowired private OngoingService onservice;
 	@Autowired private ClassService classsurvice;
+	@Autowired private ScheService scheservice;
 	@RequestMapping(value="/ongoingClass", method=RequestMethod.GET)
 	public ModelAndView ongoingClass(String email) {
 		ModelAndView mv=new ModelAndView();
@@ -33,9 +36,26 @@ public class OngoingController {
 			//강의번호로 강의이름가져오기
 			LectureVo vo=classsurvice.classSelect(macthlist.get(i).getLectureNum());
 			String lecturename=vo.getLectureName();
+			int lectureNum=vo.getLectureNum();
 			int state=1;
-			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state);
+			System.out.println("dkdk");
+			HashMap<String, Object> map=new HashMap<>();
+			map.put("email", gosuemail);
+			map.put("other", email);
+			map.put("lectureNum", lectureNum);
+			System.out.println("dddd"+gosuemail+gosuemail+lectureNum);
+			ScheduleVo svo=scheservice.isschedule(map);
+			mv.addObject("lecturenum", svo.getLectureNum());
+			if(svo != null) {
+			System.out.println("나오나요?"+matchingnum+lecturename+gosuemail+startday+ state+svo.getScheduleNum());
+			
+			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,svo.getScheduleNum());
 			list.add(onvo);
+			}else {
+				OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,0);
+				list.add(onvo);
+			}
+			
 		}
 		/*//1.이메일로 요청서테이블(require)에서 req_start가 1이거나 2인 요청서를 찾아온다
 		List<RequireVo> reqlist=onservice.select_ongoing(email);
@@ -66,7 +86,7 @@ public class OngoingController {
 		
 		
 		mv.addObject("list", list);
-		
+		mv.addObject("email", email);
 		return mv;
 	}
 }

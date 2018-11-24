@@ -9,16 +9,18 @@ public class OngoingVo {
 	public String gosuemail;
 	public Date startday;
 	public int state;
+	public int scheduleNum;
 	
 	public OngoingVo() {}
 
-	public OngoingVo(int matchingnum, String lecturename, String gosuemail, Date startday, int state) {
+	public OngoingVo(int matchingnum, String lecturename, String gosuemail, Date startday, int state, int scheduleNum) {
 		super();
 		this.matchingnum = matchingnum;
 		this.lecturename = lecturename;
 		this.gosuemail = gosuemail;
 		this.startday = startday;
 		this.state = state;
+		this.scheduleNum = scheduleNum;
 	}
 
 	public int getMatchingnum() {
@@ -61,8 +63,14 @@ public class OngoingVo {
 		this.state = state;
 	}
 
-	
-	
+	public int getScheduleNum() {
+		return scheduleNum;
+	}
+
+	public void setScheduleNum(int scheduleNum) {
+		this.scheduleNum = scheduleNum;
+	}
+
 	
 	
 }

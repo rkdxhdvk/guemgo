@@ -47,7 +47,7 @@ public class SurveyController {
 		mv.addObject("area", area);
 		String email=(String)request.getSession().getAttribute("email");
 		if(email == null || email == "") {
-			mv.setViewName("redirect:/login");
+			mv.setViewName("redirect:/");
 			return mv;
 		}
         return mv;
