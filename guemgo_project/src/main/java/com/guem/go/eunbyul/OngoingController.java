@@ -46,13 +46,14 @@ public class OngoingController {
 			System.out.println("dddd"+gosuemail+gosuemail+lectureNum);
 			ScheduleVo svo=scheservice.isschedule(map);
 			mv.addObject("lecturenum", svo.getLectureNum());
+			
 			if(svo != null) {
 			System.out.println("나오나요?"+matchingnum+lecturename+gosuemail+startday+ state+svo.getScheduleNum());
 			
-			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,svo.getScheduleNum());
+			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,svo.getScheduleNum(),lectureNum);
 			list.add(onvo);
 			}else {
-				OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,0);
+				OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,0,lectureNum);
 				list.add(onvo);
 			}
 			

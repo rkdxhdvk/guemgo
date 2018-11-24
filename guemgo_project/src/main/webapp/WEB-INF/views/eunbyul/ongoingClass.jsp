@@ -16,11 +16,12 @@ $(document).ready(
 						console.log(data.pro);
 						
 						var ss = "진행률 " + data.pro + "%";
+						console.log(ss);
 						$( ".progress"+data.scheduleNum ).html(ss);
 						if(data.pro>=100 && ${sessionScope.flag}==1){
 							console.log("dddd");
 						var sss = 
-							"<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${email }'> <input type='hidden' name='lectureNum' id='lectureNum' value='${lecturenum }'> <input type='submit' value='후기 남기기'> </form>";
+							"<form action='/go/reInsert' method='get'> <input type='hidden' name='other' id='other' value='${email }'> <input type='hidden' name='lectureNum' id='lectureNum' value='${vo.lectureNum }'> <input type='submit' value='후기 남기기'> </form>";
 							$( ".pro"+data.scheduleNum ).html(sss);
 						}
 				}
@@ -51,6 +52,7 @@ $(document).ready(
 					<th>시작일</th>
 					<th>진행 상태</th>
 					<th>후기</th>
+					<th>강의번호</th>
 
 				</thead>
 				<tbody>
@@ -66,6 +68,7 @@ $(document).ready(
 						<td><div class="progressbar${vo.scheduleNum }" style="width: 300px;">
 				<a class="progress${vo.scheduleNum }"></a>
 				</div><div class="pro${vo.scheduleNum }"></div></td>
+				<td>${vo.lectureNum}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
