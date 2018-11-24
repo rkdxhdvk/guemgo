@@ -40,7 +40,7 @@ public class SurveyController {
 		List<ExampleVo> exlist=surveyservice.exlist();
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("eunbyul/survey");
+		mv.setViewName(".eunbyul.survey");
 		mv.addObject("list", list);
 		mv.addObject("quelist", quelist);
 		mv.addObject("exlist", exlist);
