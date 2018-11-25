@@ -59,6 +59,18 @@ public class HomeController {
 		
 		List<GosuVo> gosuList = gosuService.mainGosu();
 		mv.addObject("gosuList", gosuList);
+		ArrayList<Double> starAvg = new ArrayList<>();
+		for(int i=0;i<5;i++) {
+			int rev = reviewService.avgReview(gosuList.get(i).getEmail());
+			System.out.println(rev);
+			if(rev==0) {
+				starAvg.add(0.0);
+			}else {
+				int star = reviewService.avgStar(gosuList.get(i).getEmail());
+				starAvg.add((double) (star/rev));
+			}
+		}
+		mv.addObject("starAvg", starAvg);
 		
 		int totalRequire = serveyService.totalRequire();
 		int totalGosu = gosuService.totalGosu();
@@ -69,6 +81,7 @@ public class HomeController {
 		mv.addObject("totalRequire", totalRequire);
 		mv.addObject("totalGosu", totalGosu);
 		mv.addObject("avgStar", avgStar);
+		
 		
 		//////////메인 리뷰게시판 //////////////
 		List<ReviewVo> reviewList = reviewService.relist();
@@ -88,5 +101,6 @@ public class HomeController {
 		mv.addObject("userdetail", userdetail);
 		return mv;
 	}
+	
 	
 }
