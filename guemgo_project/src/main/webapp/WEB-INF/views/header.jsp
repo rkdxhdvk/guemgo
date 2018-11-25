@@ -46,14 +46,19 @@
 				 				로그인을 해주세요
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '0'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> 관리자 ${ sessionScope.name } 님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > 관리자 ${ sessionScope.name } 님
 				 			</c:when>
-				 			<c:when test="${sessionScope.flag eq '1'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 회원님
-				 			</c:when>
-				 			<c:when test="${sessionScope.flag eq '2'}">
-				 				<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar"> ${ sessionScope.name } 고수님
-				 			</c:when>
+				 			<c:otherwise>
+				 				
+<%-- 				 			<c:when test="${sessionScope.flag eq '1' or sessionScope.flag eq '2'}"> --%>
+				 				<c:if test="${ not empty sessionScope.img }">
+									<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
+								</c:if>
+								<c:if test="${     empty sessionScope.img }">
+									<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
+								</c:if>
+<%-- 				 			</c:when> --%>
+							</c:otherwise>
 				 		</c:choose>
 				 	</a>
 				 	<div class="dropdown-menu" aria-labelledby="dropdown">

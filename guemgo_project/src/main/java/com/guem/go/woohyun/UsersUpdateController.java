@@ -20,6 +20,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -87,6 +88,7 @@ public class UsersUpdateController {
 		ModelAndView mv=new ModelAndView("woohyun/result");
 		if(n>0) {
 			mv.addObject("code","userUpdate_success");
+			session.setAttribute("img", vo.getImage());
 //			System.out.println("업데이트콘트롤러POST-성공");
 		}else {
 			mv.addObject("code","userUpdate_fail");
