@@ -28,7 +28,33 @@ input[type="checkbox"] {
 .radio input:checked + .ico {background-position:0 -40px;}/* 체크됐을때, 이미지변경 */ */
 </style>
 <title>내 강의 목록</title>
-
+<!-- <script type="text/javascript">
+function err_bt() {
+	var purpose=document.getElementsByName('purpose').value.[0];
+	 console.log(purpose);
+	var experience=document.getElementsByName('experience').value;
+	var age=document.getElementsByName('age').value;
+	var day=document.getElementsByName('day').value;
+	var time=document.getElementsByName('time').value;
+	var times=document.getElementsByName('times').value;
+	var hour=document.getElementsByName('hour').value;
+	var start=document.getElementsByName('start').value;
+	var addr1=document.getElementsByName('addr1').value;
+	var addr2=document.getElementsByName('addr2').value;
+	var err=document.getElementById("err");
+	if(purpose==null || experience==null || age==null || day==null || time==null || times==null || hour==null || start==null || addr1==null || addr2==null ){
+	function a(){
+ 
+		err.innerText = '모든 항목에 체크해주세요.';
+		return false;
+	}
+	}else{
+		document.getElementById('surveyform').submit();
+		/* document.forms['surveyform'].submit(); */
+		return true;
+	}
+	}
+</script> -->
 </head>
 <body>
 	<div class="container-fluid"
@@ -38,7 +64,7 @@ input[type="checkbox"] {
 					<h5 class="modal-title" id="modal">고수를 소개받기 위해 몇가지 질문에 답해주세요!</h5>
 				</div>
 				<div class="modal-body">
-					<form  onsubmit="err_bt()" action="<c:url value='/survey'/>" method="post" id="surveyform">
+					<form onsubmit="return err_bt();" action="<c:url value='/survey'/>" method="post" id="surveyform">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
@@ -172,7 +198,7 @@ input[type="checkbox"] {
 						</c:if>	
 					</c:forEach>
 					<div style="color:red;font-size: 12px" id="err"></div>
-						<input type="button" class="btn btn-primary mx-1 mt-2 col-sm-12" style="background-color: #4CAF50;" onclick="err_bt()" value="신청하기">
+						<input type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12" style="background-color: #4CAF50;" value="신청하기">
 					</form>
 				</div>
 			</div>
@@ -275,27 +301,56 @@ s0.parentNode.insertBefore(s1,s0);
 <!-- 	회원가입 페이지 모달로 불러오기 -->
 	<%@include file="/WEB-INF/views/woohyun/userInsert.jsp"%>
 <script type="text/javascript">
+
 function err_bt() {
-	var purpose=document.getElementByName('purpose').value;
-	 console.log(purpose);
-	var experience=document.getElementByName('experience').value;
-	var age=document.getElementByName('age').value;
-	var day=document.getElementByName('day').value;
-	var time=document.getElementByName('time').value;
-	var times=document.getElementByName('times').value;
-	var hour=document.getElementByName('hour').value;
-	var start=document.getElementByName('start').value;
-	var addr1=document.getElementByName('addr1').value;
-	var addr2=document.getElementByName('addr2').value;
+	 var size1 = document.getElementsByName("purpose").length;
+	    for(var i = 0; i < size1; i++){
+	        if(document.getElementsByName("purpose")[i].checked == true){
+	        	var purpose=document.getElementsByName('purpose')[i].value;
+	       	 console.log(purpose);
+	        }
+	    }
+	 var size2 = document.getElementsByName("day").length;
+	    for(var i = 0; i < size2; i++){
+	        if(document.getElementsByName("day")[i].checked == true){
+	        	var day=document.getElementsByName('day')[i].value;
+	        	 console.log(day);
+	        }
+	    }
+	 var size3 = document.getElementsByName("time").length;
+	    for(var i = 0; i < size3; i++){
+	        if(document.getElementsByName("time")[i].checked == true){
+	        	var time=document.getElementsByName('time')[i].value;
+	        }
+	    }
+	 var size4 = document.getElementsByName("times").length;
+	    for(var i = 0; i < size4; i++){
+	        if(document.getElementsByName("times")[i].checked == true){
+	        	var times=document.getElementsByName('times')[i].value;
+	        }
+	    }
+	 var size5 = document.getElementsByName("hour").length;
+	    for(var i = 0; i < size5; i++){
+	        if(document.getElementsByName("hour")[i].checked == true){
+	        	var hour=document.getElementsByName('hour')[i].value;
+	        }
+	    }
+	 var size6 = document.getElementsByName("start").length;
+	    for(var i = 0; i < size6; i++){
+	        if(document.getElementsByName("start")[i].checked == true){
+	        	var start=document.getElementsByName('start')[i].value;
+	        }
+	    }
+	    
+	var addr1=document.getElementById('addr1').value;
 	var err=document.getElementById("err");
-	if(purpose==null || experience==null || age==null || day==null || time==null || times==null || hour==null || start==null || addr1==null || addr2==null ){
-	function a(){
- 
+	if(purpose==null || day==null || time==null || times==null || hour==null || start==null || addr1==null || addr2==null ){
 		err.innerText = '모든 항목에 체크해주세요.';
 		return false;
-	}
 	}else{
-		document.forms['surveyform'].submit();
+		console.log("submit");
+		/* document.getElementById('surveyform').submit(); */
+		/* document.forms['surveyform'].submit(); */
 		return true;
 	}
 	}
