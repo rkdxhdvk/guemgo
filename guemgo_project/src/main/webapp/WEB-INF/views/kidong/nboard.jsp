@@ -53,7 +53,7 @@
 						</div>
 						<button type="button" class="btn btn-primary" data-dismiss="modal"
 							title="취소">
-							<i class='fas fa-reply'></i>
+							<i class='fas fa-undo'></i>
 						</button>
 						<button type="submit" id="submit" name="submit"
 							class="btn btn-primary pull-right" title="입력">
