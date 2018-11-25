@@ -23,7 +23,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.guem.go.woohyun.PointService;
+import com.guem.go.woohyun.PointVo;
 import com.guem.go.woohyun.UsersService;
+import com.guem.go.woohyun.UsersVo;
 
 @Controller
 public class ReviewController {
@@ -33,6 +36,8 @@ public class ReviewController {
 	private Re_commentService coService;
 	@Autowired
 	private UsersService uService;
+	@Autowired
+	private PointService pService;
 	
 	@RequestMapping(value="/reInsert", method=RequestMethod.GET)
 	public String insert() {
@@ -51,6 +56,7 @@ public class ReviewController {
 			savefilename = UUID.randomUUID() + "_" + orgfilename;	
 		}
 		System.out.println("ddd");
+		
 		try {
 			InputStream is=img.getInputStream();
 			FileOutputStream fos=new FileOutputStream(uploadPath +"\\" + savefilename);
@@ -70,6 +76,12 @@ public class ReviewController {
 		map.put("email", vo.getOther());
 		map.put("point", vo.getStar()*10);
 		uService.poitnUpdate(map);
+		
+		UsersVo uvo = uService.detail(other);
+		PointVo pvo = new PointVo(0, other, null, 1, "후기 리뷰 포인트", 10*star, uvo.getPoint());
+		pService.insert(pvo);
+		
+		
 		System.out.println("ddd");
 		return "redirect:/reList";
 		}catch(Exception e) {
