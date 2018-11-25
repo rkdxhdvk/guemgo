@@ -151,26 +151,6 @@ html, body {
 				})
 			</c:forEach>
 		}
-			$("#sche_confirm").click(function() {
-				$.getJSON({
-					url:"<c:url value='/calInsert'/>",
-					data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, req_num:req_num, lecturename:lecturename }, 
-					success:function(data){
-						if(data.result=='ok'){
-							console.log("스케줄 생성");
-							$('#calendar').fullCalendar('clientEvents', function(event) {
-								console.log(event.id);
-								$.getJSON("<c:url value='/cal'/>",
-										{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
-										function(data) {
-												console.log("스케줄 확정1!!");
-												alert("스케줄 확정");
-								});
-							})
-						}
-					}
-				});
-			});
 			$("#sche_cancel").click(function() {
 					location.href=".kidong.chat";
 			});
@@ -424,11 +404,10 @@ html, body {
 						<c:choose>
 							<c:when test="${scheselect=='ok' }">
 								<div id='calendar'></div>
-								<input type="button" id="sche_confirm" value="스케줄 확정">
 								<!-- <input type="button" id="sche_cancel" value="취소"> -->
 							</c:when>
 							<c:otherwise>	
-					<form action="<c:url value='/calaaa'/>" method="get">
+					<form action="<c:url value='/calaaa'/>" method="get" id="calaaa">
 						<input type="hidden" value="${lvo.lectureNum }/${lvo.lectureName }" name="lecture" id="lecture">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<input type="hidden" value="${other}" name="other" id="other"> 
@@ -489,7 +468,6 @@ html, body {
 							</div>
 						</div>
 						<input type="hidden" value=${room } name="room">
-						<button type="submit" >스케줄</button>
 					</form>
 							</c:otherwise>
 						</c:choose>
@@ -504,7 +482,16 @@ html, body {
 						</div>
 					</div>
 					<div class="btn-group btn-group-justified">
-						<a href="#" class="btn btn-primary">강의신청</a> 
+					<c:if test="${isschedule==0 }">
+					<c:choose>
+						<c:when test="${scheselect=='ok' }">
+							<a href=".kidong.room" onclick="sche_confirm();" class="btn btn-primary">스케줄 확정</a>
+						</c:when>
+						<c:otherwise>
+						<a href="#" onclick="document.getElementById('calaaa').submit();" class="btn btn-primary">강의신청</a>
+						</c:otherwise>	
+					</c:choose>
+					</c:if>
 						<c:choose>
 							<c:when test="${sessionScope.flag == 2 }">
 								<a href="#" class="btn btn-primary" data-toggle="modal"
@@ -644,4 +631,31 @@ function checkByte(event){
 		event.target.value = message;
 	}
 }
+var sche_detailNum = parseInt(document.getElementById("sche_detailNum").value);
+var scheduleNum = parseInt(document.getElementById("scheduleNum").value);
+var lectureNum = parseInt(document.getElementById("lectureNum").value);
+var req_num = parseInt(document.getElementById("req_num").value);
+var lecturename = document.getElementById("lecturename").value;
+var email = document.getElementById("email").value;
+var other = document.getElementById("other").value;
+function sche_confirm(){
+	$.getJSON({
+		url:"<c:url value='/calInsert'/>",
+		data : {scheduleNum:scheduleNum, email:email, other:other, lectureNum:lectureNum, req_num:req_num, lecturename:lecturename }, 
+		success:function(data){
+			if(data.result=='ok'){
+				console.log("스케줄 생성");
+				$('#calendar').fullCalendar('clientEvents', function(event) {
+					console.log(event.id);
+					$.getJSON("<c:url value='/cal'/>",
+							{scheduleNum:scheduleNum, id:event.id, lecturename:event.title, start:event.start.format(), end:event.end.format(), memo:event.description}, 
+							function(data) {
+									console.log("스케줄 확정1!!");
+									alert("스케줄 확정");
+					});
+				})
+			}
+		}
+	});
+};
 </script>

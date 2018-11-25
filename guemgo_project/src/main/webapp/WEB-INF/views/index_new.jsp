@@ -251,9 +251,6 @@ div p {
 <div style="text-align: center;">
 	<img alt="" src="resources/gosuImg/gosuMain.png">
 </div>
-<div style="text-align: center;">
-	<img alt="" src="resources/gosuImg/gosuMain2.png">
-</div>
 <div class="container">
 <h1>금고를 통해 도움 받았어여!!</h1>
 <div class="slick-items">
