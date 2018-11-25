@@ -9,5 +9,14 @@
 	<select id="countgosu" resultType="long">
 		select count(*) from gosu
 	</select>
+	<select id="countrequ" resultType="long">
+		select count(*) from require
+	</select>
+	<select id="countmatch" resultType="long">
+		select count(*) from matching
+	</select>
+	<select id="payselect" resultType="com.guem.go.eunbyul.PayVo">
+		select * from pay
+	</select>
 </mapper>
 

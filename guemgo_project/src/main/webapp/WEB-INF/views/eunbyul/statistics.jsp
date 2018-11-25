@@ -16,11 +16,11 @@
 <div class="container-fluid" style="margin-bottom: 15px; padding-top: 180px;">
 			<h1 style="text-align:center;">통계</h1>
  			<div style="margin-right:auto; margin-left:auto;">
-			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics'/>"'>
+			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics?sort=1'/>"'>
 						이용자수</button>
-			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics'/>"'>
+			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics?sort=2'/>"'>
 						매출현황</button>
-			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/classdelete?lectureNum=${vo.lectureNum }&email=${email }'/>"'>
+			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics?sort=3'/>"'>
 						매칭률</button>
 			</div>
 			
@@ -36,9 +36,9 @@
     var chart = bb.generate({
     	  data: {
     		    columns: [
-    			["전체회원", ${user}],
-    			["고수", ${gosu}],
-    			["일반이용자", ${other}]
+    			["${a}", ${A}],
+    			["${b}", ${B}],
+    			["${c}", ${C}]
     		    ],
     		    type: "pie"
     		  },
