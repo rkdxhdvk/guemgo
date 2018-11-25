@@ -97,4 +97,8 @@ public class GosuService {
 	public int totalGosu() {
 		return dao.totalGosu();
 	}
+	//고수 고용 업데이트
+	public int employUp(String email) {
+		return dao.employUp(email);
+	}
 }

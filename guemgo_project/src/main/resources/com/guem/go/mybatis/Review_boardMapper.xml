@@ -72,4 +72,11 @@
 		select sum(star) from review_board
 	</select>
 	
+	<select id="avgReview" parameterType="String" resultType="int">
+		select count(*) from review_board where other=#{email}
+	</select>
+	
+	<select id="avgStar" parameterType="String" resultType="int">
+		select sum(star) from review_board where other=#{email}
+	</select>
 </mapper>

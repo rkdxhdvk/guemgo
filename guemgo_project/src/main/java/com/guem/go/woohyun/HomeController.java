@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import com.guem.go.eunbyul.CateService;
 import com.guem.go.eunbyul.CatesVo;
 import com.guem.go.eunbyul.ClassService;
 import com.guem.go.eunbyul.SurveyService;
+import com.guem.go.kidong.ChatService;
 import com.guem.go.minsu.ReviewService;
 import com.guem.go.minsu.ReviewVo;
 
@@ -46,10 +49,13 @@ public class HomeController {
 	private GosuService gosuService;
 	
 	@Autowired
+	private ChatService chatService;
+	
+	@Autowired
 	private SurveyService serveyService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home() {	
+	public ModelAndView home(HttpSession session) {	
 		
 		List<CatesVo> list=cateservice.cateslist();
 		ModelAndView mv=new ModelAndView(".main");

@@ -2,7 +2,6 @@ package com.guem.go.kidong;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,11 +27,19 @@ public class RoomController {
 	@RequestMapping(value = "/room", method = RequestMethod.GET)
 	public String room(String email,Model model) {
 		List<RoomVo> list = service.getRoom(email);
+		List<ChatVo> newList =  service.newMassage(email);
 		
 		for(RoomVo vo : list) {
 			LectureVo vo2 = classService.classSelect(vo.getLecturenum());
 			vo.setLecturename(vo2.getLectureName());
+			for(ChatVo chatVo : newList) {
+				if(chatVo.getRoom() == vo.getRoom()) {
+					vo.setNewMsg(1);
+				}
+			}
 		}
+		
+		
 		
 		model.addAttribute("list", list);
 		return ".kidong.room";
@@ -40,7 +47,7 @@ public class RoomController {
 	
 	@RequestMapping(value="/makeRoom", method = RequestMethod.GET)
 	public String makeRomm(String email, String other, int lecturenum, int req_num) {
-		RoomVo vo = new RoomVo(0, email, other, lecturenum, null, req_num);
+		RoomVo vo = new RoomVo(0, email, other, lecturenum, null, req_num, 0);
 		service.makeRoom(vo);
 		int room = service.selectRoom(vo);
 		

@@ -190,4 +190,7 @@
 		select count(*) from gosu
 	</select>
 	
+	<update id="employUp" parameterType="String">
+		update gosu set employ=employ+1 where email=#{email}
+	</update>
 </mapper>

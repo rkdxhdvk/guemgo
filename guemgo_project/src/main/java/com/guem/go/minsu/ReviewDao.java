@@ -51,4 +51,12 @@ public class ReviewDao {
 	public int totalStar() {
 		return sqlSession.selectOne(NAMESPACE + ".totalStar");
 	}
+	
+	public int avgReview(String email) {
+		return sqlSession.selectOne(NAMESPACE + ".avgReview", email);
+	}
+	
+	public int avgStar(String email) {
+		return sqlSession.selectOne(NAMESPACE + ".avgStar", email);
+	}
 }

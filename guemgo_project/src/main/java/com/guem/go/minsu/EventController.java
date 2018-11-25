@@ -44,7 +44,7 @@ public class EventController {
 		map.put("point", 5);
 		uService.userpoint(map);
 		UsersVo uvo = uService.detail(email);
-		PointVo pvo = new PointVo(0, email, null, 1, "출석 이벤트 충전", 5, uvo.getPoint()+5);
+		PointVo pvo = new PointVo(0, email, null, 1, "출석 이벤트 충전", 5, uvo.getPoint());
 		pService.insert(pvo);
 		return 1;
 	}

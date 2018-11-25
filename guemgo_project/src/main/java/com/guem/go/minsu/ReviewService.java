@@ -50,4 +50,12 @@ public class ReviewService{
 	public int totlaStar() {
 		return dao.totalStar();
 	}
+	
+	public int avgReview(String email) {
+		return dao.avgReview(email);
+	}
+	
+	public int avgStar(String email) {
+		return dao.avgStar(email);
+	}
 }

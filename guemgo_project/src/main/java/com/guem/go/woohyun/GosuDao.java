@@ -94,4 +94,8 @@ public class GosuDao {
 	public int totalGosu() {
 		return sqlSession.selectOne(NAMESPACE + ".totalGosu");
 	}
+	//고수 고용업데이트
+	public int employUp(String email) {
+		return sqlSession.update(NAMESPACE + ".employUp", email);
+	}
 }
