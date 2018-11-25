@@ -186,4 +186,8 @@
         order by go_num asc
 	</select>
 	
+	<select id="totalGosu" resultType="int">
+		select count(*) from gosu
+	</select>
+	
 </mapper>

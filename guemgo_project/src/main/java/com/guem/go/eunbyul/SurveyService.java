@@ -72,4 +72,7 @@ public class SurveyService {
 				return dao.reqlistupdate(map);
 			}
 	
+	public int totalRequire() {
+		return dao.totalRequire();
+	}
 }

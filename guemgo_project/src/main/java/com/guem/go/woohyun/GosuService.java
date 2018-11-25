@@ -93,4 +93,8 @@ public class GosuService {
 	public List<GosuVo> mainGosu(){
 		return dao.mainGosu();
 	}
+	
+	public int totalGosu() {
+		return dao.totalGosu();
+	}
 }

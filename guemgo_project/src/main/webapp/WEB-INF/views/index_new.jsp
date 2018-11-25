@@ -99,9 +99,9 @@ div p {
 	  <div class="panel-body" style="background-color: rgba( 0, 0, 0, 0.5 );font-size: x-large;">
 	  	<div class="row" >
 		  <div class="col-sm-4">누적 요청서<br>
-		  							123,123개</div>
+		  							${totalRequire }개</div>
 		  <div class="col-sm-4">등록된 고수<br>
-		  							1,234명</div>
+		  							${totalGosu }명</div>
 		  <div class="col-sm-4">평균 리뷰별점<br>
 		  							4.3점</div>
 		</div>

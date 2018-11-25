@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.guem.go.eunbyul.CateService;
 import com.guem.go.eunbyul.CatesVo;
 import com.guem.go.eunbyul.ClassService;
+import com.guem.go.eunbyul.SurveyService;
 import com.guem.go.minsu.ReviewService;
 import com.guem.go.minsu.ReviewVo;
 
@@ -43,6 +44,10 @@ public class HomeController {
 	private ClassService classService;
 	@Autowired
 	private GosuService gosuService;
+	
+	@Autowired
+	private SurveyService serveyService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home() {	
 		
@@ -55,7 +60,11 @@ public class HomeController {
 		List<GosuVo> gosuList = gosuService.mainGosu();
 		mv.addObject("gosuList", gosuList);
 		
+		int totalRequire = serveyService.totalRequire();
+		int totalGosu = gosuService.totalGosu();
 		
+		mv.addObject("totalRequire", totalRequire);
+		mv.addObject("totalGosu", totalGosu);
 		
 		//////////메인 리뷰게시판 //////////////
 		List<ReviewVo> reviewList = reviewService.relist();

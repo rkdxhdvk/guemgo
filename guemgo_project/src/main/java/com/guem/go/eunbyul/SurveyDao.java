@@ -89,4 +89,8 @@ public class SurveyDao {
 		public int reqlistupdate(HashMap<String, Integer> map) {
 			return sqlSession.update(NAMESPACE + ".reqlistupdate", map);
 		}
+		
+	public int totalRequire() {
+		return sqlSession.selectOne(NAMESPACE + ".totalRequire");
+	}
 }

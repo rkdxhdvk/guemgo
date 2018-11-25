@@ -90,4 +90,8 @@ public class GosuDao {
 	public List<GosuVo> mainGosu(){
 		return sqlSession.selectList(NAMESPACE + ".mainGosu");
 	}
+	
+	public int totalGosu() {
+		return sqlSession.selectOne(NAMESPACE + ".totalGosu");
+	}
 }

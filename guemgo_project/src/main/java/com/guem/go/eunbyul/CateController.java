@@ -12,10 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.guem.go.woohyun.GosuService;
+import com.guem.go.woohyun.GosuVo;
+
 @Controller
 public class CateController {
 	@Autowired
 	private CateService cateservice;
+	
+	@Autowired
+	private GosuService gosuService;
 	
 	@RequestMapping(value="/search", method = RequestMethod.GET)
 	public ModelAndView search(String search,HttpServletRequest request) {
@@ -25,7 +31,12 @@ public class CateController {
 		ModelAndView mv = new ModelAndView(); 
 		
 		mv.setViewName(".main");
-		 
+		
+
+		List<GosuVo> gosuList = gosuService.mainGosu();
+		mv.addObject("gosuList", gosuList);
+		
+		
 		
 		//1.검색어가 catel에 있으면 해당 catel에 해당하는 catem에 해당하는 cates를 모두 뿌려준다
 		for(int i=0;i<llist.size();i++) {
