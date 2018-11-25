@@ -62,9 +62,13 @@ public class HomeController {
 		
 		int totalRequire = serveyService.totalRequire();
 		int totalGosu = gosuService.totalGosu();
+		int totalReview = reviewService.totalReview();
+		int totalStar = reviewService.totlaStar();
+		double avgStar = totalStar/totalReview;
 		
 		mv.addObject("totalRequire", totalRequire);
 		mv.addObject("totalGosu", totalGosu);
+		mv.addObject("avgStar", avgStar);
 		
 		//////////메인 리뷰게시판 //////////////
 		List<ReviewVo> reviewList = reviewService.relist();

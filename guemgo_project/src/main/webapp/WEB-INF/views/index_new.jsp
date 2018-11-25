@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick-theme.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='resources/css/slick.css'/>" />
@@ -96,14 +97,15 @@ div p {
 			</div>
 
 		</div>
+		
 	  <div class="panel-body" style="background-color: rgba( 0, 0, 0, 0.5 );font-size: x-large;">
 	  	<div class="row" >
 		  <div class="col-sm-4">누적 요청서<br>
-		  							${totalRequire }개</div>
+		  							<fmt:formatNumber value="${totalRequire }" pattern="#,###"/>개</div>
 		  <div class="col-sm-4">등록된 고수<br>
-		  							${totalGosu }명</div>
+		  							<fmt:formatNumber value="${totalGosu }" pattern="#,###"/>명</div>
 		  <div class="col-sm-4">평균 리뷰별점<br>
-		  							4.3점</div>
+		  							<fmt:formatNumber value="${avgStar }" pattern=".0"/> </div>
 		</div>
 	  </div>
 		<!-- /.container -->

@@ -342,7 +342,7 @@ html, body {
 			$("#data").append(str);
 		} else {
 			$("#data").append(
-					"<div class='container1'><p>" + obj.msg
+					"<div class='container1'><img alt='' src='${pageContext.request.contextPath}/resources/gosuImg/gosu3.png'><p>" + obj.msg
 							+ "</p><span class=time-right>" + t
 							+ "</span></div>");
 		}
