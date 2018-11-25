@@ -24,7 +24,7 @@
 
 		<button type="button" class="btn btn-primary" style="float: right;"
 			onclick="location.href ='<c:url value='/nboard/list'/>'" title="목록으로">
-			<i class='fas fa-reply'></i>
+			<i class='fas fa-undo'></i>
 		</button>
 
 		<c:if test="${sessionScope.flag == 0}">
@@ -67,7 +67,7 @@
 						</div>
 						<button type="button" class="btn btn-primary" data-dismiss="modal"
 							title="취소">
-							<i class='fas fa-reply'></i>
+							<i class='fas fa-undo'></i>
 						</button>
 						<button type="submit" name="submit"
 							class="btn btn-primary pull-right" title="입력">

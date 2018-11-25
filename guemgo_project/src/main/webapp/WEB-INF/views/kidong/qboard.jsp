@@ -54,7 +54,7 @@
 								placeholder="content" maxlength="140" rows="7"></textarea>
 						</div>
 
-						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-reply'></i></button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" title="취소"><i class='fas fa-undo'></i></button>
 						<button type="submit" id="submit" name="submit" title="입력"
 							class="btn btn-primary pull-right"><i class='fas fa-edit'></i></button>
 					</form>

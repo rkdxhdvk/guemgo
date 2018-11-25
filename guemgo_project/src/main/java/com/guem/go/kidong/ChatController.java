@@ -20,6 +20,8 @@ import com.guem.go.minsu.Sche_detailVo;
 import com.guem.go.minsu.ScheduleVo;
 import com.guem.go.woohyun.GosuService;
 import com.guem.go.woohyun.GosuVo;
+import com.guem.go.woohyun.UsersService;
+import com.guem.go.woohyun.UsersVo;
 
 @Controller
 public class ChatController {
@@ -33,6 +35,9 @@ public class ChatController {
 	private ScheService sService;
 	@Autowired
 	private Sche_detailService dServie;
+	
+	@Autowired
+	private UsersService userService;
 	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public String chat(HttpServletRequest request, int room, int lecturenum, String lecturename, String other, int req_num, Model model) {
@@ -67,7 +72,8 @@ public class ChatController {
 			System.out.println(schemap.get("email"));
 			System.out.println(schemap.get("other"));
 			System.out.println(schemap.get("lectureNum"));
-			
+			UsersVo userVo = userService.detail(other);
+			model.addAttribute("userVo", userVo);
 		}else {
 			schemap.put("email", other);
 			schemap.put("other", email);
