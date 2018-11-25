@@ -30,13 +30,14 @@
 		<!-- <a class="navbar-brand" href="survey_test">설문조사 임시</a> -->
 		<a class="navbar-brand" href="<c:url value='/nboard/list'/>" style="padding-top: 80px;">공지게시판</a>
 		<a class="navbar-brand" href="<c:url value='/gboard/list'/>" style="padding-top: 80px;">게시판</a>
-		<a class="navbar-brand" href="<c:url value='/qboard/list'/>" style="padding-top: 80px;">qna게시판</a>
+		
 		<a class="navbar-brand" href="<c:url value='/'/> " style="display:block; margin-right:auto;
     margin-left:auto; "><img alt="leaf" src="${pageContext.request.contextPath}/resources/boot2/css/logo.jpg" width="150px" height="80px"  ></a>
 		<a class="navbar-brand" href="<c:url value='/reList'/>" style="padding-top: 80px;">후기게시판</a>
-		<a class="navbar-brand" href="<c:url value='/findgosu'/>" style="padding-top: 80px;">고수찾기</a>
+	<%-- 	<a class="navbar-brand" href="<c:url value='/findgosu'/>" style="padding-top: 80px;">고수찾기</a> --%>
+		<a class="navbar-brand" href="<c:url value='/qboard/list'/>" style="padding-top: 80px;">qna게시판</a>
 		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto" style="padding-top: 60px;list-style: none;">
+			<ul class="navbar-nav mr-auto" style="padding-top: 20px;list-style: none;">
 			
 				<li class="nav-item dropdown">
 				 	<a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
@@ -46,16 +47,16 @@
 				 				로그인을 해주세요
 				 			</c:when>
 				 			<c:when test="${sessionScope.flag eq '0'}">
-				 					<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > 관리자 ${ sessionScope.name } 님
+				 				<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > 관리자 ${ sessionScope.name } 님
 				 			</c:when>
 				 			<c:otherwise>
 				 				
-<%-- 				 		<c:when test="${sessionScope.flag eq '1' or sessionScope.flag eq '2'}"> --%>
+<%-- 				 			<c:when test="${sessionScope.flag eq '1' or sessionScope.flag eq '2'}"> --%>
 				 				<c:if test="${ not empty sessionScope.img }">
-										<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
+									<img alt="" src="${pageContext.request.contextPath}/resources/upload/userImg/${sessionScope.img}" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
 								</c:if>
 								<c:if test="${     empty sessionScope.img }">
-										<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
+									<img alt="" src="${pageContext.request.contextPath}/resources/img/static/icons8-contacts-filled-50.png" class="avatar" > ${ sessionScope.name } ${ sessionScope.flag eq '1' ? '회원' : '고수' }님
 								</c:if>
 <%-- 				 			</c:when> --%>
 							</c:otherwise>
@@ -86,22 +87,14 @@
 					 			<c:choose>
 					 				<c:when test="${sessionScope.flag eq '0' }">
 										<a class="dropdown-item" href="<c:url value='/admin'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-24.png">&nbsp 관리자페이지</a><br>
-										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅
-										<c:if test="${newMassage == 1 }">
-											<span class="label label-danger">New</span>
-										</c:if>
-										</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 									</c:when>
 									<c:when test="${sessionScope.flag eq '1' }">
 									<a class="dropdown-item" href="<c:url value='/sendlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-request-service-24.png">&nbsp 보낸 요청서</a><br>
 										<c:choose>
 											<c:when test="${empty sessionScope.gosuYN }">
 												<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
-												<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅
-												<c:if test="${newMassage == 1 }">
-													<span class="label label-danger">New</span>
-												</c:if>
-												</a><br>
+												<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 												<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
 												<span>------------------------------</span><br>
 												<a class="dropdown-item" href="<c:url value='/GosuInsertForm'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-guru-24.png">&nbsp 고수로 가입하기</a><br>
@@ -109,11 +102,7 @@
 											<c:otherwise>
 													<a class="dropdown-item" href="<c:url value='/mypage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-male-user-filled-24.png">&nbsp 마이페이지</a><br>
 													<a class="dropdown-item" href="<c:url value='/eventlist?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-calendar-24.png">&nbsp 출석 이벤트</a><br>
-													<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅
-													<c:if test="${newMassage == 1 }">
-														<span class="label label-danger">New</span>
-													</c:if>
-													</a><br>
+													<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 													<span style="margin:5px">----------------------------</span><br>
 													<a class="dropdown-item" href="<c:url value='/changeGosu'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 고수로 전환하기</a><br>
 											</c:otherwise>
@@ -121,11 +110,7 @@
 									</c:when>
 									<c:when test="${sessionScope.flag eq '2' }">	
 										<a class="dropdown-item" href="<c:url value='/gosuPage?email=${sessionScope.email }'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-meditation-24.png">&nbsp 고수페이지</a><br>
-										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅
-										<c:if test="${newMassage == 1 }">
-											<span class="label label-danger">New</span>
-										</c:if>
-										</a><br>
+										<a class="dropdown-item" href="<c:url value='/room?email=${sessionScope.email }'/>" style="margin-left:10px;"><img src="${pageContext.request.contextPath}/resources/img/chat.png">&nbsp 채팅</a><br>
 										<span style="margin:5px">----------------------------</span><br>
 										<a class="dropdown-item" href="<c:url value='/changeUser'/>" style="margin-left:10px"><img src="${pageContext.request.contextPath}/resources/img/static/icons8-sync-24.png">&nbsp 요청자로 전환하기</a><br>
 									</c:when>
