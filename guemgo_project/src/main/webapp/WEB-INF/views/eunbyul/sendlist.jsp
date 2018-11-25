@@ -9,11 +9,11 @@
 	
 		
 	<div class="container-fluid" style="margin-bottom: 15px; padding-top: 180px;">
-		<div class="table-responsive" style="width: 60%; height: 100%; margin: auto;">
+		<div class="table-responsive" style="width: 70%; height: 100%; margin: auto;">
 		<h1>보낸 요청 내역</h1><br>
 
 		<div class="table-responsive">
-			<table class="table table-bordered table-striped table-hover">
+			<table class="table table-bordered table-striped table-hover" >
 				<thead>
 					
 					<th>요청서번호</th>
@@ -56,7 +56,7 @@
 						<td style="width: 20%">
 						<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/senddetail?num=${vo.req_num }'/>"'>
 						자세히 보기</button></td>
-						<td style="width: 10%">
+						<td style="width: 30%">
 						<button type="button" class="btn btn-primary"onclick='location.href="<c:url value='/senddelete?num=${vo.req_num }&email=${email }'/>"'>
 						삭제</button></td>
 						</tr>

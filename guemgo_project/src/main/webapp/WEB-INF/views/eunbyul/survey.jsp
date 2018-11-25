@@ -38,7 +38,7 @@ input[type="checkbox"] {
 					<h5 class="modal-title" id="modal">고수를 소개받기 위해 몇가지 질문에 답해주세요!</h5>
 				</div>
 				<div class="modal-body">
-					<form action="<c:url value='/survey'/>" method="post">
+					<form  onsubmit="err_bt()" action="<c:url value='/survey'/>" method="post" id="surveyform">
 					<input type="hidden" name="email" value="${sessionScope.email }">
 					<%-- <input type="hidden" name="sname" value="${area}"> --%>
 						<div class="form-row">
@@ -171,15 +171,13 @@ input[type="checkbox"] {
 						</div>
 						</c:if>	
 					</c:forEach>
-					
-						<button type="submit" class="btn btn-primary mx-1 mt-2 col-sm-12" style="background-color: #4CAF50;">신청하기</button>
+					<div style="color:red;font-size: 12px" id="err"></div>
+						<input type="button" class="btn btn-primary mx-1 mt-2 col-sm-12" style="background-color: #4CAF50;" onclick="err_bt()" value="신청하기">
 					</form>
 				</div>
 			</div>
 		</div>
 	
-
-	</section>
 
 
 
@@ -276,8 +274,35 @@ s0.parentNode.insertBefore(s1,s0);
 	
 <!-- 	회원가입 페이지 모달로 불러오기 -->
 	<%@include file="/WEB-INF/views/woohyun/userInsert.jsp"%>
-
 <script type="text/javascript">
+function err_bt() {
+	var purpose=document.getElementByName('purpose').value;
+	 console.log(purpose);
+	var experience=document.getElementByName('experience').value;
+	var age=document.getElementByName('age').value;
+	var day=document.getElementByName('day').value;
+	var time=document.getElementByName('time').value;
+	var times=document.getElementByName('times').value;
+	var hour=document.getElementByName('hour').value;
+	var start=document.getElementByName('start').value;
+	var addr1=document.getElementByName('addr1').value;
+	var addr2=document.getElementByName('addr2').value;
+	var err=document.getElementById("err");
+	if(purpose==null || experience==null || age==null || day==null || time==null || times==null || hour==null || start==null || addr1==null || addr2==null ){
+	function a(){
+ 
+		err.innerText = '모든 항목에 체크해주세요.';
+		return false;
+	}
+	}else{
+		document.forms['surveyform'].submit();
+		return true;
+	}
+	}
+
+
+	
+
 function checkLogin() {
 	var email = $("input[name='email']").val();
 	var pwd = $("input[name='pwd']").val();
