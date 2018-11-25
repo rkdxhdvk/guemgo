@@ -34,4 +34,12 @@ public class ChatService {
 	public int selectRoom(RoomVo vo) {
 		return dao.selectRoom(vo);
 	}
+	
+	public List<ChatVo> newMassage(String receiver){
+		return dao.newMassage(receiver);
+	}
+	
+	public int checkMassage(String receiver) {
+		return dao.checkMassage(receiver);
+	}
 }

@@ -11,10 +11,12 @@ public class ChatVo {
 	private Date time;
 	private String sender;
 	private int read;
+	private String receiver;
 	
-	public ChatVo() {}
+	public ChatVo() {
+	}
 
-	public ChatVo(int msg_num, int room, String msg, Date time, String sender, int read) {
+	public ChatVo(int msg_num, int room, String msg, Date time, String sender, int read, String receiver) {
 		super();
 		this.msg_num = msg_num;
 		this.room = room;
@@ -22,6 +24,15 @@ public class ChatVo {
 		this.time = time;
 		this.sender = sender;
 		this.read = read;
+		this.receiver = receiver;
+	}
+
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
 	}
 
 	public int getMsg_num() {
@@ -84,10 +95,5 @@ public class ChatVo {
 		return "ChatVo [msg_num=" + msg_num + ", room=" + room + ", msg=" + msg + ", time=" + time + ", sender="
 				+ sender + ", read=" + read + "]";
 	}
-	
-	
+
 }
-	
-
-	
-

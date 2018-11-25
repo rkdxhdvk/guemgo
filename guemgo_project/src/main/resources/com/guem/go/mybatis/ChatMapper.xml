@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jhta.mybatis.ChatMapper">
 	<insert id="insert" parameterType="com.guem.go.kidong.ChatVo">
-		insert into gchat values(chat_seq.nextval,#{room},#{msg},sysdate,#{sender},0)
+		insert into gchat values(chat_seq.nextval,#{room},#{msg},sysdate,#{sender},0,#{receiver})
 	</insert>
 	<select id="list" parameterType="int" resultType="com.guem.go.kidong.ChatVo">
 		<![CDATA[ SELECT * FROM gchat WHERE room = #{room} and time >= TO_CHAR(SYSDATE-7,'YYYYMMDD') order by msg_num]]>
@@ -16,10 +16,19 @@
 		update gchat set read = 1 where room = #{room} and sender != #{sender}
 	</update>
 	<insert id="makeRoom" parameterType="com.guem.go.kidong.RoomVo">
-		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum},#{req_num})
+		insert into room values(room_seq.nextval,#{email},#{other},#{lecturenum},#{req_num},0)
 	</insert>
 	<select id="selectRoom" parameterType="com.guem.go.kidong.RoomVo" resultType="int">
 		select * from room where email = #{email} and other = #{other} and lecturenum = #{lecturenum} and rownum = 1 
 		order by room desc
+	</select>
+	<select id="newMassage" parameterType="string" resultType="com.guem.go.kidong.ChatVo">
+		select * from gchat where read = 0 and receiver = #{receiver}
+	</select>
+	<update id="updateRoom" parameterType="map">
+		update room set new = #{newMsg} where email = #{email} or other = #{email}
+	</update>
+	<select id="checkMassage" parameterType="string" resultType="int">
+		select count(*) from gchat where read = 0 and receiver = #{receiver}
 	</select>
 </mapper>  

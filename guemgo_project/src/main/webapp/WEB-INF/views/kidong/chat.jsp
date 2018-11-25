@@ -304,6 +304,7 @@ html, body {
 		message = {};
 		message.msg = $("#message").val();
 		message.sender = '${sessionScope.email }';
+		message.receiver = '${receiver}';
 		message.room = ${room };
 		sock.send(JSON.stringify(message));
 	}

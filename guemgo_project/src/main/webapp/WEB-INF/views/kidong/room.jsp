@@ -27,6 +27,9 @@
 					<c:set var="other1" value="${vo.email }"/>
 				</c:otherwise>
 			</c:choose>
+			<c:if test="${vo.newMsg == 1 }">
+				<span class="label label-danger" style="float: right;">New</span>
+			</c:if>
 			<br><br>
 				강의명 : ${vo.lecturename }
 				<a href="<c:url value='/chat?room=${vo.room }&lecturenum=${vo.lecturenum }&lecuturename=${vo.lecturename }&other=${other1 }&req_num=${vo.req_num }'/>" class="pull-right">입장</a>

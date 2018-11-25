@@ -74,6 +74,7 @@ public class ChatController {
 			System.out.println(schemap.get("lectureNum"));
 			UsersVo userVo = userService.detail(other);
 			model.addAttribute("userVo", userVo);
+			model.addAttribute("receiver", email);
 		}else {
 			schemap.put("email", other);
 			schemap.put("other", email);
@@ -85,6 +86,7 @@ public class ChatController {
 			List<GosuVo> lectureList = gosuService.gosuDetailLectureList(other);
 			model.addAttribute("gosuVo", gosuVo);
 			model.addAttribute("lectureList",lectureList); 
+			model.addAttribute("receiver", other);
 		}
 		ScheduleVo scheVo = sService.isschedule(schemap);
 		if(scheVo!=null) {

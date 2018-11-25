@@ -19,6 +19,7 @@ import com.guem.go.eunbyul.CatesVo;
 import com.guem.go.eunbyul.ExampleVo;
 import com.guem.go.eunbyul.QuestionVo;
 import com.guem.go.eunbyul.SurveyService;
+import com.guem.go.kidong.ChatService;
 /*
 	2018-10-31	윤우현 파일 생성
 */
@@ -26,6 +27,8 @@ import com.guem.go.eunbyul.SurveyService;
 public class LoginController {
 	@Autowired private LoginService service;
 	@Autowired private SurveyService surveyservice;
+	@Autowired
+	private ChatService chatService;
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login() {
@@ -89,6 +92,13 @@ public class LoginController {
 			session.setAttribute("name",vo.getName());	// 세션에 name등록
 			System.out.println(vo.getImage());
 			session.setAttribute("img",vo.getImage());
+			
+			if(chatService.checkMassage(email) > 0) {
+				session.setAttribute("newMassage", 1);
+			}else {
+				session.setAttribute("newMassage", 0);
+			}
+			
 			mv.setViewName("redirect:/");
 			return mv; //리다이렉트 방식으로 이동하기
 		}else {

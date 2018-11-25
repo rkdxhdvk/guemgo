@@ -118,7 +118,6 @@ div p {
 	<div class="panel-group">
 		<div class="panel panel-default" style="text-align: center;padding: 15px;">
 		<div class="panel-title">
-			
 			<div class="row" style="padding-left: 12px;padding-right: 12px;">
 			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fas fa-music fa-2x"></i><br>음악</a></div>
 			  <div class="col-sm-3"><a data-toggle="collapse" href="#collapse1"><i class="fas fa-palette fa-2x"></i><br>미술</a></div>

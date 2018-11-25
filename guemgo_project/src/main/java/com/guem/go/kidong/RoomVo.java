@@ -7,16 +7,28 @@ public class RoomVo {
 	private int lecturenum;
 	private String lecturename;
 	private int req_num;
+	private int newMsg;
+
 	public RoomVo() {
 	}
 
-	public RoomVo(int room, String email, String other, int lecturenum, String lecturename, int req_num) {
+	public RoomVo(int room, String email, String other, int lecturenum, String lecturename, int req_num, int newMsg) {
 		super();
 		this.room = room;
 		this.email = email;
 		this.other = other;
 		this.lecturenum = lecturenum;
 		this.lecturename = lecturename;
+		this.req_num = req_num;
+		this.newMsg = newMsg;
+	}
+
+	public int getNewMsg() {
+		return newMsg;
+	}
+
+	public void setNewMsg(int newMsg) {
+		this.newMsg = newMsg;
 	}
 
 	public int getLecturenum() {
@@ -70,6 +82,5 @@ public class RoomVo {
 	public void setReq_num(int req_num) {
 		this.req_num = req_num;
 	}
-	
 
 }
