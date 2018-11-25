@@ -9,17 +9,23 @@ import java.util.Date;
 public class PointVo {
 	private int num;
 	private String email;
-	private Date pointdate;
+	private String pointdate;
 	private int division;
 	private String detail;
 	private int dpoint;
 	private int lpoint;
+	private int point;
+	
+	//pay 테이블 내용
+	public String payoption;
+	public Date paydate;
+	public int paymoney;
 	
 	public PointVo() {}
 	
 	
 
-	public PointVo(int num, String email, Date pointdate, int division, String detail, int dpoint, int lpoint) {
+	public PointVo(int num, String email, String pointdate, int division, String detail, int dpoint, int lpoint) {
 		super();
 		this.num = num;
 		this.email = email;
@@ -46,11 +52,11 @@ public class PointVo {
 		this.email = email;
 	}
 
-	public Date getPointdate() {
+	public String getPointdate() {
 		return pointdate;
 	}
 
-	public void setPointdate(Date pointdate) {
+	public void setPointdate(String pointdate) {
 		this.pointdate = pointdate;
 	}
 
@@ -85,5 +91,55 @@ public class PointVo {
 	public void setLpoint(int lpoint) {
 		this.lpoint = lpoint;
 	}
+
+
+
+	public String getPayoption() {
+		return payoption;
+	}
+
+
+
+	public void setPayoption(String payoption) {
+		this.payoption = payoption;
+	}
+
+
+
+	public Date getPaydate() {
+		return paydate;
+	}
+
+
+
+	public void setPaydate(Date paydate) {
+		this.paydate = paydate;
+	}
+
+
+
+	public int getPaymoney() {
+		return paymoney;
+	}
+
+
+
+	public void setPaymoney(int paymoney) {
+		this.paymoney = paymoney;
+	}
+
+
+
+	public int getPoint() {
+		return point;
+	}
+
+
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	
+	
 	
 }
