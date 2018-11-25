@@ -213,7 +213,7 @@ div p {
 <div class="container">
 	<h2>추천 고수</h2>
 	<div class="slick-items">
-	<c:forEach var="gosuVo" items="${gosuList }" begin="1" end="5">
+	<c:forEach var="gosuVo" items="${gosuList }" varStatus="status" begin="1" end="5">
 		<div class="gosuImg">
        		<div style="width: 378px;height: 321px;border: solid 1px gray;padding: 15px;border-radius: 5px;border-color: #ddd;">
 			<div class="row">
@@ -230,7 +230,7 @@ div p {
 				<div class="col-sm-8">
 				<span style="font-size: large;">
 				${gosuVo.name }<br>
-				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
+				<i class='far fa-star'></i> 평점 ${starAvg[status.index]}&nbsp;&nbsp;
 				</span>
 				<br><br>
 			<!-- 	<span>
