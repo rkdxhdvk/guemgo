@@ -8,7 +8,7 @@
       <input id="point" type="text" class="form-control" name="point" value="${vo.point }" readonly="readonly">
   	</div>
   	
- <form name="point_frm" method="post" action="point_frm">
+ <form name="point_frm" method="post" action="pointCharge">
  	<div class="radio">
 	  <label><input type="radio" name="point" value="100" checked>100포인트	1,000원(0%)</label>
 	</div>
@@ -25,22 +25,22 @@
  <h2>결제정보를 입력해주세요</h2>
     <div class="input-group">
       <span class="input-group-addon">카드번호</span>
-      <input id="email" type="text" class="form-control" name="email">
+      <input id="card_num" type="text" class="form-control" name="card_num">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">유효기간</span>
-      <input id="password" type="text" class="form-control" name="password">
+      <input id="limit_num" type="text" class="form-control" name="limit_num">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">생년월일(6자리)</span>
-      <input id="msg" type="text" class="form-control" name="msg">
+      <input id="birthday" type="text" class="form-control" name="birthday">
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">카드비밀번호 앞 2자리</span>
-      <input id="msg" type="password" class="form-control" name="msg">
+      <input id="pw_num" type="password" class="form-control" name="pw_num">
     </div>
     <br>
     <input type="reset" class="btn btn-primary" value="취소">

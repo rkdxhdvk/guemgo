@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.guem.go.eunbyul.PayVo;
+
 /*
 --------------------------
 	2018-11-13	윤우현 생성
@@ -29,8 +31,19 @@ public class PointService {
 			return dao.insert(vo);
 		}
 	
-	// 포인트 충전
-		public int update(PointVo vo) {
-			return dao.update(vo);
+	// 포인트 충전1
+		public int point_update(PointVo vo) {
+			return dao.point_update(vo);
 		}
+		
+	// 포인트 충전2
+		public int point_insert(PointVo vo) {
+			return dao.point_insert(vo);
+		}
+	
+	// 포인트 충전3
+		public int pay_insert(PointVo vo) {
+			return dao.pay_insert(vo);
+		}
+	
 }

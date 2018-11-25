@@ -31,7 +31,7 @@ public class PointChargeController {
 		String email = (String)session.getAttribute("email");
 		
 		if (email == null) {
-			return new ModelAndView("redirect:/");
+			return new ModelAndView("redirect:/");	//session에 email이 비어있으면 홈으로 보냄
 		}
 		
 		ModelAndView mv = new ModelAndView(".pointCharge");
@@ -43,10 +43,13 @@ public class PointChargeController {
 	}
 	
 	@RequestMapping(value="/pointCharge",method=RequestMethod.POST)
-	public  ModelAndView pointcharge(PointVo vo) {
-			int n=pointService.update(vo);
-			//System.out.println(vo.getMnum);
-
+	public  ModelAndView pointcharge(PointVo vo, HttpSession session) {
+			String email = (String)session.getAttribute("email");
+			vo.setEmail(email);
+			int j=pointService.point_insert(vo);
+			int n=pointService.point_update(vo);
+			int i=pointService.pay_insert(vo);
+			
 			ModelAndView mv=new ModelAndView("woohyun/result");
 			if(n>0) {
 				mv.addObject("code","pointChange_success");

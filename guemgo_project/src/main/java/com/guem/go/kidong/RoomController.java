@@ -1,6 +1,8 @@
 package com.guem.go.kidong;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.guem.go.eunbyul.ClassService;
 import com.guem.go.eunbyul.LectureVo;
+import com.guem.go.woohyun.UsersService;
 
 @Controller
 public class RoomController {
@@ -19,6 +22,8 @@ public class RoomController {
 	@Autowired
 	private ClassService classService;
 	
+	@Autowired
+	private UsersService userService;
 	
 	@RequestMapping(value = "/room", method = RequestMethod.GET)
 	public String room(String email,Model model) {
@@ -38,6 +43,13 @@ public class RoomController {
 		RoomVo vo = new RoomVo(0, email, other, lecturenum, null, req_num);
 		service.makeRoom(vo);
 		int room = service.selectRoom(vo);
+		
+		int point = -10;
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("email", email);
+		map.put("point", point);
+		userService.userpoint(map);
+		
 		System.out.println("√§∆√√¢ " + req_num);
 		return "redirect:/chat?room="+room+"&email="+email+"&other="+other+"&lecturenum="+lecturenum+"&req_num="+req_num+"";
 	}

@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.guem.go.eunbyul.PayVo;
+
 @Repository
 public class PointDao {
 	@Autowired private SqlSession sqlSession;
@@ -24,8 +26,18 @@ public class PointDao {
 		return sqlSession.insert(NAMESPACE + ".insert", vo);
 	}
 	
-	//포인트 충전 DAO
-	public int update(PointVo vo) {
-		return sqlSession.update(NAMESPACE + ".update", vo);
+	//포인트 충전1(users 테이블 point 업데이트) DAO
+	public int point_update(PointVo vo) {
+		return sqlSession.update(NAMESPACE + ".point_update", vo);
+	}
+	
+	//포인트 충전2(point 테이블 point 충전내역 업데이트) DAO
+	public int point_insert(PointVo vo) {
+		return sqlSession.update(NAMESPACE + ".point_insert", vo);
+	}
+	
+	//포인트 충전3(pay 테이블 pay 결재내역 업데이트) DAO
+	public int pay_insert(PointVo vo) {
+		return sqlSession.update(NAMESPACE + ".pay_insert", vo);
 	}
 }

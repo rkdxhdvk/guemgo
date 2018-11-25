@@ -42,4 +42,12 @@ public class ReviewService{
 	public int commentUp(Map<String, Object> map) {
 		return dao.commentUp(map);
 	}
+	
+	public int totalReview() {
+		return dao.totalReview();
+	}
+	
+	public int totlaStar() {
+		return dao.totalStar();
+	}
 }

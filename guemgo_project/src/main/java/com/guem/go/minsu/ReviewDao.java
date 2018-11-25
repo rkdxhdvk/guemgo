@@ -43,4 +43,12 @@ public class ReviewDao {
 	public int commentUp(Map<String, Object> map) {
 		return sqlSession.update(NAMESPACE +".commentUp", map);
 	}
+	
+	public int totalReview() {
+		return sqlSession.selectOne(NAMESPACE + ".totalReview");
+	}
+	
+	public int totalStar() {
+		return sqlSession.selectOne(NAMESPACE + ".totalStar");
+	}
 }
