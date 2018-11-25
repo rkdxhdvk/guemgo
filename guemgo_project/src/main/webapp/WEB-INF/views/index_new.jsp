@@ -233,13 +233,13 @@ div p {
 				<i class='far fa-star'></i> 평점 4.5&nbsp;&nbsp;
 				</span>
 				<br><br>
-				<span>
+			<!-- 	<span>
 				<i class='fas fa-map-marker-alt'></i> 태초마을&nbsp;&nbsp;
-				</span>
+				</span> -->
 			</div> 
 			</div>
 			<br>
-			<span style="font-size: large;">포켓몬친구들</span>
+			<span style="font-size: large;">고수 소개</span>
 			<br><br>
 			<p>${gosuVo.intro } </p>
 			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
