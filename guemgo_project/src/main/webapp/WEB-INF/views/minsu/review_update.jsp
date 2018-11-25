@@ -25,7 +25,7 @@
 		method="post">
 		<input type="hidden" name="reviewNum" value="${vo.reviewNum }"> <input
 			type="hidden" name="email" value="${sessionScope.email }">
-		<h3 style="margin-bottom: 25px;">Article Form</h3>
+		<h3 style="margin-bottom: 25px;">수정</h3>
 		<div class="form-group">
 			<input type="text" class="form-control" name="title"
 				placeholder="title" value="${vo.title }">
@@ -36,7 +36,7 @@
 				maxlength="140" rows="7">${vo.content }</textarea>
 		</div>
 		<button type="submit" id="submit" name="submit"
-			class="btn btn-primary pull-right">Submit Form</button>
+			class="btn btn-primary pull-right">수정</button>
 	</form>
 </body>
 </html>

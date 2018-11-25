@@ -73,10 +73,11 @@ public class HomeController {
 			HashMap<String, String> usermap = new HashMap<>();
 			usermap.put("username", userService.detail(vo.getEmail()).getName());
 			usermap.put("gosuname", userService.detail(vo.getOther()).getName());
+			usermap.put("reviewImg", reviewService.detail(vo.getReviewNum()).getImg());
 			usermap.put("user", userService.detail(vo.getEmail()).getImage());
 			usermap.put("lecture", classService.classSelect(vo.getFlag()).getLectureName());
 			userdetail.add(usermap);
-			System.out.println(usermap.get("gosuname"));
+			System.out.println(usermap.get("gosuname")  + usermap.get("reviewImg"));
 		}
 		System.out.println();
 		mv.addObject("reviewList", reviewList);

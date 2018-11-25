@@ -34,6 +34,10 @@ $(document).ready(
 <body>
 	<h1>스케줄 리스트</h1>
 	<ul>
+		<c:if test="${sessionScope.flag==2 }">
+				<a href="/go/scheList?email=${sessionScope.email }">전체리스트 보기</a><br>
+		</c:if>
+		
 		<c:forEach items="${schelist }" var="vo">
 				<c:if test="${sessionScope.flag==1 }">
 					<c:set var="other" value="${vo.email }"/>
@@ -41,7 +45,6 @@ $(document).ready(
 				${other}님과의 ${vo.lecturename }</a>
 				</c:if>
 				<c:if test="${sessionScope.flag==2 }">
-					<a href="/go/scheList?email=${sessionScope.email }">전체리스트 보기</a><br>
 					<c:set var="other" value="${vo.other }"/>
 					<a href="<c:url value='/gosu/sche_detailList?email=${sessionScope.email }&scheduleNum=${vo.scheduleNum }'/>">
 				${other}님과의 ${vo.lecturename }</a>
