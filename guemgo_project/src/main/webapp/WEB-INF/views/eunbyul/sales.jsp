@@ -6,8 +6,7 @@
 <html>
 <body>
 	
-		
-<div class="container-fluid" style="margin-bottom: 15px; padding-top: 180px;">
+<div class="container-fluid" style="margin-bottom: 15px;">
 			<h1 style="text-align:center;">판매현황</h1>
  			<div style="margin-right:auto; margin-left:auto;">
 			<button type="button" class="btn btn-primary" onclick='location.href="<c:url value='/Statistics?sort=1'/>"'>

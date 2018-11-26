@@ -13,7 +13,8 @@
 		select num
 		     , email
 		     , to_char(pointdate,'yyyy-MM-dd hh24:mi:ss') as pointdate 
-		     , decode(division, '1', '충전', '0', '사용') as division_name
+<!-- 		     , decode(division, '1', '충전', '0', '사용') as division_name -->
+			 , division
 		     , dpoint
 		     , lpoint
 		     , detail

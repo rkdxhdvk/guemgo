@@ -242,7 +242,7 @@ div p {
 			<br><br>
 			<p>${gosuVo.intro } </p>
 			<button type="button" style="float: right;" class="btn btn-primary" title="글쓰기"
-					onclick="location.href ='<c:url value='/gosuProfileDetail?email=1'/>'">더보기</button>
+					onclick="location.href ='<c:url value='/gosuProfileDetail?email=${gosuVo.email }'/>'">더보기</button>
 		</div>
 		</div>
 	</c:forEach>
