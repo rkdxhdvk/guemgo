@@ -23,7 +23,7 @@
 					<tr>
 						<td style="width: 15%">${vo.pointdate }</td>
 						<td style="width: 10%">
-							${ vo.division == 0 ? '사용' : '충전' }	<!-- 삼항 -->
+							${ vo.division == 0 ? '사용 ' : '충전' } <!-- 삼항 -->
 						</td>
 						<td style="width: 45%">${vo.detail }</td>
 						<td style="width: 15%">${vo.dpoint }</td>
