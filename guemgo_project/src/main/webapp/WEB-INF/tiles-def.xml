@@ -75,6 +75,19 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 	</definition>
 	
+	<definition name=".statistics" template="/WEB-INF/views/minsu/adminlayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/minsu/adminmenu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/eunbyul/statistics.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	<definition name=".sales" template="/WEB-INF/views/minsu/adminlayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/views/minsu/adminmenu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/views/eunbyul/sales.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+	</definition>
+	
 	<!-- 
 		.member.login.loginForm
 		value="/WEB-INF/views/member/login/loginForm.jsp

@@ -24,15 +24,17 @@
 		</div> 
 	</div>
 	<br>
-	<button type="button" class="btn btn-primary btn-block" title="글쓰기"
-			data-toggle="modal" data-target="#myModal"><i class='fas fa-edit'></i>견적 받아보기</button>
+	<button type="button" class="btn btn-primary btn-block" 
+	onclick='location.href="<c:url value='/makeRoom?email=${vo.email }&other=${SessionScope.email }&lecturenum=${vo.lecturenum }&req_num=0'/>"'><i class='fas fa-edit'></i>견적 받아보기</button>
 
 <h2>서비스 카테고리</h2>
+		<div style="display: inline-flex;">
 	<c:forEach var="item" items="${ lectureList }">
 	<br>
-	<span class="label label-info" style="font-size: large;">${item.area }</span>
+	<span class="label label-info" style="font-size: large;margin-right: 10px;">${item.area }</span>
 	<!-- lecture(강의)테이블의 강의번호(lecturenum)을 이용해서 gosu_area테이블의 area를 모두 가져와서 출력해야함.-->
 </c:forEach>
+</div>
 <br>
 <h2>미디어</h2>
 <br>

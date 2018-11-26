@@ -15,7 +15,7 @@ public class StatisticsController {
 
 	@RequestMapping(value = "/Statistics", method = RequestMethod.GET)
 	public ModelAndView statistics(String sort) {
-		ModelAndView mv = new ModelAndView(".eunbyul.statistics");
+		ModelAndView mv = new ModelAndView(".statistics");
 		System.out.println(sort);
 		if (sort == null) {
 			// 1.usersÅ×ÀÌºíÀÇ ÃÑ °¹¼ö
@@ -51,7 +51,7 @@ public class StatisticsController {
 				}
 				mv.addObject("list", list);
 				mv.addObject("total", total);
-				mv.setViewName(".eunbyul.sales");
+				mv.setViewName(".sales");
 				
 			}else if (aa == 3) {
 				// ÃÑ¿äÃ»¼­ °¹¼ö
