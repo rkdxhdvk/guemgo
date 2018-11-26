@@ -219,7 +219,7 @@ public class SurveyController {
 					.append(ans[9]+"<br><br>")
 					.append("</form>")
 					.append("</div>")
-					.append("<a href='http://localhost:9090/go'>요청서 자세히 보기</a>")
+					.append("<a href='http://localhost:9090/go'>금고 사이트</a>")
 				.append("</div>")
 				.append("</div>")
 				

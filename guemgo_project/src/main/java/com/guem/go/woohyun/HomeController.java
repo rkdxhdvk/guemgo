@@ -70,7 +70,7 @@ public class HomeController {
 			int rev = reviewService.avgReview(gosuList.get(i).getEmail());
 			System.out.println(rev);
 			if(rev==0) {
-				starAvg.add(0.0);
+				starAvg.add(4.5);
 			}else {
 				int star = reviewService.avgStar(gosuList.get(i).getEmail());
 				starAvg.add((double) (star/rev));
