@@ -7,14 +7,14 @@ public class OngoingVo {
 	public int matchingnum;
 	public String lecturename;
 	public String gosuemail;
-	public Date startday;
+	public String startday;
 	public int state;
 	public int scheduleNum;
 	public int lectureNum;
 	
 	public OngoingVo() {}
 
-	public OngoingVo(int matchingnum, String lecturename, String gosuemail, Date startday, int state, int scheduleNum,
+	public OngoingVo(int matchingnum, String lecturename, String gosuemail, String startday, int state, int scheduleNum,
 			int lectureNum) {
 		super();
 		this.matchingnum = matchingnum;
@@ -50,11 +50,11 @@ public class OngoingVo {
 		this.gosuemail = gosuemail;
 	}
 
-	public Date getStartday() {
+	public String getStartday() {
 		return startday;
 	}
 
-	public void setStartday(Date startday) {
+	public void setStartday(String startday) {
 		this.startday = startday;
 	}
 

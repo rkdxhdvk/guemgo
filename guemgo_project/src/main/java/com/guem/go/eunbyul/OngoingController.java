@@ -1,7 +1,9 @@
 package com.guem.go.eunbyul;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,14 +48,16 @@ public class OngoingController {
 			System.out.println("dddd"+gosuemail+gosuemail+lectureNum);
 			ScheduleVo svo=scheservice.isschedule(map);
 			mv.addObject("lecturenum", svo.getLectureNum());
-			
+			Calendar cal = Calendar.getInstance();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String startday1=sdf.format(startday);
 			if(svo != null) {
 			System.out.println("나오나요?"+matchingnum+lecturename+gosuemail+startday+ state+svo.getScheduleNum());
 			
-			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,svo.getScheduleNum(),lectureNum);
+			OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday1, state,svo.getScheduleNum(),lectureNum);
 			list.add(onvo);
 			}else {
-				OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday, state,0,lectureNum);
+				OngoingVo onvo=new OngoingVo(matchingnum, lecturename, gosuemail, startday1, state,0,lectureNum);
 				list.add(onvo);
 			}
 			

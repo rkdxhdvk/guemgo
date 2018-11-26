@@ -35,23 +35,23 @@ $(document).ready(
 <body>
 	<c:if test="${sessionScope.email!=null }">
 	<div class="container-fluid" style="margin-bottom: 15px; padding-top: 180px;">
-		<p class="text-left" style="font-size: x-large; text-align:center;">수강한 강의</p>
+		<p class="text-left" style="font-size: x-large; text-align:center;">수강중인 강의</p>
 <%-- 		<button type="button" class="btn btn-primary" style="float: right;"
 			onclick="location='<c:url value='/reInsert'/>'">글쓰기</button> --%>
 	</div>
 	</c:if>
 
-		<div class="table-responsive" style="width: 60%; height: 100%; margin: auto;">
+		<div class="table-responsive" style="width: 80%; height: 100%; margin: auto;">
 
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					
-					<th>강의번호</th>
+					<th>매칭번호</th>
 					<th>강의명</th>
 					<th>고수이메일</th>
 					<th>시작일</th>
 					<th>진행 상태</th>
-					<th>후기</th>
+					<!-- <th>후기</th> -->
 					<th>강의번호</th>
 
 				</thead>
@@ -59,16 +59,16 @@ $(document).ready(
 					<c:forEach var="vo" items="${list }">
 					<tr>
 						<td style="width: 10%">${vo.matchingnum }</td>
-						<td style="width: 20%">${vo.lecturename }</td>    
-						<td style="width: 20%">${vo.gosuemail }</td>
-						<td style="width: 10%">${vo.startday } % </td>
+						<td style="width: 15%">${vo.lecturename }</td>    
+						<td style="width: 15%">${vo.gosuemail }</td>
+						<td style="width: 20%">${vo.startday } </td>
 						<c:if test="${vo.state ==1}">
-						<td style="width: 10%">강의진행중<div class="pro${vo.scheduleNum }"></div></td>
+						<td style="width: 20%">강의진행중<div class="pro${vo.scheduleNum }"></div></td>
 						</c:if>
-						<td><div class="progressbar${vo.scheduleNum }" style="width: 300px;">
+						<%-- <td style="width: 20%"><div class="progressbar${vo.scheduleNum }" style="width: 300px;">
 				<a class="progress${vo.scheduleNum }"></a>
-				</div><div class="pro${vo.scheduleNum }"></div></td>
-				<td>${vo.lectureNum}</td>
+				</div><div class="pro${vo.scheduleNum }"></div></td> --%>
+				<td style="width: 20%">${vo.lectureNum}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
