@@ -278,8 +278,8 @@ div p {
         	</div>
     		</div>
 			<p>${vo.content }</p>
-			<p>-------------------------------------------------------</p>
-				<img src="resources/user/${userdetail[status.index].user}" width="75" height="75" style="float: left;"/>
+		<!-- 	<p>-------------------------------------------------------</p>
+			 -->	<img src="resources/upload/userImg/${userdetail[status.index].user}" width="75" height="75" style="float: left;"/>
 				<span style="font-size: large;">${userdetail[status.index].username}<br>
 				<i class='far fa-star'></i>${vo.star }점
 				</span>
